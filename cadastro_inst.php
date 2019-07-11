@@ -139,7 +139,7 @@
 		
 		
 		//fazer script de mascara do cep e cnpj e telefone
-		//verificar se o email ou login não estao cadastrados
+		//verificar se o email ou login não estao cadastrados teste git
 		//se tem email pra que um login?
         //fazer uma lista dropdown dos estados, para o usuario selecionar
 		
