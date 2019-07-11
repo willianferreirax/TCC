@@ -138,7 +138,7 @@
 		$conn = conexao();
 		
 		
-		//fazer script de mascara do cep e cnpj e telefone
+		//fazer script de mascara do cep e cnpj e telefone teste de git
 		//verificar se o email ou login não estao cadastrados
 		//se tem email pra que um login?
         //fazer uma lista dropdown dos estados, para o usuario selecionar
