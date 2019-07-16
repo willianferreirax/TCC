@@ -172,29 +172,34 @@
 									$erro="Digite um email valido";
 								}
 								else{
-									if(strlen(utf8_decode($_POST["senha"]))<10 || strlen(utf8_decode($_POST["senha"]))>255){
-										$erro="Digite uma senha valida (Mais de 10 caracteres)";
+									if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+										$erro="Digite um email valido";
 									}
 									else{
-										if($_POST["senha"] != $_POST["confirmar"]){
-											$erro="Senhas diferentes digitadas";
+										if(strlen(utf8_decode($_POST["senha"]))<10 || strlen(utf8_decode($_POST["senha"]))>255){
+											$erro="Digite uma senha valida (Mais de 10 caracteres)";
 										}
 										else{
-											if(strlen(utf8_decode($_POST["estado"]))<4 || strlen(utf8_decode($_POST["estado"]))>16){
-												$erro="Digite uma estado valido";
+											if($_POST["senha"] != $_POST["confirmar"]){
+												$erro="Senhas diferentes digitadas";
 											}
 											else{
-                                                if(strlen(utf8_decode($_POST["cep"]))<8 || strlen(utf8_decode($_POST["cep"]))>8){
-                                                    $erro= "Digite corretamente o CEP";		
-                                                }
-                                                else{
-													if(strlen(utf8_decode($_POST["cnpj"]))<11 || strlen(utf8_decode($_POST["cnpj"]))>11){
-														$erro= "Digite corretamente o CNPJ";		
+												if(strlen(utf8_decode($_POST["estado"]))<4 || strlen(utf8_decode($_POST["estado"]))>16){
+													$erro="Digite uma estado valido";
+												}
+												else{
+													if(strlen(utf8_decode($_POST["cep"]))<8 || strlen(utf8_decode($_POST["cep"]))>8){
+														$erro= "Digite corretamente o CEP";		
 													}
 													else{
-														$valido=true;
-													}
-                                                }
+														if(strlen(utf8_decode($_POST["cnpj"]))<11 || strlen(utf8_decode($_POST["cnpj"]))>11){
+															$erro= "Digite corretamente o CNPJ";		
+														}
+														else{
+															$valido=true;
+														}
+                                                	}
+												}
 											}
 										}
 									}
@@ -209,46 +214,70 @@
 					
 						
 	if(isset($valido) && $valido ==true){
+		//Verificar se a instituição já está cadastrada no banco de dados como instituição
 
-		
-		//concertar o banco pra voltar o md5
-		$senhaHash = md5($_POST["senha"]);
-		$sql="insert into faculdade (CNPJ, login_inst ,senha_inst ,nome_inst ,endereco_inst ,bairro_inst ,cidade_inst ,estado_inst ,cep_inst ,email_inst ,telefone_inst) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		$email = $_POST['email'];
+		$login = $_POST['login'];
 
-		
-		$stmt = $conn->prepare($sql);
-		
-		
+		$result = $conn->prepare("select * from faculdade where email_inst = '{$email}' or login_inst = '{$login}'"); //Comando de seleção que verifica se há um email igual no banco de dados
+		$result->execute(); //Executa o comando
 
-		//Atrelando os dados às tabelas
-		$stmt->bindParam(1, $_POST["cnpj"],PDO::PARAM_STR);
-		$stmt->bindParam(2, $_POST["login"],PDO::PARAM_STR);
-
-		$stmt->bindParam(3, $_POST["senha"]);
-
-		$stmt->bindParam(4, $_POST["nome"],PDO::PARAM_STR);
-		$stmt->bindParam(5, $_POST["endereco"],PDO::PARAM_STR);
-		$stmt->bindParam(6, $_POST["bairro"],PDO::PARAM_STR);
-		$stmt->bindParam(7, $_POST["cidade"],PDO::PARAM_STR);
-		$stmt->bindParam(8, $_POST["estado"],PDO::PARAM_STR);
-		$stmt->bindParam(9, $_POST["cep"],PDO::PARAM_STR);
-		$stmt->bindParam(10, $_POST["email"],PDO::PARAM_STR);
-		$stmt->bindParam(11, $_POST["telefone"],PDO::PARAM_STR);
-		
-		$stmt->execute();
-
-		if($stmt->errorCode() != "00000"){
-			$erro = "Erro código " . $stmt->errorCode() . ": ";
-			$erro .= implode(", ", $stmt->errorInfo());
-			echo $erro;
+		if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado como instituição
+			echo "<script language='javascript'>";
+			echo "alert('O email informado ja está cadastrado');";
+			echo "</script>";//consertar os javascript
+			header('Location: login.php'); //Direciona a instituição para a página de cadastro novamente
 		}
-	
-		else{
-		echo "<script language='javascript'>";
-		echo "alert('Instituição cadastrada com sucesso.');";
-		echo "</script>";
+		else{//Verificar se o email informado pela instituição não está cadastrado como um usuario
+			$result = $conn->prepare("select * from usuario where email_usuario = '{$email}'");
+			$result->execute();
+
+			if($result->fetchColumn() > 0){ //se retornar mais que 0, existe um email igual ao informado cadastrado como usuario
+				echo "<script language='javascript'>";
+				echo "alert('O email informado ja está cadastrado');";
+				echo "</script>";//consertar os javascript
+				header('Location: login.php'); //Direciona a instituição para a página de cadastro novamente
+			}
+			else{// se não estiver cadastrado em nenhum dos dois, realiza o cadastro
+
+				//concertar o banco pra voltar o md5
+				$senhaHash = md5($_POST["senha"]);
+				$sql="insert into faculdade (CNPJ, login_inst ,senha_inst ,nome_inst ,endereco_inst ,bairro_inst ,cidade_inst ,estado_inst ,cep_inst ,email_inst ,telefone_inst) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				
+				$stmt = $conn->prepare($sql);
+				
+				//Atrelando os dados às tabelas
+				$stmt->bindParam(1, $_POST["cnpj"],PDO::PARAM_STR);
+				$stmt->bindParam(2, $_POST["login"],PDO::PARAM_STR);
+
+				$stmt->bindParam(3, $_POST["senha"]);
+
+				$stmt->bindParam(4, $_POST["nome"],PDO::PARAM_STR);
+				$stmt->bindParam(5, $_POST["endereco"],PDO::PARAM_STR);
+				$stmt->bindParam(6, $_POST["bairro"],PDO::PARAM_STR);
+				$stmt->bindParam(7, $_POST["cidade"],PDO::PARAM_STR);
+				$stmt->bindParam(8, $_POST["estado"],PDO::PARAM_STR);
+				$stmt->bindParam(9, $_POST["cep"],PDO::PARAM_STR);
+				$stmt->bindParam(10, $_POST["email"],PDO::PARAM_STR);
+				$stmt->bindParam(11, $_POST["telefone"],PDO::PARAM_STR);
+				
+				$stmt->execute();
+
+				if($stmt->errorCode() != "00000"){
+					$erro = "Erro código " . $stmt->errorCode() . ": ";
+					$erro .= implode(", ", $stmt->errorInfo());
+					echo $erro;
+				}
+			
+				else{
+				echo "<script language='javascript'>";
+				echo "alert('Instituição cadastrada com sucesso.');";
+				echo "</script>";
+				header('Location: login.php'); 
+				}
+
+			}
 		}
-		
     }
     else{
 		if (isset($erro)) {

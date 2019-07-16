@@ -96,37 +96,61 @@
 			
 	if(isset($valido) && $valido == true){
 		$email = $_POST['email'];
-		//Verificar se o usuário já está cadastro no banco de dados
+		//Verificar se o usuário já está cadastrado como usuario
 		$result = $conn->prepare("select * from usuario where email_usuario = '{$email}'"); //Comando de seleção que verifica se há um email igual no banco de dados
 		$result->execute(); //Executa o comando
-		if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
-			header('Location: login.php'); //Direciona o usuário para a página de login
+		
+		if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado como usuario
+			echo "<script language='javascript'>
+				alert('O email informado ja está cadastrado');
+				</script>";//consertar os javascript
+			header('Location: login.php'); //Direciona o usuário para a página de cadastro novamente
 		}
-		else{ //Se não há um email cadastrado, realiza o cadastro
-			$nome1 = $_POST["nome"];
-			$nome2 = $_POST["sobrenome"];
-			$nome = "{$nome1} {$nome2}";
-			
-			$sql = "INSERT INTO usuario 
-			(nome_usuario, email_usuario, senha_usuario) 
-			VALUES (?, ?, ?)";
-			$stmt = $conn->prepare($sql);
-			
-			
+		else{ //verificar se o usuario não está cadastrado como instituição
+			$result = $conn->prepare("select * from faculdade where email_inst = '{$email}'"); //Comando de seleção que verifica se há um email igual no banco de dados
+			$result->execute(); //Executa o comando
 
-			//Atrelando os dados às tabelas
-			$stmt->bindValue(1, $nome);
-			$stmt->bindValue(2, $_POST["email"]);
-			$senhaHash = md5($_POST["senha"]);
-			$stmt->bindValue(3, $senhaHash);
-			
-			$stmt->execute();
-			
-			if($stmt->errorCode() != "00000"){
-					$erro = "Erro código " . $stmt->errorCode() . ": ";
-					$erro .= implode(", ", $stmt->errorInfo());
-					echo $erro;
-			} //Exibir erro de comunicação com o banco de dados
+			if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado como instituição
+				
+				echo "<script language='javascript'>
+				alert('O email informado ja está cadastrado');
+				</script>";//consertar os javascript
+				
+				header('Location: login.php'); //Direciona o usuário para a página de cadastro novamente
+			}
+			else{//se não estiver cadastrado como nenhum dos 2, realiza o cadastro
+
+				$nome1 = $_POST["nome"];
+				$nome2 = $_POST["sobrenome"];
+				$nome = "{$nome1} {$nome2}";
+				
+				$sql = "INSERT INTO usuario 
+				(nome_usuario, email_usuario, senha_usuario) 
+				VALUES (?, ?, ?)";
+				$stmt = $conn->prepare($sql);
+				
+				
+
+				//Atrelando os dados às tabelas
+				$stmt->bindValue(1, $nome);
+				$stmt->bindValue(2, $_POST["email"]);
+				$senhaHash = $_POST["senha"];//md5 removido para poder fazer testes, até o banco estar concertado
+				$stmt->bindValue(3, $senhaHash);
+				
+				$stmt->execute();
+				
+				if($stmt->errorCode() != "00000"){
+						$erro = "Erro código " . $stmt->errorCode() . ": ";
+						$erro .= implode(", ", $stmt->errorInfo());
+						echo $erro;
+				} //Exibir erro de comunicação com o banco de dados
+				else{
+					echo "<script language='javascript'>";
+					echo "alert('Usuário cadastrado com sucesso.');";
+					echo "</script>";
+					header('Location: login.php'); 
+				}
+			}
 		}
 	}
 	   else{
