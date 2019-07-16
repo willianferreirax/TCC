@@ -6,7 +6,7 @@
         exit();
     }
     echo "(teste)Login confirmado,";
-    echo $_SESSION['usuario'];
+    echo $_SESSION['usuario'][0];
 
     
 ?>
@@ -30,6 +30,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <a href='logout_script.php'>Sair<a>
+
+    <a href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';">Excluir cadastro<a>
   </body>
 </html>
 
