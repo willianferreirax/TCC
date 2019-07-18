@@ -1,0 +1,53 @@
+<?php
+
+include "conexao.php";
+	//declaramos as variáveis
+	$CNPJ = $_POST["CNPJ"];
+	$login_inst = $_POST["login_inst"]; 
+	$senha_inst = $_POST["senha_inst"];
+	$nome_inst = $_POST["nome_inst"];
+	$endereco_inst = $_POST["endereco_inst"];
+	$bairro_inst = $_POST["bairro_inst"];
+	$cidade_inst = $_POST["cidade_inst"];
+	$cep_inst = $_POST["cep_inst"];
+	$email_inst = $_POST["email_inst"];
+	$telefone_inst = $_POST["telefone_inst"];
+	//comparamos se o id é diferente de zero para fazer o update
+	if ($CNPJ != 0){
+		//prepara a variável para receber o comando de sql
+		$sql = "update clientes set CNPJ = '$CNPJ',login_inst = '$login_inst',senha_inst = '$senha_inst',nome_inst = '$nome_inst', endereco_inst = '$endereco_inst', bairro_inst='$bairro_inst', cidade_inst='$cidade_inst',cep_inst='$cep_inst, email_inst='$email_inst, telefone_inst='$telefone_inst'";
+		$sql .="where cliid = '$CNPJ'";
+		//prepara o comando sql para aceitar caracteres especiais
+		mysql_query("SET NAMES 'windows-1252'");
+		mysql_query('SET character_set_connection=windows-1252');
+		mysql_query('SET character_set_client=windows-1252');
+		mysql_query('SET character_set_results=windows-1252');
+		$resultado = mysql_query($sql) or die(mysql_error());
+		//verifica se o comando foi executado com sucesso
+		if ($retorno == 0) {
+			//se deu certo atualiza a página
+			header("Location: index.php");
+		} else {
+			echo "Cliente alterado com sucesso";
+		}
+	}
+	//se o id for igual a zero faz o insert
+	else{
+		//prepara a variável para receber o comando de sql
+		$sql = "insert into clientes (CNPJ,login_inst,senha_inst,nome_inst, endereco_inst, bairro_inst,cidade_inst,cep_inst,email_inst,telefone_inst)values";
+		$sql .="('$CNPJ','$login_inst','$senha_inst','$nome_inst','$endereco_inst','$bairro_inst','$cidade_inst', '$cep_inst', '$email_inst', '$telefone_inst')";
+		//prepara o comando sql para aceitar caracteres especiais
+		mysql_query("SET NAMES 'windows-1252'");
+		mysql_query('SET character_set_connection=windows-1252');
+		mysql_query('SET character_set_client=windows-1252');
+		mysql_query('SET character_set_results=windows-1252');
+		$resultado = mysql_query($sql) or die(mysql_error());
+		//verifica se o comando foi executado com sucesso
+		if ($retorno == 0) {
+			//se deu certo atualiza a página
+			header("Location: index.php");
+		} else {
+			echo "Cliente cadastrado com sucesso";
+		}
+	}	
+?>
