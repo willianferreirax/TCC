@@ -1,0 +1,939 @@
+.cadastrar{
+	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+	width: 30vh;
+	margin: 0 2vh 2vh 2vh;
+	border-radius: 20vh;
+	border: none;
+	color: white;
+	font-size: 3vh;
+	font-weight: 400;
+	height: 6vh;
+}
+
+.cadastraralt{
+	background: transparent;
+	width: 30vh;
+	margin: 2vh;
+	border-radius: 20vh;
+	border: 0.5vh solid white;
+	color: white;
+	font-size: 3vh;
+	font-weight: 400;
+	height: 6vh;
+
+}
+
+/* CSS para os desktops, laptops e tablets*/
+@media only screen and (min-width: 700px) and (orientation: landscape) {
+
+	.exit{
+		color: #822828;
+    text-decoration: none !important;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.excluircad i {
+		font-size: 3vh !important;
+		color: red;
+	}
+
+	.b1, .b2, .b3, .b4, .b5{
+		font-size: 3vh;
+	}
+
+	.icons{
+		position: absolute;
+		left: 0.5vh;
+		top: 10vh;
+		font-size: 2vh;
+		line-height: 10px;
+		z-index: 6;
+	}
+
+	.icons i{
+		margin: 2vh;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+	}
+
+	.icons hr{
+		width: 50%;
+	}
+
+	.icons i:hover{
+		text-shadow: 0px 0px 1.5vh white;
+		color: #c4c4c4;
+	}
+
+	li{
+		font-size: 3vh;
+		width: 100%;
+		line-height: 10vh;
+		height: 2vh;
+	}
+
+	input{
+		background-color: #202124;
+		border-radius: 25px;
+		border: none;
+	}
+
+	.userbtn{
+		right: 3vh;
+		position: absolute !important;
+		z-index: 6;
+		top: 2.5vh;
+	}
+
+	.userbtn i{
+    font-size: 4.8vh;
+  }
+
+	hr{
+		background-color: #6f6f6f;
+		width: 73%;
+		border-top: 0.3vh solid #6f6f6f !important;
+	}
+
+	.labelchec{
+		cursor: pointer;
+		transition: box-shadow 1s;
+	}
+
+	.dropcheck{
+		cursor: pointer;
+	}
+
+	.dropdown{
+		display: none;
+		position: absolute !important;
+		float: right;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
+		top: 9vh;
+		right: 3vh;
+		height: 0;
+		width: 30vh;
+		padding: 1vh 3vh 1vh 3vh;
+		border-radius: 5vh 0 5vh 5vh;
+		z-index: 9;
+	}
+
+	.labelchec:hover{
+		text-shadow: 0px 0px 1.5vh white;
+	}
+
+	.menubtn{
+		position: absolute;
+		left: 3vh;
+		cursor: pointer;
+		z-index: 6;
+		top: 2.5vh;
+	}
+
+	.menubtn i{
+    font-size: 4.8vh;
+  }
+
+	.menulist{
+		display: grid;
+		grid-template-rows: 8vh 8vh 8vh 8vh 8vh;
+		grid-template-areas: "b1" "b2" "b3" "b4" "b5";
+		padding-top: 27% !important;
+		padding-left: 28%;
+	}
+
+	#chec:checked ~ nav{
+		left: 0;
+	}
+
+	#dropcheck:checked ~ .dropdown{
+		display: block;
+		height: 60vh;
+	}
+
+	.icon{
+		position: fixed;
+		text-align: left;
+		width: 5%;
+		margin: 0;
+	}
+
+	nav{
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 45vh;
+		height: 100vh;
+		left: -35vh;
+		transition: left 0.2s;
+		-webkit-transition: left 0.2s;
+		float: left;
+		text-align: left;
+		font-size: 20px;
+		position: absolute;
+		z-index: 5;
+	}
+
+	.statsdiv{
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 100%;
+		height: 100vh;
+		-webkit-transition: left 1s;
+		padding: 12vh 3vh 2vh 3vh;
+		float: right;
+		font-size: 20px;
+		position: absolute;
+		z-index: 4;
+		letter-spacing: 0.2vh;
+	}
+	.statsdiv i{
+		margin: 2vh;
+		font-size: 10vh;
+	}
+
+	.username{
+		font-size: 8vh;
+		margin: 2vh 18vh 2vh 18vh;
+	}
+
+	.useremail{
+		font-size: 3vh;
+	}
+	.menutext{
+		font-size: 0vh;
+	}
+
+	.contatext{
+		font-size: 0vh;
+	}
+
+	.btindex{
+		width: 50vh;
+		height: 15vh;
+		margin-top: 6vh;
+	}
+
+	#grid{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20vh, 60vh, 20vh));
+		grid-template-areas: "menudiv pesquisarbtn userdiv";
+	}
+
+	.background{
+		background: url(../images/indeximg.png) no-repeat;
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+	}
+
+	.logoeheader{
+		width: 15vh;
+		height: 5vh;
+		position: absolute;
+		left: 12vh;
+		z-index: 11;
+		top: 2.5vh;
+		background: url(../images/logohorizontal.png) center center/15vh no-repeat;
+		font-size: 0 !important;
+    cursor: pointer;
+	}
+
+	.cabecalhoindex{
+		width: 100%;
+		height: 3vh !important;
+		padding: 2vh 0 2vh 0;
+		font-weight: bold;
+		background-color: transparent;
+		position: absolute;
+		z-index: 6;
+	}
+
+	.pesquisarbtn{
+		font-weight: 700 !important;
+		letter-spacing: 2px;
+		font-size: 15px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.fas{
+		color: white;
+	}
+
+	.userdiv{
+		height: 100%;
+	}
+
+	.menudiv{
+		height: 100%;
+	}
+
+	.search{
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 50vw;
+		border-radius: 25vw 25vw 25vw 25vw;
+		height: 6vh;
+		transition: box-shadow 1s;
+	}
+
+	.search:hover{
+		box-shadow: 0px 0px 50px rgba(0,0,0, 0.8);
+	}
+
+	.divsearch{
+
+	}
+
+	.logoindex{
+		width: 25vh;
+		height: 43vh;
+		background: url(../images/logocomescrito.png) center center/100% no-repeat;
+		font-size: 0;
+	}
+
+	.searchbar{
+		width: 90%;
+		height: 100%;
+		font-size: 2.2vh;
+		background-color: transparent;
+		text-align: left;
+	}
+
+	.searchlabel{
+		display: none;
+	}
+
+}
+@media only screen and (min-width: 700px) and (orientation: portrait) {
+
+	.excluircad{
+		font-size: 2vh;
+	}
+
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.excluircad i {
+		font-size: 2vh !important;
+		color: red;
+	}
+
+	.b1, .b2, .b3, .b4, .b5{
+		font-size: 2.3vh;
+	}
+
+	.icons{
+		position: absolute;
+		left: 0vh;
+		top: 10vh;
+		font-size: 1.5vh;
+		line-height: 10px;
+		z-index: 6;
+	}
+
+	.icons i{
+		margin: 1.5vh;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+	}
+
+	.icons hr{
+		width: 50%;
+	}
+
+	li{
+		font-size: 3vh;
+		width: 100%;
+		line-height: 10vh;
+		height: 2vh;
+	}
+
+	input{
+		background-color: #202124;
+		border-radius: 25px;
+		border: none;
+	}
+
+	.userbtn{
+		right: 3vh;
+		position: absolute !important;
+		z-index: 6;
+		top: 2.5vh;
+	}
+
+	.userbtn i{
+		font-size: 4.8vh;
+	}
+
+	hr{
+		background-color: #6f6f6f;
+		width: 73%;
+		border-top: 0.3vh solid #6f6f6f !important;
+	}
+
+	.labelchec{
+		cursor: pointer;
+		transition: box-shadow 1s;
+	}
+
+	.dropcheck{
+		cursor: pointer;
+	}
+
+	.dropdown{
+		display: none;
+		position: absolute !important;
+		float: right;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.9);
+		font-size: 3vh;
+		top: 9vh;
+		right: 3vh;
+		height: 0;
+		width: 30vh;
+		padding: 7vh 3vh 1vh 3vh;
+		border-radius: 5vh 0 5vh 5vh;
+		z-index: 9;
+	}
+
+	.labelchec:hover{
+		text-shadow: 0px 0px 1.5vh white;
+	}
+
+	.menubtn{
+		position: absolute;
+		left: 2vh;
+		cursor: pointer;
+		z-index: 6;
+		top: 2.5vh;
+	}
+
+	.menubtn i{
+		font-size: 3.5vh;
+	}
+
+	.menulist{
+		display: grid;
+		grid-template-rows: 5.9vh 5.9vh 5.9vh 5.9vh 5.9vh;
+		grid-template-areas: "b1" "b2" "b3" "b4" "b5";
+		padding-top: 38%;
+		padding-left: 22%;
+	}
+
+	#chec:checked ~ nav{
+		left: 0;
+	}
+
+	#dropcheck:checked ~ .dropdown{
+		display: block;
+		height: 60vh;
+	}
+
+	.icon{
+		position: fixed;
+		text-align: left;
+		width: 5%;
+		margin: 0;
+	}
+
+	nav{
+		background-color: rgba(0, 0, 0, 0.8);
+		width: 30vh;
+		height: 100vh;
+		left: -23vh;
+		transition: left 0.2s;
+		-webkit-transition: left 0.2s;
+		float: left;
+		text-align: left;
+		font-size: 20px;
+		position: absolute;
+		z-index: 5;
+	}
+
+	.statsdiv{
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 100%;
+		height: 100vh;
+		-webkit-transition: left 1s;
+		padding: 12vh 3vh 2vh 3vh;
+		float: right;
+		font-size: 20px;
+		position: absolute;
+		z-index: 4;
+		letter-spacing: 0.2vh;
+	}
+
+	.statsdiv i{
+		margin: 2vh;
+		font-size: 10vh;
+	}
+
+	.username{
+		font-size: 5vh;
+		margin: 2vh 10vh 2vh 10vh;
+	}
+
+	.useremail{
+		font-size: 2vh;
+	}
+	.menutext{
+		font-size: 0vh;
+	}
+
+	.contatext{
+		font-size: 0vh;
+	}
+
+	.btindex{
+		width: 50vh;
+		height: 15vh;
+		margin-top: 6vh;
+	}
+
+	#grid{
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20vh, 60vh, 20vh));
+		grid-template-areas: "menudiv pesquisarbtn userdiv";
+	}
+
+	.background{
+		background: url(../images/indeximg.png) no-repeat;
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+	}
+
+	.logoeheader{
+		width: 7vh;
+		height: 5vh;
+		position: absolute;
+		left: 12%;
+		z-index: 7;
+		top: 2.5vh;
+		background: url(../images/logo.png) center center/5vh no-repeat;
+		font-size: 0 !important;
+    cursor: pointer;
+	}
+
+	.cabecalhoindex{
+		width: 100%;
+		height: 3vh !important;
+		padding: 2vh 0 2vh 0;
+		font-weight: bold;
+		background-color: transparent;
+		position: absolute;
+		z-index: 10;
+	}
+
+	.pesquisarbtn{
+		font-weight: 700 !important;
+		letter-spacing: 2px;
+		font-size: 15px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.fas{
+		color: white;
+	}
+
+	.userdiv{
+		height: 100%;
+	}
+
+	.menudiv{
+		height: 100%;
+	}
+
+	.search{
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 50vw;
+		border-radius: 25vw 25vw 25vw 25vw;
+		height: 6vh;
+		transition: box-shadow 1s;
+	}
+
+	.search:hover{
+		box-shadow: 0px 0px 50px rgba(0,0,0, 0.8);
+	}
+
+	.divsearch{
+
+	}
+
+	.logoindex{
+		width: 25vh;
+		height: 43vh;
+		background: url(../images/logocomescrito.png) center center/100% no-repeat;
+		font-size: 0;
+	}
+
+	.searchbar{
+		width: 90%;
+		height: 100%;
+		font-size: 2.2vh;
+		background-color: transparent;
+		text-align: left;
+	}
+
+	.searchlabel{
+		display: none;
+	}
+
+	}
+
+/* CSS para celulares grandes*/
+@media screen and (max-width: 699px) {
+
+	.excluircad{
+		font-size: 2vh;
+	}
+
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.excluircad i {
+		font-size: 2vh !important;
+		color: red;
+	}
+
+	.b1, .b2, .b3, .b4, .b5{
+		font-size: 2.3vh;
+		line-height: 250%;
+		padding-left: 8vh;
+	}
+.icons{
+		position: absolute;
+		left: 0vh;
+		top: 10vh;
+		font-size: 1.5vh;
+		line-height: 10px;
+		z-index: 7;
+		opacity: 0;
+		-webkit-transition: opacity 0.1s linear 0.2s;
+		transition: opacity 0.1s linear 0.2s;
+	}
+
+	.icons i{
+		margin: 1.5vh;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: color 0.5s;
+		transition: color 0.5s;
+	}
+
+	.icons hr{
+		width: 50%;
+	}
+
+	li{
+		font-size: 3vh;
+		width: 100%;
+		line-height: 10vh;
+		height: 2vh;
+	}
+
+	input{
+		background-color: #202124;
+		border-radius: 25px;
+		border: none;
+	}
+
+	.userbtn{
+		right: 3vh;
+		position: absolute !important;
+		z-index: 6;
+		top: 2.3vh;
+	}
+
+	.userbtn i{
+		font-size: 3.5vh;
+	}
+
+	hr{
+		background-color: #6f6f6f;
+		width: 73%;
+		border-top: 0.3vh solid #6f6f6f !important;
+	}
+
+	.labelchec{
+		cursor: pointer;
+		transition: box-shadow 1s;
+	}
+
+	.dropcheck{
+		cursor: pointer;
+	}
+
+	.dropdown{
+		display: none;
+		position: absolute !important;
+		float: right;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 1);
+		font-size: 3vh;
+		top: 7vh;
+		right: 3vh;
+		height: 0;
+		width: 30vh;
+		padding: 7vh 3vh 1vh 3vh;
+		border-radius: 5vh 0 5vh 5vh;
+		z-index: 9;
+	}
+
+	.labelchec:hover{
+		text-shadow: 0px 0px 1.5vh white;
+	}
+
+	.menubtn{
+		position: absolute;
+		left: 2vh;
+		cursor: pointer;
+		z-index: 7;
+		top: 2.3vh;
+	}
+
+	.menubtn i{
+		font-size: 3.5vh;
+	}
+
+	.menulist{
+		display: grid;
+		grid-template-rows: 5.9vh 5.9vh 5.9vh 5.9vh 5.9vh;
+		grid-template-areas: "b1" "b2" "b3" "b4" "b5";
+		padding-top: 35%;
+	}
+
+	#chec:checked ~ nav{
+		left: 0;
+	}
+
+	#chec:checked ~ nav .backdiv{
+		opacity: 0.9;
+	}
+
+	#chec:checked ~ .icons{
+		opacity: 1;
+	}
+
+	#dropcheck:checked ~ .dropdown{
+		display: block;
+		height: 60vh;
+	}
+
+	#searchcheck:checked ~ .search{
+		width: 55vw;
+	}
+
+	#searchcheck:checked ~ .searchlabel{
+		right: 26vw;
+	}
+
+	#searchcheck:checked ~ .search .searchbar{
+		width: 90%;
+		height: 100%;
+	}
+
+	.icon{
+		position: fixed;
+		text-align: left;
+		width: 5%;
+		margin: 0;
+	}
+
+	.backdiv{
+		position: absolute;
+		float: left;
+		top: 0;
+		width: 100vw !important;
+		margin: 0;
+		height: 100vh;
+		background-color: black;
+		opacity: 0;
+		transition: opacity 0.3s ease 1s;
+		-webkit-transition: opacity 0.3s ease 1s;
+		z-index: -1;
+	}
+
+	nav{
+		background-color: rgba(4,5,7, 0.98);
+		width: 30vh;
+		height: 100vh;
+		left: -70vh;
+		transition: left 1s ease;
+		-webkit-transition: left 1s ease;
+		float: left;
+		text-align: left;
+		font-size: 20px;
+		position: absolute;
+		z-index: 6;
+	}
+
+	.statsdiv{
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 100%;
+		height: 100vh;
+		-webkit-transition: left 1s;
+		padding: 12vh 3vh 2vh 3vh;
+		float: right;
+		font-size: 20px;
+		position: absolute;
+		z-index: 4;
+		letter-spacing: 0.2vh;
+	}
+
+	.statsdiv i{
+		margin: 2vh;
+		font-size: 10vh;
+	}
+
+	.username{
+		font-size: 5vh;
+		margin: 2vh 10vh 2vh 10vh;
+	}
+
+	.useremail{
+		font-size: 2vh;
+	}
+	.menutext{
+		font-size: 0vh;
+	}
+
+	.contatext{
+		font-size: 0vh;
+	}
+
+	.btindex{
+		width: 50vh;
+		height: 15vh;
+		margin-top: 6vh;
+	}
+
+	#grid{
+		display: grid;
+		grid-template-columns: 15vw 70vw 15vw;
+		grid-template-areas: "menudiv pesquisarbtn userdiv";
+	}
+
+.search{
+		background-color: rgba(0, 0, 0, 0.6);
+		width: 0vw;
+		border-radius: 25vw 25vw 25vw 25vw;
+		height: 4vh;
+		transition: width 1s;
+	}
+.search i{
+		display: none;
+	}
+.searchbar{
+		width: 0;
+		height: 0;
+		font-size: 2vh;
+		background-color: transparent;
+		text-align: left;
+	}
+
+	.background{
+		background: url(../images/indeximg.png) no-repeat;
+		background-size: cover;
+		background-position: center;
+		height: 100vh;
+	}
+
+	.logoeheader{
+		width: 7vh;
+		height: 5vh;
+		position: absolute;
+		left: 12%;
+		z-index: 7;
+		top: 2.5vh;
+		background: url(../images/logo.png) center center/5vh no-repeat;
+		font-size: 0 !important;
+	}
+
+	.cabecalhoindex{
+		width: 100%;
+		height: 3vh !important;
+		padding: 2vh 0 2vh 0;
+		font-weight: bold;
+		background-color: transparent;
+		position: absolute;
+		z-index: 10;
+	}
+
+	.pesquisarbtn{
+		font-weight: 700 !important;
+		letter-spacing: 2px;
+		font-size: 15px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.fas{
+		color: white;
+	}
+
+	.userdiv{
+		height: 100%;
+	}
+
+	.menudiv{
+		height: 100%;
+	}
+
+	.searchlabel{
+		position: absolute;
+		height: 100% !important;
+		top: 2.8vh;
+		right: 50%;
+		transition: right 1s;
+	}
+
+.searchbar{
+		width: 0;
+		height: 0;
+		font-size: 2vh;
+		background-color: transparent;
+		text-align: left;
+	}
+
+	.divsearch{
+
+	}
+
+	.logoindex{
+		width: 25vh;
+		height: 43vh;
+		background: url(../images/logocomescrito.png) center center/100% no-repeat;
+		font-size: 0;
+	}
+
+.searchbar{
+		width: 0;
+		height: 0;
+		font-size: 2vh;
+		background-color: transparent;
+		text-align: left;
+	}
+	}
