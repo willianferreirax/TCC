@@ -1,48 +1,85 @@
 <?php
-		include 'connection.php';
-		$conn = conexao();
-        session_start();
-        $login = $_POST['login'];
-        $senha = $_POST['senha'];
-        
-		$select = "SELECT nome_usuario,email_usuario,senha_usuario from usuario where email_usuario = '$login' and senha_usuario = '$senha'";
-		
-		$res = $conn->prepare($select);//preparando query
-        $res->execute();//executando
-        
-        $result = $res->fetchAll();//pegando todas as linhas da matriz
+include 'connection.php';
+$conn = conexao();
+session_start();
+$login = $_POST['login'];
+$senha = md5($_POST['senha']);
 
-        if (count($result) == 1 ){//contando quantas linhas tem, só deve haver 1 usuario com cada combinação de email e senha
-            $session=array();
-            foreach($result as $row){
-              array_push($session,$row['nome_usuario']);//o array do SESSION terá na posição 0, o nome do usuario
-              array_push($session,$row['email_usuario']);//o array do SESSION terá na posição 1, o email do usuario
-              array_push($session,$row['senha_usuario']);//o array do SESSION terá na posição 1, a senha do usuario
-            }
-            header('Location: painel_usuario.php');
-            $_SESSION['usuario']=$session;//inserindo o array na variavel global _SESSION
-        }
-		else{
+$select = "SELECT nome_usuario from usuario where email_usuario = '$login' and senha_usuario = '$senha'";
+$cod = "SELECT cod_usuario from usuario where email_usuario = '$login' and senha_usuario = '$senha'";
+$busca = "SELECT email_usuario from usuario where email_usuario = '$login' and senha_usuario = '$senha'";
 
-            $select = "SELECT nome_inst,email_inst,senha_inst from faculdade where login_inst = '$login' and senha_inst = '$senha'";
-            $res = $conn->prepare($select);//preparando query
-            $res->execute();//executando
-            $result = $res->fetchAll();
-            
-            if (count($result) == 1 ){
-                $session=array();
-                foreach($result as $row){
-                    array_push($session,$row['nome_inst']);//o array do SESSION terá na posição 0, o nome da instituição
-                    array_push($session,$row['email_inst']);//o array do SESSION terá na posição 1, o email da instituição
-                    array_push($session,$row['senha_inst']);//o array do SESSION terá na posição 1, a senha da instituição
-                }
-                header('Location: painel_inst.php');
-                $_SESSION['instituicao']=$session;
-            }
-            else{
-                header('location:login.php');
-            }
-                
-		}
-		
-	?>
+//Usuário
+$res = $conn->prepare($select);//preparando query
+$res->execute();//executando
+
+//cod_usuario
+$codq = $conn->prepare($cod);//preparando query
+$codq->execute();
+
+//Email
+$emailq = $conn->prepare($busca);
+$emailq->execute();
+
+$result = $res->fetchAll();//pegando todas as linhas da matriz
+$codres = $codq->fetchAll(); //recolhendo o id do usuário que está logando
+$emailres = $emailq->fetchAll(); //recolhendo o email do usuário que está logando
+
+foreach($result as $row){
+	$_SESSION['usuario'] = $row['nome_usuario'];
+}
+
+foreach($codres as $cont){
+	$_SESSION['codusuario'] = $cont['cod_usuario'];
+}
+
+foreach($emailres as $query){
+	$_SESSION['email'] = $query['email_usuario'];
+}
+
+	if (count($result) == 1 ){//contando quantas linhas tem, só deve haver 1 usuario com cada combinação de email e senha
+		$_SESSION['tipo'] = 'usuario';
+		header('Location: painel_usuario.php');
+	}
+	else{
+				$select = "SELECT nome_inst from faculdade where email_inst = '$login' and senha_inst = '$senha'";
+				$cod = "SELECT CNPJ from faculdade where email_inst = '$login' and senha_inst = '$senha'";
+				$busca = "SELECT email_inst from faculdade where email_inst = '$login' and senha_inst = '$senha'";
+
+				$res = $conn->prepare($select);//preparando query
+				$res->execute();//executando
+				$result = $res->fetchAll();
+
+				//cod_instituicao
+				$codq = $conn->prepare($cod);//preparando query
+				$codq->execute();
+
+				//Email
+				$emailq = $conn->prepare($busca);
+				$emailq->execute();
+
+				$codres = $codq->fetchAll(); //recolhendo o id do usuário que está logando
+				$emailres = $emailq->fetchAll(); //recolhendo o email do usuário que está logando
+
+				foreach($codres as $cont){
+					$_SESSION['cnpj'] = $cont['CNPJ'];
+				}
+
+				foreach($emailres as $query){
+					$_SESSION['emailinst'] = $query['email_inst'];
+				}
+
+				foreach($result as $row){
+					$_SESSION['instituicao'] = $row['nome_inst'];
+				}
+				if (count($result) == 1 ){
+					$_SESSION['tipo'] = 'inst';
+					header('Location: painel_inst.php');
+				}
+				else{
+					header('location:login.php');
+				}
+
+	}
+
+?>
