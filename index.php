@@ -55,17 +55,17 @@
 			session_start();
 			if(isset($_SESSION['usuario']))
 			{
-				echo $_SESSION['usuario'];
+				echo $_SESSION['usuario'][0];
 			}
 			if(isset($_SESSION['instituicao']))
 			{
-				echo $_SESSION['instituicao'];
+				echo $_SESSION['instituicao'][0];
 			}
 			?>
 			<br>
 			<br>
 			<?php
-				if($_SESSION['tipo'] == 'inst'){
+				if(isset($_SESSION['instituicao'][0])){
 					echo "<a href='painel_inst.php'>Minha Conta</a>";
 				}
 				else{
@@ -121,15 +121,11 @@
 				<?php
 				if(isset($_SESSION['usuario']))
 				{
-					if($_SESSION['tipo'] == 'usuario'){
-						echo "<center>".$_SESSION['usuario']." conheça mais sobre a sua futura carreira.</center>";
-					}
+					echo "<center>".$_SESSION['usuario'][0]." conheça mais sobre a sua futura carreira.</center>";
 				}
 				else if(isset($_SESSION['instituicao']))
 				{
-					if($_SESSION['tipo'] == 'inst'){
-						echo "<center>".$_SESSION['instituicao'].", divulgue seus eventos e alcance o público.</center>";
-					}
+					echo "<center>".$_SESSION['instituicao'][0].", divulgue seus eventos e alcance o público.</center>";
 				}
 				else{
 					echo "<a href='cad_choose.php'><button class='cadastrar'>Cadastre-se</button></a>";

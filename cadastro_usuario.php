@@ -97,7 +97,13 @@
                   $coderro = 6;
                 }
                 else{
-                  $valido = true;
+					if(strlen(utf8_decode($_POST["login_usuario"])) < 3 || strlen(utf8_decode($_POST["login_usuario"])) > 100){
+						$erro = "Digite um login válido (minimo 3 caracteres)";
+						$coderro = 7;
+					}
+					else{
+						$valido = true;
+					}
                 }
               }
             }
@@ -106,31 +112,34 @@
       }
 
       if(isset($valido) && $valido == true){
+		  
         $email = $_POST['email'];
         //Verificar se o usuário já está cadastro no banco de dados
         $result = $conn->prepare("select * from usuario where email_usuario = '{$email}'"); //Comando de seleção que verifica se há um email igual no banco de dados
         $result->execute(); //Executa o comando
+		
         if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
           header('Location: login.php'); //Direciona o usuário para a página de login
         }
         else{ //Se não há um email cadastrado, realiza o cadastro
           $nome1 = $_POST["nome"];
           $nome2 = $_POST["sobrenome"];
-          $nome = "{$nome1} {$nome2}";
+         
 
           $sql = "INSERT INTO usuario
-          (nome_usuario, email_usuario, senha_usuario)
-          VALUES (?, ?, ?)";
+          (nome_usuario, sobrenome_usuario, email_usuario, senha_usuario,login_usuario)
+          VALUES (?, ?, ?, ?, ?)";
           $stmt = $conn->prepare($sql);
 
 
 
           //Atrelando os dados às tabelas
-          $stmt->bindValue(1, $nome);
-          $stmt->bindValue(2, $_POST["email"]);
+          $stmt->bindValue(1, $nome1);
+		  $stmt->bindValue(2, $nome2);
+          $stmt->bindValue(3, $_POST["email"]);
           $senhaHash = md5($_POST["senha"]);
-          $stmt->bindValue(3, $senhaHash);
-
+          $stmt->bindValue(4, $senhaHash);
+		  $stmt->bindValue(5,$_POST["login_usuario"]);
           $stmt->execute();
 
           if($stmt->errorCode() != "00000"){
@@ -181,6 +190,12 @@
       <label><b>Endereço de e-mail:</b></label>
       <br>
       <input type="email" name="email" placeholder='exemplo@exemplo.com'>
+      <br>
+      <br>
+	  
+	  <label><b>Login:</b></label>
+      <br>
+      <input type="text" name="login_usuario" placeholder='Login'>
       <br>
       <br>
 

@@ -53,8 +53,8 @@ if(!$_SESSION['usuario']){
     <div class='statsdiv'>
       <i class="fas fa-user-circle fa-2x"></i><br>
       <?php
-      echo"<div class='username'>Olá, ".$_SESSION['usuario']."</div>";
-      echo"<div class='useremail'>".$_SESSION['email']."</div>";
+      echo"<div class='username'>Olá, ".$_SESSION['usuario'][0]."</div>";
+      echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
       ?>
       <br>
       <br>
@@ -75,7 +75,7 @@ if(!$_SESSION['usuario']){
       </nav>
       <div class='dropdown'>
         <?php
-        echo $_SESSION['usuario'];
+        echo $_SESSION['usuario'][0];
         ?>
         <br>
         <br>

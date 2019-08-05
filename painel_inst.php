@@ -51,8 +51,8 @@
     <div class='statsdiv'>
       <i class="fas fa-user-circle fa-2x"></i><br>
       <?php
-        echo"<div class='username'>Olá, ".$_SESSION['instituicao']."</div>";
-        echo"<div class='useremail'>".$_SESSION['emailinst']."</div>";
+        echo"<div class='username'>Olá, ".$_SESSION['instituicao'][0]."</div>";
+        echo"<div class='useremail'>".$_SESSION['instituicao'][1]."</div>";
       ?>
       <br>
       <br>
@@ -73,7 +73,7 @@
       </nav>
       <div class='dropdown'>
         <?php
-        //echo $_SESSION['usuario'];
+        echo $_SESSION['instituicao'][0];
         ?>
         <br>
         <br>

@@ -63,7 +63,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
     include 'connection.php';
     $conn = conexao();
     $email=$_POST['email'];
-    $senha=$_POST['senha'];
+    $senha=md5($_POST['senha']);
 
     if($_SESSION['usuario'][1]==$email && $_SESSION['usuario'][2]==$senha){
         $delete="delete from usuario where email_usuario = '$email'";
