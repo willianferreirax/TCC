@@ -42,9 +42,9 @@
     <div class='containerform'>
       <form action="login_script.php" method="post">
         <br>
-        <label>Endereço de e-mail</label>
+        <label>Login</label>
         <br>
-        <input type="email" name="login" placeholder="exemplo@exemplo.com">
+        <input type="text" name="login" placeholder="Login">
         <br>
         <br>
         <label>Senha</label>

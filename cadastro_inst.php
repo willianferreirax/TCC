@@ -181,6 +181,7 @@
         echo "<script language='javascript'>";
         echo "alert('Instituição cadastrada com sucesso.');";
         echo "</script>";
+		header("Location:login.php");
       }
 
     }

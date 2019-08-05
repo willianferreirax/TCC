@@ -3,9 +3,10 @@
 		$conn = conexao();
         session_start();
         $login = $_POST['login'];
-        $senha = $_POST['senha'];
+        $senha = md5($_POST['senha']);
+		
         
-		$select = "SELECT nome_usuario,email_usuario,senha_usuario from usuario where email_usuario = '$login' and senha_usuario = '$senha'";
+		$select = "SELECT nome_usuario,email_usuario,senha_usuario from usuario where login_usuario = '$login' and senha_usuario = '$senha'";
 		
 		$res = $conn->prepare($select);//preparando query
         $res->execute();//executando
