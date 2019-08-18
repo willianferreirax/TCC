@@ -19,37 +19,37 @@ session_start();
 
         <label><b>Senha:</b></label>
         <br>
-        <input type="password" name="senha_inst" placeholder='Nova senha'>
+        <input type="submit" name="senha_inst" value="Alterar">
         <br>
         <br>
 		
 		<label><b>Nome:</b></label>
         <br>
-        <input type="nome" name="nome_inst" placeholder='Novo nome'>
+        <input type="submit" name="nome_inst" value="Alterar">
         <br>
         <br>
 		
 		<label><b>Endereço:</b></label>
         <br>
-        <input type="endereco" name="endereco_inst" placeholder='Novo endereco'>
+        <input type="submit" name="endereco_inst" value="Alterar">
         <br>
         <br>
 		
 		<label><b>Bairro:</b></label>
         <br>
-        <input type="bairro" name="bairro_inst" placeholder='Novo bairro'>
+       <input type="submit" name="bairro_inst" value="Alterar">
         <br>
         <br>
 		
 		<label><b>CEP:</b></label>
         <br>
-        <input type="CEP" name="cep_inst" placeholder='Novo cep'>
+        <input type="submit" name="cep_inst" value="Alterar">
         <br>
         <br>
 		
 		<label><b>Email:</b></label>
         <br>
-        <input type="email" name="email_inst" placeholder='Novo email'>
+        <input type="submit" name="email_inst" value="Alterar">
         <br>
         <br>
     <input type="hidden" name="id" value="<?php echo $_REQUEST["id"]; ?>">
