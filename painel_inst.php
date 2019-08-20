@@ -77,9 +77,9 @@
         ?>
         <br>
         <br>
-        <a href='painel_usuario.php'>Minha Conta</a>
+        <a href='painel_inst.php'>Minha Conta</a>
         <br>
-        Configurações
+		<a href='config.php'>Configuração</a>
         <br>
         Ajuda
         <br>
