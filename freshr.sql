@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Ago-2019 às 19:20
+-- Generation Time: 19-Ago-2019 às 19:36
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -68,6 +68,13 @@ CREATE TABLE `faculdade` (
   `email_inst` varchar(80) DEFAULT NULL,
   `telefone_inst` varchar(15) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `faculdade`
+--
+
+INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `endereco_inst`, `bairro_inst`, `cidade_inst`, `estado_inst`, `cep_inst`, `email_inst`, `telefone_inst`) VALUES
+('11111111111', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', 'seu pai', 'rua judas', 'bairro se', 'sao paulo', 'sao paulo', '12345678', 'saojudas@gmail.com', '111111111111111');
 
 -- --------------------------------------------------------
 
