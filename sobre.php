@@ -46,20 +46,24 @@
       <?php
       session_start();
       if(isset($_SESSION['usuario']))
-      {
-        echo $_SESSION['usuario'];
-      }
-      if(isset($_SESSION['instituicao']))
-      {
-        echo $_SESSION['instituicao'];
-      }
-      else{
-        echo"faz login ai";
-      }
+			{
+				echo $_SESSION['usuario'][0];
+			}
+			if(isset($_SESSION['instituicao']))
+			{
+				echo $_SESSION['instituicao'][0];
+			}
       ?>
       <br>
       <br>
-      <a href='painel_usuario.php'>Minha Conta</a>
+      <?php
+				if(isset($_SESSION['instituicao'][0])){
+					echo "<a href='painel_inst.php'>Minha Conta</a>";
+				}
+				else{
+					echo "<a href='painel_usuario.php'>Minha Conta</a>";
+				}
+			?>
       <br>
       Configurações
       <br>
@@ -81,11 +85,19 @@
       </div>
       <div class='userdiv'>
         <?php
+				if(isset($_SESSION['instituicao'])){
+					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
+					</div></label>";
+					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
+					</div></label>";
+				}
+				 ?>
+        <?php
         if(isset($_SESSION['usuario'])){
           echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
           </div></label>";
         }
-        if(isset($_SESSION['instituicao'])){
+        else if(isset($_SESSION['instituicao'])){
           echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
           </div></label>";
         }

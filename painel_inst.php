@@ -56,7 +56,7 @@
       ?>
       <br>
       <br>
-      <a href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+      <a  class='deletlink' href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
       </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -79,7 +79,7 @@
         <br>
         <a href='painel_inst.php'>Minha Conta</a>
         <br>
-		<a href='config.php'>Configuração</a>
+        Configurações
         <br>
         Ajuda
         <br>
@@ -101,6 +101,14 @@
   				</div>
   			</div>
         <div class='userdiv'>
+          <?php
+  				if(isset($_SESSION['instituicao'])){
+  					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
+  					</div></label>";
+  					echo "<div class='criaricon'><a href='cad_event.php'><i class='fas fa-plus'></i></a>
+  					</div></label>";
+  				}
+  				 ?>
           <label for='dropcheck' class='dropcheck'><div class='userbtn'><i class="fas fa-user-circle fa-2x"></i>
           </div></label>
         </div>
