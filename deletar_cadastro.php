@@ -67,8 +67,11 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 
     if($_SESSION['usuario'][1]==$email && $_SESSION['usuario'][2]==$senha){
         $delete="delete from usuario where email_usuario = '$email'";
+        $delint="delete from interesses_usuario where cod_usuario = '{$_SESSION['usuario'][3]}'";
         $res = $conn->prepare($delete);
         $res->execute();
+        $int = $conn->prepare($delint);
+        $int->execute();
          echo "<script language='javascript'>";
          echo "alert('Sua conta foi PERMANENTEMENTE excluida.');";
          echo "</script>";
