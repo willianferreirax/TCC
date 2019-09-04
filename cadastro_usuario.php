@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="images/icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -112,19 +112,19 @@
       }
 
       if(isset($valido) && $valido == true){
-		  
+
         $email = $_POST['email'];
         //Verificar se o usuário já está cadastro no banco de dados
         $result = $conn->prepare("select * from usuario where email_usuario = '{$email}'"); //Comando de seleção que verifica se há um email igual no banco de dados
         $result->execute(); //Executa o comando
-		
+
         if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
           header('Location: login.php'); //Direciona o usuário para a página de login
         }
         else{ //Se não há um email cadastrado, realiza o cadastro
           $nome1 = $_POST["nome"];
           $nome2 = $_POST["sobrenome"];
-         
+
 
           $sql = "INSERT INTO usuario
           (nome_usuario, sobrenome_usuario, email_usuario, senha_usuario,login_usuario)
@@ -192,7 +192,7 @@
       <input type="email" name="email" placeholder='exemplo@exemplo.com'>
       <br>
       <br>
-	  
+
 	  <label><b>Login:</b></label>
       <br>
       <input type="text" name="login_usuario" placeholder='Login'>

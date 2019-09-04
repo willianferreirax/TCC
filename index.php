@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/337796870f.js"></script>
 	<link rel="icon" href="images/icon.png">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#121212">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
