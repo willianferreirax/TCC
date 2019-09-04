@@ -1,11 +1,11 @@
 <?php
 
-  include 'connection.php';
-  session_start();
-  if(!$_SESSION['instituicao']){
-    header('location:login.php');
-    exit();
-  }
+include 'connection.php';
+session_start();
+if(!$_SESSION['instituicao']){
+  header('location:login.php');
+  exit();
+}
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/337796870f.js"></script>
   <link rel="shortcut icon" href="images/icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -47,16 +47,61 @@
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
       <i class="fas fa-question fa-2x"></i><br>
       <hr>
+      <i class='fas fa-edit fa-2x'></i><br><br>
+      <i class="fas fa-history fa-2x"></i><br>
+      <hr>
     </div>
     <div class='statsdiv'>
       <i class="fas fa-user-circle fa-2x"></i><br>
       <?php
-        echo"<div class='username'>Olá, ".$_SESSION['instituicao'][0]."</div>";
-        echo"<div class='useremail'>".$_SESSION['instituicao'][1]."</div>";
+      echo"<div class='username'>Olá, ".$_SESSION['instituicao'][0]."</div>";
+      echo"<div class='useremail'>".$_SESSION['instituicao'][1]."</div>";
       ?>
       <br>
-      <br>
+      <div class="infodiv">
+        <?php
+
+        echo "<label class='labelinfo'>CNPJ</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Login</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Senha</label><br>";
+        echo "<div><input class='inputinfo' type='password' value='{$_SESSION['instituicao'][2]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Nome da instituição</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][0]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Endereço</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Bairro</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Cidade</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>CEP</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>E-mail</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][1]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        echo "<label class='labelinfo'>Telefone</label><br>";
+        echo "<div><input class='inputinfo' type='text' value='{$_SESSION['instituicao'][3]}' disabled><i class='fas fa-edit' id='editicon'></i></div><br>";
+
+        ?>
+      </div>
+      <div class="recentprev">
+        <div class="prevcard">
+          <div class="img">
+          </div>
+        </div>
+      </div>
+      <br><br>
       <a  class='deletlink' href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+        <br>
       </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -93,27 +138,27 @@
           </div>
         </div>
         <div class='pesquisarbtn'>
-  				<input type='checkbox' id='searchcheck'>
-  				<label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
-  				<div class='search'>
-  					<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
-  					<i class="fas fa-search fa-1x"></i>
-  				</div>
-  			</div>
+          <input type='checkbox' id='searchcheck'>
+          <label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
+          <div class='search'>
+            <input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
+            <i class="fas fa-search fa-1x"></i>
+          </div>
+        </div>
         <div class='userdiv'>
           <?php
-  				if(isset($_SESSION['instituicao'])){
-  					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
-  					</div></label>";
-  					echo "<div class='criaricon'><a href='cad_event.php'><i class='fas fa-plus'></i></a>
-  					</div></label>";
-  				}
-  				 ?>
+          if(isset($_SESSION['instituicao'])){
+            echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
+            </div></label>";
+            echo "<div class='criaricon'><a href='cad_event.php'><i class='fas fa-plus'></i></a>
+            </div></label>";
+          }
+          ?>
           <label for='dropcheck' class='dropcheck'><div class='userbtn'><i class="fas fa-user-circle fa-2x"></i>
           </div></label>
         </div>
       </header>
       <br>
-      </center>
-    </body>
-    </html>
+    </center>
+  </body>
+  </html>
