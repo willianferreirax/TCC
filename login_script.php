@@ -4,13 +4,13 @@
         session_start();
         $login = $_POST['login'];
         $senha = md5($_POST['senha']);
-		
-        
+
+
 		$select = "SELECT cod_usuario,nome_usuario,email_usuario,senha_usuario from usuario where login_usuario = '$login' and senha_usuario = '$senha'";
-		
+
 		$res = $conn->prepare($select);//preparando query
         $res->execute();//executando
-        
+
         $result = $res->fetchAll();//pegando todas as linhas da matriz
 
         if (count($result) == 1 ){//contando quantas linhas tem, só deve haver 1 usuario com cada combinação de email e senha
@@ -21,7 +21,7 @@
               array_push($session,$row['senha_usuario']);//o array do SESSION terá na posição 2, a senha do usuario
 			  array_push($session,$row['cod_usuario']);//o array do SESSION terá na posição 3, o codigo do usuario
             }
-            header('Location: painel_usuario.php');
+            header('Location: select_interesse.php');
             $_SESSION['usuario']=$session;//inserindo o array na variavel global _SESSION
         }
 		else{
@@ -30,7 +30,7 @@
             $res = $conn->prepare($select);//preparando query
             $res->execute();//executando
             $result = $res->fetchAll();
-            
+
             if (count($result) == 1 ){
                 $session=array();
                 foreach($result as $row){
@@ -45,7 +45,7 @@
             else{
                 header('location:login.php');
             }
-                
+
 		}
-		
+
 	?>
