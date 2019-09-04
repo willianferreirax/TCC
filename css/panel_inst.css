@@ -26,6 +26,23 @@
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.criaricon{
+		font-size: 0vw;
+	}
+
+	.cadastrarevent{
+		background: transparent;
+		width: 12vw !important;
+		border-radius: 20vh;
+		border: 0.5vh solid white;
+		color: white;
+		font-size: 1vw !important;
+		font-weight: 400;
+		height: 6vh !important;
+		position: fixed;
+		right: 10vw !important;
+	}
+
 	.exit{
 		color: #822828;
     text-decoration: none !important;
@@ -309,6 +326,19 @@
 	}
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+
+	.criaricon{
+		font-size: 6vw;
+		right: 15vw !important;
+		position: fixed;
+	}
+
+	.cadastrarevent{
+		font-size: 0;
+		width: 0;
+		height: 0;
+		display: none;
+	}
 
 	.excluircad{
 		font-size: 2vh;
@@ -596,6 +626,22 @@
 	}
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
+
+	.criaricon{
+		top: 1.7vh;
+		font-size: 6.1vw;
+		right: 15vw !important;
+		position: fixed;
+	}
+
+	.cadastrarevent{
+		position: fixed;
+		top: 0vh;
+		font-size: 0;
+		width: 0;
+		height: 0;
+		display: none;
+	}
 
 	.excluircad{
 		font-size: 2vh;
