@@ -379,68 +379,68 @@
       <div class='interesses'>
 
         <input type="checkbox" id='bti1' class='chkint' value=1 onclick='intlimit(0)' name='intchk[]'>
-        <label for='bti1' class='interesse' id='int1'>
+        <label for='bti1' class='interesse1' id='int1'>
 
           Informação e Tecnologia
         </label>
         <input type="checkbox" id='bti2' class='chkint' value=2 onclick='intlimit(1)' name='intchk[]'>
-        <label for='bti2' class='interesse' id='int2'>
+        <label for='bti2' class='interesse2' id='int2'>
           Logística
         </label>
         <input type="checkbox" id='bti3' class='chkint' value=3 onclick='intlimit(2)' name='intchk[]'>
-        <label for='bti3' class='interesse' id='int3'>
+        <label for='bti3' class='interesse3' id='int3'>
           Saúde
         </label>
         <input type="checkbox" id='bti4' class='chkint' value=4 onclick='intlimit(3)' name='intchk[]'>
-        <label for='bti4' class='interesse' id='int4'>
+        <label for='bti4' class='interesse4' id='int4'>
           Engenharia
         </label>
         <input type="checkbox" id='bti5' class='chkint' value=5 onclick='intlimit(4)' name='intchk[]'>
-        <label for='bti5' class='interesse' id='int5'>
+        <label for='bti5' class='interesse5' id='int5'>
           Administração e Negócios
         </label>
         <input type="checkbox" id='bti6' class='chkint' value=6 onclick='intlimit(5)' name='intchk[]'>
-        <label for='bti6' class='interesse' id='int6'>
+        <label for='bti6' class='interesse6' id='int6'>
           Comunicação
         </label>
         <input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
-        <label for='bti7' class='interesse' id='int7'>
+        <label for='bti7' class='interesse7' id='int7'>
           Arte e Design
         </label>
         <input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
-        <label for='bti8' class='interesse' id='int8'>
+        <label for='bti8' class='interesse8' id='int8'>
           Direito
         </label>
         <input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
-        <label for='bti9' class='interesse' id='int9'>
+        <label for='bti9' class='interesse9' id='int9'>
           Educação
         </label>
         <input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
-        <label for='bti10' class='interesse' id='int10'>
+        <label for='bti10' class='interesse10' id='int10'>
           Turismo
         </label>
         <input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
-        <label for='bti11' class='interesse' id='int11'>
+        <label for='bti11' class='interesse11' id='int11'>
           Gastronomia
         </label>
         <input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
-        <label for='bti12' class='interesse' id='int12'>
+        <label for='bti12' class='interesse12' id='int12'>
           Ciências Exatas e Biológicas
         </label>
         <input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
-        <label for='bti13' class='interesse' id='int13'>
+        <label for='bti13' class='interesse13' id='int13'>
           Ciências Sociais e Humanas
         </label>
         <input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
-        <label for='bti14' class='interesse' id='int14'>
+        <label for='bti14' class='interesse14' id='int14'>
           Música
         </label>
         <input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
-        <label for='bti15' class='interesse' id='int15'>
+        <label for='bti15' class='interesse15' id='int15'>
           <input type='text' class='outro' name='int15' placeholder="Outro">
         </label>
       </div>
-      <button type='submit' class='cadastrar' name='cadastrar' value='cadastrar'>Cadastrar</button>
+      <button type='submit' class='cadastrarint' name='cadastrar' value='cadastrar'>Confirmar</button>
       <br><br>
     </form>
   </div>
