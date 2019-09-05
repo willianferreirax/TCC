@@ -25,7 +25,6 @@
 	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 	width: 30vh;
 	margin: 0.5vh;
-  margin-top: 7vw;
 	border-radius: 20vh;
 	border: none;
 	color: white;
@@ -37,6 +36,19 @@
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
   /*Estilos das páginas de login e cadastro do usuário/instituição*/
+
+  .cadastrarint{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 30vh;
+  	margin: 0.5vh;
+    margin-top: 6vw;
+  	border-radius: 20vh;
+  	border: none;
+  	color: white;
+  	font-size: 3vh;
+  	font-weight: 400;
+  	height: 6vh;
+  }
 
   .outro{
 		font-size: 1.4vw !important;
@@ -381,6 +393,19 @@
 
   /*Estilos das páginas de login e cadastro do usuário/instituição*/
 
+  .cadastrarint{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 30vh;
+  	margin: 0.5vh;
+    margin-top: 6vw;
+  	border-radius: 20vh;
+  	border: none;
+  	color: white;
+  	font-size: 3vh;
+  	font-weight: 400;
+  	height: 6vh;
+  }
+
   .outro{
 		font-size: 4vw !important;
 		background-color: transparent !important;
@@ -722,6 +747,19 @@
 
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
+
+  .cadastrarint{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 30vh;
+  	margin: 0.5vh;
+    margin-top: 12vw;
+  	border-radius: 20vh;
+  	border: none;
+  	color: white;
+  	font-size: 3vh;
+  	font-weight: 400;
+  	height: 6vh;
+  }
 
   .outro{
 		font-size: 5vw !important;
