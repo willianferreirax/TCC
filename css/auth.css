@@ -25,6 +25,7 @@
 	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 	width: 30vh;
 	margin: 0.5vh;
+  margin-top: 7vw;
 	border-radius: 20vh;
 	border: none;
 	color: white;
@@ -36,6 +37,281 @@
 @media screen and (min-width: 700px) {
 
   /*Estilos das páginas de login e cadastro do usuário/instituição*/
+
+  .outro{
+		font-size: 1.6vw;
+		background-color: transparent !important;
+		text-align: center;
+		border-bottom: 0.17vw solid white;
+		border-radius: 0;
+		width: 0%;
+		color: white;
+    transition: width 0.1s;
+    -webkit-transition: width 0.1s;
+	}
+
+	#bti15:checked ~ .interesse15 .outro{
+		width: 91%;
+    transition: width 0.5s;
+    -webkit-transition: width 0.5s;
+	}
+
+	#bti15:checked ~ .interesse15{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti14:checked ~ .interesse14{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti13:checked ~ .interesse13{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti12:checked ~ .interesse12{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti11:checked ~ .interesse11{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti10:checked ~ .interesse10{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti9:checked ~ .interesse9{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti8:checked ~ .interesse8{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti7:checked ~ .interesse7{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti6:checked ~ .interesse6{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti5:checked ~ .interesse5{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti4:checked ~ .interesse4{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti3:checked ~ .interesse3{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti2:checked ~ .interesse2{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti1:checked ~ .interesse1{
+		text-shadow: 0px 0px 1.5vh white;
+    color: #c4c4c4;
+		border-style: groove;
+	}
+
+	#bti1, #bti2, #bti3, #bti4, #bti5, #bti6, #bti7, #bti8, #bti9, #bti10, #bti11, #bti12, #bti13, #bti14, #bti15{
+		display: none;
+	}
+
+  #exampleFormControlFile1{
+	  width: 30vw;
+	  font-size: 1vw;
+  }
+
+  .imagevis{
+    background: url(../images/imgupl.jpg) no-repeat;
+    background-size: cover;
+    height: 50vw;
+    width: 30vw;
+    border-radius: 2vh;
+    background-position: center;
+    transition: box-shadow 0.5s;
+    -webkit-transition: box-shadow 0.5s;
+  }
+
+	.imagevis:hover {
+		cursor: pointer;
+		box-shadow: 0 0 1.5vh white;
+
+	}
+
+  #imageup{
+    position: absolute;
+    margin-left: 50.8vw;
+		margin-right: 9.2vw;
+  }
+
+  .labelintere{
+  font-size: 1.4vw;
+	margin-top: 2vw;
+	margin-right: 1vw;
+	white-space: nowrap;
+  }
+
+  .prox{
+    background: transparent;
+    width: 12vw;
+    margin: 5vh 2vh 6vh 2vh;
+    border-radius: 20vh;
+    border: 0.5vh solid white;
+    color: white;
+    font-size: 1.4vw;
+    font-weight: 400;
+    left: 79vw !important;
+    position: absolute;
+    height: 6vh;
+
+  }
+
+  .interesse15{
+    background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+
+  }
+
+  .interesse14{
+    background: url(../images/mus.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse13{
+    background: url(../images/fil.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 1.7vw !important;
+  }
+
+  .interesse12{
+    background: url(../images/cie.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 1.7vw !important;
+  }
+
+  .interesse11{
+    background: url(../images/gast.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse10{
+    background: url(../images/tur.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse9{
+    background: url(../images/edu.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse8{
+    background: url(../images/law.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse7{
+    background: url(../images/art.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse6{
+    background: url(../images/com.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse5{
+    background: url(../images/adm.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 1.7vw !important;
+  }
+
+  .interesse4{
+    background: url(../images/engineering.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse3{
+    background: url(../images/health.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse2{
+    background: url(../images/logistica.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .interesse1{
+    background: url(../images/info.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 1.7vw !important;
+  }
+
+  .interesse1, .interesse2, .interesse3, .interesse4, .interesse5, .interesse6, .interesse7, .interesse8, .interesse9, .interesse10, .interesse11, .interesse12, .interesse13, .interesse14, .interesse15{
+    background-color: white;
+    color: white;
+    font-size: 1.5vw;
+    padding-top: 4vw;
+    border-radius: 3vh;
+    margin: 0.5vh;
+		cursor: pointer;
+		transition: text-shadow 0.8s;
+		transition: border 0.3s ease;
+  }
+
+  .interesses{
+    margin-top: 1vw;
+    display: grid;
+    grid-template-rows: 10vw 10vw 10vw 10vw 10vw;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "interesse1 interesse2 interesse3" "interesse4 interesse5 interesse6" "interesse7 interesse8 interesse9" "interesse10 interesse11 interesse12" "interesse13 interesse14 interesse15";
+  }
 
   label{
     font-size: 2.5vh;
