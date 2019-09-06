@@ -28,6 +28,37 @@
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 1.3vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.account{
+		font-size: 1.3vw;
+		color: white;
+	}
+
+	.account:hover{
+		color: #808080;
+	}
+
+	.imageuser{
+		margin-top: 2vw;
+		padding-top: 7vh;
+		background: url(../images/circle.png) center center/8vw no-repeat;
+    width: 26vh;
+    height: 18vh;
+    vertical-align: middle;
+    color: black;
+		text-align: center;
+		font-size: 2vw;
+	}
+
 	.criaricon{
 		font-size: 0vw;
 	}
@@ -127,9 +158,9 @@
 		background-color: rgba(0, 0, 0, 0.5);
 		top: 9vh;
 		right: 3vh;
-		height: 0;
+		height: 50;
 		width: 30vh;
-		padding: 1vh 3vh 1vh 3vh;
+		padding: 0 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
 	}
@@ -164,7 +195,6 @@
 
 	#dropcheck:checked ~ .dropdown{
 		display: block;
-		height: 60vh;
 	}
 
 	.icon{
@@ -307,6 +337,37 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 4vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.account{
+		font-size: 3vh;
+		color: white;
+	}
+
+	.account:hover{
+		color: #808080;
+	}
+
+	.imageuser{
+		margin-top: 2vw;
+		padding-top: 6vh;
+		background: url(../images/circle.png) center center/20vw no-repeat;
+    width: 26vh;
+    height: 18vh;
+    vertical-align: middle;
+    color: black;
+		text-align: center;
+		font-size: 7vw;
+	}
+
 	.criaricon{
 		font-size: 6vw;
 		right: 15vw !important;
@@ -397,7 +458,7 @@
 		background-color: rgba(0, 0, 0, 0.9);
 		top: 9vh;
 		right: 3vh;
-		height: 0;
+		height: 60vh;
 		width: 30vh;
 		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
@@ -431,7 +492,6 @@
 
 	#dropcheck:checked ~ .dropdown{
 		display: block;
-		height: 60vh;
 	}
 
 	.icon{
@@ -565,6 +625,37 @@
 }
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 4vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
+	.account{
+		font-size: 4vw;
+		color: white;
+	}
+
+	.account:hover{
+		color: #808080;
+	}
+
+	.imageuser{
+		margin-top: 7vw;
+		padding-top: 6vh;
+		background: url(../images/circle.png) center center/20vw no-repeat;
+    width: 26vh;
+    height: 18vh;
+    vertical-align: middle;
+    color: black;
+		text-align: center;
+		font-size: 7vw;
+	}
 
 	.criaricon{
 		top: 1.7vh;
