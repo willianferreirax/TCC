@@ -43,35 +43,34 @@
       </div>
     </nav>
     <div class='dropdown'>
-      <?php
-      session_start();
-      if(isset($_SESSION['usuario']))
+			<?php
+			session_start();
+			if(isset($_SESSION['usuario']))
 			{
-				echo $_SESSION['usuario'][0];
+				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
 			}
 			if(isset($_SESSION['instituicao']))
 			{
-				echo $_SESSION['instituicao'][0];
+				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-3))."</h1>";
 			}
-      ?>
-      <br>
-      <br>
-      <?php
+			?>
+			<br>
+			<?php
 				if(isset($_SESSION['instituicao'][0])){
-					echo "<a href='painel_inst.php'>Minha Conta</a>";
+					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
 				}
 				else{
-					echo "<a href='painel_usuario.php'>Minha Conta</a>";
+					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
 				}
 			?>
-      <br>
-      Configurações
-      <br>
-      Ajuda
-      <br>
-      <br>
-      <a href='logout_script.php'>Sair</a>
-    </div>
+			<br>
+			<a href='painel_usuario.php' class='account'>Configurações</a>
+			<br>
+			<a href='painel_usuario.php' class='account'>Ajuda</a>
+			<br>
+			<br>
+			<a href='logout_script.php' class='exit'>Sair</a>
+		</div>
     <header class='cabecalhoindex' id='grid'>
       <div class='menudiv'>
         <div class='menubtn'>
