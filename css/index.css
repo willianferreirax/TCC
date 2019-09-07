@@ -649,7 +649,7 @@
 		margin-top: 7vw;
 		padding-top: 6vh;
 		background: url(../images/circle.png) center center/20vw no-repeat;
-    width: 26vh;
+    width: 15vh;
     height: 18vh;
     vertical-align: middle;
     color: black;
@@ -761,7 +761,7 @@
 	    top: 0;
 	    right: 0;
 	    height: 100vh;
-	    width: 80vw;
+	    width: 40vw;
 	    padding: 1vh 3vh 1vh 3vh;
 	    z-index: 9;
 	    font-size: 6vw;
