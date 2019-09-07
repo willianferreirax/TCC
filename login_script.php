@@ -6,7 +6,7 @@
         $senha = md5($_POST['senha']);
 
 
-		$select = "SELECT cod_usuario,nome_usuario,email_usuario,senha_usuario from usuario where login_usuario = '$login' and senha_usuario = '$senha'";
+		$select = "SELECT cod_usuario,nome_usuario,email_usuario,senha_usuario, sobrenome_usuario from usuario where login_usuario = '$login' and senha_usuario = '$senha'";
 
 		$res = $conn->prepare($select);//preparando query
         $res->execute();//executando
@@ -19,7 +19,8 @@
               array_push($session,$row['nome_usuario']);//o array do SESSION terá na posição 0, o nome do usuario
               array_push($session,$row['email_usuario']);//o array do SESSION terá na posição 1, o email do usuario
               array_push($session,$row['senha_usuario']);//o array do SESSION terá na posição 2, a senha do usuario
-			  array_push($session,$row['cod_usuario']);//o array do SESSION terá na posição 3, o codigo do usuario
+			  			array_push($session,$row['cod_usuario']);//o array do SESSION terá na posição 3, o codigo do usuario
+							array_push($session,$row['sobrenome_usuario']);//o array do SESSION terá na posição , o sobrenome do usuario
             }
             header('Location: select_interesse.php');
             $_SESSION['usuario']=$session;//inserindo o array na variavel global _SESSION
