@@ -79,7 +79,7 @@
   			}
   			if(isset($_SESSION['instituicao']))
   			{
-  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-3))."</h1>";
+  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
   			}
   			?>
   			<br>
