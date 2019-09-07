@@ -56,7 +56,7 @@
       ?>
       <br>
       <br>
-      <a  class='deletlink' href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+      <a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
       </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -72,20 +72,33 @@
         <label for='chec' class='backdiv'></label>
       </nav>
       <div class='dropdown'>
-        <?php
-        echo $_SESSION['instituicao'][0];
-        ?>
-        <br>
-        <br>
-        <a href='painel_inst.php'>Minha Conta</a>
-        <br>
-        Configurações
-        <br>
-        Ajuda
-        <br>
-        <br>
-        <a class='exit' href='logout_script.php'>Sair</a>
-      </div>
+  			<?php
+  			if(isset($_SESSION['usuario']))
+  			{
+  				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
+  			}
+  			if(isset($_SESSION['instituicao']))
+  			{
+  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-3))."</h1>";
+  			}
+  			?>
+  			<br>
+  			<?php
+  				if(isset($_SESSION['instituicao'][0])){
+  					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+  				}
+  				else{
+  					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+  				}
+  			?>
+  			<br>
+  			<a href='painel_usuario.php' class='account'>Configurações</a>
+  			<br>
+  			<a href='painel_usuario.php' class='account'>Ajuda</a>
+  			<br>
+  			<br>
+  			<a href='logout_script.php' class='exit'>Sair</a>
+  		</div>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>
           <div class='menubtn'>
