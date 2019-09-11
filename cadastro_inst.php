@@ -79,11 +79,11 @@
       $valido = false;
 
 
-      if (strlen(utf8_decode($_POST["nome"]))<5 || strlen(utf8_decode($_POST["nome"]))>255) {
+      if (strlen(utf8_decode($_POST["nome"]))<2 || strlen(utf8_decode($_POST["nome"]))>255) {
         $erro = "preencha o campo nome corretamente (5 ou mais caracteres ou menos de 255)";
       }
       else{
-        if(strlen(utf8_decode($_POST["bairro"]))<5 || strlen(utf8_decode($_POST["bairro"]))>30){
+        if(strlen(utf8_decode($_POST["bairro"]))<2 || strlen(utf8_decode($_POST["bairro"]))>30){
           $erro= "digite algo valido(bairro)";
         }
         else{
@@ -91,7 +91,7 @@
             $erro="digite um endereço valido";
           }
           else{
-            if(strlen(utf8_decode($_POST["cidade"]))<5 || strlen(utf8_decode($_POST["cidade"]))>255){
+            if(strlen(utf8_decode($_POST["cidade"]))<2 || strlen(utf8_decode($_POST["cidade"]))>255){
               $erro= "digite algo valido (cidade)";
             }
             else{
@@ -100,7 +100,7 @@
                 $erro= "insira um telefone valido";
               }
               else{
-                if(strlen(utf8_decode($_POST["email"]))<10 || strlen(utf8_decode($_POST["email"]))>255) {
+                if(strlen(utf8_decode($_POST["email"]))<5 || strlen(utf8_decode($_POST["email"]))>255) {
                   $erro="digite um email valido";
                 }
                 else{
@@ -112,7 +112,7 @@
                       $erro="senhas diferentes digitadas";
                     }
                     else{
-                      if(strlen(utf8_decode($_POST["estado"]))<4 || strlen(utf8_decode($_POST["estado"]))>16){
+                      if(strlen(utf8_decode($_POST["estado"]))<2 || strlen(utf8_decode($_POST["estado"]))>16){
                         $erro="digite uma estado valido";
                       }
                       else{
