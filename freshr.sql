@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
+create database freshr;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `evento`
 --
 
+use freshr;
 CREATE TABLE `evento` (
   `cod_evento` int(11) NOT NULL,
   `nome_evento` varchar(30) DEFAULT NULL,
