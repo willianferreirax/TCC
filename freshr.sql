@@ -47,7 +47,7 @@ CREATE TABLE `evento` (
   `preco_evento` float DEFAULT NULL,
   `comp_qnt` int(11) DEFAULT NULL,
   `interesse_qnt` varchar(30) DEFAULT NULL,
-  `CNPJ` int(11) DEFAULT NULL
+  `CNPJ` varchar(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
