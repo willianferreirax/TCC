@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-create database freshr;
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -21,20 +21,20 @@ create database freshr;
 --
 -- Database: `freshr`
 --
-
+create database freshr;
+use freshr;
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `evento`
 --
 
-use freshr;
 CREATE TABLE `evento` (
   `cod_evento` int(11) NOT NULL,
   `nome_evento` varchar(30) DEFAULT NULL,
   `banner_evento` varchar(30) DEFAULT NULL,
   `data_inicio` date DEFAULT NULL,
-  `data_temino` date DEFAULT NULL,
+  `data_termino` date DEFAULT NULL,
   `hora_inicio` time DEFAULT NULL,
   `hora_termino` time DEFAULT NULL,
   `endereco_evento` varchar(30) DEFAULT NULL,
@@ -47,7 +47,8 @@ CREATE TABLE `evento` (
   `preco_evento` float DEFAULT NULL,
   `comp_qnt` int(11) DEFAULT NULL,
   `interesse_qnt` varchar(30) DEFAULT NULL,
-  `CNPJ` varchar(11) DEFAULT NULL
+  `CNPJ` int(11) DEFAULT NULL
+  
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

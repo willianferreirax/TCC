@@ -80,9 +80,9 @@
 		if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$_interesse = $_POST['intchk'];
       //RECOLHENDO O INTERESSE1
-			if(isset($_interesse[0]) && $_interesse[0] == 1){
+		if(isset($_interesse[0]) && $_interesse[0] == 1){
         $interesse1 = "Informação e Tecnologia";
-      }
+		}
       else if(isset($_interesse[0]) && $_interesse[0] == 2){
         $interesse1 = "Logística";
       }
