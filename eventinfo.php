@@ -1,5 +1,6 @@
 <!doctype html>
 <?php
+/*
 function salvar_imagem(){
 include 'connection.php';
 $conn = conexao();
@@ -30,7 +31,7 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 
 	
 }
-
+*/
 ?>
 <html lang="pt-br">
 <head>
@@ -336,14 +337,17 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 		}
 		*/
 		else{
+			/*
 			if (isset($_FILES['arquivo'])) {
 			$ext = strtolower(substr($_FILES['arquivo']['name'], -4));
 			$novo_nome = md5(time()).$ext;
 			$dir = "upload/";
 			echo "chegou aqui";
 			move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
+			*/
 			$valido = true;
 			}
+			
 			
 		}
 		
@@ -365,7 +369,7 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 			$test23="blabla";
 			//Atrelando os dados às tabelas
 			$stmt->bindValue(1, $_POST["nome"]);
-			$stmt->bindValue(2, $novo_nome);
+			$stmt->bindValue(2, $test23);
 			$stmt->bindValue(3, $_POST["dateinic"]);
 			$stmt->bindValue(4, $_POST["datefinal"]);
 			$stmt->bindValue(5,$_POST["timeinic"]);
@@ -501,5 +505,5 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 				}
 			}
 		}
-	}
+	
 ?>
