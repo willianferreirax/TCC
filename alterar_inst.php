@@ -30,6 +30,8 @@ if (isset($_POST['login_inst'])) {
     <br><br>
 
     <input class='btn btn-danger' type='reset' value='Limpar'>
+	<br>
+		<a href='painel_inst.php'>voltar</a>
 
     </form>";
 }
@@ -53,6 +55,8 @@ else if (isset($_POST['senha_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
+		<br>
+		<a href='painel_inst.php'>voltar</a>
 
 	    </form>";
 	}
@@ -77,6 +81,8 @@ else if (isset($_POST['nome_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
+		<br>
+		<a href='painel_inst.php'>voltar</a>
 
 	    </form>";
 	}
@@ -102,8 +108,10 @@ else if (isset($_POST['endereco_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
+		
 	}
 			
 		
@@ -129,7 +137,8 @@ else if (isset($_POST['bairro_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
 	}
 		
@@ -155,7 +164,8 @@ else if (isset($_POST['cidade_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
 	}
 			
@@ -180,7 +190,8 @@ else if (isset($_POST['cep_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
 	}
 		
@@ -204,7 +215,8 @@ else if (isset($_POST['email_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
 	}
 				
@@ -229,7 +241,8 @@ else if (isset($_POST['telefone_inst'])) {
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
-
+<br>
+		<a href='painel_inst.php'>voltar</a>
 	    </form>";
 	}
 

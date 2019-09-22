@@ -66,8 +66,8 @@ if(!$_SESSION['usuario']){
       <nav>
         <div class='menulist'>
           <a href='index.php'><div class='b1'><div>Página inicial</div></div></a>
-          <a href='index.php'><div class='b2'><div>Eventos</div></div></a>
-          <a href='index.php'><div class='b3'><div>Instituição</div></div></a>
+          <a href='listar_eventos.php'><div class='b2'><div>Eventos</div></div></a>
+          <a href='listar_inst.php'><div class='b3'><div>Instituição</div></div></a>
           <a href='sobre.php'><div class='b4'><div>Sobre nós</div></div></a>
           <a href='index.php'><div class='b5'><div>Ajuda</div></div></a>
         </div>
@@ -111,8 +111,11 @@ if(!$_SESSION['usuario']){
   				<input type='checkbox' id='searchcheck'>
   				<label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
   				<div class='search'>
-  					<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
-  					<i class="fas fa-search fa-1x"></i>
+  					<form action="listar_eventos.php" method="POST">
+					<input type='text' placeholder='Pesquisar eventos...' class='searchbar' name='pesquisa'>
+					<i class="fas fa-search fa-1x"></i>
+					<input type='submit' value='pesquisar'>
+					</form>
   				</div>
   			</div>
         <div class='userdiv'>

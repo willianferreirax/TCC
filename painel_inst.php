@@ -64,8 +64,8 @@
       <nav>
         <div class='menulist'>
           <a href='index.php'><div class='b1'>Página inicial</div></a>
-          <a href='index.php'><div class='b2'>Eventos</div></a>
-          <a href='index.php'><div class='b3'>Instituição</div></a>
+          <a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
+          <a href='listar_inst.php'><div class='b3'>Instituição</div></a>
           <a href='sobre.php'><div class='b4'>Sobre nós</div></a>
           <a href='index.php'><div class='b5'>Ajuda</div></a>
         </div>
@@ -92,7 +92,7 @@
   				}
   			?>
   			<br>
-  			<a href='painel_usuario.php' class='account'>Configurações</a>
+  			<a href='config.php' class='account'>Configurações</a>
   			<br>
   			<a href='painel_usuario.php' class='account'>Ajuda</a>
   			<br>
@@ -109,8 +109,11 @@
   				<input type='checkbox' id='searchcheck'>
   				<label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
   				<div class='search'>
-  					<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
-  					<i class="fas fa-search fa-1x"></i>
+  				<form action="listar_eventos.php" method="POST">
+					<input type='text' placeholder='Pesquisar eventos...' class='searchbar' name='pesquisa'>
+					<i class="fas fa-search fa-1x"></i>
+					<input type='submit' value='pesquisar'>
+					</form>
   				</div>
   			</div>
         <div class='userdiv'>
