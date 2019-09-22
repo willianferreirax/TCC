@@ -61,6 +61,8 @@ if(!$_SESSION['instituicao']){
     <input class="btn btn-info" type="submit" name='alterar' value="Alterar">
     <br><br>
     <input class="btn btn-danger" type="reset" value="Limpar">
+	
+	<a href='painel_inst.php'>voltar</a>
 
     </form>
 
