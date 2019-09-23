@@ -1,38 +1,4 @@
 <!doctype html>
-<?php
-/*
-function salvar_imagem(){
-include 'connection.php';
-$conn = conexao();
-$msg = false;
-if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
-	if (isset($_FILES['arquivo'])) {
-		$ext = strtolower(substr($_FILES['arquivo']['name'], -4));
-		$novo_nome = md5(time()).$ext;
-		$dir = "upload/";
-		
-
-		move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
-
-		
-
-		$res = $conn->prepare($sql);//preparando query
-	      
-	    $res->execute();
-		if ($res->errorCode() == "00000") {
-			$msg = "arquivo enviado, choegou aqui";
-		}
-		else{
-			$msg = "falha";
-		}
-	}
-	
-}
-
-	
-}
-*/
-?>
 <html lang="pt-br">
 <head>
 	<title>Criando um evento - FRESHR</title>
@@ -74,8 +40,8 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 		<nav>
 			<div class='menulist'>
 				<a href='index.php'><div class='b1'>Página inicial</div></a>
-				<a href='index.php'><div class='b2'>Eventos</div></a>
-				<a href='index.php'><div class='b3'>Instituição</div></a>
+				<a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
+				<a href='listar_inst.php'><div class='b3'>Instituição</div></a>
 				<a href='sobre.php'><div class='b4'>Sobre nós</div></a>
 				<a href='index.php'><div class='b5'>Ajuda</div></a>
 			</div>
@@ -107,7 +73,7 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 			?>
 			
 			<br>
-			<a href='painel_usuario.php' class='account'>Configurações</a>
+			<a href='config.php' class='account'>Configurações</a>
 			<br>
 			<a href='painel_usuario.php' class='account'>Ajuda</a>
 			<br>
@@ -150,7 +116,7 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 			</div>
 			<br>
 				<div class='formeve'>
-					<form name='criareventoform' method="POST" action="?validar=true">
+					<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
 
 						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
 						<input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'>
@@ -171,7 +137,35 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 						<input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
 						
 						<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label>
-						<input class='inputcreate' type='text' name='estado' placeholder='São Paulo'>
+						<select name="estado">
+							<option value="AC">Acre</option>
+							<option value="AL">Alagoas</option>
+							<option value="AP">Amapá</option>
+							<option value="AM">Amazonas</option>
+							<option value="BA">Bahia</option>
+							<option value="CE">Ceará</option>
+							<option value="DF">Distrito Federal</option>
+							<option value="ES">Espirito Santo</option>
+							<option value="GO">Goiás</option>
+							<option value="MA">Maranhão</option>
+							<option value="MT">Mato Grosso</option>
+							<option value="MS">Mato Grosso do Sul</option>
+							<option value="MG">Minas Gerais</option>
+							<option value="PA">Pará</option>
+							<option value="PB">Paraíba</option>
+							<option value="PR">Paraná</option>
+							<option value="PE">Pernambuco</option>
+							<option value="PI">Piauí</option>
+							<option value="RJ">Rio de Janeiro</option>
+							<option value="RJ">Rio Grande do Norte</option>
+							<option value="RS">Rio grande do sul</option>
+							<option value="RO">Rondônia</option>
+							<option value="RR">Roraima</option>
+							<option value="SC">Santa Catarina</option>
+							<option value="SP" selected>São Paulo</option>
+							<option value="SE">Sergipe</option>
+							<option value="TO">Tocantins</option>
+						</select>
 						
 						<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
 						<input class='inputcreate' type='text' name='cep' placeholder='03103-010'>
@@ -290,61 +284,75 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 			$erro = " digite um nome válido.";
 			$coderro = 1;
 		}
-		/*elseif(strlen(utf8_decode($_POST["banner_evento"])) < 2 || strlen(utf8_decode($_POST["banner_evento"])) > 255){
-			$erro = " digite um banner válido.";
+		elseif(!isset($_FILES['arquivo'])){
+			$erro = "escolha um banner";
 			$coderro = 2;
 		}
 		
-		elseif(strlen(utf8_decode($_POST["dateinic"])) <10 || strlen(utf8_decode($_POST["dateinic"])) > 255) {
-			$erro = " digite uma data valida.";
+		
+		elseif(strlen(utf8_decode($_POST["dateinic"])) <10 || strlen(utf8_decode($_POST["dateinic"])) > 10) {
+			$erro = " selecione uma data de inicio do evento.";
 			$coderro = 3;
 		}
-		elseif(strlen(utf8_decode($_POST["datefinal"])) < 8 || strlen(utf8_decode($_POST["datefinal"])) > 100){
-			$erro = " digite uma data válida.";
+		
+		elseif(strlen(utf8_decode($_POST["datefinal"])) < 10 || strlen(utf8_decode($_POST["datefinal"])) > 10){
+			$erro = "selecione uma data de termino do eventto.";
 			$coderro = 4;
 		}
-		elseif(strlen(utf8_decode($_POST["timeinic"])) <5 || strlen(utf8_decode($_POST["timeinic"])) > 255) {
-			$erro = " digite uma hora valida.";
+
+		elseif(strtotime($_POST['dateinic']) > strtotime($_POST['datefinal'])){
+			$erro = "A data de inicio é posterior à data de termino. Selecione de maneira correta";
 			$coderro = 5;
 		}
-		elseif(strlen(utf8_decode($_POST["timefinal"])) < 5 || strlen(utf8_decode($_POST["timefinal"])) > 100){
-			$erro = " digite uma hora valida";
+
+		elseif(strlen(utf8_decode($_POST["timeinic"])) <5 || strlen(utf8_decode($_POST["timeinic"])) > 5) {
+			$erro = " digite uma hora para o inicio do evento.";
 			$coderro = 6;
 		}
-		elseif(strlen(utf8_decode($_POST["endereco"])) < 8 || strlen(utf8_decode($_POST["endereco"])) > 100){
-			$erro = " digite um endereço valido";
+		elseif(strlen(utf8_decode($_POST["timefinal"])) < 5 || strlen(utf8_decode($_POST["timefinal"])) > 5){
+			$erro = " digite uma hora para o final do evento";
 			$coderro = 7;
 		}
-		elseif(strlen(utf8_decode($_POST["bairro"])) < 3 || strlen(utf8_decode($_POST["bairro"])) > 100){
-			$erro = "Digite um bairro válido ";
+
+		elseif(strtotime($_POST['timeinic']) > strtotime($_POST['timefinal'])){
+			$erro = "A hora de inicio é posterior à hora de termino. Selecione de maneira correta";
 			$coderro = 8;
 		}
-		elseif(strlen(utf8_decode($_POST["cidade"])) < 1 || strlen(utf8_decode($_POST["cidade"])) > 100){
-			$erro = "Digite uma cidade válida ";
+
+		
+		elseif(strlen(utf8_decode($_POST["endereco"])) < 5 || strlen(utf8_decode($_POST["endereco"])) > 100){
+			$erro = " digite um endereço valido(Minimo 5 caracateres)";
 			$coderro = 9;
 		}
-		elseif(strlen(utf8_decode($_POST["estado"])) < 1 || strlen(utf8_decode($_POST["estado"])) > 2){
-			$erro = "Digite um estado válido ";
+		elseif(strlen(utf8_decode($_POST["bairro"])) < 3 || strlen(utf8_decode($_POST["bairro"])) > 100){
+			$erro = "Digite um bairro válido (Minimo 3 caracteres)";
 			$coderro = 10;
 		}
-		elseif(strlen(utf8_decode($_POST["cep"])) < 3 || strlen(utf8_decode($_POST["cep"])) > 100){
-			$erro = "Digite um cep válido ";
+		elseif(strlen(utf8_decode($_POST["cidade"])) < 1 || strlen(utf8_decode($_POST["cidade"])) > 100){
+			$erro = "Digite uma cidade válida (Minimo 1 caractere) ";
 			$coderro = 11;
 		}
-		elseif(strlen(utf8_decode($_POST["desc"])) < 3 || strlen(utf8_decode($_POST["desc"])) > 200){
-			$erro = "Digite uma descrição válida ";
+		elseif(strlen(utf8_decode($_POST["estado"])) < 1 || strlen(utf8_decode($_POST["estado"])) > 2){
+			$erro = "Selecione o estado onde acontecerá o evento";
 			$coderro = 12;
 		}
-		*/
+		elseif(strlen(utf8_decode($_POST["cep"])) != 9) {
+			$erro = "Digite um cep válido";
+			$coderro = 13;
+		}
+		elseif(strlen(utf8_decode($_POST["desc"])) < 1 || strlen(utf8_decode($_POST["desc"])) > 200){
+			$erro = "Digite uma descrição válida (Minimo de 1 caractere)";
+			$coderro = 14;
+		}
+		
 		else{
-			/*
-			if (isset($_FILES['arquivo'])) {
+			
+			
 			$ext = strtolower(substr($_FILES['arquivo']['name'], -4));
 			$novo_nome = md5(time()).$ext;
 			$dir = "upload/";
-			echo "chegou aqui";
 			move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
-			*/
+			
 			$valido = true;
 			}
 			
@@ -366,10 +374,10 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 			(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento, CNPJ)
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			$stmt = $conn->prepare($sql);
-			$test23="blabla";
+			
 			//Atrelando os dados às tabelas
 			$stmt->bindValue(1, $_POST["nome"]);
-			$stmt->bindValue(2, $test23);
+			$stmt->bindValue(2, $novo_nome);
 			$stmt->bindValue(3, $_POST["dateinic"]);
 			$stmt->bindValue(4, $_POST["datefinal"]);
 			$stmt->bindValue(5,$_POST["timeinic"]);
@@ -453,8 +461,6 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 				  }
 				}
 				
-				
-			
 				$stmt=$conn->prepare($sql);
 				
 				//criando a quantidade de atrelamentos de acordo com a quantidade de interesses selecionados
@@ -501,6 +507,12 @@ if(isset($_REQUEST['validar']) && $_REQUEST["validar"] == true){
 					echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
 				}
 				if($coderro == 12){
+					echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
+				}
+				if($coderro == 13){
+					echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
+				}
+				if($coderro == 14){
 					echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
 				}
 			}

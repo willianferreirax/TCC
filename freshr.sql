@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Set-2019 às 21:00
+-- Generation Time: 22-Set-2019 às 22:48
 -- Versão do servidor: 5.7.17
 -- PHP Version: 7.1.3
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `evento` (
   `cod_evento` int(11) NOT NULL,
-  `nome_evento` varchar(30) DEFAULT NULL,
+  `nome_evento` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `banner_evento` varchar(30) DEFAULT NULL,
   `data_inicio` varchar(30) DEFAULT NULL,
   `data_termino` varchar(30) DEFAULT NULL,
@@ -55,7 +55,8 @@ CREATE TABLE `evento` (
 
 INSERT INTO `evento` (`cod_evento`, `nome_evento`, `banner_evento`, `data_inicio`, `data_termino`, `hora_inicio`, `hora_termino`, `endereco_evento`, `bairro_evento`, `cidade_evento`, `estado_evento`, `cep_evento`, `visibilidade_evento`, `descricao_evento`, `preco_evento`, `comp_qnt`, `interesse_qnt`, `CNPJ`) VALUES
 (1, 'test', 'blabla', '2019-09-25', '2019-09-26', '11:01:00', '11:02:00', 'test', 'test', 'test', 'test', '03103-010', 1, 'dsada', NULL, NULL, NULL, '11111111111'),
-(2, 'test2', 'blabla', '2019-09-04', '2019-09-26', '22:03:00', '22:02:00', 'test2', 'test2', 'test2', 'test2', '03103-010', 1, 'd', NULL, NULL, NULL, '11111111111');
+(2, 'test2', 'blabla', '2019-09-04', '2019-09-26', '22:03:00', '22:02:00', 'test2', 'test2', 'test2', 'test2', '03103-010', 1, 'd', NULL, NULL, NULL, '11111111111'),
+(3, 'test3', 'blabla', '2019-09-12', '2019-09-13', '11:01:00', '11:02:00', 'test3', 'test3', 'test3', 'test3', '03103-010', 1, 'dad', NULL, NULL, NULL, '11111111111');
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,7 @@ CREATE TABLE `faculdade` (
 --
 
 INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `endereco_inst`, `bairro_inst`, `cidade_inst`, `estado_inst`, `cep_inst`, `email_inst`, `telefone_inst`) VALUES
-('11111111111', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', '', 'rua judas', 'bairro se', 'sao paulo', 'sao paulo', '12345678', 'saojudas@gmail.com', '111111111111111');
+('11111111111', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', 'SÃ£o Judas', 'rua judas', 'bairro se', 'sao paulo', 'sao paulo', '12345678', 'saojudas@gmail.com', '111111111111111');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `ender
 
 CREATE TABLE `interesses_evento` (
   `cod_interesse_evento` int(11) NOT NULL,
-  `interesseeve1` varchar(30) DEFAULT NULL,
+  `interesseeve1` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `interesseeve2` varchar(30) DEFAULT NULL,
   `interesseeve3` varchar(30) DEFAULT NULL,
   `interesseeve4` varchar(30) DEFAULT NULL,
@@ -116,7 +117,8 @@ CREATE TABLE `interesses_evento` (
 
 INSERT INTO `interesses_evento` (`cod_interesse_evento`, `interesseeve1`, `interesseeve2`, `interesseeve3`, `interesseeve4`, `interesseeve5`, `interesseeve6`, `interesseeve7`, `interesseeve8`, `interesseeve9`, `interesseeve10`, `interesseeve11`, `interesseeve12`, `interesseeve13`, `interesseeve14`, `interesseeve15`, `cod_evento`) VALUES
 (1, 'InformaÃ§Ã£o e Tecnologia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(2, 'LogÃ­stica', 'SaÃºde', 'Engenharia', 'AdministraÃ§Ã£o e NegÃ³cios', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+(2, 'LogÃ­stica', 'SaÃºde', 'Engenharia', 'AdministraÃ§Ã£o e NegÃ³cios', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'InformaÃ§Ã£o e Tecnologia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -208,12 +210,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `cod_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `interesses_evento`
 --
 ALTER TABLE `interesses_evento`
-  MODIFY `cod_interesse_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_interesse_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `interesses_usuario`
 --

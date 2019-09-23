@@ -47,10 +47,11 @@ else{
   </head>
   <body>
 
-  <img src="<?php echo 'upload/'.$evento[1]?>">
+  <img src="<?php echo 'upload/'.$evento[1]?>" style="width:200px;height:200px">
   <?php
   echo $evento[6];
   ?>
+  <a href="index.php">voltar</a>
       
     
   </body>

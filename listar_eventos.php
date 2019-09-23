@@ -10,7 +10,9 @@
     <?php
     include 'connection.php';
     $conn = conexao();
-
+	$result1=array();
+	$result2=array();
+	
     if(isset($_POST['pesquisa'])){
         $pesquisa = $_POST['pesquisa'];//coisas que a pessoa pode buscar
 		$pesquisa = '%'.$pesquisa.'%';
@@ -35,7 +37,7 @@
         $res->execute();
 		
 		//procurando um evento a partir de seus interesses
-		$cod_evento="select cod_evento from interesses_evento where interesseve1 like ? or interesseve2 like ? or interesseve3 like ? or interesseve4 like ? or interesseve5 like ? or interesseve6 like ? or interesseve7 like ? or interesseve8 like ? or interesseve9 like ? or interesseve10 like ? or interesseve11 like ? or interesseve12 like ? or interesseve13 like ? or interesseve14 like ? or interesseve15 like ?";
+		$cod_evento="select cod_evento from interesses_evento where interesseeve1 like ? or interesseeve2 like ? or interesseeve3 like ? or interesseeve4 like ? or interesseeve5 like ? or interesseeve6 like ? or interesseeve7 like ? or interesseeve8 like ? or interesseeve9 like ? or interesseeve10 like ? or interesseeve11 like ? or interesseeve12 like ? or interesseeve13 like ? or interesseeve14 like ? or interesseeve15 like ?";
 		
 		$res1=$conn->prepare($cod_evento);
         $res1->bindParam(1,$pesquisa);
@@ -61,29 +63,26 @@
 		foreach($result1 as $row){
 			$select2='select * from evento where cod_evento=?';
 			$res1=$conn->prepare($select2);
-			$res1->bindParam(1,$row);
+			$res1->bindParam(1,$row['cod_evento']);
 			$res1->execute();
 			$result1=$res1->fetchAll();//substitui oq está dentro ou adiciona??
 		}
 		
 		//procurando um evento a partir da instituição que o cadastrou
 
-		$CNPJ="select cnpj from faculdade where nome_inst like ?";
+		$CNPJ="select CNPJ from faculdade where nome_inst like ?";
 		$res2=$conn->prepare($CNPJ);
 		$res2->bindParam(1,$pesquisa);
-		$result2=$res2->execute();
-		
-		
-		
-		$select3="select * from evento where CNPJ = ?";
-		$res2=$conn->prepare($select3);
-		$res2->bindParam(1,$result2);
 		$res2->execute();
 		$result2=$res2->fetchAll();
 		
-		
-		
-		
+		foreach($result2 as $row){
+		$select3="select * from evento where CNPJ = ?";
+		$res2=$conn->prepare($select3);
+		$res2->bindParam(1,$row['CNPJ']);
+		$res2->execute();
+		$result2=$res2->fetchAll();
+		}
 		
     }
     else{
@@ -103,8 +102,7 @@
         $imagem ='upload/'.$row['banner_evento'];
         echo "<ul>
             <li>
-            <img src='$imagem'>
-            <a href='exibir_evento.php?id= $row[cod_evento]'> $row[nome_evento]</a>
+            <a href='exibir_evento.php?id= $row[cod_evento]'> <img src='$imagem' style='width:100px; height:100px' alt='$row[nome_evento]'></a>
             </li>
             </ul>";
        
@@ -115,8 +113,7 @@
         $imagem ='upload/'.$row['banner_evento'];
         echo "<ul>
             <li>
-            <img src='$imagem'>
-            <a href='exibir_evento.php?id= $row[cod_evento]'> $row[nome_evento]</a>
+            <a href='exibir_evento.php?id= $row[cod_evento]'> <img src='$imagem' style='width:100px; height:100px' alt='$row[nome_evento]'></a>
             </li>
             </ul>";
        
@@ -126,8 +123,7 @@
         $imagem ='upload/'.$row['banner_evento'];
         echo "<ul>
             <li>
-            <img src='$imagem'>
-            <a href='exibir_evento.php?id= $row[cod_evento]'> $row[nome_evento]</a>
+            <a href='exibir_evento.php?id= $row[cod_evento]'> <img src='$imagem' style='width:100px; height:100px' alt='$row[nome_evento]'></a>
             </li>
             </ul>";
        
