@@ -20,6 +20,16 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
+	<script type='text/javascript'>
+		var i = 0;
+		function transform(){
+				i++;
+				if(i == 2){
+					document.getElementById('formsearch').submit();
+				}
+		}
+	</script>
 </head>
 <body class="bgindex">
 	<center>
@@ -81,10 +91,11 @@
 					<a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 			</div>
 			<div class='pesquisarbtn'>
+				<form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
 				<input type='checkbox' id='searchcheck'>
-				<label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
+				<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
 				<div class='search'>
-					<form action="listar_eventos.php" method="post" class='searchform'>
+
 						<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
 						<input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
 					</form>
