@@ -23,6 +23,10 @@
 
 }
 
+#enviar{
+		display: none;
+}
+
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
@@ -640,6 +644,10 @@
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
 
+	#iconenviar{
+			display: none;
+	}
+
 	.account{
 		font-size: 4vw;
 		color: white;
@@ -922,14 +930,7 @@
 	}
 
 	.logoeheader{
-		width: 7vh;
-		height: 5vh;
-		position: absolute;
-		left: 12%;
-		z-index: 7;
-		top: 2.5vh;
-		background: url(../images/logo.png) center center/5vh no-repeat;
-		font-size: 0 !important;
+		display: none;
 	}
 
 	.cabecalhoindex{
@@ -964,8 +965,7 @@
 
 	.searchlabel{
 		position: absolute;
-		height: 100% !important;
-		top: 2.8vh;
+		top: 2.3vh;
 		right: 50%;
 		transition: right 1s;
 	}

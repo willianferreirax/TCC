@@ -23,12 +23,21 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/337796870f.js"></script>
   <link rel="shortcut icon" href="images/icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type='text/javascript'>
+		var i = 0;
+		function transform(){
+				i++;
+				if(i == 2){
+					document.getElementById('formsearch').submit();
+				}
+		}
+	</script>
 </head>
 <body class='background'>
 
@@ -106,14 +115,14 @@
           </div>
         </div>
         <div class='pesquisarbtn'>
+  				<form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
   				<input type='checkbox' id='searchcheck'>
-  				<label for='searchcheck' class='searchlabel'><i class="fas fa-search"></i></label>
+  				<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
   				<div class='search'>
-  				<form action="listar_eventos.php" method="POST">
-					<input type='text' placeholder='Pesquisar eventos...' class='searchbar' name='pesquisa'>
-					<i class="fas fa-search fa-1x"></i>
-					<input type='submit' value='pesquisar'>
-					</form>
+
+  						<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
+  						<input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
+  					</form>
   				</div>
   			</div>
         <div class='userdiv'>

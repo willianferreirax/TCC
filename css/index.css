@@ -23,6 +23,9 @@
 
 }
 
+#enviar{
+		display: none;
+}
 
 /*Estilos para a página index*/
 /* CSS para os desktops, laptops e tablets*/
@@ -626,6 +629,10 @@
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
 
+	#iconenviar{
+		display: none;
+	}
+
 	.exit{
 		color: #822828;
 		text-decoration: none !important;
@@ -791,8 +798,8 @@
 	  }
 
 	  #chec:checked ~ .backdiv{
-	    opacity: 0.7;
-			z-index: 4;
+	    opacity: 0.3;
+			z-index: 7;
 	  }
 
 	  #chec:checked ~ .icons{
@@ -828,7 +835,7 @@
 	    position: fixed;
 	    float: left;
 	    top: 0;
-	    left: 0;
+	    left: -70;
 	    background-color: black;
 	    width: 100vw !important;
 	    margin: 0;
@@ -919,7 +926,7 @@
 
 		.searchlabel{
 			position: absolute;
-			top: 2.8vh;
+			top: 2.3vh;
 			right: 50%;
 			transition: right 1s;
 		}
