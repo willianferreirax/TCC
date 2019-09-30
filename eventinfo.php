@@ -24,7 +24,7 @@
 <body class="bgindex">
 
 	<center>
-	
+
 		<input type='checkbox' id='dropcheck'>
 		<input type='checkbox' id='chec'>
 		<label for='chec' class='backdiv'></label>
@@ -36,7 +36,7 @@
 		  <i class="fas fa-question fa-2x"></i><br>
 		  <hr>
 		</div>
-		
+
 		<nav>
 			<div class='menulist'>
 				<a href='index.php'><div class='b1'>Página inicial</div></a>
@@ -46,7 +46,7 @@
 				<a href='index.php'><div class='b5'>Ajuda</div></a>
 			</div>
 		</nav>
-		
+
 		<div class='dropdown'>
 			<?php
 			session_start();
@@ -55,14 +55,14 @@
 				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
 																																																																																																												($_SESSION['usuario'][4])-1))."</h1>";
 			}
-			
+
 			if(isset($_SESSION['instituicao']))
 			{
 				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
 			}
 			?>
 			<br>
-			
+
 			<?php
 				if(isset($_SESSION['instituicao'][0])){
 					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
@@ -71,7 +71,7 @@
 					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
 				}
 			?>
-			
+
 			<br>
 			<a href='config.php' class='account'>Configurações</a>
 			<br>
@@ -80,9 +80,9 @@
 			<br>
 			<a href='logout_script.php' class='exit'>Sair</a>
 		</div>
-		
+
 		<header class='cabecalhoindex' id='grid'>
-		
+
 			<div class='menudiv'>
 				<div class='menubtn'>
 					<label for='chec' class='labelchec'><i class="fas fa-bars fa-2x"></i></i></label>
@@ -92,7 +92,7 @@
 			<div class='pesquisarbtn'>
 
 			</div>
-			
+
 			<div class='userdiv'>
 				<?php
 					if(isset($_SESSION['instituicao'])){
@@ -105,14 +105,14 @@
 					}
 					?>
 			</div>
-				
+
 		</header>
 
 		<div class='elem1'>
 			<div class='cabcont'>
 				<div class='plusicon'><i class="fas fa-plus-circle"></i></div>
 				<div class='createtitle'><b>Criar evento</b></div>
-				
+
 			</div>
 			<br>
 				<div class='formeve'>
@@ -129,13 +129,13 @@
 
 						<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
 						<input class='inputcreate' type='text' name='endereco' placeholder='Rua Dr. Almeida Lima, 1233'>
-						
+
 						<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
 						<input class='inputcreate' type='text' name='bairro' placeholder='Mooca'>
-						
+
 						<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
 						<input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
-						
+
 						<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label>
 						<select name="estado">
 							<option value="AC">Acre</option>
@@ -166,32 +166,32 @@
 							<option value="SE">Sergipe</option>
 							<option value="TO">Tocantins</option>
 						</select>
-						
+
 						<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
 						<input class='inputcreate' type='text' name='cep' placeholder='03103-010'>
-						
+
 						<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
 						<input class='inputcreate' type='date' name='dateinic' placeholder='03103-010'>
-						
+
 						<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
 						<input class='inputcreate' type='date' name='datefinal' placeholder='03103-010'>
-						
+
 						<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
 						<input class='inputcreate' type='time' name='timeinic'>
-						
+
 						<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
 						<input class='inputcreate' type='time' name='timefinal'>
-						
+
 						<label class='labelint'>Qual o <b>preço</b> do evento?</label>
-						<input class='inputcreate' type='number' name='preco' placeholder="12,00">
-						
+						<input class='inputcreate' type='float' name='preco' placeholder="12,00">
+
 						<label class='labelint'>Por fim, conta pra gente sobre o seu evento:</label>
 						<textarea draggable="false" placeholder="O evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
 									<br>
 									<br>
 									<hr>
 									<br>
-									
+
 							<label class='labelintere'>Selecione quais são as <b>áreas de interesses</b> do seu evento.</label>
 							<center>
 							<div class='interesses'>
@@ -275,7 +275,7 @@
 	include 'connection.php';
 	$conn = conexao();
     if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
-		
+
 		$erro = null;
 		$coderro = null;
 		$valido = false;
@@ -288,13 +288,13 @@
 			$erro = "escolha um banner";
 			$coderro = 2;
 		}
-		
-		
+
+
 		elseif(strlen(utf8_decode($_POST["dateinic"])) <10 || strlen(utf8_decode($_POST["dateinic"])) > 10) {
 			$erro = " selecione uma data de inicio do evento.";
 			$coderro = 3;
 		}
-		
+
 		elseif(strlen(utf8_decode($_POST["datefinal"])) < 10 || strlen(utf8_decode($_POST["datefinal"])) > 10){
 			$erro = "selecione uma data de termino do eventto.";
 			$coderro = 4;
@@ -319,7 +319,7 @@
 			$coderro = 8;
 		}
 
-		
+
 		elseif(strlen(utf8_decode($_POST["endereco"])) < 5 || strlen(utf8_decode($_POST["endereco"])) > 100){
 			$erro = " digite um endereço valido(Minimo 5 caracateres)";
 			$coderro = 9;
@@ -344,37 +344,37 @@
 			$erro = "Digite uma descrição válida (Minimo de 1 caractere)";
 			$coderro = 14;
 		}
-		
+
 		else{
-			
-			
+
+
 			$ext = strtolower(substr($_FILES['arquivo']['name'], -4));
 			$novo_nome = md5(time()).$ext;
 			$dir = "upload/";
 			move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
-			
+
 			$valido = true;
 			}
-			
-			
+
+
 		}
-		
+
 		if(isset($valido) && $valido == true){
-			
+
 			//Verificar se o Evento já está cadastro no banco de dados
 			//$result = $conn->prepare("select * from usuario where email_usuario = '{$email}'");
 			//$result->execute();
-		
+
 			//if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
 			//header('Location: login.php'); //Direciona o usuário para a página de login
 			//}
 			//else{
-			
+
 			$sql = "INSERT INTO evento
-			(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento, CNPJ)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento, preco_evento, CNPJ)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			$stmt = $conn->prepare($sql);
-			
+
 			//Atrelando os dados às tabelas
 			$stmt->bindValue(1, $_POST["nome"]);
 			$stmt->bindValue(2, $novo_nome);
@@ -389,8 +389,9 @@
 			$stmt->bindValue(11,$_POST["cep"]);
 			$stmt->bindValue(12,1);
 			$stmt->bindValue(13,$_POST["desc"]);
-			$stmt->bindValue(14,$_SESSION["instituicao"][3]);
-		  
+			$stmt->bindValue(14,$_POST["preco"]);
+			$stmt->bindValue(15,$_SESSION["instituicao"][3]);
+
 			$stmt->execute();
 
 			if($stmt->errorCode() != "00000"){
@@ -399,7 +400,7 @@
 				echo $erro;
 			} //Exibir erro de comunicação com o banco de dados
 			else{
-			  
+
 				$cod_evento1="select max(cod_evento) from evento where CNPJ = '{$_SESSION['instituicao'][3]}'";
 				$stmt = $conn->prepare($cod_evento1);
 				$cod_evento = $stmt->execute();
@@ -460,13 +461,13 @@
 					$interesse[$i] = null;
 				  }
 				}
-				
+
 				$stmt=$conn->prepare($sql);
-				
+
 				//criando a quantidade de atrelamentos de acordo com a quantidade de interesses selecionados
 				for($i=0;$i<$count-1;$i++){
 					$stmt->bindValue($i+1, $interesse[$i]);
-					
+
 				}
 				$stmt->execute();
 			}
@@ -517,5 +518,5 @@
 				}
 			}
 		}
-	
+
 ?>
