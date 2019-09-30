@@ -1,7 +1,7 @@
 .cadastrar{
 	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 	width: 30vh;
-	margin: 0 2vh 2vh 2vh;
+	margin: 0 2vh 1vh 2vh;
 	border-radius: 20vh;
 	border: none;
 	color: white;
@@ -13,7 +13,7 @@
 .cadastraralt{
 	background: transparent;
 	width: 30vh;
-	margin: 2vh;
+	margin: 1vh;
 	border-radius: 20vh;
 	border: 0.5vh solid white;
 	color: white;
@@ -27,8 +27,19 @@
 		display: none;
 }
 
+/*Estilos para a página index*/
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
+
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 1.3vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
 
 	.account{
 		font-size: 1.3vw;
@@ -51,26 +62,34 @@
 		font-size: 2vw;
 	}
 
-	.exit{
-		color: #822828;
-    text-decoration: none !important;
+	.criaricon{
+		font-size: 0vw;
 	}
 
-	.exit:hover{
-		color: #912d2d;
-	}
-
-	.excluircad i {
-		font-size: 3vh !important;
-		color: red;
+	.cadastrarevent{
+		background: transparent;
+		width: 12vw !important;
+		border-radius: 20vh;
+		border: 0.5vh solid white;
+		color: white;
+		font-size: 1vw !important;
+		font-weight: 400;
+		height: 6vh !important;
+		position: fixed;
+		right: 10vw !important;
 	}
 
 	.b1, .b2, .b3, .b4, .b5{
 		font-size: 3vh;
 	}
 
+	.b2{
+		border-right: 0.5vh solid;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
+	}
+
 	.icons{
-		position: absolute;
+		position: fixed;
 		left: 0.5vh;
 		top: 10vh;
 		font-size: 2vh;
@@ -110,14 +129,14 @@
 
 	.userbtn{
 		right: 3vh;
-		position: absolute !important;
+		position: fixed !important;
 		z-index: 6;
 		top: 2.5vh;
 	}
 
 	.userbtn i{
-    font-size: 4.8vh;
-  }
+		font-size: 4.8vh;
+	}
 
 	hr{
 		background-color: #6f6f6f;
@@ -136,40 +155,39 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.5);
 		top: 9vh;
 		right: 3vh;
-		height: 50vh;
+		height: 50;
 		width: 30vh;
-		padding: 1vh 3vh 1vh 3vh;
+		padding: 0 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
 	}
 
 	.labelchec:hover{
-		text-shadow: 0px 0px 1.5vh white;
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
 	}
 
 	.menubtn{
-		position: absolute;
+    position: absolute;
 		left: 3vh;
 		cursor: pointer;
-		z-index: 6;
 		top: 2.5vh;
 	}
 
 	.menubtn i{
-    font-size: 4.8vh;
-  }
+		font-size: 4.8vh;
+	}
 
 	.menulist{
 		display: grid;
 		grid-template-rows: 8vh 8vh 8vh 8vh 8vh;
 		grid-template-areas: "b1" "b2" "b3" "b4" "b5";
-		padding-top: 27% !important;
+		padding-top: 26%;
 		padding-left: 28%;
 	}
 
@@ -189,7 +207,8 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.6);
+		top: 0;
+		background-color: #0d0e0f;
 		width: 45vh;
 		height: 100vh;
 		left: -35vh;
@@ -198,36 +217,88 @@
 		float: left;
 		text-align: left;
 		font-size: 20px;
-		position: absolute;
+		position: fixed;
 		z-index: 5;
 	}
 
-	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
+	.elem1{
+		padding: 11vh 5vh 0 15vh !important;
+    text-align: left;
+	}
+
+	.searchinfo:hover {
+    background-color: #0f1112;
+  }
+
+	.searchinfo:hover .imagemres{
+		opacity: 0.7;
+  }
+
+	.searchinfo:hover .nomeres{
+		font-size: 1.89vw;
+  }
+
+  .banner{
+    width: 100%;
+    height: 100%;
+		border-radius: 2vw 2vw 0 0;
+		object-fit: cover;
+  }
+
+  .info1{
+		display: block;
 		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
-	}
-	.statsdiv i{
-		margin: 2vh;
-		font-size: 10vh;
+    text-align: left;
+    padding: 1vw 1vw 1vw 1vw;
+    font-size: 1.85vw;
+  }
+
+  .infocontainer{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25vw 25%;
+    grid-template-areas: "banner" "info1";
+    width: 100%;
+    height: 100vh;
+    background-color: #0d0e0f;
+    border-radius: 2vw;
+    margin-top: 1vw;
+  }
+
+  .nome{
+    text-align: left;
+    font-size: 2vw;
+  }
+
+	h1{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		max-width: 100%;
 	}
 
-	.username{
-		font-size: 8vh;
-		margin: 2vh 18vh 2vh 18vh;
+  .descres{
+    font-size: 1.2vw;
+		padding: 0.5vw 0 0 0;
+		white-space: normal;
+  }
+
+	.enderes{
+		padding: 1vw 0 0 0;
+		opacity: 0.7;
 	}
 
-	.useremail{
-		font-size: 3vh;
+  .precores{
+    padding: 1vw 1vw 1vw 1vw;
+    text-align: left;
+    font-size: 1.5vw;
+  }
+
+	.slogan{
+		font-size: 3.5vh;
+		margin: 0vh 5vh 3vh 5vh;
 	}
+
 	.menutext{
 		font-size: 0vh;
 	}
@@ -248,33 +319,33 @@
 		grid-template-areas: "menudiv pesquisarbtn userdiv";
 	}
 
-	.background{
+	.bgindex{
 		background: url(../images/indeximg.png) no-repeat;
 		background-size: cover;
 		background-position: center;
+    background-attachment: fixed;
 		height: 100vh;
 	}
 
 	.logoeheader{
 		width: 15vh;
 		height: 5vh;
-		position: absolute;
+		position: fixed;
 		left: 15vh;
-		z-index: 11;
+		z-index: 7;
 		top: 2.5vh;
 		background: url(../images/logohorizontal.png) center center/15vh no-repeat;
 		font-size: 0 !important;
-    cursor: pointer;
 	}
 
 	.cabecalhoindex{
+    position: fixed;
+    z-index: 10;
 		width: 100%;
 		height: 3vh !important;
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
-		z-index: 6;
 	}
 
 	.pesquisarbtn{
@@ -306,7 +377,7 @@
 	}
 
 	.search:hover{
-		box-shadow: 0px 0px 50px rgba(0,0,0, 0.8);
+		box-shadow: 0px 0px 30px rgba(0,0,0, 0.5);
 	}
 
 	.divsearch{
@@ -335,6 +406,16 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 4vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
+	}
+
 	.account{
 		font-size: 3vh;
 		color: white;
@@ -356,26 +437,26 @@
 		font-size: 7vw;
 	}
 
-	.excluircad{
-		font-size: 2vh;
+	.criaricon{
+		font-size: 6vw;
+		right: 15vw !important;
+		position: fixed;
 	}
 
-	.exit{
-		color: #822828;
-		text-decoration: none !important;
-	}
-
-	.exit:hover{
-		color: #912d2d;
-	}
-
-	.excluircad i {
-		font-size: 2vh !important;
-		color: red;
+	.cadastrarevent{
+		font-size: 0;
+		width: 0;
+		height: 0;
+		display: none;
 	}
 
 	.b1, .b2, .b3, .b4, .b5{
 		font-size: 2.3vh;
+	}
+
+	.b1{
+		border-right: 0.5vh solid;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
 	}
 
 	.icons{
@@ -416,11 +497,11 @@
 		right: 3vh;
 		position: absolute !important;
 		z-index: 6;
-		top: 2.5vh;
+		top: 3vh;
 	}
 
 	.userbtn i{
-		font-size: 4.8vh;
+		font-size: 3.5vh;
 	}
 
 	hr{
@@ -444,18 +525,14 @@
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.9);
-		font-size: 3vh;
 		top: 9vh;
 		right: 3vh;
-		height: 0;
+		height: 60vh;
 		width: 30vh;
-		padding: 7vh 3vh 1vh 3vh;
+		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
-	}
-
-	.labelchec:hover{
-		text-shadow: 0px 0px 1.5vh white;
+		font-size: 2vh;
 	}
 
 	.menubtn{
@@ -484,7 +561,6 @@
 
 	#dropcheck:checked ~ .dropdown{
 		display: block;
-		height: 60vh;
 	}
 
 	.icon{
@@ -495,7 +571,8 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.8);
+		top: 0;
+		background-color: #0d0e0f;
 		width: 30vh;
 		height: 100vh;
 		left: -23vh;
@@ -508,33 +585,20 @@
 		z-index: 5;
 	}
 
-	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
-	}
-
-	.statsdiv i{
-		margin: 2vh;
-		font-size: 10vh;
-	}
-
-	.username{
-		font-size: 5vh;
-		margin: 2vh 10vh 2vh 10vh;
-	}
-
-	.useremail{
+	.descricao{
 		font-size: 2vh;
+		margin: 0 8vh 0 8vh;
 	}
+
+	.elem1{
+		padding-top: 11vh !important;
+	}
+
+	.slogan{
+		font-size: 2vh;
+		margin: 0vh 10vh 3vh 10vh;
+	}
+
 	.menutext{
 		font-size: 0vh;
 	}
@@ -555,7 +619,7 @@
 		grid-template-areas: "menudiv pesquisarbtn userdiv";
 	}
 
-	.background{
+	.bgindex{
 		background: url(../images/indeximg.png) no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -563,15 +627,7 @@
 	}
 
 	.logoeheader{
-		width: 7vh;
-		height: 5vh;
-		position: absolute;
-		left: 12%;
-		z-index: 7;
-		top: 2.5vh;
-		background: url(../images/logo.png) center center/5vh no-repeat;
-		font-size: 0 !important;
-    cursor: pointer;
+		display: none;
 	}
 
 	.cabecalhoindex{
@@ -608,12 +664,8 @@
 		background-color: rgba(0, 0, 0, 0.6);
 		width: 50vw;
 		border-radius: 25vw 25vw 25vw 25vw;
-		height: 6vh;
+		height: 5vh;
 		transition: box-shadow 1s;
-	}
-
-	.search:hover{
-		box-shadow: 0px 0px 50px rgba(0,0,0, 0.8);
 	}
 
 	.divsearch{
@@ -628,7 +680,7 @@
 	}
 
 	.searchbar{
-		width: 90%;
+		width: 80%;
 		height: 100%;
 		font-size: 2.2vh;
 		background-color: transparent;
@@ -639,13 +691,22 @@
 		display: none;
 	}
 
-	}
-
+}
 /* CSS para celulares grandes*/
-@media screen and (max-width: 699px) {
+@media only screen and (max-width: 699px) and (orientation: portrait) {
 
 	#iconenviar{
-			display: none;
+		display: none;
+	}
+
+	.exit{
+		color: #822828;
+		text-decoration: none !important;
+		font-size: 4vw;
+	}
+
+	.exit:hover{
+		color: #912d2d;
 	}
 
 	.account{
@@ -661,7 +722,7 @@
 		margin-top: 7vw;
 		padding-top: 6vh;
 		background: url(../images/circle.png) center center/20vw no-repeat;
-    width: 20vh;
+    width: 15vh;
     height: 18vh;
     vertical-align: middle;
     color: black;
@@ -669,331 +730,309 @@
 		font-size: 7vw;
 	}
 
-	.excluircad{
-		font-size: 2vh;
-	}
-
-	.exit{
-		color: #822828;
-		text-decoration: none !important;
-	}
-
-	.exit:hover{
-		color: #912d2d;
-	}
-
-	.excluircad i {
-		font-size: 2vh !important;
-		color: red;
-	}
-
-	.b1, .b2, .b3, .b4, .b5{
-		font-size: 2.3vh;
-		line-height: 250%;
-		padding-left: 8vh;
-	}
-.icons{
-		position: absolute;
-		left: 0vh;
-		top: 10vh;
-		font-size: 1.5vh;
-		line-height: 10px;
-		z-index: 7;
-		opacity: 0;
-		-webkit-transition: opacity 0.1s linear 0.2s;
-		transition: opacity 0.1s linear 0.2s;
-	}
-
-	.icons i{
-		margin: 1.5vh;
-		-webkit-transition: color 0.5s;
-		transition: color 0.5s;
-		-webkit-transition: color 0.5s;
-		transition: color 0.5s;
-	}
-
-	.icons hr{
-		width: 50%;
-	}
-
-	li{
-		font-size: 3vh;
-		width: 100%;
-		line-height: 10vh;
-		height: 2vh;
-	}
-
-	input{
-		background-color: #202124;
-		border-radius: 25px;
-		border: none;
-	}
-
-	.userbtn{
-		right: 3vh;
-		position: absolute !important;
-		z-index: 6;
-		top: 2.3vh;
-	}
-
-	.userbtn i{
-		font-size: 3.5vh;
-	}
-
-	hr{
-		background-color: #6f6f6f;
-		width: 73%;
-		border-top: 0.3vh solid #6f6f6f !important;
-	}
-
-	.labelchec{
-		cursor: pointer;
-		transition: box-shadow 1s;
-	}
-
-	.dropcheck{
-		cursor: pointer;
-	}
-
-	.dropdown{
-		display: none;
-		position: absolute !important;
-		float: right;
-		text-align: center;
-		background-color: rgba(0, 0, 0, 1);
-		font-size: 3vh;
-		right: 0vh;
-		height: 100vh;
-		width: 25vh;
-		padding: 7vh 3vh 1vh 3vh;
-		border-radius: 5vh 0 5vh 5vh;
-		z-index: 9;
-	}
-
-	.labelchec:hover{
-		text-shadow: 0px 0px 1.5vh white;
-	}
-
-	.menubtn{
-		position: absolute;
-		left: 2vh;
-		cursor: pointer;
-		z-index: 7;
-		top: 2.3vh;
-	}
-
-	.menubtn i{
-		font-size: 3.5vh;
-	}
-
-	.menulist{
-		display: grid;
-		grid-template-rows: 5.9vh 5.9vh 5.9vh 5.9vh 5.9vh;
-		grid-template-areas: "b1" "b2" "b3" "b4" "b5";
-		padding-top: 35%;
-	}
-
-	#chec:checked ~ nav{
-		left: 0;
-	}
-
-	#chec:checked ~ nav .backdiv{
-		opacity: 0.9;
-	}
-
-	#chec:checked ~ .icons{
-		opacity: 1;
-	}
-
-	#dropcheck:checked ~ .dropdown{
-		display: block;
-	}
-
-	#searchcheck:checked ~ .search{
-		width: 55vw;
-	}
-
-	#searchcheck:checked ~ .searchlabel{
-		right: 26vw;
-	}
-
-	#searchcheck:checked ~ .search .searchbar{
-		width: 90%;
-		height: 100%;
-	}
-
-	.icon{
+	.criaricon{
+		top: 1.7vh;
+		font-size: 6.1vw;
+		right: 15vw !important;
 		position: fixed;
-		text-align: left;
-		width: 5%;
-		margin: 0;
 	}
 
-	.backdiv{
-		position: absolute;
-		float: left;
-		top: 0;
-		width: 100vw !important;
-		margin: 0;
-		height: 100vh;
-		background-color: black;
-		opacity: 0;
-		transition: opacity 0.3s ease 1s;
-		-webkit-transition: opacity 0.3s ease 1s;
-		z-index: -1;
-	}
-
-	nav{
-		background-color: rgba(4,5,7, 0.98);
-		width: 30vh;
-		height: 100vh;
-		left: -70vh;
-		transition: left 1s ease;
-		-webkit-transition: left 1s ease;
-		float: left;
-		text-align: left;
-		font-size: 20px;
-		position: absolute;
-		z-index: 6;
-	}
-
-	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
-	}
-
-	.statsdiv i{
-		margin: 2vh;
-		font-size: 10vh;
-	}
-
-	.username{
-		font-size: 5vh;
-		margin: 2vh 10vh 2vh 10vh;
-	}
-
-	.useremail{
-		font-size: 2vh;
-	}
-	.menutext{
-		font-size: 0vh;
-	}
-
-	.contatext{
-		font-size: 0vh;
-	}
-
-	.btindex{
-		width: 50vh;
-		height: 15vh;
-		margin-top: 6vh;
-	}
-
-	#grid{
-		display: grid;
-		grid-template-columns: 15vw 70vw 15vw;
-		grid-template-areas: "menudiv pesquisarbtn userdiv";
-	}
-
-.search{
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 0vw;
-		border-radius: 25vw 25vw 25vw 25vw;
-		height: 4vh;
-		transition: width 1s;
-	}
-.search i{
-		display: none;
-	}
-.searchbar{
-		width: 0;
-		height: 0;
-		font-size: 2vh;
-		background-color: transparent;
-		text-align: left;
-	}
-
-	.background{
-		background: url(../images/indeximg.png) no-repeat;
-		background-size: cover;
-		background-position: center;
-		height: 100vh;
-	}
-
-	.logoeheader{
-		display: none;
-	}
-
-	.cabecalhoindex{
-		width: 100%;
-		height: 3vh !important;
-		padding: 2vh 0 2vh 0;
-		font-weight: bold;
-		background-color: transparent;
-		position: absolute;
-		z-index: 10;
-	}
-
-	.pesquisarbtn{
-		font-weight: 700 !important;
-		letter-spacing: 2px;
-		font-size: 15px;
-		width: 100%;
-		height: 100%;
-	}
-
-	.fas{
-		color: white;
-	}
-
-	.userdiv{
-		height: 100%;
-	}
-
-	.menudiv{
-		height: 100%;
-	}
-
-	.searchlabel{
-		position: absolute;
-		top: 2.3vh;
-		right: 50%;
-		transition: right 1s;
-	}
-
-.searchbar{
-		width: 0;
-		height: 0;
-		font-size: 2vh;
-		background-color: transparent;
-		text-align: left;
-	}
-
-	.divsearch{
-
-	}
-
-	.logoindex{
-		width: 25vh;
-		height: 43vh;
-		background: url(../images/logocomescrito.png) center center/100% no-repeat;
+	.cadastrarevent{
+		position: fixed;
+		top: 0vh;
 		font-size: 0;
-	}
-
-.searchbar{
 		width: 0;
 		height: 0;
-		font-size: 2vh;
-		background-color: transparent;
-		text-align: left;
+		display: none;
 	}
-	}
+
+		.b1, .b2, .b3, .b4, .b5{
+			font-size: 2.3vh;
+			line-height: 250%;
+			padding-left: 8vh;
+		}
+
+		.b1{
+	    background-color: #202125;
+		}
+
+		.icons{
+	    position: fixed;
+	    left: 0vh;
+	    top: 10vh;
+	    font-size: 1.5vh;
+	    line-height: 10px;
+			display: none;
+	    opacity: 0;
+			z-index: 7;
+	    -webkit-transition: opacity 0.1s linear 1s;
+	    transition: opacity 0.1s linear 0.2s;
+	  }
+
+		.icons i{
+			margin: 1.5vh;
+			-webkit-transition: color 0.5s;
+			transition: color 0.5s;
+			-webkit-transition: color 0.5s;
+			transition: color 0.5s;
+		}
+
+		.icons hr{
+			width: 50%;
+		}
+
+		li{
+			font-size: 3vh;
+			width: 100%;
+			line-height: 10vh;
+			height: 2vh;
+		}
+
+		input{
+			background-color: #202124;
+			border-radius: 25px;
+			border: none;
+		}
+
+		.userbtn{
+			right: 3vh;
+			position: absolute !important;
+			z-index: 6;
+			top: 2.3vh;
+		}
+
+		.userbtn i{
+			font-size: 3.5vh;
+		}
+
+		hr{
+			background-color: #6f6f6f;
+			width: 73%;
+			border-top: 0.3vh solid #6f6f6f !important;
+		}
+
+		.labelchec{
+			cursor: pointer;
+			transition: box-shadow 1s;
+		}
+
+		.dropcheck{
+			cursor: pointer;
+		}
+
+		.nome{
+			text-align: center;
+			font-size: 6vh;
+		}
+
+		.dropdown{
+	    display: none;
+	    position: fixed !important;
+	    float: right;
+	    text-align: left;
+	    background-color: #18191b;
+	    top: 0;
+	    right: 0;
+	    height: 100vh;
+	    width: 40vw;
+	    padding: 1vh 3vh 1vh 3vh;
+	    z-index: 9;
+	    font-size: 6vw;
+	  }
+
+		.menubtn{
+			position: absolute;
+			left: 2vh;
+			cursor: pointer;
+			z-index: 7;
+			top: 2.3vh;
+		}
+
+		.menubtn i{
+			font-size: 3.5vh;
+		}
+
+		.menulist{
+			display: grid;
+			grid-template-rows: 5.9vh 5.9vh 5.9vh 5.9vh 5.9vh;
+			grid-template-areas: "b1" "b2" "b3" "b4" "b5";
+			padding-top: 35%;
+		}
+
+		#chec:checked ~ nav{
+	    left: 0;
+	  }
+
+	  #chec:checked ~ .backdiv{
+	    opacity: 0.3;
+			z-index: 7;
+	  }
+
+	  #chec:checked ~ .icons{
+	    opacity: 1;
+			display: block;
+	  }
+
+		#dropcheck:checked ~ .dropdown{
+			display: block;
+		}
+
+		#searchcheck:checked ~ .search{
+			width: 55vw;
+		}
+
+		#searchcheck:checked ~ .searchlabel{
+			right: 26vw;
+		}
+
+		#searchcheck:checked ~ .search .searchbar{
+			width: 90%;
+			height: 100%;
+		}
+
+		.icon{
+			position: fixed;
+			text-align: left;
+			width: 5%;
+			margin: 0;
+		}
+
+		.backdiv{
+	    position: fixed;
+	    float: left;
+	    top: 0;
+	    left: -70;
+	    background-color: black;
+	    width: 100vw !important;
+	    margin: 0;
+	    height: 100vh;
+	    opacity: 0;
+	    transition: opacity 0.3s ease 0.3s;
+	    -webkit-transition: opacity 0.3s ease 0.3s;
+	    z-index: -10;
+	  }
+
+		nav{
+	    top: 0;
+	    background-color: #18191b;
+	    width: 30vh;
+	    height: 100vh;
+	    left: -70vh;
+	    transition: left 1s ease;
+	    -webkit-transition: left 1s ease;
+	    float: left;
+	    text-align: left;
+	    font-size: 20px;
+	    position: fixed;
+	    z-index: 6;
+	  }
+
+		.descricao{
+			font-size: 2vh;
+			margin: 0 8vh 0 8vh;
+		}
+
+		.elem1{
+			padding-top: 11vh !important;
+		}
+
+		.slogan{
+			font-size: 2vh;
+			margin: 0vh 10vh 3vh 10vh;
+		}
+
+		.menutext{
+			font-size: 0vh;
+		}
+
+		.contatext{
+			font-size: 0vh;
+		}
+
+		.btindex{
+			width: 40vh;
+			height: 15vh;
+			margin-top: 6vh;
+		}
+
+		#grid{
+			display: grid;
+			grid-template-columns: 15vw 70vw 15vw;
+			grid-template-areas: "menudiv pesquisarbtn userdiv";
+		}
+
+		.bgindex{
+			background: url(../images/indeximg.png) no-repeat;
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+		}
+
+		.logoeheader{
+			display: none;
+		}
+
+		.cabecalhoindex{
+			width: 100%;
+			height: 3vh !important;
+			padding: 2vh 0 2vh 0;
+			font-weight: bold;
+			background-color: transparent;
+			position: absolute;
+			z-index: 10;
+		}
+
+		.pesquisarbtn{
+			font-weight: 700 !important;
+			letter-spacing: 2px;
+			font-size: 15px;
+			width: 100%;
+			height: 100%;
+		}
+
+		.searchlabel{
+			position: absolute;
+			top: 2.3vh;
+			right: 50%;
+			transition: right 1s;
+		}
+
+		.userdiv{
+			height: 100%;
+		}
+
+		.menudiv{
+			height: 100%;
+		}
+
+		.search{
+			background-color: rgba(0, 0, 0, 0.6);
+			width: 0vw;
+			border-radius: 25vw 25vw 25vw 25vw;
+			height: 4vh;
+			transition: width 1s;
+		}
+
+		.search i{
+			display: none;
+		}
+
+		.divsearch{
+
+		}
+
+		.logoindex{
+			width: 25vh;
+			height: 43vh;
+			background: url(../images/logocomescrito.png) center center/100% no-repeat;
+			font-size: 0;
+		}
+
+		.searchbar{
+			width: 0;
+			height: 0;
+			font-size: 2vh;
+			background-color: transparent;
+			text-align: left;
+		}
+}
