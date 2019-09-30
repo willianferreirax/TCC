@@ -6,6 +6,14 @@
     header('location:login.php');
     exit();
   }
+  else{
+    $conn = conexao();
+    $select = "select * from evento where CNPJ = {$_SESSION['instituicao'][3]}";
+    $res = $conn->prepare($select);//preparando query
+    $res->execute();//executando
+    $result = $res->fetchAll();
+  }
+  
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -66,7 +74,27 @@
       <br>
       <br>
       <a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
-      </div>
+      <?php
+      $n=0;
+        foreach ($result as $row) {
+          $imagem ='upload/'.$row['banner_evento'];
+          echo "
+          <div class='card'>
+            <img src='$imagem' alt='$row[nome_evento]' style='width:300px; height:300px'>
+            <div class='container'>
+              <h4><b>'$row[nome_evento]'</b></h4>
+              <p>texto</p>
+              <a href='deletar_evento.php?id_eve=$row[cod_evento]'>Excluir evento</a>
+              <a href='alterar_evento.php?id_eve=$row[cod_evento]'>Alterar evento</a>
+            </div>
+          </div> 
+          ";
+        $n++;
+        }
+
+      ?>
+    
+    </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 

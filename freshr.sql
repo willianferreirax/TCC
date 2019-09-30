@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `freshr`
 --
-
+create database freshr;
+use freshr;
 -- --------------------------------------------------------
 
 --
@@ -31,7 +32,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `evento` (
   `cod_evento` int(11) NOT NULL,
   `nome_evento` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `banner_evento` varchar(30) DEFAULT NULL,
+  `banner_evento` varchar(250) DEFAULT NULL,
   `data_inicio` varchar(30) DEFAULT NULL,
   `data_termino` varchar(30) DEFAULT NULL,
   `hora_inicio` time DEFAULT NULL,
