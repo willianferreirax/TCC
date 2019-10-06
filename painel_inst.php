@@ -128,7 +128,7 @@
   				if(isset($_SESSION['instituicao'])){
   					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
   					</div></label>";
-  					echo "<div class='criaricon'><a href='cad_event.php'><i class='fas fa-plus'></i></a>
+  					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
   					</div></label>";
   				}
   				 ?>
