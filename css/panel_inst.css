@@ -30,6 +30,123 @@
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.semevento{
+		font-size: 2vw;
+		margin: 8vw 0 8vw 0;
+	}
+
+	.title{
+		font-size: 3vw;
+		margin: 8vw 18vh 2vh 18vh;
+	}
+
+	.dataevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 28vw;
+		right: 4.5vw;
+		z-index: 20;
+		font-size: 1.7vw;
+	}
+
+	.alterarevebtn{
+		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+		width: 25vw;
+		margin: 0 1vw 1vw 1vw;
+		border-radius: 20vw;
+		border: none;
+		color: white;
+		font-size: 1.3vw;
+		font-weight: 400;
+		height: 3vw;
+	}
+
+	.excluirevebtn{
+		background: transparent;
+		width: 25vw;
+		margin: 1vw;
+		border-radius: 20vw;
+		border: 0.5vh solid black;
+		color: black;
+		font-size: 1.3vw;
+		font-weight: 400;
+		height: 3vw;
+
+	}
+
+	.descevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 10vw;
+		text-indent: 3vw;
+		padding-right: 1vw;
+		text-align: justify;
+		z-index: 20;
+		font-size: 1.7vw;
+	}
+
+	.eventonome{
+		color: black !important;
+		font-weight: 700;
+		position: absolute;
+		top: 1vw;
+		right: 1vw;
+		z-index: 20;
+		font-size: 2.8vw;
+	}
+
+	.deletevent{
+			color: black;
+			position: absolute;
+			top: 33vw;
+			right: 1vw;
+			z-index: 20;
+			font-size: 2vw;
+	}
+
+	.changeevent{
+		color: black;
+		position: absolute;
+		top: 30.5vw;
+		right: 1vw;
+		z-index: 20;
+		font-size: 1.9vw;
+	}
+
+	.banner{
+		width: 57vw;
+		height: 37vw;
+		border-radius: 1.8vw !important;
+	}
+
+	.imagebanner{
+		width: 8vw;
+		height: 7vw;
+		margin: 1vh 0 1vh 1vh;
+		float: left !important;
+	}
+
+	.container{
+		position: absolute;
+		right: 0vw;
+		width: 29.5vw !important;
+		height: 38vw !important;
+		border-radius: 2vw !important;
+	}
+
+	.card{
+		display: grid;
+		grid-template-rows: 1vw;
+		grid-template-areas: "imagebanner container";
+
+		border-radius: 2vw !important;
+		height: 38vw;
+		width: 87vw;
+		margin-bottom: 5vw;
+	}
+
 	.account{
 		font-size: 1.3vw;
 		color: white;
@@ -206,7 +323,7 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.6);
+		background-color: #0d0e0f;
 		width: 45vh;
 		height: 100vh;
 		left: -35vh;
@@ -216,23 +333,16 @@
 		text-align: left;
 		font-size: 20px;
 		position: fixed !important;
+		top: 0;
 		z-index: 5;
 	}
 
 	.statsdiv{
-		text-align: center;
 		background-color: #18191b !important;
-		border-radius: 5vw 5vw 0 0;
-		margin-top: 17vh;
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 12vw;
+		padding-top: 7vw;
+    margin-left: 10vh;
 	}
 	.statsdiv i{
 		margin: 2vh;
@@ -240,7 +350,7 @@
 	}
 
 	.username{
-		font-size: 8vh;
+		font-size: 4.5vw;
 		margin: 2vh 18vh 2vh 18vh;
 	}
 
@@ -262,10 +372,10 @@
 	}
 
 	#grid{
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20vh, 60vh, 20vh));
-		grid-template-areas: "menudiv pesquisarbtn userdiv";
-	}
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vh, 60vh, 20vh));
+    grid-template-areas: "menudiv pesquisarbtn userdiv";
+  }
 
 	.background{
 		background: url(../images/indeximg.png) no-repeat;
@@ -287,22 +397,23 @@
 	}
 
 	.cabecalhoindex{
+		top: 0;
 		width: 100%;
 		height: 3vh !important;
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
+		position: fixed !important;
 		z-index: 10;
 	}
 
 	.pesquisarbtn{
-		font-weight: 700 !important;
-		letter-spacing: 2px;
-		font-size: 15px;
-		width: 100%;
-		height: 100%;
-	}
+    font-weight: 700 !important;
+    letter-spacing: 2px;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+  }
 
 	.fas{
 		color: white;
@@ -352,6 +463,124 @@
 	}
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+
+	.semevento{
+		font-size: 8vw;
+		text-align: center;
+		margin: 15vw 2vw 18vw 2vw;
+	}
+
+	.title{
+		font-size: 8vw;
+		margin: 12vw 15vh 2vh 15vh;
+	}
+
+	.dataevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 43vw;
+		right: 3.5vw;
+		z-index: 20;
+		font-size: 1.7vw;
+	}
+
+	.alterarevebtn{
+		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+		width: 25vw;
+		margin: 0 1vw 1vw 1vw;
+		border-radius: 20vw;
+		border: none;
+		color: white;
+		font-size: 2vw;
+		font-weight: 400;
+		height: 4vw;
+	}
+
+	.excluirevebtn{
+		background: transparent;
+		width: 25vw;
+		margin: 1vw;
+		border-radius: 20vw;
+		border: 0.5vh solid black;
+		color: black;
+		font-size: 2vw;
+		font-weight: 400;
+		height: 4vw;
+
+	}
+
+	.descevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 10vw;
+		text-indent: 3vw;
+		padding-right: 1vw;
+		text-align: justify;
+		z-index: 20;
+		font-size: 2.2vw;
+	}
+
+	.eventonome{
+		color: black !important;
+		font-weight: 700;
+		position: absolute;
+		top: 1vw;
+		right: 0.1vw;
+		z-index: 20;
+		font-size: 2.8vw;
+	}
+
+	.deletevent{
+			color: black;
+			position: absolute;
+			top: 51.4vw;
+			right: 1vw;
+			z-index: 20;
+			font-size: 2vw;
+	}
+
+	.changeevent{
+		color: black;
+		position: absolute;
+		top: 48vw;
+		right: 1vw;
+		z-index: 20;
+		font-size: 1.9vw;
+	}
+
+	.banner{
+		width: 57vw;
+		height: 55vw;
+		border-radius: 1.8vw !important;
+	}
+
+	.imagebanner{
+		width: 8vw;
+		height: 9vw;
+		margin: 1vh 0 1vh 1vh;
+		float: left !important;
+	}
+
+	.container{
+		position: absolute;
+		right: 0vw;
+		width: 29.5vw !important;
+		height: 38vw !important;
+		border-radius: 2vw !important;
+	}
+
+	.card{
+		display: grid;
+		grid-template-rows: 1vw;
+		grid-template-areas: "imagebanner container";
+
+		border-radius: 2vw !important;
+		height: 57.9vw;
+		width: 87vw;
+		margin-bottom: 5vw;
+	}
 
 	.exit{
 		color: #822828;
@@ -420,7 +649,7 @@
 	}
 
 	.icons{
-		position: absolute;
+		position: fixed;
 		left: 0vh;
 		top: 10vh;
 		font-size: 1.5vh;
@@ -481,7 +710,7 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.9);
@@ -500,7 +729,7 @@
 	}
 
 	.menubtn{
-		position: absolute;
+		position: fixed;
 		left: 2vh;
 		cursor: pointer;
 		z-index: 6;
@@ -536,31 +765,25 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.8);
-		width: 30vh;
-		height: 100vh;
-		left: -23vh;
-		transition: left 0.2s;
-		-webkit-transition: left 0.2s;
-		float: left;
-		text-align: left;
-		font-size: 20px;
-		position: absolute;
-		z-index: 5;
-	}
+		background-color: #0d0e0f;
+		top: 0;
+    width: 30vh;
+    height: 100vh;
+    left: -23vh;
+    transition: left 0.2s;
+    -webkit-transition: left 0.2s;
+    float: left;
+    text-align: left;
+    font-size: 20px;
+    position: fixed;
+    z-index: 5;
+  }
 
 	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
+		background-color: #18191b !important;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 17vh;
+    margin-left: 6.8vh;
 	}
 
 	.statsdiv i{
@@ -569,8 +792,8 @@
 	}
 
 	.username{
-		font-size: 5vh;
-		margin: 2vh 10vh 2vh 10vh;
+		font-size: 8vw;
+		margin: 2vh 5vh 2vh 5vh;
 	}
 
 	.useremail{
@@ -606,7 +829,7 @@
 	.logoeheader{
 		width: 7vh;
 		height: 5vh;
-		position: absolute;
+		position: fixed;
 		left: 12%;
 		z-index: 11;
 		top: 2.5vh;
@@ -616,22 +839,24 @@
 	}
 
 	.cabecalhoindex{
+		top: 0;
 		width: 100%;
 		height: 3vh !important;
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
+		position: fixed !important;
 		z-index: 10;
 	}
 
-	.pesquisarbtn{
-		font-weight: 700 !important;
-		letter-spacing: 2px;
-		font-size: 15px;
-		width: 100%;
-		height: 100%;
-	}
+  .pesquisarbtn{
+    font-weight: 700 !important;
+    letter-spacing: 2px;
+    font-size: 15px;
+		top: 0;
+    width: 100%;
+    height: 100%;
+  }
 
 	.fas{
 		color: white;
@@ -683,6 +908,123 @@
 	}
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
+
+	.semevento{
+		font-size: 10vw;
+		margin: 12vw 5vw 12vw 5vw;
+	}
+
+	.title{
+		font-size: 8vw;
+		margin: 15vw 12vh 2vh 12vh;
+	}
+
+	.dataevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 45vw;
+		right: 2vw;
+		z-index: 20;
+		font-size: 2vw;
+	}
+
+	.alterarevebtn{
+		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+		width: 25vw;
+		margin: 0 1vw 1vw 1vw;
+		border-radius: 20vw;
+		border: none;
+		color: white;
+		font-size: 2vw;
+		font-weight: 400;
+		height: 4vw;
+	}
+
+	.excluirevebtn{
+		background: transparent;
+		width: 25vw;
+		margin: 1vw;
+		border-radius: 20vw;
+		border: 0.5vh solid black;
+		color: black;
+		font-size: 2vw;
+		font-weight: 400;
+		height: 4vw;
+
+	}
+
+	.descevento{
+		color: black !important;
+		font-weight: 400;
+		position: absolute;
+		top: 8vw;
+		margin-top: 4vw;
+		text-indent: 3vw;
+		padding-right: 2vw;
+		text-align: justify;
+		z-index: 20;
+		font-size: 2.2vw;
+	}
+
+	.eventonome{
+		color: black !important;
+		font-weight: 700;
+		position: absolute;
+		top: 1vw;
+		z-index: 20;
+		font-size: 2.8vw;
+	}
+
+	.deletevent{
+			color: black;
+			position: absolute;
+			top: 51.4vw;
+			right: 0.1vw;
+			z-index: 20;
+			font-size: 2vw;
+	}
+
+	.changeevent{
+		color: black;
+		position: absolute;
+		top: 48vw;
+		right: 0.1vw;
+		z-index: 20;
+		font-size: 1.9vw;
+	}
+
+	.banner{
+		width: 57vw;
+		height: 55vw;
+		border-radius: 1.8vw !important;
+	}
+
+	.imagebanner{
+		width: 8vw;
+		height: 9vw;
+		margin: 1vh 0 1vh 1vh;
+		float: left !important;
+	}
+
+	.container{
+		position: absolute;
+		right: 0vw;
+		width: 29.5vw !important;
+		height: 38vw !important;
+		border-radius: 2vw !important;
+	}
+
+	.card{
+		display: grid;
+		grid-template-rows: 1vw;
+		grid-template-areas: "imagebanner container";
+
+		border-radius: 2vw !important;
+		height: 57.9vw;
+		width: 87vw;
+		margin-bottom: 5vw;
+	}
 
 	#iconenviar{
 			display: none;
@@ -759,7 +1101,7 @@
 		padding-left: 8vh;
 	}
 .icons{
-		position: absolute;
+		position: fixed;
 		left: 0vh;
 		top: 10vh;
 		font-size: 1.5vh;
@@ -910,32 +1252,25 @@
 	}
 
 	nav{
-		background-color: rgba(4,5,7, 0.98);
-		width: 30vh;
-		height: 100vh;
-		left: -70vh;
-		transition: left 1s ease;
-		-webkit-transition: left 1s ease;
-		float: left;
-		text-align: left;
-		font-size: 20px;
-		position: absolute;
-		z-index: 6;
+		background-color: #0d0e0f;
+		top: 0;
+    width: 30vh;
+    height: 100vh;
+    left: -70vh;
+    transition: left 0.2s;
+    -webkit-transition: left 0.2s;
+    float: left;
+    text-align: left;
+    font-size: 20px;
+    position: fixed;
+    z-index: 5;
 	}
 
 	.statsdiv{
-		text-align: center;
 		background-color: #18191b !important;
-		border-radius: 5vw 5vw 0 0;
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 18vw;
+		padding-top: 3vw;
 	}
 
 	.statsdiv i{
@@ -944,8 +1279,8 @@
 	}
 
 	.username{
-		font-size: 4vh;
-		margin: 2vh 10vh 2vh 10vh;
+		font-size: 10vw;
+		margin: 2vh 7vh 2vh 7vh;
 	}
 
 	.useremail{
@@ -999,8 +1334,8 @@
 	.logoeheader{
 		width: 7vh;
 		height: 5vh;
-		position: absolute;
-		left: 11%;
+		position: fixed;
+		left: 12%;
 		z-index: 11;
 		top: 2.5vh;
 		background: url(../images/logo.png) center center/5vh no-repeat;
@@ -1013,7 +1348,8 @@
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
+		position: fixed;
+		top: 0;
 		z-index: 10;
 	}
 
