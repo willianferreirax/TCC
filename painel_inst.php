@@ -13,12 +13,12 @@
     $res->execute();//executando
     $result = $res->fetchAll();
   }
-  
+
 ?>
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <title>Painel de Informações - FRESHR</title>
+  <title><?php echo $_SESSION['instituicao'][0];?> - FRESHR</title>
   <!-- Required meta tags -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
@@ -65,36 +65,7 @@
       <i class="fas fa-question fa-2x"></i><br>
       <hr>
     </div>
-    <div class='statsdiv'>
-      <i class="fas fa-user-circle fa-2x"></i><br>
-      <?php
-        echo"<div class='username'>Olá, ".$_SESSION['instituicao'][0]."</div>";
-        echo"<div class='useremail'>".$_SESSION['instituicao'][1]."</div>";
-      ?>
-      <br>
-      <br>
-      <a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
-      <?php
-      $n=0;
-        foreach ($result as $row) {
-          $imagem ='upload/'.$row['banner_evento'];
-          echo "
-          <div class='card'>
-            <img src='$imagem' alt='$row[nome_evento]' style='width:300px; height:300px'>
-            <div class='container'>
-              <h4><b>'$row[nome_evento]'</b></h4>
-              <p>texto</p>
-              <a href='deletar_evento.php?id_eve=$row[cod_evento]'>Excluir evento</a>
-              <a href='alterar_evento.php?id_eve=$row[cod_evento]'>Alterar evento</a>
-            </div>
-          </div> 
-          ";
-        $n++;
-        }
 
-      ?>
-    
-    </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 
@@ -147,18 +118,17 @@
   				<input type='checkbox' id='searchcheck'>
   				<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
   				<div class='search'>
-
   						<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
   						<input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
-  					</form>
   				</div>
+          </form>
   			</div>
         <div class='userdiv'>
           <?php
   				if(isset($_SESSION['instituicao'])){
   					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
   					</div></label>";
-  					echo "<div class='criaricon'><a href='cad_event.php'><i class='fas fa-plus'></i></a>
+  					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
   					</div></label>";
   				}
   				 ?>
@@ -166,7 +136,43 @@
           </div></label>
         </div>
       </header>
-      <br>
+      <div class='statsdiv'>
+        <?php
+          echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+        ?>
+        <?php
+          echo"<div class='username'>Olá, ".$_SESSION['instituicao'][0]."</div>";
+          echo"<div class='useremail'>".$_SESSION['instituicao'][1]."</div>";
+        ?>
+        <br>
+        <br>
+        <a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+          <div class='title'>Meus Eventos</div>
+        <?php
+        $n=0;
+          foreach ($result as $row) {
+            $imagem ='upload/'.$row['banner_evento'];
+            echo "
+            <div class='card'>
+              <div class='imagebanner'> <img src='$imagem' alt='$row[nome_evento]' class='banner'> </div>
+              <div class='container'>
+                <h1 class='eventonome'>$row[nome_evento]</h1>
+                <p class='descevento'>$row[descricao_evento]</p>
+                <h1 class='dataevento'>$row[data_inicio] até $row[data_termino]</h1>
+                <a href='deletar_evento.php?id_eve=$row[cod_evento]' class='deletevent'><button class='excluirevebtn'>Excluir</button></a>
+                <a href='alterar_evento.php?id_eve=$row[cod_evento]' class='changeevent'><button class='alterarevebtn'>Editar</button></a>
+              </div>
+            </div>
+            ";
+          $n++;
+          }
+
+          if($n == 0){
+            echo"<div class='semevento'>Você não criou nenhum evento ainda :(</div>";
+          }
+
+        ?>
       </center>
+      </div>
     </body>
     </html>
