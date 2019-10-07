@@ -31,6 +31,28 @@
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	#btnconfirm, #btnstar{
+		display: none;
+	}
+
+	#btnstar:checked ~ .interessado i{
+		color: #411F85 !important;
+	}
+
+	#btnconfirm:checked ~ .confirmado i{
+		color: #00C7CE !important;
+	}
+
+	.interessado{
+		padding-right: 2vw;
+	}
+
+	.eventact{
+		position: absolute;
+		right: 3.5vw;
+		width: 7vw;
+	}
+
 	.exit{
 		color: #822828;
 		text-decoration: none !important;
