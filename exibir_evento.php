@@ -58,6 +58,7 @@ else{
   </head>
   <body>
     <body class="bgindex">
+
     	<center>
     		<input type='checkbox' id='dropcheck'>
     		<input type='checkbox' id='chec'>
@@ -156,11 +157,16 @@ else{
         <div class='elem1'>
           <div class="infocontainer">
           <img class="banner" src="<?php echo 'upload/'.$evento[1]?>">
-          <div class="info1"><h1 class="nome"> <?php echo $evento[0];?></h1><br>
+          <div class="info1">
+            <div class='eventact'><input type='checkbox' id='btnconfirm'>
+            <input type='checkbox' id='btnstar'><label for='btnstar' class='interessado'><i class="fas fa-star" id='star'></i></label><label for='btnconfirm' class='confirmado'><i class="fas fa-check" id='confirmicon'></i></label></div>
+
+            <h1 class="nome"> <?php echo $evento[0];?></h1><br>
           <?php
           echo $evento[6];
           ?><br>
           <a href="index.php">Voltar</a>
+
         </div>
         </div>
       </div>
