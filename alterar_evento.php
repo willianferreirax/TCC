@@ -19,97 +19,204 @@
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alterar evento</title>
+    <!-- Required meta tags -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
+	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Criar evento">
+	<meta name="robots" content="Alterar evento, follow">
+	<meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
+	<link rel="stylesheet" href="css/eventoinfo.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/337796870f.js"></script>
+	<link rel="icon" href="images/icon.png">
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#162573">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title><?php echo $result[0]['nome_evento'];?> - FRESHR</title>
 </head>
-<body>
-        <form name='alterar_evento' method="POST" action="?validar=true&id_eve=<?php echo $id?>">
+<body='bgindex'>	
+		<input type='checkbox' id='dropcheck'>
+		<input type='checkbox' id='chec'>
+		<label for='chec' class='backdiv'></label>
+		<div class='icons'>
+			<a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
+			<i class="fas fa-map-marked fa-2x"></i><br>
+			<i class="fas fa-users fa-2x"></i><br>
+			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
+			<i class="fas fa-question fa-2x"></i><br>
+			<hr>
+		</div>
 
+		<nav>
+			<div class='menulist'>
+				<a href='index.php'><div class='b1'>Página inicial</div></a>
+				<a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
+				<a href='listar_inst.php'><div class='b3'>Instituição</div></a>
+				<a href='sobre.php'><div class='b4'>Sobre nós</div></a>
+				<a href='index.php'><div class='b5'>Ajuda</div></a>
+			</div>
+		</nav>
 
-			<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
-			<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['nome_evento'];?>>
-            <br><br>
-			
-        
-			<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-			<input class='inputcreate' type='text' name='endereco' value=<?php echo $result[0]['endereco_evento'];?>>
-            <br>	<br>
+		<div class='dropdown'>
+			<?php
+			session_start();
+			if(isset($_SESSION['usuario']))
+			{
+				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
+				($_SESSION['usuario'][4])-1))."</h1>";
+			}
 
-		    <label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
-			<input class='inputcreate' type='text' name='bairro' value=<?php echo $result[0]['bairro_evento'];?>>
-            <br><br>
+			if(isset($_SESSION['instituicao']))
+			{
+				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+			}
+			?>
+			<br>
 
-			<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
-			<input class='inputcreate' type='text' name='cidade' value=<?php echo $result[0]['cidade_evento'];?>>
-            <br>	<br>	
+			<?php
+			if(isset($_SESSION['instituicao'][0])){
+				echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+			}
+			else{
+				echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+			}
+			?>
 
-			<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label>
-			<select name="estado" >
-                <option value=<?php echo $result[0]['estado_evento'];?> selected><?php echo $result[0]['estado_evento'];?></option>
-				<option value="AC">Acre</option>
-				<option value="AL">Alagoas</option>
-				<option value="AP">Amapá</option>
-				<option value="AM">Amazonas</option>
-				<option value="BA">Bahia</option>
-				<option value="CE">Ceará</option>
-				<option value="DF">Distrito Federal</option>
-				<option value="ES">Espirito Santo</option>
-				<option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-				<option value="MS">Mato Grosso do Sul</option>
-				<option value="MG">Minas Gerais</option>
-				<option value="PA">Pará</option>
-				<option value="PB">Paraíba</option>
-				<option value="PR">Paraná</option>
-				<option value="PE">Pernambuco</option>
-				<option value="PI">Piauí</option>
-				<option value="RJ">Rio de Janeiro</option>
-				<option value="RJ">Rio Grande do Norte</option>
-				<option value="RS">Rio grande do sul</option>
-				<option value="RO">Rondônia</option>
-				<option value="RR">Roraima</option>
-				<option value="SC">Santa Catarina</option>
-				<option value="SP">São Paulo</option>
-				<option value="SE">Sergipe</option>
-				<option value="TO">Tocantins</option>
-			</select>
-            <br><br>	
-				<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
-				<input class='inputcreate' type='text' name='cep' value=<?php echo $result[0]['cep_evento'];?>>
-                <br><br>	
-				<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
-				<input class='inputcreate' type='date' name='dateinic' value=<?php echo $result[0]['data_inicio'];?>>
-                <br><br>
-				<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
-				<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>>
-                <br><br>
-				<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
-				<input class='inputcreate' type='time' name='timeinic' value=<?php echo $result[0]['hora_inicio'];?>>
-                <br><br>
-				<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
-				<input class='inputcreate' type='time' name='timefinal' value=<?php echo $result[0]['hora_termino'];?>>
-                <br><br>
-				<label class='labelint'>Qual o <b>preço</b> do evento?</label>
-				<input class='inputcreate' type='number' name='preco' value=<?php echo $result[0]['preco_evento'];?>>
-                <br><br>
-				<label class='labelint'>Por fim, conta pra gente sobre o seu evento:</label>
-				<textarea draggable="false" name='desc' maxlength="149"><?php echo $result[0]['descricao_evento'];?></textarea>
-				<br><br><br><br>
-				
+			<br>
+			<a href='config.php' class='account'>Configurações</a>
+			<br>
+			<a href='painel_usuario.php' class='account'>Ajuda</a>
+			<br>
+			<br>
+			<a href='logout_script.php' class='exit'>Sair</a>
+		</div>
 
-    <input type="hidden" name="id" value="<?php echo $_REQUEST["id"]; ?>">
+		<header class='cabecalhoindex' id='grid'>
 
-    <button class='cadastraraltinst' type="submit" value="validar">Prosseguir</button>
+			<div class='menudiv'>
+				<div class='menubtn'>
+					<label for='chec' class='labelchec'><i class="fas fa-bars fa-2x"></i></i></label>
+				</div>
+				<a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
+			</div>
+			<div class='pesquisarbtn'>
 
-    </form>
-    
+			</div>
+
+			<div class='userdiv'>
+				<?php
+				if(isset($_SESSION['instituicao'])){
+					echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+					</div></label>";
+				}
+				else{
+					echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
+					</div>";
+				}
+				?>
+			</div>
+
+		</header>
+		<div class='elem1'>
+			<div class="icontainer">
+				<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
+					<div class="form-group" id='imageup'>
+						<label for="exampleFormControlFile1" class='imagevis'><br><b>Banner</b> do Evento</label>
+						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
+					</div>
+					<div class="nomeev">
+						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
+						<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['bairro_evento'];?>><center><hr></center><br>
+					</div>
+
+					<div class="info1">
+						<div class="infos">
+
+							<label class='labelint'>Nos conte um pouco sobre o seu evento:</label>
+							<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"><?php echo $result[0]['descricao_evento'];?></textarea>
+
+							<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
+							<input class='inputcreate' type='date' name='dateinic' value=<?php echo $result[0]['data_inicio'];?>>
+
+							<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
+							<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>
+
+							<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
+							<input class='inputcreate' type='time' name='timeinic' value=<?php echo $result[0]['hora_inicio'];?>>
+
+							<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
+							<input class='inputcreate' type='time' name='timefinal' value=<?php echo $result[0]['hora_termino'];?>>
+
+							<label class='labelint'>Qual o <b>preço</b> do evento?</label>
+							<input class='inputcreate' type='number' name='preco' value=<?php echo $result[0]['preco_evento'];?>>
+
+						</div>
+						<div class="endereco">
+							<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
+							<input class='inputcreate' type='text' name='endereco' value=<?php echo $result[0]['endereco_evento'];?>>
+
+							<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
+							<input class='inputcreate' type='text' name='bairro' value=<?php echo $result[0]['bairro_evento'];?>>
+
+							<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
+							<input class='inputcreate' type='text' name='cidade' value=<?php echo $result[0]['cidade_evento'];?>>
+
+							<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
+							<select name="estado">
+								<option value=<?php echo $result[0]['estado_evento'];?> selected><?php echo $result[0]['estado_evento'];?></option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espirito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RJ">Rio Grande do Norte</option>
+								<option value="RS">Rio grande do sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select><br>
+
+							<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
+							<input class='inputcreate' type='text' name='cep' value=<?php echo $result[0]['cep_evento'];?>>
+						</div>
+					</div>
+					<center>
+					<br>
+					<br>
+					
+					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
+					</center>
+				</form>
+			</div>
+		</div>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-</html>
-
-
 
 <?php
 if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
