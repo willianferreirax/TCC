@@ -1,5 +1,5 @@
 <?php
-  
+
   session_start();
   if(!$_SESSION['instituicao'] || !$_GET['id_eve']){
     header('location:login.php');
@@ -13,20 +13,17 @@
     $res->execute();//executando
 
     //deletando da tabela interesses
-    
+
     $delete="delete from interesses_evento where cod_evento = {$_GET['id_eve']}";
-    
+
     $res = $conn->prepare($delete);//preparando query
     $res->execute();//executando
 
   }
 ?>
-
-    <script language='javascript'>
-        alert('Evento excluido com sucesso');
-        
-    </script>
     <?php
-    header("Location: painel_inst.php");
+    $script = "<script language='javascript'>location.href='painel_inst.php';
+    alert('Evento excluído com sucesso.);
+    </script>';";
+    echo $script;
     ?>
-    
