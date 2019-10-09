@@ -12,9 +12,9 @@
         $res = $conn->prepare($select);//preparando query
         $res->execute();//executando
         $result = $res->fetchAll();
-        
+
   }
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="pt_br">
@@ -39,7 +39,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title><?php echo $result[0]['nome_evento'];?> - FRESHR</title>
 </head>
-<body='bgindex'>	
+<body class='bgindex'>
+  <center>
 		<input type='checkbox' id='dropcheck'>
 		<input type='checkbox' id='chec'>
 		<label for='chec' class='backdiv'></label>
@@ -64,7 +65,6 @@
 
 		<div class='dropdown'>
 			<?php
-			session_start();
 			if(isset($_SESSION['usuario']))
 			{
 				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
@@ -126,12 +126,12 @@
 			<div class="icontainer">
 				<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
 					<div class="form-group" id='imageup'>
-						<label for="exampleFormControlFile1" class='imagevis'><br><b>Banner</b> do Evento</label>
-						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
+						<label for="exampleFormControlFile1" class='imagevis'><img class='bannervisu' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
 					</div>
 					<div class="nomeev">
 						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
-						<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['bairro_evento'];?>><center><hr></center><br>
+						<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['nome_evento'];?>><center><hr></center><br>
 					</div>
 
 					<div class="info1">
@@ -205,8 +205,8 @@
 					<center>
 					<br>
 					<br>
-					
-					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
+
+					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Pronto!</button></a></div>
 					</center>
 				</form>
 			</div>
@@ -216,6 +216,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</center>
 </body>
 
 <?php
@@ -228,13 +229,13 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
     if(strlen(utf8_decode($_POST["nome"])) < 1 || strlen(utf8_decode($_POST["nome"])) > 255) {
         $erro = " digite um nome válido.";
         $coderro = 1;
-    }  
-    
+    }
+
     elseif(strlen(utf8_decode($_POST["dateinic"])) <10 || strlen(utf8_decode($_POST["dateinic"])) > 10) {
         $erro = " selecione uma data de inicio do evento.";
         $coderro = 3;
     }
-    
+
     elseif(strlen(utf8_decode($_POST["datefinal"])) < 10 || strlen(utf8_decode($_POST["datefinal"])) > 10){
         $erro = "selecione uma data de termino do eventto.";
         $coderro = 4;
@@ -259,7 +260,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
         $coderro = 8;
     }
 
-    
+
     elseif(strlen(utf8_decode($_POST["endereco"])) < 5 || strlen(utf8_decode($_POST["endereco"])) > 100){
         $erro = " digite um endereço valido(Minimo 5 caracateres)";
         $coderro = 9;
@@ -284,17 +285,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
         $erro = "Digite uma descrição válida (Minimo de 1 caractere)";
         $coderro = 14;
     }
-    
+
     else{
         $valido = true;
     }
-    
+
 }
-    
+
     if(isset($valido) && $valido == true){
         $update="update evento set nome_evento =?,data_inicio=?,data_termino=?,hora_inicio=?,hora_termino=?,endereco_evento=?,bairro_evento=?,cidade_evento=?,estado_evento=?,cep_evento=?,descricao_evento=?,preco_evento=? where cod_evento ={$_GET['id_eve']}";
         $stmt = $conn->prepare($update);
-			
+
 			//Atrelando os dados às tabelas
 			$stmt->bindValue(1, $_POST["nome"]);
 			$stmt->bindValue(2, $_POST["dateinic"]);
@@ -308,18 +309,18 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$stmt->bindValue(10,$_POST["cep"]);
             $stmt->bindValue(11,$_POST["desc"]);
             $stmt->bindValue(12,$_POST["preco"]);
-            
-			
+
+
 			$stmt->execute();
-            
+
 			if($stmt->errorCode() != "00000"){
 				$erro = "Erro código " . $stmt->errorCode() . ": ";
 				$erro .= implode(", ", $stmt->errorInfo());
 				echo $erro;
             } //Exibir erro de comunicação com o banco de dados
-            
+
             $script = "<script language='javascript'>location.href='painel_inst.php';
-            alert('Evento excluido com sucesso');
+            alert('Evento editado com sucesso.');
             </script>';";
             echo $script;
     }
