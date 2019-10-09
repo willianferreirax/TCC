@@ -1,6 +1,18 @@
 
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.bannervisu{
+		height: 100%;
+		width: 100%;
+		text-align: left;
+		border-radius: 2vw 2vw 0 0;
+		background-position: center;
+		transition: box-shadow 0.5s;
+		-webkit-transition: box-shadow 0.5s;
+		transition: opacity 0.5s;
+		-webkit-transition: opacity 0.5s;
+	}
+
 	.selectestado{
 		background-color: #202124;
 		border-style: none;
@@ -148,7 +160,6 @@
 
 	.imagevis{
 		text-align: left;
-		padding-left: 2vw;
 		background: url(../images/imgupl.png) no-repeat;
 		background-size: cover;
 		height: 25.4vw;
