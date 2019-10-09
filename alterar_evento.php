@@ -44,15 +44,14 @@
 		<input type='checkbox' id='dropcheck'>
 		<input type='checkbox' id='chec'>
 		<label for='chec' class='backdiv'></label>
-		<div class='icons'>
-			<a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-			<i class="fas fa-map-marked fa-2x"></i><br>
-			<i class="fas fa-users fa-2x"></i><br>
+    <div class='icons'>
+      <a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
+      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
+      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
 			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-			<i class="fas fa-question fa-2x"></i><br>
-			<hr>
-		</div>
-
+      <i class="fas fa-question fa-2x"></i><br>
+      <hr>
+    </div>
 		<nav>
 			<div class='menulist'>
 				<a href='index.php'><div class='b1'>Página inicial</div></a>
@@ -61,6 +60,7 @@
 				<a href='sobre.php'><div class='b4'>Sobre nós</div></a>
 				<a href='index.php'><div class='b5'>Ajuda</div></a>
 			</div>
+			<label for='chec' class='backdiv'></label>
 		</nav>
 
 		<div class='dropdown'>
