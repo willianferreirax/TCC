@@ -154,7 +154,7 @@
 		position: absolute;
 		width: 30vw;
 		top: 29vw;
-		left: 9vw;
+		left: 15vw;
 		font-size: 1vw;
 	}
 
@@ -372,7 +372,8 @@
 	}
 
 	#createnome{
-		width: 85vw;
+		width: 77vw;
+		padding-right: 3vw;
 	}
 
 	.nomeev{
@@ -727,6 +728,18 @@
 
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+		.bannervisu{
+			height: 100%;
+			width: 100%;
+			text-align: left;
+			border-radius: 2vw 2vw 0 0;
+			background-position: center;
+			transition: box-shadow 0.5s;
+			-webkit-transition: box-shadow 0.5s;
+			transition: opacity 0.5s;
+			-webkit-transition: opacity 0.5s;
+		}
+
 		.selectestado{
 			background-color: #202124;
 			border-style: none;
@@ -1025,7 +1038,6 @@
 			background-position: center;
 			font-size: 5vw;
 			text-align: center;
-			padding: 19vw 0 0 0;
 		}
 
 		.nomeev{
@@ -1420,6 +1432,18 @@
 	}
 @media only screen and (max-width: 699px) and (orientation: portrait) {
 
+	.bannervisu{
+		height: 100%;
+		width: 100%;
+		text-align: left;
+		border-radius: 2vw 2vw 0 0;
+		background-position: center;
+		transition: box-shadow 0.5s;
+		-webkit-transition: box-shadow 0.5s;
+		transition: opacity 0.5s;
+		-webkit-transition: opacity 0.5s;
+	}
+
 	.selectestado{
 		background-color: #202124;
 		border-style: none;
@@ -1716,7 +1740,6 @@
 		background-position: center;
 		font-size: 5vw;
 		text-align: center;
-		padding: 19vw 0 0 0;
 	}
 
 	.criareventoform{
