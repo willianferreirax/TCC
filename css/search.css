@@ -414,7 +414,79 @@
 
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+	
+	.searchinfo{
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-areas: "imagemres" "nomeres" "precores";
+    width: 86vw;
+    height: 20vw;
+    border-radius: 2vw;
+    background-color: #0d0e0f;
+	margin-left: 11vw;
+  }
 
+	.searchinfo:hover {
+    background-color: #0f1112;
+  }
+
+	.searchinfo:hover .imagemres{
+		opacity: 0.7;
+  }
+
+	.searchinfo:hover .nomeres{
+		font-size: 1.89vw;
+  }
+
+  .imagemres{
+    width: 30vw;
+    height: 20vw;
+    text-align: left;
+    margin: 0 12vw 0 0;
+    border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+
+  }
+
+  .nomeres{
+		margin-left: 10vw;
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 1vw 1vw 1vw 1vw;
+		font-size: 2vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+  }
+
+	h1{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		max-width: 100%;
+	}
+
+  .descres{
+    font-size: 1.52vw;
+		padding: 0.5vw 0 0 0;
+		white-space: normal;
+  }
+
+	.enderes{
+		padding: 1vw 0 0 0;
+		opacity: 0.7;
+	}
+
+  .precores{
+    padding: 1vw 1vw 1vw 1vw;
+    text-align: left;
+    font-size: 1.9vw;
+  }
+	
 	.exit{
 		color: #822828;
 		text-decoration: none !important;
@@ -703,7 +775,80 @@
 }
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+	
+	.searchinfo{
+		margin-bottom: 2vw;
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-areas: "imagemres" "nomeres" "precores";
+    width: 98vw;
+    height: 40vw;
+    border-radius: 2vw;
+    background-color: #0d0e0f;
+  }
 
+	.searchinfo:hover {
+    background-color: #0f1112;
+  }
+
+	.searchinfo:hover .imagemres{
+		opacity: 0.7;
+  }
+
+	.searchinfo:hover .nomeres{
+		font-size: 1.89vw;
+  }
+
+  .imagemres{
+    width: 40vw;
+    height: 40vw;
+    text-align: left;
+    margin: 0 12vw 0 0;
+    border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+
+  }
+
+  .nomeres{
+		margin-left: 18vw;
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 1vw 1vw 1vw 1vw;
+		font-size: 3.5vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+  }
+
+	h1{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		max-width: 100%;
+	}
+
+  .descres{
+		font-size: 2.5vw;
+		padding: 0.5vw 0 0 0;
+		white-space: normal;
+  }
+
+	.enderes{
+		padding: 1vw 0 0 0;
+		opacity: 0.7;
+	}
+
+  .precores{
+    padding: 1vw 1vw 1vw 1vw;
+    text-align: left;
+    font-size: 1.9vw;
+  }
+	
+	
 	#iconenviar{
 		display: none;
 	}
