@@ -28,7 +28,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
 
-  <body class-"bgindex">
+  <body class="bgindex">
     <center>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>
