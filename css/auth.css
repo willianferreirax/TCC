@@ -348,7 +348,7 @@
 
   .erro{
     color: #c73838 !important;
-    font-size: 15px;
+    font-size: 1.1vw;
   }
 
   input{
@@ -373,7 +373,6 @@
   }
 
   .containerform{
-    width: 100vh;
     height: 50vh;
     background-color: inherit;
     text-align: center;
@@ -704,7 +703,7 @@
 
   .erro{
     color: #c73838 !important;
-    font-size: 15px;
+    font-size: 3vw;
   }
 
   input{
@@ -1056,7 +1055,7 @@
 
   .erro{
     color: #c73838 !important;
-    font-size: 15px;
+    font-size: 5vw;
   }
 
   input{
