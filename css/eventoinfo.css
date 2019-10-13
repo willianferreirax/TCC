@@ -153,8 +153,8 @@
 	#exampleFormControlFile1{
 		position: absolute;
 		width: 30vw;
-		top: 29vw;
-		left: 15vw;
+		top: 27vw;
+		left: 10vw;
 		font-size: 1vw;
 	}
 
@@ -162,8 +162,10 @@
 		text-align: left;
 		background: url(../images/imgupl.png) no-repeat;
 		background-size: cover;
+		object-fit: cover;
 		height: 25.4vw;
 		width: 100%;
+		border: none;
 		border-radius: 2vw 2vw 0 0;
 		background-position: center;
 		transition: box-shadow 0.5s;
@@ -180,6 +182,7 @@
 
 	#imageup{
 		width: 100%;
+		border: none;
 	}
 
 	.labelintere{
@@ -372,12 +375,12 @@
 	}
 
 	#createnome{
-		width: 77vw;
+		width: 100%;
 		padding-right: 3vw;
 	}
 
 	.nomeev{
-		padding: 0 0 0 2vw;
+		padding: 0 2vw 0 2vw;
 	}
 
 	.info1{
