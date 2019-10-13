@@ -61,6 +61,10 @@
     include 'connection.php';
 		$conn = conexao();
     session_start();
+    if(isset($_SESSION['instituicao'])){
+      header('Location:painel_inst.php');
+      exit();
+    }
     $verificaint = array();
     $select = "SELECT interesseusu1, interesseusu2, interesseusu3, interesseusu4, interesseusu5 from interesses_usuario where cod_usuario = '{$_SESSION['usuario'][3]}'";
     $res = $conn->prepare($select);//preparando query
@@ -76,6 +80,7 @@
     }
     if(isset($verificaint[0]) || isset($verificaint[1]) || isset($verificaint[2]) || isset($verificaint[3]) || isset($verificaint[4])){
       header('Location: painel_usuario.php');
+      exit();
     }
 		if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$_interesse = $_POST['intchk'];

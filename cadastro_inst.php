@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
+    header('location:index.php');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -27,7 +34,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script language='javascript'>
+  <script type='text/javascript'>
   function mascara(formato, keypress, objeto){
     campo = eval(objeto);
 
@@ -71,10 +78,7 @@
 
 
       //fazer script de mascara do cep e cnpj e telefone
-      //verificar se o email ou login não estao cadastrados teste git
-      //se tem email pra que um login?
-      //fazer uma lista dropdown dos estados, para o usuario selecionar
-
+   
       $erro = null;
       $valido = false;
 
@@ -100,7 +104,7 @@
                 $erro= "insira um telefone valido";
               }
               else{
-                if(strlen(utf8_decode($_POST["email"]))<10 || strlen(utf8_decode($_POST["email"]))>255) {
+                if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
                   $erro="digite um email valido";
                 }
                 else{
@@ -112,7 +116,7 @@
                       $erro="senhas diferentes digitadas";
                     }
                     else{
-                      if(strlen(utf8_decode($_POST["estado"]))<4 || strlen(utf8_decode($_POST["estado"]))>16){
+                      if(strlen(utf8_decode($_POST["estado"]))<1 || strlen(utf8_decode($_POST["estado"]))>2){
                         $erro="digite uma estado valido";
                       }
                       else{
@@ -141,7 +145,21 @@
 
 
     if(isset($valido) && $valido ==true){
+      $cnpj=$_POST['cnpj'];
+      $email=$_POST['email'];
+      $result = $conn->prepare("select * from faculdade where CNPJ = '{$cnpj}' or email_inst = '{$email}'"); //Comando de seleção que verifica se há um cnpj igual no banco de dados
+      $result->execute(); //Executa o comando
 
+      if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um cnpj igual cadastrado
+        $script = "
+        <script type='text/javascript'>
+        alert('Email ou CNPJ já está cadastrados');
+        </script>";
+        echo $script;
+        header('Location: cadastro_inst.php'); //Direciona o usuário para a página de login
+        exit();
+      }
+      else{
 
       //concertar o banco pra voltar o md5
       $senhaHash = md5($_POST["senha"]);
@@ -178,13 +196,15 @@
       }
 
       else{
-        echo "<script language='javascript'>";
+        echo "<script type='text/javascript'>";
         echo "alert('Instituição cadastrada com sucesso.');";
         echo "</script>";
-		header("Location:login.php");
+        header("Location:login.php");
+        exit();
       }
 
     }
+  }
     else{
       if (isset($erro)) {
         echo "<center><div class='erro'>Por gentileza, ".$erro.".</div></center><br>";
@@ -252,7 +272,37 @@
 
       <label><b>Estado:</b></label>
       <br>
-      <input type="text" name="estado">
+      <select name="estado">
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espirito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RJ">Rio Grande do Norte</option>
+								<option value="RS">Rio grande do sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP" selected>São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+				</select>
+        <br>
+
       <br>
       <br>
 

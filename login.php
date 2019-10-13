@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(isset($_SESSION['usuario'])){
+  header('Location: painel_usuario.php');
+  exit();
+}
+elseif(isset($_SESSION['instituicao'])){
+  header('Location: painel_inst.php');
+  exit();
+}
+
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>

@@ -11,7 +11,13 @@
         $select="select * from evento where cod_evento = {$id}";
         $res = $conn->prepare($select);//preparando query
         $res->execute();//executando
-        $result = $res->fetchAll();
+		$result = $res->fetchAll();
+		
+		$select="select * from interesses_evento where cod_evento={$id}";
+		$res1 = $conn->prepare($select);
+		$res1->execute();
+		$selecionados= $res1->fetchAll();
+		
 
   }
 
@@ -124,7 +130,7 @@
 		</header>
 		<div class='elem1'>
 			<div class="icontainer">
-				<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
+				<form name='criareventoform' method="POST" action=<?php echo"?validar=true?&id_eve=$id";?> enctype="multipart/form-data">
 					<div class="form-group" id='imageup'>
 						<label for="exampleFormControlFile1" class='imagevis'><img class='bannervisu' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
@@ -138,13 +144,14 @@
 						<div class="infos">
 
 							<label class='labelint'>Nos conte um pouco sobre o seu evento:</label>
+						
 							<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"><?php echo $result[0]['descricao_evento'];?></textarea>
 
 							<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
 							<input class='inputcreate' type='date' name='dateinic' value=<?php echo $result[0]['data_inicio'];?>>
 
 							<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
-							<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>
+							<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>>
 
 							<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
 							<input class='inputcreate' type='time' name='timeinic' value=<?php echo $result[0]['hora_inicio'];?>>
@@ -205,6 +212,69 @@
 					<center>
 					<br>
 					<br>
+					<div class='interesses'>
+						<input type="checkbox" id='bti1' class='chkint' value=1  name='intchk[]'>
+						<label for='bti1' class='interesse1' id='int1'>
+
+							Informação e Tecnologia
+						</label>
+						<input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
+						<label for='bti2' class='interesse2' id='int2'>						
+							Logística
+						</label>
+						<input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
+						<label for='bti3' class='interesse3' id='int3'>
+							Saúde
+						</label>
+						<input type="checkbox" id='bti4' class='chkint' value=4  name='intchk[]'>
+						<label for='bti4' class='interesse4' id='int4'>
+							Engenharia
+						</label>
+						<input type="checkbox" id='bti5' class='chkint' value=5  name='intchk[]'>
+						<label for='bti5' class='interesse5' id='int5'>
+							Administração e Negócios
+						</label>
+						<input type="checkbox" id='bti6' class='chkint' value=6  name='intchk[]'>
+						<label for='bti6' class='interesse6' id='int6'>
+							Comunicação
+						</label>
+						<input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
+						<label for='bti7' class='interesse7' id='int7'>
+							Arte e Design
+						</label>
+						<input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
+						<label for='bti8' class='interesse8' id='int8'>
+							Direito
+						</label>
+						<input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
+						<label for='bti9' class='interesse9' id='int9'>
+							Educação
+						</label>
+						<input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
+						<label for='bti10' class='interesse10' id='int10'>
+							Turismo
+						</label>
+						<input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
+						<label for='bti11' class='interesse11' id='int11'>
+							Gastronomia
+						</label>
+						<input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
+						<label for='bti12' class='interesse12' id='int12'>
+							Ciências Exatas e Biológicas
+						</label>
+						<input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
+						<label for='bti13' class='interesse13' id='int13'>
+							Ciências Sociais e Humanas
+						</label>
+						<input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
+						<label for='bti14' class='interesse14' id='int14'>
+							Música
+						</label>
+						<input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
+						<label for='bti15' class='interesse15' id='int15'>
+							<input type='text' class='outro' name='int15' id='test' placeholder="Outro">
+						</label>
+					</div>
 
 					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Pronto!</button></a></div>
 					</center>
@@ -217,6 +287,39 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </center>
+<?php
+//marcando os interesses que foram selecionados durante a criação do evento
+$interesses = array('Informação e Tecnologia', 'Logística', 'Saúde', 'Engenharia', 'Administração e Negócios', 'Comunicação', 'Arte e Design', 'Direito', 'Educação', 'Turismo', 'Gastronomia', 'Ciências Exatas e Biológicas', 'Ciências Sociais e Humanas', 'Música','outro');
+$outro=0;
+	for($i=1;$i<=15;$i++){
+		
+		for($j=0;$j<15;$j++){
+			if($selecionados[0]['interesseeve'.$i]==$interesses[$j]){
+				echo"
+				<script type='text/javascript'>
+				document.getElementsByClassName('chkint')[$j].checked = true;
+				
+				</script>";
+			}
+			/*
+			if($selecionados[0]['interesseeve'.$i] != $interesses[$j] && $selecionados[0]['interesseeve'.$i] != null){
+				$outro++;
+			}
+			*/
+		}
+		
+	}
+	/*
+	if($outro ==225){
+		echo"
+			<script type='text/javascript'>
+			document.getElementsByClassName('chkint')[14].checked = true;
+			document.getElementById('test').value = 'si fude';
+			</script>";
+	}
+	echo $outro;
+	*/
+?>
 </body>
 
 <?php
@@ -293,7 +396,31 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 }
 
     if(isset($valido) && $valido == true){
-        $update="update evento set nome_evento =?,data_inicio=?,data_termino=?,hora_inicio=?,hora_termino=?,endereco_evento=?,bairro_evento=?,cidade_evento=?,estado_evento=?,cep_evento=?,descricao_evento=?,preco_evento=? where cod_evento ={$_GET['id_eve']}";
+
+		$result = $conn->prepare("select * from evento where nome_evento = ? and data_inicio=? and data_termino=? and hora_inicio=? and endereco_evento=? and bairro_evento=? and cidade_evento=? and estado_evento=? and cep_evento=? and descricao_evento=? and preco_evento=?");
+		$result->bindValue(1, $_POST["nome"]);
+		$result->bindValue(2, $_POST["dateinic"]);
+		$result->bindValue(3, $_POST["datefinal"]);
+		$result->bindValue(4, $_POST["endereco"]);
+		$result->bindValue(5, $_POST["bairro"]);
+		$result->bindValue(6, $_POST["cidade"]);
+		$result->bindValue(7, $_POST["estado"]);
+		$result->bindValue(8, $_POST["cep"]);
+		$result->bindValue(9, $_POST["desc"]);
+		$result->bindValue(10, $_POST["preco"]);
+		$result->execute();
+
+		if($result->fetchColumn() > 0){ //Se retornar mais de 0 como resultado,existe esse evento cadastrado 
+			$script = "
+			<script type='text/javascript'>
+			alert('Esse evento já está cadastrado.');
+			</script>";
+			echo $script;
+		}
+	else{
+
+
+        $update = 'update evento set nome_evento = ? ,data_inicio = ? ,data_termino = ? ,hora_inicio = ? ,hora_termino = ? ,endereco_evento = ? ,bairro_evento = ? , cidade_evento = ? ,estado_evento = ? ,cep_evento = ? ,descricao_evento = ? ,preco_evento = ? where cod_evento = ?';
         $stmt = $conn->prepare($update);
 
 			//Atrelando os dados às tabelas
@@ -308,7 +435,8 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$stmt->bindValue(9,$_POST["estado"]);
 			$stmt->bindValue(10,$_POST["cep"]);
             $stmt->bindValue(11,$_POST["desc"]);
-            $stmt->bindValue(12,$_POST["preco"]);
+			$stmt->bindValue(12,$_POST["preco"]);
+			$stmt->bindValue(13,$id);
 
 
 			$stmt->execute();
@@ -317,12 +445,82 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 				$erro = "Erro código " . $stmt->errorCode() . ": ";
 				$erro .= implode(", ", $stmt->errorInfo());
 				echo $erro;
-            } //Exibir erro de comunicação com o banco de dados
+			} //Exibir erro de comunicação com o banco de dados
+			else{
+
+				$update = "update interesses_evento set interesseeve1 =?, interesseeve2 =?, interesseeve3 =?, interesseeve4 =?, interesseeve5 =?,interesseeve6 =?,interesseeve7 =?,interesseeve8 =?,interesseeve9 =?,interesseeve10 =?,interesseeve11 =?,interesseeve12 =?,interesseeve13 =?,interesseeve14 =?,interesseeve15=? where cod_evento = ?";
+
+				$_interesse = $_POST['intchk'];
+				//RECOLHENDO O INTERESSE1
+				$count=0;
+				for($i =0;$i<16;$i++){
+					$count++;
+					if(isset($_interesse[$i]) && $_interesse[$i] == 1){
+						$interesse[$i] = "Informação e Tecnologia";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 2){
+						$interesse[$i] = "Logística";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 3){
+						$interesse[$i] = "Saúde";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 4){
+						$interesse[$i] = "Engenharia";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 5){
+						$interesse[$i] = "Administração e Negócios";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 6){
+						$interesse[$i] = "Comunicação";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 7){
+						$interesse[$i] = "Arte e Design";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 8){
+						$interesse[$i] = "Direito";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 9){
+						$interesse[$i] = "Educação";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 10){
+						$interesse[$i] = "Turismo";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 11){
+						$interesse[$i] = "Gastronomia";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 12){
+						$interesse[$i] = "Ciências Exatas e Biológicas";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 13){
+						$interesse[$i] = "Ciências Sociais e Humanas";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 14){
+						$interesse[$i] = "Música";
+					}
+					else if(isset($_interesse[$i]) && $_interesse[$i] == 15){
+						$interesse[$i] = $_POST["int15"];
+					}
+					else{
+						$interesse[$i] = null;
+					}
+				}
+
+				$stmt=$conn->prepare($update);
+
+				//criando a quantidade de atrelamentos de acordo com a quantidade de interesses selecionados
+				for($i=0;$i<$count-1;$i++){
+					$stmt->bindValue($i+1, $interesse[$i]);
+
+				}
+				$stmt->bindValue(16, $id);
+				$stmt->execute();
+			}
 
             $script = "<script language='javascript'>location.href='painel_inst.php';
             alert('Evento editado com sucesso.');
             </script>';";
-            echo $script;
+			echo $script;
+		}
     }
     else{
         if (isset($erro)) {
@@ -369,5 +567,6 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
                 echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
             }
         }
-    }
+	}
+	
 ?>
