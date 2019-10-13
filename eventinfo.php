@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['instituicao'])){
+    header('location:index.php');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -47,7 +54,7 @@
 
 		<div class='dropdown'>
 			<?php
-			session_start();
+			
 			if(isset($_SESSION['usuario']))
 			{
 				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
@@ -362,13 +369,27 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 if(isset($valido) && $valido == true){
 
 	//Verificar se o Evento já está cadastro no banco de dados
-	//$result = $conn->prepare("select * from usuario where email_usuario = '{$email}'");
-	//$result->execute();
+	$result = $conn->prepare("select * from evento where nome_evento = ? and data_inicio=? and data_termino=? and hora_inicio=? and endereco_evento=? and bairro_evento=? and cidade_evento=? and estado_evento=? and cep_evento=? and descricao_evento=? and preco_evento=?");
+	$result->bindValue(1, $_POST["nome"]);
+	$result->bindValue(2, $_POST["dateinic"]);
+	$result->bindValue(3, $_POST["datefinal"]);
+	$result->bindValue(4, $_POST["endereco"]);
+	$result->bindValue(5, $_POST["bairro"]);
+	$result->bindValue(6, $_POST["cidade"]);
+	$result->bindValue(7, $_POST["estado"]);
+	$result->bindValue(8, $_POST["cep"]);
+	$result->bindValue(9, $_POST["desc"]);
+	$result->bindValue(10, $_POST["preco"]);
+	$result->execute();
 
-	//if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
-	//header('Location: login.php'); //Direciona o usuário para a página de login
-	//}
-	//else{
+	if($result->fetchColumn() > 0){ //Se retornar mais de 0 como resultado,existe esse evento cadastrado 
+		$script = "
+		<script type='text/javascript'>
+		alert('Esse evento já está cadastrado.');
+		</script>";
+    	echo $script;
+	}
+	else{
 
 	$sql = "INSERT INTO evento
 	(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ)
@@ -474,6 +495,7 @@ if(isset($valido) && $valido == true){
 		}
 		$stmt->execute();
 	}
+}
 }
 else{
 	if (isset($erro)) {

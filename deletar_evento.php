@@ -22,8 +22,10 @@
   }
 ?>
     <?php
-    $script = "<script language='javascript'>location.href='painel_inst.php';
-    alert('Evento excluído com sucesso.);
-    </script>';";
+    $script = "
+    <script type='text/javascript'>
+    location.href='painel_inst.php';
+    alert('Evento excluído com sucesso.');
+    </script>";
     echo $script;
     ?>

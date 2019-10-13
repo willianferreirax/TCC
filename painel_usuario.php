@@ -103,7 +103,7 @@ if(!$_SESSION['usuario']){
   				}
   			?>
   			<br>
-  			<a href='painel_usuario.php' class='account'>Configurações</a>
+  			<a href='config.php' class='account'>Configurações</a>
   			<br>
   			<a href='painel_usuario.php' class='account'>Ajuda</a>
   			<br>

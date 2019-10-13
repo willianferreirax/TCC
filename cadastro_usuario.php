@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
+    header('location:index.php');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -114,12 +121,19 @@
       if(isset($valido) && $valido == true){
 
         $email = $_POST['email'];
+        $login = $_POST['login_usuario'];
         //Verificar se o usuário já está cadastro no banco de dados
-        $result = $conn->prepare("select * from usuario where email_usuario = '{$email}'"); //Comando de seleção que verifica se há um email igual no banco de dados
+        $result = $conn->prepare("select * from usuario where email_usuario = '{$email}' or login_usuario = '{$login}'"); //Comando de seleção que verifica se há um email igual no banco de dados
         $result->execute(); //Executa o comando
 
         if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
-          header('Location: login.php'); //Direciona o usuário para a página de login
+          $script = "
+          <script type='text/javascript'>
+          alert('Email ou login já foram cadastrados.');
+          </script>";
+          echo $script;
+          header('Location: cadastro_usuario.php'); //Direciona o usuário para a página de login
+          exit();
         }
         else{ //Se não há um email cadastrado, realiza o cadastro
           $nome1 = $_POST["nome"];
@@ -131,15 +145,13 @@
           VALUES (?, ?, ?, ?, ?)";
           $stmt = $conn->prepare($sql);
 
-
-
           //Atrelando os dados às tabelas
           $stmt->bindValue(1, $nome1);
-		  $stmt->bindValue(2, $nome2);
+		      $stmt->bindValue(2, $nome2);
           $stmt->bindValue(3, $_POST["email"]);
           $senhaHash = md5($_POST["senha"]);
           $stmt->bindValue(4, $senhaHash);
-		  $stmt->bindValue(5,$_POST["login_usuario"]);
+		      $stmt->bindValue(5,$_POST["login_usuario"]);
           $stmt->execute();
 
           if($stmt->errorCode() != "00000"){
@@ -149,6 +161,7 @@
           } //Exibir erro de comunicação com o banco de dados
           else{
             header('Location: login.php');
+            exit();
           }
         }
       }

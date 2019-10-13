@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -22,6 +23,10 @@
 <body>
 <?php
 session_start();
+if(!isset($_SESSION['usuario']) && !isset($_SESSION['instituicao'])){
+header('Location : index.php');
+exit();
+}
 ?>
 <center>
   <header class='cabecalho'>
@@ -72,27 +77,35 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
         $res->execute();
         $int = $conn->prepare($delint);
         $int->execute();
-         echo "<script language='javascript'>";
-         echo "alert('Sua conta foi PERMANENTEMENTE excluida.');";
-         echo "</script>";
+        $script = "
+        <script type='text/javascript'>
+        alert('Sua conta foi PERMANENTEMENTE excluida.');
+        </script>";
+        echo $script;
          unset($_SESSION['usuario']);
         header("Location: index.php");
+        exit();
     }
     else{
         if($_SESSION['instituicao'][1]==$email && $_SESSION['instituicao'][2]==$senha){
             $delete="delete from faculdade where email_inst = '$email'";
             $res = $conn->prepare($delete);
             $res->execute();
-            echo "<script language='javascript'>";
-			echo "alert('Sua conta foi PERMANTEMENTE excluida.');";
-            echo "</script>";
+            $script = "
+            <script type='text/javascript'>
+            alert('Sua conta foi PERMANENTEMENTE excluida.');
+            </script>";
+            echo $script;
             unset($_SESSION['instituicao']);
             header("Location: index.php");
+            exit();
         }
         else{
-            echo "<script language='javascript'>";
-				echo "alert('Não foi possivel deletar a conta. Email ou senha incorretos');";
-			echo "</script>";
+          $script = "
+          <script type='text/javascript'>
+          alert('Não foi possivel deletar sua conta. Email ou senha incorretos.');
+          </script>";
+          echo $script;
 
         }
     }

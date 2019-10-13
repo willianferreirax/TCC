@@ -1,3 +1,9 @@
+<?php
+if(!$_SESSION['usuario']){
+    header('Location:index.php');
+    exit();
+}
+?>
 <html>
 <script type='text/javascript'>
   function intlimit(n) {
