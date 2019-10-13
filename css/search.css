@@ -542,7 +542,7 @@
 	}
 
 	.icons{
-		position: absolute;
+		position: fixed;
 		left: 0vh;
 		top: 10vh;
 		font-size: 1.5vh;
@@ -603,7 +603,7 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.9);
@@ -618,7 +618,7 @@
 	}
 
 	.menubtn{
-		position: absolute;
+		position: fixed;
 		left: 2vh;
 		cursor: pointer;
 		z-index: 6;
@@ -663,7 +663,7 @@
 		float: left;
 		text-align: left;
 		font-size: 20px;
-		position: absolute;
+		position: fixed;
 		z-index: 5;
 	}
 

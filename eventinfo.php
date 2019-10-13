@@ -112,164 +112,172 @@ if(!isset($_SESSION['instituicao'])){
 			</div>
 
 		</header>
-		</center>
-		<div class='elem1'>
-			<div class="icontainer">
-				<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
-					<div class="form-group" id='imageup'>
-						<label for="exampleFormControlFile1" class='imagevis'><br><b>Banner</b> do Evento</label>
-						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
-					</div>
-					<div class="nomeev">
-						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
-						<input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
-					</div>
+	</center>
+	<div class='elem1'>
+		<div class="icontainer">
+			<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
+				<div class="form-group" id='imageup'>
+				<label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
+					<img class="imagevis" id="imagevis" border="0">
+				<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)">
+				<script>
+				var loadFile = function(event) {
+					var imagevis = document.getElementById('imagevis');
+					imagevis.src = URL.createObjectURL(event.target.files[0]);
+				};
+			</script>
+		</div>
+		</label>
+		<div class="nomeev">
+			<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
+			<input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
+		</div>
 
-					<div class="info1">
-						<div class="infos">
+		<div class="info1">
+			<div class="infos">
 
-							<label class='labelint'>Nos conte um pouco sobre o seu evento:</label>
-							<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
+				<label class='labelint'>Nos conte um pouco sobre o seu evento:</label>
+				<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
 
-							<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
-							<input class='inputcreate' type='date' name='dateinic' placeholder='03103-010'>
+				<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
+				<input class='inputcreate' type='date' name='dateinic' placeholder='03103-010'>
 
-							<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
-							<input class='inputcreate' type='date' name='datefinal' placeholder='03103-010'>
+				<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
+				<input class='inputcreate' type='date' name='datefinal' placeholder='03103-010'>
 
-							<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
-							<input class='inputcreate' type='time' name='timeinic'>
+				<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
+				<input class='inputcreate' type='time' name='timeinic'>
 
-							<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
-							<input class='inputcreate' type='time' name='timefinal'>
+				<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
+				<input class='inputcreate' type='time' name='timefinal'>
 
-							<label class='labelint'>Qual o <b>preço</b> do evento?</label>
-							<input class='inputcreate' type='number' name='preco' placeholder="12,00">
+				<label class='labelint'>Qual o <b>preço</b> do evento?</label>
+				<input class='inputcreate' type='number' name='preco' placeholder="12,00">
 
-						</div>
-						<div class="endereco">
-							<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-							<input class='inputcreate' type='text' name='endereco' placeholder='Rua Dr. Almeida Lima, 1233'>
+			</div>
+			<div class="endereco">
+				<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
+				<input class='inputcreate' type='text' name='endereco' placeholder='Rua Dr. Almeida Lima, 1233'>
 
-							<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='bairro' placeholder='Mooca'>
+				<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
+				<input class='inputcreate' type='text' name='bairro' placeholder='Mooca'>
 
-							<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
+				<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
+				<input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
 
-							<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
-							<select name="estado">
-								<option value="AC">Acre</option>
-								<option value="AL">Alagoas</option>
-								<option value="AP">Amapá</option>
-								<option value="AM">Amazonas</option>
-								<option value="BA">Bahia</option>
-								<option value="CE">Ceará</option>
-								<option value="DF">Distrito Federal</option>
-								<option value="ES">Espirito Santo</option>
-								<option value="GO">Goiás</option>
-								<option value="MA">Maranhão</option>
-								<option value="MT">Mato Grosso</option>
-								<option value="MS">Mato Grosso do Sul</option>
-								<option value="MG">Minas Gerais</option>
-								<option value="PA">Pará</option>
-								<option value="PB">Paraíba</option>
-								<option value="PR">Paraná</option>
-								<option value="PE">Pernambuco</option>
-								<option value="PI">Piauí</option>
-								<option value="RJ">Rio de Janeiro</option>
-								<option value="RJ">Rio Grande do Norte</option>
-								<option value="RS">Rio grande do sul</option>
-								<option value="RO">Rondônia</option>
-								<option value="RR">Roraima</option>
-								<option value="SC">Santa Catarina</option>
-								<option value="SP" selected>São Paulo</option>
-								<option value="SE">Sergipe</option>
-								<option value="TO">Tocantins</option>
-							</select><br>
+				<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
+				<select name="estado">
+					<option value="AC">Acre</option>
+					<option value="AL">Alagoas</option>
+					<option value="AP">Amapá</option>
+					<option value="AM">Amazonas</option>
+					<option value="BA">Bahia</option>
+					<option value="CE">Ceará</option>
+					<option value="DF">Distrito Federal</option>
+					<option value="ES">Espirito Santo</option>
+					<option value="GO">Goiás</option>
+					<option value="MA">Maranhão</option>
+					<option value="MT">Mato Grosso</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MG">Minas Gerais</option>
+					<option value="PA">Pará</option>
+					<option value="PB">Paraíba</option>
+					<option value="PR">Paraná</option>
+					<option value="PE">Pernambuco</option>
+					<option value="PI">Piauí</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="RJ">Rio Grande do Norte</option>
+					<option value="RS">Rio grande do sul</option>
+					<option value="RO">Rondônia</option>
+					<option value="RR">Roraima</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="SP" selected>São Paulo</option>
+					<option value="SE">Sergipe</option>
+					<option value="TO">Tocantins</option>
+				</select><br>
 
-							<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
-							<input class='inputcreate' type='text' name='cep' placeholder='03103-010'>
-						</div>
-					</div>
-					<center>
-					<br>
-					<br>
-					<hr>
-					<br><label class='labelintere'>Selecione quais são as <b>áreas de interesses</b> do seu evento.</label>
-					<div class='interesses'>
-						<input type="checkbox" id='bti1' class='chkint' value=1  name='intchk[]'>
-						<label for='bti1' class='interesse1' id='int1'>
-
-							Informação e Tecnologia
-						</label>
-						<input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
-						<label for='bti2' class='interesse2' id='int2'>
-							Logística
-						</label>
-						<input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
-						<label for='bti3' class='interesse3' id='int3'>
-							Saúde
-						</label>
-						<input type="checkbox" id='bti4' class='chkint' value=4  name='intchk[]'>
-						<label for='bti4' class='interesse4' id='int4'>
-							Engenharia
-						</label>
-						<input type="checkbox" id='bti5' class='chkint' value=5  name='intchk[]'>
-						<label for='bti5' class='interesse5' id='int5'>
-							Administração e Negócios
-						</label>
-						<input type="checkbox" id='bti6' class='chkint' value=6  name='intchk[]'>
-						<label for='bti6' class='interesse6' id='int6'>
-							Comunicação
-						</label>
-						<input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
-						<label for='bti7' class='interesse7' id='int7'>
-							Arte e Design
-						</label>
-						<input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
-						<label for='bti8' class='interesse8' id='int8'>
-							Direito
-						</label>
-						<input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
-						<label for='bti9' class='interesse9' id='int9'>
-							Educação
-						</label>
-						<input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
-						<label for='bti10' class='interesse10' id='int10'>
-							Turismo
-						</label>
-						<input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
-						<label for='bti11' class='interesse11' id='int11'>
-							Gastronomia
-						</label>
-						<input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
-						<label for='bti12' class='interesse12' id='int12'>
-							Ciências Exatas e Biológicas
-						</label>
-						<input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
-						<label for='bti13' class='interesse13' id='int13'>
-							Ciências Sociais e Humanas
-						</label>
-						<input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
-						<label for='bti14' class='interesse14' id='int14'>
-							Música
-						</label>
-						<input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
-						<label for='bti15' class='interesse15' id='int15'>
-							<input type='text' class='outro' name='int15' placeholder="Outro">
-						</label>
-					</div>
-					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
-					</center>
-				</form>
+				<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
+				<input class='inputcreate' type='text' name='cep' placeholder='03103-010'>
 			</div>
 		</div>
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<center>
+			<br>
+			<br>
+			<hr>
+			<br><label class='labelintere'>Selecione quais são as <b>áreas de interesses</b> do seu evento.</label>
+			<div class='interesses'>
+				<input type="checkbox" id='bti1' class='chkint' value=1  name='intchk[]'>
+				<label for='bti1' class='interesse1' id='int1'>
+
+					Informação e Tecnologia
+				</label>
+				<input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
+				<label for='bti2' class='interesse2' id='int2'>
+					Logística
+				</label>
+				<input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
+				<label for='bti3' class='interesse3' id='int3'>
+					Saúde
+				</label>
+				<input type="checkbox" id='bti4' class='chkint' value=4  name='intchk[]'>
+				<label for='bti4' class='interesse4' id='int4'>
+					Engenharia
+				</label>
+				<input type="checkbox" id='bti5' class='chkint' value=5  name='intchk[]'>
+				<label for='bti5' class='interesse5' id='int5'>
+					Administração e Negócios
+				</label>
+				<input type="checkbox" id='bti6' class='chkint' value=6  name='intchk[]'>
+				<label for='bti6' class='interesse6' id='int6'>
+					Comunicação
+				</label>
+				<input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
+				<label for='bti7' class='interesse7' id='int7'>
+					Arte e Design
+				</label>
+				<input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
+				<label for='bti8' class='interesse8' id='int8'>
+					Direito
+				</label>
+				<input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
+				<label for='bti9' class='interesse9' id='int9'>
+					Educação
+				</label>
+				<input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
+				<label for='bti10' class='interesse10' id='int10'>
+					Turismo
+				</label>
+				<input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
+				<label for='bti11' class='interesse11' id='int11'>
+					Gastronomia
+				</label>
+				<input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
+				<label for='bti12' class='interesse12' id='int12'>
+					Ciências Exatas e Biológicas
+				</label>
+				<input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
+				<label for='bti13' class='interesse13' id='int13'>
+					Ciências Sociais e Humanas
+				</label>
+				<input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
+				<label for='bti14' class='interesse14' id='int14'>
+					Música
+				</label>
+				<input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
+				<label for='bti15' class='interesse15' id='int15'>
+					<input type='text' class='outro' name='int15' placeholder="Outro">
+				</label>
+			</div>
+			<div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
+		</center>
+	</form>
+</div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
@@ -306,7 +314,6 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 		$erro = "A data de inicio é posterior à data de termino. Selecione de maneira correta";
 		$coderro = 5;
 	}
-	
 
 	elseif(strlen(utf8_decode($_POST["timeinic"])) <5 || strlen(utf8_decode($_POST["timeinic"])) > 5) {
 		$erro = " digite uma hora para o inicio do evento.";
@@ -546,6 +553,5 @@ else{
 		}
 	}
 }
-
 
 ?>
