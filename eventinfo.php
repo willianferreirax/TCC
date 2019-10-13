@@ -317,7 +317,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 		$coderro = 7;
 	}
 
-	elseif(strtotime($_POST['timeinic']) > strtotime($_POST['timefinal'])){
+	elseif(strtotime($_POST['timeinic']) > strtotime($_POST['timefinal']) && strtotime($_POST['datefinal'])<=strtotime($_POST['dateinic'])){
 		$erro = "A hora de inicio é posterior à hora de termino. Selecione de maneira correta";
 		$coderro = 8;
 	}
@@ -346,6 +346,10 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 	elseif(strlen(utf8_decode($_POST["desc"])) < 1 || strlen(utf8_decode($_POST["desc"])) > 200){
 		$erro = "Digite uma descrição válida (Minimo de 1 caractere)";
 		$coderro = 14;
+	}
+	elseif(strtotime($_POST['dateinic'])<strtotime(date('Y-m-d'))){
+		$erro="A data de inicio já passou";
+		$coderro = 15;
 	}
 
 	else{
@@ -521,6 +525,9 @@ else{
 		}
 		if($coderro == 14){
 			echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
+		}
+		if($coderro == 15){
+			echo "<div class='erro'>".$erro."</div><br>";
 		}
 	}
 }
