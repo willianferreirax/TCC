@@ -57,7 +57,6 @@ elseif(isset($_SESSION['instituicao'])){
 
       		include 'connection.php';
       		$conn = conexao();
-              session_start();
               $login = $_POST['login'];
               $senha = md5($_POST['senha']);
 
@@ -83,7 +82,7 @@ elseif(isset($_SESSION['instituicao'])){
               }
       		else{
 
-                  $select = "SELECT CNPJ,nome_inst,email_inst,senha_inst from faculdade where login_inst = '$login' and senha_inst = '$senha'";
+                  $select = "SELECT CNPJ,nome_inst,email_inst,senha_inst, endereco_inst, bairro_inst, cidade_inst, estado_inst, cep_inst, telefone_inst from faculdade where login_inst = '$login' and senha_inst = '$senha'";
                   $res = $conn->prepare($select);//preparando query
                   $res->execute();//executando
                   $result = $res->fetchAll();
@@ -94,7 +93,13 @@ elseif(isset($_SESSION['instituicao'])){
                           array_push($session,$row['nome_inst']);//o array do SESSION terá na posição 0, o nome da instituição
                           array_push($session,$row['email_inst']);//o array do SESSION terá na posição 1, o email da instituição
                           array_push($session,$row['senha_inst']);//o array do SESSION terá na posição 2, a senha da instituição
-      					array_push($session,$row['CNPJ']);//o array do SESSION terá na posição 3, o CNPJ da instituicao
+      					          array_push($session,$row['CNPJ']);//o array do SESSION terá na posição 3, o CNPJ da instituicao
+                          array_push($session,$row['endereco_inst']);//o array do SESSION terá na posição 4, o endereco da instituição
+                          array_push($session,$row['bairro_inst']);//o array do SESSION terá na posição 5, o bairro da instituição
+                          array_push($session,$row['cidade_inst']);//o array do SESSION terá na posição 6, a cidade da instituição
+      					          array_push($session,$row['estado_inst']);//o array do SESSION terá na posição 7, o estado da instituicao
+                          array_push($session,$row['cep_inst']);//o array do SESSION terá na posição 8, o CEP da instituicao
+                          array_push($session,$row['telefone_inst']);//o array do SESSION terá na posição 9, o telefone da instituicao
                       }
                       header('Location: painel_inst.php');
                       $_SESSION['instituicao']=$session;
