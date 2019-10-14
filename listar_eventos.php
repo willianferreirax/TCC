@@ -3,7 +3,6 @@
   <head>
     <title>
       <?php
-      session_start();
                   if(isset($_POST['pesquisa'])){
                       $pesquisa = $_POST['pesquisa'];
                       echo $pesquisa;
@@ -29,7 +28,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
 
-  <body class="bgindex">
+  <body class-"bgindex">
     <center>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>
@@ -50,21 +49,29 @@
           </div>
         </div>
         <div class='userdiv'>
-  				<?php
-  					if(isset($_SESSION['usuario'])){
-  						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-  						</div></label>";
-  					}
-  					else if(isset($_SESSION['instituicao'])){
-  						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-  						</div></label>";
-  					}
-  					else{
-  						echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
-  						</div>";
-  					}
-  					?>
-  				</div>
+          <?php
+          if(isset($_SESSION['instituicao'])){
+            echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
+            </div></label>";
+            echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
+            </div></label>";
+          }
+          ?>
+          <?php
+          if(isset($_SESSION['usuario'])){
+            echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+            </div></label>";
+          }
+          else if(isset($_SESSION['instituicao'])){
+            echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+            </div></label>";
+          }
+          else{
+            echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
+            </div>";
+          }
+          ?>
+        </div>
       </div>
     </header>
     <?php
@@ -236,34 +243,35 @@
           <label for='chec' class='backdiv'></label>
         </nav>
         <div class='dropdown'>
-    			<?php
-    			if(isset($_SESSION['usuario']))
-    			{
-    				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
-    																																																																																																												($_SESSION['usuario'][4])-1))."</h1>";
-    			}
-    			if(isset($_SESSION['instituicao']))
-    			{
-    				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
-    			}
-    			?>
-    			<br>
-    			<?php
-    				if(isset($_SESSION['instituicao'][0])){
-    					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
-    				}
-    				else{
-    					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
-    				}
-    			?>
-    			<br>
-    			<a href='painel_usuario.php' class='account'>Configurações</a>
-    			<br>
-    			<a href='painel_usuario.php' class='account'>Ajuda</a>
-    			<br>
-    			<br>
-    			<a href='logout_script.php' class='exit'>Sair</a>
-    		</div>
+          <?php
+          session_start();
+          if(isset($_SESSION['usuario']))
+          {
+            echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
+            ($_SESSION['usuario'][4])-1))."</h1>";
+          }
+          if(isset($_SESSION['instituicao']))
+          {
+            echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+          }
+          ?>
+          <br>
+          <?php
+          if(isset($_SESSION['instituicao'][0])){
+            echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+          }
+          else{
+            echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+          }
+          ?>
+          <br>
+          <a href='painel_usuario.php' class='account'>Configurações</a>
+          <br>
+          <a href='painel_usuario.php' class='account'>Ajuda</a>
+          <br>
+          <br>
+          <a href='logout_script.php' class='exit'>Sair</a>
+        </div>
       </center>
     </body>
     </html>
