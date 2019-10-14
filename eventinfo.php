@@ -117,9 +117,17 @@ if(!isset($_SESSION['instituicao'])){
 			<div class="icontainer">
 				<form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
 					<div class="form-group" id='imageup'>
-						<label for="exampleFormControlFile1" class='imagevis'><br><b>Banner</b> do Evento</label>
-						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
+						<label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
+							<img class="imagevis" id="imagevis" border="0">
+						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)">
+						<script>
+							var loadFile = function(event) {
+								var imagevis = document.getElementById('imagevis');
+								imagevis.src = URL.createObjectURL(event.target.files[0]);
+							};
+						</script>
 					</div>
+						</label>
 					<div class="nomeev">
 						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
 						<input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
