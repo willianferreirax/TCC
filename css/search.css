@@ -232,6 +232,60 @@
     text-align: left;
 	}
 
+	.searchinst:hover {
+    background-color: #0f1112;
+  }
+
+	/*.searchinst:hover .imagemres{
+		opacity: 0.7;
+  }*/
+
+	.searchinst:hover .nomeinst{
+		font-size: 1.87vw;
+  }
+
+	.telefoneinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 1.1vw;
+		padding: 0.1vw 0 0 0;
+		opacity: 0.8;
+	}
+
+	.enderecoinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 1.2vw;
+		padding: 0.5vw 0 0 0;
+		opacity: 0.7;
+	}
+
+	.nomeinst{
+		display: block;
+		max-width: 200vw;
+    text-align: left;
+    padding: 1vw 1vw 1vw 1vw;
+    font-size: 1.85vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		margin-left: 20vw;
+	}
+
+	.searchinst{
+    /*display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-areas: "imagemres" "nomeinst";*/
+    width: 40vw;
+    height: 20vw;
+    border-radius: 2vw;
+    background-color: #0d0e0f;
+    margin: 1vw 0 0 0;
+  }
+
   .searchinfo{
     display: grid;
     grid-template-columns: 25% 65% 10%;
@@ -415,6 +469,60 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.searchinst:hover {
+    background-color: #0f1112;
+  }
+
+	/*.searchinst:hover .imagemres{
+		opacity: 0.7;
+  }*/
+
+	.searchinst:hover .nomeinst{
+		font-size: 3.3vw;
+  }
+
+	.telefoneinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 2vw;
+		padding: 0.1vw 0 0 0;
+		opacity: 0.8;
+	}
+
+	.enderecoinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 2.3vw;
+		padding: 0.5vw 0 0 0;
+		opacity: 0.7;
+	}
+
+	.nomeinst{
+		display: block;
+		max-width: 200vw;
+    text-align: left;
+    padding: 1vw 1vw 1vw 1vw;
+    font-size: 3vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		margin-left: 40vw;
+	}
+
+	.searchinst{
+    /*display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-areas: "imagemres" "nomeinst";*/
+    width: 60vw;
+    height: 40vw;
+    border-radius: 2vw;
+    background-color: #0d0e0f;
+    margin: 1vw 0 0 0;
+  }
+
 	.searchinfo{
     display: grid;
     grid-template-columns: 25% 65% 10%;
@@ -536,7 +644,7 @@
 		font-size: 2.3vh;
 	}
 
-	.b1{
+	.b2{
 		border-right: 0.5vh solid;
     border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
 	}
@@ -777,6 +885,60 @@
 }
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+
+	.searchinst:hover {
+    background-color: #0f1112;
+  }
+
+	/*.searchinst:hover .imagemres{
+		opacity: 0.7;
+  }*/
+
+	.searchinst:hover .nomeinst{
+		font-size: 3.3vw;
+  }
+
+	.telefoneinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 2vw;
+		padding: 0.1vw 0 0 0;
+		opacity: 0.8;
+	}
+
+	.enderecoinst{
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		font-size: 2.3vw;
+		padding: 0.5vw 0 0 0;
+		opacity: 0.7;
+	}
+
+	.nomeinst{
+		display: block;
+		max-width: 200vw;
+    text-align: left;
+    padding: 1vw 1vw 1vw 1vw;
+    font-size: 3vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+		margin-left: 40vw;
+	}
+
+	.searchinst{
+    /*display: grid;
+    grid-template-columns: 25% 65% 10%;
+    grid-template-areas: "imagemres" "nomeinst";*/
+    width: 60vw;
+    height: 40vw;
+    border-radius: 2vw;
+    background-color: #0d0e0f;
+    margin: 1vw 0 0 0;
+  }
 
 	.searchinfo{
 		margin-bottom: 2vw;
