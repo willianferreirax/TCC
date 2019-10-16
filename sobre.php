@@ -8,7 +8,7 @@
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
   <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Sobre">
   <meta name="robots" content="Sobre, follow">
-  <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas, Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/sobre.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,17 +27,17 @@
     <input type='checkbox' id='chec'>
     <div class='icons'>
       <a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-      <i class="fas fa-map-marked fa-2x"></i><br>
-      <i class="fas fa-users fa-2x"></i><br>
+      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i><br>
+      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <i class="fas fa-question fa-2x"></i><br>
+      <a href='index.php'><i class="fas fa-question fa-2x"></i><br>
       <hr>
     </div>
     <nav>
       <div class='menulist'>
         <a href='index.php'><div class='b1'>Página inicial</div></a>
-        <a href='index.php'><div class='b2'>Eventos</div></a>
-        <a href='index.php'><div class='b3'>Instituição</div></a>
+        <a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
+        <a href='listar_inst.php'><div class='b3'>Instituição</div></a>
         <a href='sobre.php'><div class='b4'>Sobre nós</div></a>
         <a href='index.php'><div class='b5'>Ajuda</div></a>
       </div>
@@ -64,7 +64,7 @@
 				}
 			?>
 			<br>
-			<a href='painel_usuario.php' class='account'>Configurações</a>
+			<a href='config.php' class='account'>Configurações</a>
 			<br>
 			<a href='painel_usuario.php' class='account'>Ajuda</a>
 			<br>
