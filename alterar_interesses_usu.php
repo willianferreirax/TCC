@@ -246,23 +246,23 @@ function intlimit(n) {
         </label>
         <input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'
         <?php
-        $varint[1] = "Informação e Tecnologia";
-        $varint[2] = "Logística";
-        $varint[3] = "Saúde";
-        $varint[4] = "Engenharia";
-        $varint[5] = "Administração e Negócios";
-        $varint[6] = "Comunicação";
-        $varint[7] = "Arte e Design";
-        $varint[8] = "Direito";
-        $varint[9] = "Educação";
-        $varint[10] = "Turismo";
-        $varint[11] = "Gastronomia";
-        $varint[12] = "Ciências Exatas e Biológicas";
-        $varint[13] = "Ciências Sociais e Humanas";
-        $varint[14] = "Música";
+        $varint[0] = "Informação e Tecnologia";
+        $varint[1] = "Logística";
+        $varint[2] = "Saúde";
+        $varint[3] = "Engenharia";
+        $varint[4] = "Administração e Negócios";
+        $varint[5] = "Comunicação";
+        $varint[6] = "Arte e Design";
+        $varint[7] = "Direito";
+        $varint[8] = "Educação";
+        $varint[9] = "Turismo";
+        $varint[10] = "Gastronomia";
+        $varint[11] = "Ciências Exatas e Biológicas";
+        $varint[12] = "Ciências Sociais e Humanas";
+        $varint[13] = "Música";
         $contint = 0;
-        for($j = 0; $j < 15; $j++){
-          for($i = 0; $i < 15; $i++){
+        for($j = 0; $j < 6; $j++){
+          for($i = 0; $i < 14; $i++){
             if((isset($result[0]['interesseusu'.$j])) && ($result[0]['interesseusu'.$j] != $varint[$i])){
               $contint++;
             }
@@ -278,23 +278,23 @@ function intlimit(n) {
         <label for='bti15' class='interesse15' id='int15'>
           <input type='text' class='outro' name='int15' placeholder="
           <?php
-          $varint[1] = "Informação e Tecnologia";
-          $varint[2] = "Logística";
-          $varint[3] = "Saúde";
-          $varint[4] = "Engenharia";
-          $varint[5] = "Administração e Negócios";
-          $varint[6] = "Comunicação";
-          $varint[7] = "Arte e Design";
-          $varint[8] = "Direito";
-          $varint[9] = "Educação";
-          $varint[10] = "Turismo";
-          $varint[11] = "Gastronomia";
-          $varint[12] = "Ciências Exatas e Biológicas";
-          $varint[13] = "Ciências Sociais e Humanas";
-          $varint[14] = "Música";
+          $varint[0] = "Informação e Tecnologia";
+          $varint[1] = "Logística";
+          $varint[2] = "Saúde";
+          $varint[3] = "Engenharia";
+          $varint[4] = "Administração e Negócios";
+          $varint[5] = "Comunicação";
+          $varint[6] = "Arte e Design";
+          $varint[7] = "Direito";
+          $varint[8] = "Educação";
+          $varint[9] = "Turismo";
+          $varint[10] = "Gastronomia";
+          $varint[11] = "Ciências Exatas e Biológicas";
+          $varint[12] = "Ciências Sociais e Humanas";
+          $varint[13] = "Música";
           $contint = 0;
-          for($j = 0; $j < 15; $j++){
-            for($i = 0; $i < 15; $i++){
+          for($j = 0; $j < 6; $j++){
+            for($i = 0; $i < 14; $i++){
               if((isset($result[0]['interesseusu'.$j])) && ($result[0]['interesseusu'.$j] != $varint[$i])){
                 $contint++;
               }
@@ -388,6 +388,7 @@ function intlimit(n) {
       } //Exibir erro de comunicação com o banco de dados
       else{
         header("Location:painel_usuario.php");
+        exit();
       }
 
     }
