@@ -43,6 +43,14 @@
 		color: #00C7CE !important;
 	}
 
+	#confirmicon{
+		cursor: pointer;
+	}
+
+	#star{
+		cursor: pointer;
+	}
+
 	.interessado{
 		padding-right: 2vw;
 	}
@@ -180,14 +188,15 @@
 		position: fixed !important;
 		float: right;
 		text-align: center;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: #222224;
 		top: 9vh;
 		right: 3vh;
-		height: 50;
+		height: 50vh;
 		width: 30vh;
-		padding: 0 3vh 1vh 3vh;
+		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
+		box-shadow: 0 0 2vw #151517;
 	}
 
 	.labelchec:hover{
@@ -261,7 +270,7 @@
   }
 
   .banner{
-    width: 100%;
+    width: 89vw;
     height: 100%;
 		border-radius: 2vw 2vw 0 0;
 		object-fit: cover;
@@ -278,7 +287,7 @@
   .infocontainer{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 25vw 25%;
+    grid-template-rows: 37.5vw 25%;
     grid-template-areas: "banner" "info1";
     width: 100%;
     height: 100vh;
@@ -342,7 +351,7 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
     background-attachment: fixed;
@@ -642,7 +651,7 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
 		height: 100vh;
@@ -741,15 +750,15 @@
 	}
 
 	.imageuser{
-		margin-top: 7vw;
-		padding-top: 6vh;
-		background: url(../images/circle.png) center center/20vw no-repeat;
-    width: 15vh;
-    height: 18vh;
-    vertical-align: middle;
-    color: black;
+		margin: 8vw 0 0 8vw;
+		padding-top: 30%;
+		background: url(../images/circle.png) center center/28vw no-repeat;
+		width: 20vh;
+		height: 23vh;
+		vertical-align: middle;
+		color: black;
 		text-align: center;
-		font-size: 7vw;
+		font-size: 8vw;
 	}
 
 	.criaricon{
@@ -848,19 +857,19 @@
 		}
 
 		.dropdown{
-	    display: none;
-	    position: fixed !important;
-	    float: right;
-	    text-align: left;
-	    background-color: #18191b;
-	    top: 0;
-	    right: 0;
-	    height: 100vh;
-	    width: 40vw;
-	    padding: 1vh 3vh 1vh 3vh;
-	    z-index: 9;
-	    font-size: 6vw;
-	  }
+			display: none;
+			position: fixed !important;
+			float: right;
+			text-align: left;
+			background-color: #0D0E0F;
+			top: 0;
+			right: 0;
+			height: 100vh;
+			width: 60vw;
+			padding: 1vh 3vh 1vh 3vh;
+			z-index: 9;
+			font-size: 10vw;
+		}
 
 		.menubtn{
 			position: absolute;
@@ -984,7 +993,7 @@
 		}
 
 		.bgindex{
-			background: url(../images/indeximg.png) no-repeat;
+			background: url(../images/indeximg.jpg) no-repeat;
 			background-size: cover;
 			background-position: center;
 			height: 100vh;
