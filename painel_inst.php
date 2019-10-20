@@ -80,11 +80,11 @@
   			<?php
   			if(isset($_SESSION['usuario']))
   			{
-  				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
+  				echo "<h1 class='userimg'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
   			}
   			if(isset($_SESSION['instituicao']))
   			{
-  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+  				echo "<h1 class='userimg'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
   			}
   			?>
   			<br>
@@ -125,7 +125,7 @@
   				if(isset($_SESSION['instituicao'])){
   					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
   					</div></label>";
-  					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
+  					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle'></i></a>
   					</div></label>";
   				}
   				 ?>
@@ -145,17 +145,21 @@
         <br>
         <a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class='excluircad'><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
           <div class='title'>Meus Eventos</div>
+          <hr>
         <?php
         $n=0;
           foreach ($result as $row) {
             $imagem ='upload/'.$row['banner_evento'];
             echo "
-            <div class='card'>
-              <div class='imagebanner'> <img src='$imagem' alt='$row[nome_evento]' class='banner'> </div>
-              <div class='container'>
+            <div class='cartao' id='".$row['cod_evento']."'>
+              <div class='imagebanner'><img src='$imagem' alt='$row[nome_evento]' class='banner'></div>
+              <div class='nomeev'>
                 <h1 class='eventonome'>$row[nome_evento]</h1>
                 <p class='descevento'>$row[descricao_evento]</p>
                 <h1 class='dataevento'>$row[data_inicio] até $row[data_termino]</h1>
+                <center>
+                <hr>
+                </center>
                 <a href='deletar_evento.php?id_eve=$row[cod_evento]' class='deletevent'><button class='excluirevebtn'>Excluir</button></a>
                 <a href='alterar_evento.php?id_eve=$row[cod_evento]' class='changeevent'><button class='alterarevebtn'>Editar</button></a>
               </div>
@@ -169,6 +173,10 @@
           }
 
         ?>
+        <br>
+        <br>
+        <br>
+        <br>
       </center>
       </div>
     </body>
