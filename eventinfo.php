@@ -27,6 +27,32 @@ if(!isset($_SESSION['instituicao'])){
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script language=javascript>
+	function blokletras(objEvent)
+    {
+      var iKeyCode;
+      iKeyCode = objEvent.keyCode;
+      if(iKeyCode>=48 && iKeyCode<=57) return true;
+      return false;
+    }
+	
+	function mascara(formato , keypress , objeto)
+	{
+	  campo = eval(objeto);
+	  
+	  // CEP:
+	  
+	  if (formato == 'cep')
+	  {
+	    separador  = '-';
+		conjunto1 = 5;
+		if (campo.value.length == conjunto1)
+		{
+		  campo.value = campo.value + separador;
+		}
+	  }
+	}
+	</script>
 </head>
 <body class="bgindex">
 	<center>
@@ -197,7 +223,7 @@ if(!isset($_SESSION['instituicao'])){
 							</select><br>
 
 							<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
-							<input class='inputcreate' type='text' name='cep' placeholder='03103-010'>
+							<input class='inputcreate' type='text' maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.criareventoform.cep'); return blokletras(event);">
 						</div>
 					</div>
 					<center>
@@ -404,12 +430,13 @@ if(isset($valido) && $valido == true){
 	(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)";
 	$stmt = $conn->prepare($sql);
-	
+		
 	$preco = $_POST["preco"];
 	if($preco == "0,00" || $preco == "0" || $preco == "Grátis" || $preco == "0.00" || $preco == "Gratis" || $preco == "Gratuito" || $preco == "Gratuíto" || $preco == "0.0" || $preco == "0.00" || $preco == "0.000" || $preco == "0,0" || $preco == "0,00" || $preco == "0,000"|| $preco == "00,0" || $preco == "000,0"){
 		$preco = "Grátis";
 	}
 	
+
 	//Atrelando os dados às tabelas
 	$stmt->bindValue(1, $_POST["nome"]);
 	$stmt->bindValue(2, $novo_nome);
@@ -508,10 +535,10 @@ if(isset($valido) && $valido == true){
 
 		}
 		$stmt->execute();
-		$script = "<script language='javascript'>
+		$script = "<script language=javascript>
 			location.href='painel_inst.php';
-			alert('Evento cadastrado com sucesso!');
-			</script>";
+            alert('Evento cadastrado com sucesso.');
+            </script>";
 		echo $script;
 	}
 }

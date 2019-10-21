@@ -17,6 +17,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
   <meta name="robots" content="cadastro_inst, index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/eventoinfo.css">
   <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="images/icon.png">
@@ -34,28 +35,83 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type='text/javascript'>
+  <script language=javascript>
+  function blokletras(objEvent)
+    {
+      var iKeyCode;
+      iKeyCode = objEvent.keyCode;
+      if(iKeyCode>=48 && iKeyCode<=57) return true;
+      return false;
+    }
   function mascara(formato, keypress, objeto){
     campo = eval(objeto);
 
     //TELEFONE
-    if(formato == 'telefone'){
-      separador1 = '(';
-      separador2 = ') ';
-      separador3 = '-';
-      conjunto1 = 0;
-      conjunto2 = 3;
-      conjunto3 = 9;
-      if(telefone.value.length == conjunto1){
-        telefone.value = telefone.value + separador1;
-      }
-      if(telefone.value.length == conjunto2){
-        telefone.value = telefone.value + separador2;
-      }
-      if(telefone.value.length == conjunto3){
-        telefone.value = telefone.value + separador3;
-      }
-    }
+    if (formato=='telefone')
+	  {
+		conjunto1= 0;
+		conjunto2= 3;
+		conjuntox= 4;
+		conjunto3= 9;
+		separador1= '(';
+		separador2= ')';
+		separador3= '-';
+		separador4= ' ';
+		if(campo.value.length == conjunto1)
+		{
+			campo.value= campo.value+separador1;
+		}
+		if(campo.value.length == conjunto2 )
+		{
+			campo.value=campo.value+separador2;
+		}
+		if(campo.value.length == conjuntox)
+		{
+			campo.value=campo.value+separador4;
+		
+		}
+		if(campo.value.length == conjunto3)
+		{
+			campo.value = campo.value + separador3;
+		
+		}
+	  
+	  }
+	 if (formato == 'cep')
+	  {
+	    separador  = '-';
+		conjunto1 = 5;
+		if (campo.value.length == conjunto1)
+		{
+		  campo.value = campo.value + separador;
+		}
+	  }
+	  if (formato == 'cnpj')
+	  {
+	    separador  = '.';
+		separador2 = '-';
+		conjunto1 = 2;
+		conjunto2 = 6;
+		conjunto3 = 10;
+		conjunto4 = 15;
+		
+		if (campo.value.length == conjunto1)
+		{
+		  campo.value = campo.value + separador;
+		}
+		if (campo.value.length == conjunto2)
+		{
+		  campo.value = campo.value + separador;
+		}
+		if (campo.value.length == conjunto3)
+		{
+		  campo.value = campo.value + separador;
+		}
+		if (campo.value.length == conjunto4)
+		{
+		  campo.value = campo.value + separador2;
+		}
+	  }
   }
   </script>
 
@@ -120,11 +176,11 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
                         $erro="digite uma estado valido";
                       }
                       else{
-                        if(strlen(utf8_decode($_POST["cep"]))<8 || strlen(utf8_decode($_POST["cep"]))>8){
+                        if(strlen(utf8_decode($_POST["cep"]))<9 || strlen(utf8_decode($_POST["cep"]))>9){
                           $erro= "digite corretamente o CEP";
                         }
                         else{
-                          if(strlen(utf8_decode($_POST["cnpj"]))<11 || strlen(utf8_decode($_POST["cnpj"]))>11){
+                          if(strlen(utf8_decode($_POST["cnpj"]))<18 || strlen(utf8_decode($_POST["cnpj"]))>18){
                             $erro= "digite corretamente o CNPJ";
                           }
                           else{
@@ -270,7 +326,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
       <br>
       <br>
 
-      <label><b>Estado:</b></label>
+      <label class='labelint'><b>Estado:</b></label>
       <br>
       <select name="estado">
 								<option value="AC">Acre</option>
@@ -308,13 +364,13 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
       <label><b>CEP:</b></label>
       <br>
-      <input type="text" name="cep">
+     <input type="text" maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.cadastro_uso.cep'); return blokletras(event);">
       <br>
       <br>
 
       <label><b>CNPJ:</b></label>
       <br>
-      <input type="text" name="cnpj">
+      <input type="text" name="cnpj" maxlength="18" placeholder="99.999.999.9999-99" onkeypress="mascara('cnpj' , window.event.keyCode , 'document.cadastro_uso.cnpj'); return blokletras(event);">
       <br>
       <br>
       <small class='aindan'>Já está cadastrado?<br> <a href='login.php'>Clique aqui para acessar sua conta!</a></small>
