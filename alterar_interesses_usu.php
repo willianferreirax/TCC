@@ -28,21 +28,7 @@ if(!$_SESSION['usuario']){
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
-  <script type='text/javascript'>
-  function intlimit(n) {
-    var nint = 0;
-    for(var i = 0; i < document.getElementsByClassName("chkint").length; i++){
-      if(document.getElementsByClassName("chkint")[i].checked){
-        nint = nint + 1;
-      }
-      if(nint > 5){
-        document.getElementsByClassName("chkint")[n].checked = false;
-        alert("O número máximo de interesses foi atingido!")
-        return false;
-      }
-    }
-  }
-  </script>
+  
 </head>
 <script type='text/javascript'>
 function intlimit(n) {
@@ -75,7 +61,7 @@ function intlimit(n) {
       </a>
       <hr>
     </header>
-    <?php
+<?php
     include 'connection.php';
     $conn = conexao();
     $verificaint = array();
@@ -83,7 +69,7 @@ function intlimit(n) {
     $res = $conn->prepare($select);//preparando query
     $res->execute();//executando
     $result = $res->fetchAll();//pegando todas as linhas da matriz
-    ?>
+?>
 
     <form name='cadastro_uso' method="POST" action="?validar=true">
       <label class='labelintere'>Selecione as <b>áreas de interesses</b> que você deseja atualizar<br><b>Selecione 5</b></label><br>
@@ -146,13 +132,13 @@ function intlimit(n) {
           Administração e Negócios
         </label>
         <input type="checkbox" id='bti6' class='chkint' value=6 onclick='intlimit(5)' name='intchk[]'
-        <?php
+		<?php
         for($i = 0; $i < 6; $i++){
           if((isset($result[0]['interesseusu'.$i]) && $result[0]['interesseusu'.$i] == 'Comunicação')){
             echo "checked";
           }
         }
-        ?>>
+		?>>
         <label for='bti6' class='interesse6' id='int6'>
           Comunicação
         </label>
@@ -277,7 +263,7 @@ function intlimit(n) {
         ?>>
         <label for='bti15' class='interesse15' id='int15'>
           <input type='text' class='outro' name='int15' placeholder="
-          <?php
+<?php
           $varint[0] = "Informação e Tecnologia";
           $varint[1] = "Logística";
           $varint[2] = "Saúde";
@@ -306,14 +292,13 @@ function intlimit(n) {
               $contint = 0;
             }
           }
-          ?>">
+?>">
         </label>
       </div>
       <button type='submit' class='cadastrarint' name='cadastrar' value='cadastrar'>Confirmar</button>
       <br><br>
     </form>
-
-    <?php
+<?php
 
     if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
       $count = 0;
@@ -387,12 +372,15 @@ function intlimit(n) {
         echo $erro;
       } //Exibir erro de comunicação com o banco de dados
       else{
-        header("Location:painel_usuario.php");
-        exit();
-      }
+        $script = "
+            <script type='text/javascript'>
+			location.href ='painel_usuario.php' ;
+            </script>";
+        echo $script;
+		}
 
     }
-    ?>
-  </center>
+?>
+</center>
 </body>
 </html>

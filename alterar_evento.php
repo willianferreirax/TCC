@@ -165,7 +165,7 @@
 						</div>
 						<div class="endereco">
 							<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-							<input class='inputcreate' type='text' name='endereco' value=<?php echo $result[0]['endereco_evento'];?>>
+							<input class='inputcreate' type='text' name='endereco' value=<?php print_r($result[0]['endereco_evento']);?>>
 
 							<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
 							<input class='inputcreate' type='text' name='bairro' value=<?php echo $result[0]['bairro_evento'];?>>
@@ -516,9 +516,10 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 				$stmt->execute();
 			}
 
-            $script = "<script language='javascript'>location.href='painel_inst.php';
+            $script = "<script language='javascript'>
+			location.href='painel_inst.php';
             alert('Evento editado com sucesso.');
-            </script>';";
+            </script>";
 			echo $script;
 		}
     }

@@ -8,7 +8,7 @@
   }
   else{
     $conn = conexao();
-    $select = "select * from evento where CNPJ = {$_SESSION['instituicao'][3]}";
+    $select = "select * from evento where CNPJ = '{$_SESSION['instituicao'][3]}'";
     $res = $conn->prepare($select);//preparando query
     $res->execute();//executando
     $result = $res->fetchAll();
