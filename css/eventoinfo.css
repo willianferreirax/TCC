@@ -1,17 +1,4 @@
-
 @media only screen and (min-width: 700px) and (orientation: landscape) {
-
-	.bannervisu{
-		height: 100%;
-		width: 100%;
-		text-align: left;
-		border-radius: 2vw 2vw 0 0;
-		background-position: center;
-		transition: box-shadow 0.5s;
-		-webkit-transition: box-shadow 0.5s;
-		transition: opacity 0.5s;
-		-webkit-transition: opacity 0.5s;
-	}
 
 	.selectestado{
 		background-color: #202124;
@@ -23,13 +10,15 @@
 	}
 
 	.exit{
-		color: #822828;
-		text-decoration: none !important;
-		font-size: 1.3vw;
+		width: 100%;
+		height: 2vw;
+		border-radius: 2vw;
+		background-color: #822828 !important;
+    text-decoration: none !important;
 	}
 
 	.exit:hover{
-		color: #912d2d;
+		color: #dddddd;
 	}
 
 	.account{
@@ -152,9 +141,9 @@
 
 	#exampleFormControlFile1{
 		position: absolute;
-		width: 30vw;
-		top: 27vw;
-		left: 10vw;
+		width: 86vw;
+		top: 40vw;
+		left: 9vw;
 		font-size: 1vw;
 	}
 
@@ -162,8 +151,9 @@
 		text-align: left;
 		background: url(../images/imgupl.png) no-repeat;
 		background-size: cover;
+		background-clip: border-box;
 		object-fit: cover;
-		height: 25.4vw;
+		height: 37.5vw;
 		width: 100%;
 		border: none;
 		border-radius: 2vw 2vw 0 0;
@@ -172,6 +162,14 @@
 		-webkit-transition: box-shadow 0.5s;
 		transition: opacity 0.5s;
 		-webkit-transition: opacity 0.5s;
+	}
+
+	.aviso{
+		position: absolute;
+		top: 33vw;
+		left: 9vw;
+		opacity: 0.5;
+		font-size: 1vw;
 	}
 
 	.imagevis:hover {
@@ -327,7 +325,7 @@
 	}
 
 	textarea{
-		background-color: #121314;
+		background-color: #222224;
 		border-radius: 2vh;
 		padding: 1vw 1vw 0 1vw;
 		text-indent: 4vw;
@@ -350,18 +348,18 @@
 	input[type=date]{
 		color: #757575;
 		text-transform: uppercase;
-		background-color: #121314;
+		background-color: #222224;
 
 	}
 
 	input[type=time]{
 		color: #757575;
-		background-color: #121314;
+		background-color: #222224;
 	}
 
 	select{
 		color: #757575;
-		background-color: #121314;
+		background-color: #222224;
 		border: none;
 		border-radius: 2vw;
 		margin-bottom: 3vw !important;
@@ -381,6 +379,10 @@
 
 	.nomeev{
 		padding: 0 2vw 0 2vw;
+	}
+
+	.nomeev hr{
+		width: 100%
 	}
 
 	.info1{
@@ -497,7 +499,7 @@
 	}
 
 	input{
-		background-color: #121314;
+		background-color: #222224;
 		border-radius: 25px;
 		border: none;
 	}
@@ -533,7 +535,7 @@
 		position: fixed !important;
 		float: right;
 		text-align: center;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: #222224;
 		top: 9vh;
 		right: 3vh;
 		height: 50vh;
@@ -541,6 +543,7 @@
 		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
+		box-shadow: 0 0 2vw #151517;
 	}
 
 	.labelchec:hover{
@@ -583,7 +586,7 @@
 	}
 
 	nav{
-		background-color: #0d0e0f;
+		background-color: #1a1a1c;
 		top: 0vh;
 		width: 45vh;
 		height: 100vh;
@@ -608,9 +611,10 @@
 
 	.icontainer{
 		border-radius: 2vw 2vw 0 0;
-		background-color: #0d0e0f !important;
+		background-color: #1a1a1c !important;
 		width: 100%;
 		height: 100%;
+		box-shadow: 0 0 2vw #0d0d0a;
 	}
 
 	.slogan{
@@ -639,7 +643,7 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
@@ -1043,6 +1047,14 @@
 			text-align: center;
 		}
 
+		.aviso{
+			position: absolute;
+			top: 33vw;
+			left: 9vw;
+			opacity: 0.5;
+			font-size: 1vw;
+		}
+
 		.nomeev{
 			padding: 0 5vw 0 5vw;
 		}
@@ -1061,19 +1073,19 @@
 			height: 6vh;
 			padding: 0 3vw 0 3vw;
 			margin-bottom: 10vw;
-			background-color: #121314;
+			background-color: #222224;
 		}
 
 		input[type=date]{
 			color: #757575;
 			text-transform: uppercase;
-			background-color: #121314;
+			background-color: #222224;
 
 		}
 
 		input[type=time]{
 			color: #757575;
-			background-color: #121314;
+			background-color: #222224;
 		}
 
 		.inputcreate:focus {
@@ -1084,7 +1096,7 @@
 			width: 90vw;
 			height: 28vh;
 			padding: 2vw 3vw 1vw 5vw;
-			background-color: #121314;
+			background-color: #222224;
 			border-radius: 25px;
 			margin-bottom: 10vw !important;
 			border: none;
@@ -1101,7 +1113,7 @@
 			height: 6vh;
 			padding: 0 3vw 0 3vw;
 			margin-bottom: 10vw !important;
-			background-color: #121314;
+			background-color: #222224;
 			color: #757575;
 		}
 
@@ -1213,7 +1225,7 @@
 			position: fixed !important;
 			float: right;
 			text-align: left;
-			background-color: #0D0E0F;
+			background-color: #1a1a1c;
 			top: 0;
 			right: 0;
 			height: 100vh;
@@ -1304,7 +1316,7 @@
 
 		nav{
 			top: 0;
-			background-color: #0D0E0F;
+			background-color: #1a1a1c;
 			width: 30vh;
 			height: 100vh;
 			left: -70vh;
@@ -1323,7 +1335,7 @@
 		}
 
 		.elem1{
-			background-color: #0D0E0F !important;
+			background-color: #1a1a1c !important;
 			border-radius: 10vw 10vw 0 0;
 			margin-top: 14vh;
 		}
@@ -1358,7 +1370,7 @@
 		}
 
 		.bgindex{
-			background: url(../images/indeximg.png) no-repeat;
+			background: url(../images/indeximg.jpg) no-repeat;
 			background-size: cover;
 			background-position: center;
 			height: 100vh;
@@ -1745,6 +1757,11 @@
 		text-align: center;
 	}
 
+	.aviso{
+		opacity: 0.5;
+		font-size: 4vw;
+	}
+
 	.criareventoform{
 		text-align: left !important;
 		font-size: 7vw;
@@ -1755,18 +1772,18 @@
 		height: 6vh;
 		padding: 0 3vw 0 3vw;
 		margin-bottom: 10vw;
-		background-color: #121314;
+		background-color: #222224;
 	}
 
 	input[type=date]{
 		color: #757575;
 		text-transform: uppercase;
-		background-color: #121314;
+		background-color: #222224;
 	}
 
 	input[type=time]{
 		color: #757575;
-		background-color: #121314;
+		background-color: #222224;
 	}
 
 	.inputcreate:focus {
@@ -1777,7 +1794,7 @@
 		width: 90vw;
 		height: 28vh;
 		padding: 2vw 3vw 1vw 5vw;
-		background-color: #121314;
+		background-color: #222224;
 		border-radius: 25px;
 		margin-bottom: 10vw !important;
 		border: none;
@@ -1794,7 +1811,7 @@
 		height: 6vh;
 		padding: 0 3vw 0 3vw;
 		margin-bottom: 10vw !important;
-		background-color: #121314;
+		background-color: #222224;
 		color: #757575;
 	}
 
@@ -1906,7 +1923,7 @@
 		position: fixed !important;
 		float: right;
 		text-align: left;
-		background-color: #0D0E0F;
+		background-color: #1a1a1c;
 		top: 0;
 		right: 0;
 		height: 100vh;
@@ -1997,7 +2014,7 @@
 
 	nav{
 		top: 0;
-		background-color: #0D0E0F;
+		background-color: #1a1a1c;
 		width: 30vh;
 		height: 100vh;
 		left: -70vh;
@@ -2016,7 +2033,7 @@
 	}
 
 	.elem1{
-		background-color: #0D0E0F !important;
+		background-color: #1a1a1c !important;
 		border-radius: 10vw 10vw 0 0;
 		margin-top: 14vh;
 		padding-top: 5vw;
@@ -2047,10 +2064,11 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
-		height: 100vh;
+		background-attachment: fixed;
+		height: 2vh;
 	}
 
 	.logoeheader{

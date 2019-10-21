@@ -155,17 +155,18 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
 		text-align: center;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: #222224;
 		top: 9vh;
 		right: 3vh;
-		height: 50;
+		height: 50vh;
 		width: 30vh;
-		padding: 0 3vh 1vh 3vh;
+		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
+		box-shadow: 0 0 2vw #151517;
 	}
 
 	.labelchec:hover{
@@ -257,7 +258,7 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
 		height: 100vh;
@@ -554,7 +555,7 @@
 	}
 
 	.bgindex{
-		background: url(../images/indeximg.png) no-repeat;
+		background: url(../images/indeximg.jpg) no-repeat;
 		background-size: cover;
 		background-position: center;
 		height: 100vh;
@@ -896,7 +897,7 @@
 		}
 
 		.bgindex{
-			background: url(../images/indeximg.png) no-repeat;
+			background: url(../images/indeximg.jpg) no-repeat;
 			background-size: cover;
 			background-position: center;
 			height: 100vh;

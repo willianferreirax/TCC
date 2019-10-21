@@ -83,7 +83,7 @@ if(!isset($_SESSION['instituicao'])){
 			<a href='painel_usuario.php' class='account'>Ajuda</a>
 			<br>
 			<br>
-			<a href='logout_script.php' class='exit'>Sair</a>
+      <a href='logout_script.php'><div class='exit'>Sair</div></a>
 		</div>
 
 		<header class='cabecalhoindex' id='grid'>
@@ -119,7 +119,7 @@ if(!isset($_SESSION['instituicao'])){
 					<div class="form-group" id='imageup'>
 						<label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
 							<img class="imagevis" id="imagevis" border="0">
-						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)">
+						<input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)"><div class="aviso">Para uma melhor experiência do usuário, o banner do evento deve ter <br>as medidas de <b>1280x540</b> ou a proporção <b>21:9</b> <br> <br>(Caso contrário, ele será cortado e redimensionado.)</div>
 						<script>
 							var loadFile = function(event) {
 								var imagevis = document.getElementById('imagevis');
