@@ -1,5 +1,12 @@
 @media only screen and (min-width: 700px) and (orientation: landscape) {
-
+	
+	.erro{
+		color: red;
+		font-size: 1.3vw;
+		margin-left: 30vw;
+		margin-right: 32vw;
+	}
+	
 	.selectestado{
 		background-color: #202124;
 		border-style: none;
@@ -734,7 +741,14 @@
 }
 
 @media only screen and (min-width: 700px) and (orientation: portrait) {
-
+		
+		.erro{
+			color: red;
+			font-size: 3vw;
+			margin-left: 20vw;
+			margin-right: 20vw;
+		}
+		
 		.bannervisu{
 			height: 100%;
 			width: 100%;
@@ -1446,7 +1460,14 @@
 		}
 	}
 @media only screen and (max-width: 699px) and (orientation: portrait) {
-
+	
+		.erro{
+			color: red;
+			font-size: 3vw;
+			margin-left: 20vw;
+			margin-right: 20vw;
+		}
+	
 	.bannervisu{
 		height: 100%;
 		width: 100%;
