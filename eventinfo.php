@@ -61,10 +61,10 @@ if(!isset($_SESSION['instituicao'])){
 		<label for='chec' class='backdiv'></label>
 		<div class='icons'>
 			<a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-			<i class="fas fa-map-marked fa-2x"></i><br>
-			<i class="fas fa-users fa-2x"></i><br>
+			<a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
+			<a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
 			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-			<i class="fas fa-question fa-2x"></i><br>
+			<a href='index.php'><i class="fas fa-question fa-2x"></i></a><br>
 			<hr>
 		</div>
 
@@ -430,6 +430,12 @@ if(isset($valido) && $valido == true){
 	(nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ)
 	VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)";
 	$stmt = $conn->prepare($sql);
+		
+	$preco = $_POST["preco"];
+	if($preco == "0,00" || $preco == "0" || $preco == "Grátis" || $preco == "0.00" || $preco == "Gratis" || $preco == "Gratuito" || $preco == "Gratuíto" || $preco == "0.0" || $preco == "0.00" || $preco == "0.000" || $preco == "0,0" || $preco == "0,00" || $preco == "0,000"|| $preco == "00,0" || $preco == "000,0"){
+		$preco = "Grátis";
+	}
+	
 
 	//Atrelando os dados às tabelas
 	$stmt->bindValue(1, $_POST["nome"]);
@@ -445,7 +451,7 @@ if(isset($valido) && $valido == true){
 	$stmt->bindValue(11,$_POST["cep"]);
 	$stmt->bindValue(12,1);
 	$stmt->bindValue(13,$_POST["desc"]);
-	$stmt->bindValue(14,$_POST["preco"]);
+	$stmt->bindValue(14,$preco);
 	$stmt->bindValue(15,$_SESSION["instituicao"][3]);
 
 	$stmt->execute();
@@ -529,7 +535,7 @@ if(isset($valido) && $valido == true){
 
 		}
 		$stmt->execute();
-		$script = "<script language='javascript'>
+		$script = "<script language=javascript>
 			location.href='painel_inst.php';
             alert('Evento cadastrado com sucesso.');
             </script>";
