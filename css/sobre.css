@@ -49,19 +49,19 @@
 		right: 10vw !important;
 	}
 
-  .iagon, .campan, .willn, .renaton{
+  .iagon, .campan, .niccn, .willn, .renaton{
     font-size: 4vh;
-
+    margin-bottom: 12vw;
   }
 
   .images{
     padding-top: 12vh;
     display: grid;
-		grid-template-rows: 30vh 30vh 30vh 30vh 30vh 30vh 30vh 30vh;
-		grid-template-areas: "iago" "iagon" "campa" "campan" "renato" "renaton" "will" "willn";
+		grid-template-rows: 30vh 30vh 30vh 30vh 30vh 30vh 30vh 30vh 30vh 30vh;
+		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "renato" "renaton" "will" "willn";
   }
 
-  .iago, .campa, .will, .renato{
+  .iago, .campa, .nicc, .will, .renato{
     background: url(../images/circle.png) center center/30vh no-repeat;
     width: 30vh;
     height: 30vh;
@@ -395,7 +395,7 @@
 		display: none;
 	}
 
-  .iagon, .campan, .willn, .renaton{
+  .iagon, .campan, .niccn, .willn, .renaton{
     font-size: 3vh;
 
   }
@@ -405,10 +405,10 @@
     padding-top: 12vh;
     display: grid;
 		grid-template-rows: 20vh;
-		grid-template-areas: "iago" "iagon" "campa" "campan" "will" "willn" "renato" "renaton";
+		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "will" "willn" "renato" "renaton";
   }
 
-  .iago, .campa, .will, .renato{
+  .iago, .campa, .nicc, .will, .renato{
     background: url(../images/circle.png) center center/17vh no-repeat;
     width: 20vh;
     height: 20vh;
@@ -731,8 +731,8 @@
 		display: none;
 	}
 
-  .iagon, .campan, .willn, .renaton{
-    font-size: 3vh;
+  .iagon, .campan, .niccn, .willn, .renaton{
+    font-size: 4vw;
 
   }
 
@@ -741,13 +741,14 @@
     padding-top: 12vh;
     display: grid;
 		grid-template-rows: 20vh;
-		grid-template-areas: "iago" "iagon" "campa" "campan" "will" "willn" "renato" "renaton";
+		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "will" "willn" "renato" "renaton";
   }
 
-  .iago, .campa, .will, .renato{
+  .iago, .campa, .nicc, .will, .renato{
     background: url(../images/circle.png) center center/17vh no-repeat;
     width: 20vh;
     height: 20vh;
+    font-size: 8vw;
     vertical-align: middle;
     color: red;
 
@@ -755,7 +756,7 @@
 
   .creators{
     padding-top: 12vh;
-    font-size: 5vh;
+    font-size: 5vw;
   }
 
   .desc1{

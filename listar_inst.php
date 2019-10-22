@@ -17,8 +17,8 @@
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
   <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
-  <meta name="robots" content="Instituições, follow">
-  <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+  <meta name="robots" content="Index, follow">
+  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/instituicoes.css">
   <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
