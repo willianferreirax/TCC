@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <title>FRESHR</title>
+  <title>Sobre o FRESHR</title>
   <!-- Required meta tags -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
   <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Sobre">
-  <meta name="robots" content="Sobre, follow">
+  <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas, Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/sobre.css">
   <link rel="stylesheet" href="css/style.css">
@@ -27,10 +27,10 @@
     <input type='checkbox' id='chec'>
     <div class='icons'>
       <a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i><br>
-      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i><br>
+      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
+      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <a href='index.php'><i class="fas fa-question fa-2x"></i><br>
+      <a href='index.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
     <nav>
@@ -131,14 +131,18 @@
       <h1 class='creators'>
         Conheça os criadores do projeto
         <div class='images'>
+          <center>
           <h1 class='iago'>EM BREVE</h1>
           <h1 class='iagon'>Iago Pereira</h1>
           <h1 class='campa'>EM BREVE</h1>
           <h1 class='campan'>Lucas Campanelli</h1>
+          <h1 class='nicc'>EM BREVE</h1>
+          <h1 class='niccn'>Nicholas Campanelli</h1>
           <h1 class='renato'>EM BREVE</h1>
           <h1 class='renaton'>Renato Melo</h1>
           <h1 class='will'>EM BREVE</h1>
           <h1 class='willn'>Willian Ferreira</h1>
+        </center>
         </div>
         <!-- <div class='nomes'> -->
           <!-- <h1 class='iagon'>Iago Pereira</h1> -->
