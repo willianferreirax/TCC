@@ -1,4 +1,4 @@
-<!doctype html>
+  <!doctype html>
   <html lang="pt-br">
   <head>
     <title>
@@ -28,7 +28,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
 
-  <body class-"bgindex">
+  <body class="bgindex">
     <center>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>
@@ -50,11 +50,10 @@
         </div>
         <div class='userdiv'>
           <?php
-          session_start();
           if(isset($_SESSION['instituicao'])){
             echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
             </div></label>";
-            echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle'></i></a>
+            echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
             </div></label>";
           }
           ?>
@@ -245,6 +244,7 @@
         </nav>
         <div class='dropdown'>
           <?php
+          session_start();
           if(isset($_SESSION['usuario']))
           {
             echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
