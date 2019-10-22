@@ -7,8 +7,8 @@
 	<meta charset="utf-8">
 	<meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
 	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
-	<meta name="robots" content="Editar informações, follow">
-	<meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+	<meta name="robots" content="Index, follow">
+	<meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
 	<link rel="stylesheet" href="css/config.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -192,6 +192,10 @@
 
 				<br><br>
 
+				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm("Deseja realmente excluir sua conta? Essa ação é irreversivel!")) location.href="deletar_cadastro.php";"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+
+				<br><br>
+
 
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
 
@@ -224,6 +228,10 @@
 				<input class="cadastrar" type="submit" name="senha_usu" value="Alterar">
 				<br>
 				<br>
+
+				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm("Deseja realmente excluir sua conta? Essa ação é irreversivel!")) location.href="deletar_cadastro.php";"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+
+				<br><br>
 
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
 				';
