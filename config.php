@@ -1,7 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['instituicao']) || !isset($_SESSION['usuario'])){
+header('Location:index.php');
+exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
-	<title><?php session_start(); if(isset($_SESSION['instituicao']) && $_SESSION['instituicao'] != '')echo $_SESSION['instituicao'][0]; else echo $_SESSION['usuario'][0]." ".$_SESSION['usuario'][4];?> - FRESHR</title>
+	<title><?php if(isset($_SESSION['instituicao']) && $_SESSION['instituicao'] != '')echo $_SESSION['instituicao'][0]; else echo $_SESSION['usuario'][0]." ".$_SESSION['usuario'][4];?> - FRESHR</title>
 	<!-- Required meta tags -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
@@ -236,10 +243,7 @@
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
 				';
 			}
-			else{
-				header('Location: index.php');
-				exit();
-			}
+			
 			?>
 		</div>
 	</body>

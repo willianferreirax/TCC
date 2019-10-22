@@ -45,6 +45,9 @@
 					document.getElementById('formsearch').submit();
 				}
 		}
+    function enviar(){
+      document.getElementById('visibilidade').submit();
+    }
 	</script>
 </head>
 <body class='background'>
@@ -165,6 +168,22 @@
               </div>
             </div>
             ";
+            if($row['visibilidade_evento']==1){
+              echo"
+              <form id=visibilidade action='visibilidade.php?id_eve=$row[cod_evento]' method='POST'>
+              <label>Deseja que seu evento seja visivel aos usuarios?</label>
+              <input type='checkbox' name='visibilidade' onclick='enviar()' value=1 checked>
+              </form>
+              ";
+            }
+            else{
+              echo"
+              <form id=visibilidade action='visibilidade.php?id_eve=$row[cod_evento]' method='POST'>
+              <label>Deseja que seu evento seja visivel aos usuarios?</label>
+              <input type='checkbox' name='visibilidade' onclick='enviar()'>
+              </form>
+              ";
+            }
           $n++;
           }
 
