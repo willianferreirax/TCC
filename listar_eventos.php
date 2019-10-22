@@ -28,7 +28,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
 
-  <body class-"bgindex">
+  <body class="bgindex">
     <center>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>
@@ -168,6 +168,7 @@
         <?php
 
         foreach ($result as $row) {
+          if($row['visibilidade_evento']==1){
           $imagem ='upload/'.$row['banner_evento'];
           echo "
                     <a href='exibir_evento.php?id= $row[cod_evento]'>
@@ -192,11 +193,12 @@
                             </div>
                       </div>
                     </a>";
-
+         }
         }
         echo"<br><br>";
 
         foreach ($result1 as $row) {
+          if($row['visibilidade_evento']==1){
           $imagem ='upload/'.$row['banner_evento'];
           echo "
                     <a href='exibir_evento.php?id= $row[cod_evento]'>
@@ -221,10 +223,11 @@
                             </div>
                       </div>
                     </a>";
-
+         }
         }
 
         foreach ($result2 as $row) {
+          if($row['visibilidade_evento']==1){
           $imagem ='upload/'.$row['banner_evento'];
           echo "
                     <a href='exibir_evento.php?id= $row[cod_evento]'>
@@ -249,7 +252,7 @@
                             </div>
                       </div>
                     </a>";
-
+          }
         }
         echo "<br>";
         ?>

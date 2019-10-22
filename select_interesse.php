@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(isset($_SESSION['instituicao'])){
+  header('Location:painel_inst.php');
+  exit();
+}
+elseif(!isset($_SESSION['usuario'])){
+  header('Locatin:index.php');
+  exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
