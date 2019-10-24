@@ -71,7 +71,6 @@ elseif(!isset($_SESSION['usuario'])){
     <?php
     include 'connection.php';
 		$conn = conexao();
-    session_start();
     if(isset($_SESSION['instituicao'])){
       header('Location:painel_inst.php');
       exit();
