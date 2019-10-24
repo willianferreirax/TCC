@@ -35,7 +35,7 @@ else{
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <title><?php echo $evento[0];?> - FRESHR</title>
   	<!-- Required meta tags -->
@@ -103,7 +103,7 @@ else{
     				}
     			?>
     			<br>
-    			<a href='painel_usuario.php' class='account'>Configurações</a>
+    			<a href='config.php' class='account'>Configurações</a>
     			<br>
     			<a href='painel_usuario.php' class='account'>Ajuda</a>
     			<br>
