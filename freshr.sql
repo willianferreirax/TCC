@@ -46,7 +46,7 @@ CREATE TABLE `evento` (
   `preco_evento` varchar(365) DEFAULT NULL,
   `comp_qnt` int(11) DEFAULT NULL,
   `interesse_qnt` varchar(30) DEFAULT NULL,
-  `CNPJ` varchar(11) DEFAULT NULL
+  `CNPJ` varchar(18) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -69,7 +69,7 @@ INSERT INTO `evento` (`cod_evento`, `nome_evento`, `banner_evento`, `data_inicio
 --
 
 CREATE TABLE `faculdade` (
-  `CNPJ` varchar(11) NOT NULL,
+  `CNPJ` varchar(18) NOT NULL,
   `login_inst` varchar(30) DEFAULT NULL,
   `senha_inst` varchar(500) DEFAULT NULL,
   `nome_inst` varchar(255) DEFAULT NULL,
