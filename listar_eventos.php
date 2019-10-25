@@ -83,11 +83,12 @@
 
     if(isset($_POST['pesquisa'])){
       $pesquisa = $_POST['pesquisa'];//coisas que a pessoa pode buscar
+	  $pesquisa = strtoupper($pesquisa);
       $pesquisa = '%'.$pesquisa.'%';
       //informações do evento, interesses do evento,instituições especificas
 
       //procurando um evento a partir de suas informações
-      $select ="select * from evento where nome_evento like ? or data_inicio like ? or data_termino like ? or hora_inicio like ? or hora_termino like ? or endereco_evento like ? or bairro_evento like ? or cidade_evento like ? or estado_evento like ? or cep_evento like ? or descricao_evento like ?";
+      $select ="select * from evento where upper(nome_evento) like ? or data_inicio like ? or data_termino like ? or hora_inicio like ? or hora_termino like ? or upper(endereco_evento) like ? or upper(bairro_evento) like ? or upper(cidade_evento) like ? or upper(estado_evento) like ? or cep_evento like ? or upper(descricao_evento) like ?";
 
       $res=$conn->prepare($select);
       $res->bindParam(1,$pesquisa);
@@ -105,7 +106,7 @@
       $res->execute();
 
       //procurando um evento a partir de seus interesses
-      $cod_evento="select cod_evento from interesses_evento where interesseeve1 like ? or interesseeve2 like ? or interesseeve3 like ? or interesseeve4 like ? or interesseeve5 like ? or interesseeve6 like ? or interesseeve7 like ? or interesseeve8 like ? or interesseeve9 like ? or interesseeve10 like ? or interesseeve11 like ? or interesseeve12 like ? or interesseeve13 like ? or interesseeve14 like ? or interesseeve15 like ?";
+      $cod_evento="select cod_evento from interesses_evento where upper(interesseeve1) like ? or upper(interesseeve2) like ? or upper(interesseeve3) like ? or upper(interesseeve4) like ? or upper(interesseeve5) like ? or upper(interesseeve6) like ? or upper(interesseeve7) like ? or upper(interesseeve8) like ? or upper(interesseeve9) like ? or upper(interesseeve10) like ? or upper(interesseeve11) like ? or upper(interesseeve12) like ? or upper(interesseeve13) like ? or upper(interesseeve14) like ? or upper(interesseeve15) like ?";
 
       $res1=$conn->prepare($cod_evento);
       $res1->bindParam(1,$pesquisa);
@@ -138,7 +139,7 @@
 
       //procurando um evento a partir da instituição que o cadastrou
 
-      $CNPJ="select CNPJ from faculdade where nome_inst like ?";
+      $CNPJ="select CNPJ from faculdade where upper(nome_inst) like ?";
       $res2=$conn->prepare($CNPJ);
       $res2->bindParam(1,$pesquisa);
       $res2->execute();
