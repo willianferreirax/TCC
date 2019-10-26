@@ -25,6 +25,7 @@ if(isset($_GET['id'])){
       array_push($evento,$row['cep_evento']);
       array_push($evento,$row['descricao_evento']);
       array_push($evento,$row['preco_evento']);
+      array_push($evento,$row['comp_qnt']);
     }
 }
 else{
@@ -44,7 +45,7 @@ else{
   	<meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
   	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
   	<meta name="robots" content="Index, follow">
-  	<meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+  	<meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   	<link rel="stylesheet" href="css/exibir.css">
   	<link rel="stylesheet" href="css/style.css">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -158,14 +159,19 @@ else{
           <div class="infocontainer">
           <img class="banner" src="<?php echo 'upload/'.$evento[1]?>">
           <div class="info1">
-            <div class='eventact'><input type='checkbox' id='btnconfirm'>
-            <input type='checkbox' id='btnstar'><label for='btnstar' class='interessado'><i class="fas fa-star" id='star'></i></label><label for='btnconfirm' class='confirmado'><i class="fas fa-check" id='confirmicon'></i></label></div>
+            <div class='eventact'>
+              <input type='checkbox' id='btnstar'>
+              <input type='checkbox' id='btnconfirm'>
+              <label for='btnstar' class='interessado'><i class="fas fa-star" id='star'></i></label>
+              <label for='btnconfirm' id='confirmqnt' class='confirmado'><?php echo $evento[13]." pessoas confirmadas"; ?><i class="fas fa-check" id='confirmicon'></i></label>
+          </div>
 
             <h1 class="nome"> <?php echo $evento[0];?></h1><br>
-          <?php
-          echo $evento[6];
-          ?><br>
-          <a href="index.php">Voltar</a>
+            <h1 class='desceve'> <?php echo $evento[11];?></h1></br>
+            <h1 class='dataeve'> Período: <?php echo $evento[2] . ", ". $evento[4] . " até " . $evento[2] . ", ".$evento[5];?></h1></br>
+            <h1 class='preco'> Preço: <?php echo $evento[12]; ?></h1><br>
+            <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
+            <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
 
         </div>
         </div>
