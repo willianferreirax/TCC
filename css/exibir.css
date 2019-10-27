@@ -27,12 +27,27 @@
 	display: none;
 }
 
+a{
+	style: none !important;
+	color: white !important;
+}
+
 /*Estilos para a página index*/
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
-	.confirmado{
-		cursor: pointer;
+	#eventactwit{
+		display: grid;
+		grid-template-columns: 10%;
+		grid-template-rows: 10%;
+		grid-template-areas: "banner info1";
+		position: absolute;
+		right: 1vw;
+		width: 27vw;
+	}
+
+	#starwit{
+		font-size: 1.7vw;
 	}
 
 	#confirmqnt{
@@ -84,24 +99,8 @@
 		padding-right: 0.5vw;
 	}
 
-	#btnconfirm, #btnstar{
+	#confirmsubmit, #btnconfirm, #btnstar{
 		display: none;
-	}
-
-	#btnstar:checked ~ .interessado i{
-		color: #f2d600 !important;
-	}
-
-	#btnconfirm:checked ~ .confirmado i{
-		background: -webkit-linear-gradient(#C40EFA, #0096C4);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
-	#btnconfirm:checked ~ #confirmqnt{
-		background: -webkit-linear-gradient(#0096C4, #C40EFA);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 	}
 
 	#confirmicon{
@@ -507,9 +506,20 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
-	.confirmado{
-		cursor: pointer;
+	#eventactwit{
+		display: grid;
+		grid-template-columns: 10%;
+		grid-template-rows: 10%;
+		grid-template-areas: "banner info1";
+		position: absolute;
+		right: 1vw;
+		width: 27vw;
 	}
+
+	#starwit{
+		font-size: 2vw;
+	}
+
 
 	#confirmqnt{
 		margin: 0 !important;
@@ -568,24 +578,7 @@
 		display: none;
 	}
 
-	#btnstar:checked ~ .interessado i{
-		color: #f2d600 !important;
-	}
-
-	#btnconfirm:checked ~ .confirmado i{
-		background: -webkit-linear-gradient(#C40EFA, #0096C4);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
-	#btnconfirm:checked ~ #confirmqnt{
-		background: -webkit-linear-gradient(#0096C4, #C40EFA);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
 	#confirmicon{
-		cursor: pointer;
 		font-size: 2.2vw;
 		padding-left: 1vw;
 	}
@@ -729,7 +722,7 @@
 
 	.dropdown{
 		display: none;
-		position: fixed !important;
+		position: absolute !important;
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.9);
@@ -950,8 +943,33 @@
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
 
-	.confirmado{
-		cursor: pointer;
+	.interessesmall{
+		font-size: 3vw;
+	}
+
+	#eventactwit{
+		display: grid;
+		grid-template-columns: 10%;
+		grid-template-rows: 10%;
+		grid-template-areas: "banner info1";
+		position: absolute;
+		left: 20vw;
+	}
+
+	#starwit{
+		font-size: 3vw;
+	}
+
+	.confirmadowit{
+		display: none;
+	}
+
+	.confirmadosmall{
+		font-size: 3vw;
+	}
+
+	.interessadowit{
+		display:none;
 	}
 
 	#confirmqnt{
@@ -960,11 +978,12 @@
 		background: transparent;
 		width: 50vw;
 		border-radius: 20vw;
-		border: 0.2vw solid white;
+		border: none;
 		color: white;
 		font-size: 3vw;
 		font-weight: 400;
 		height: 4.2vw;
+		margin-left: 20vw !important;
 		text-align: center;
 	}
 
@@ -1011,25 +1030,9 @@
 		display: none;
 	}
 
-	#btnstar:checked ~ .interessado i{
-		color: #f2d600 !important;
-	}
-
-	#btnconfirm:checked ~ .confirmado i{
-		background: -webkit-linear-gradient(#C40EFA, #0096C4);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
-	#btnconfirm:checked ~ #confirmqnt{
-		background: -webkit-linear-gradient(#0096C4, #C40EFA);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
 	#confirmicon{
 		cursor: pointer;
-		font-size: 2.2vw;
+		font-size: 3vw;
 		padding-left: 1vw;
 	}
 
