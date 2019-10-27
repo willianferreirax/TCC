@@ -176,20 +176,20 @@ else{
 
             if($result->fetchColumn() > 0){
               echo "<div class='eventact'>";
-              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-star' id='star' style='color: #f2d600'></i>
+              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-heart' id='star' style='color: red'></i>
               </label></a>";
             }
             elseif($result->fetchColumn() == 0){
               echo "<div class='eventact'>";
-              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-star' id='star'></i>
+              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-heart' id='star'></i>
               </label></a>";
             }
           }
           else{
             echo "<div class='eventactwit'>";
             echo "
-            <label for='btnconfirm' id='confirmqnt' class='interessado' style='color: #f2d600'>
-            {$evento[14]} pessoas interessadas <i class='fas fa-star' id='starwit' style='color: #f2d600';></i>
+            <label for='btnconfirm' id='confirmqnt' class='interessado' style='color: red'>
+            {$evento[14]} pessoas interessadas <i class='fas fa-heart' id='starwit' style='color: red';></i>
             </label>";
           }
           ?>
