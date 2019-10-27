@@ -260,8 +260,8 @@ if(!isset($_SESSION['instituicao'])){
       else{
 
         $sql = "INSERT INTO evento
-        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ, comp_qnt, interesse_qnt)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?)";
+        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ, comp_qnt, interesse_qnt, media_evento)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         $preco = $_POST["preco"];
@@ -288,6 +288,7 @@ if(!isset($_SESSION['instituicao'])){
         $stmt->bindValue(15,$_SESSION["instituicao"][3]);
         $stmt->bindValue(16,0);
         $stmt->bindValue(17,0);
+        $stmt->bindValue(18,0);
 
         $stmt->execute();
 
