@@ -104,7 +104,6 @@ a{
 	}
 
 	#confirmicon{
-		cursor: pointer;
 		padding-top: 0.2vw;
 		font-size: 1.5vw;
 		padding-left: 1vw;
@@ -1031,7 +1030,6 @@ a{
 	}
 
 	#confirmicon{
-		cursor: pointer;
 		font-size: 3vw;
 		padding-left: 1vw;
 	}
