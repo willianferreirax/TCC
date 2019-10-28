@@ -1,0 +1,19 @@
+
+@media only screen and (min-width: 700px) and (orientation: landscape) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+}
+@media only screen and (min-width: 700px) and (orientation: portrait) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+}
+@media screen and (max-width: 699px) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+}
