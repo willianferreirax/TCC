@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Out-2019 às 01:55
+-- Generation Time: 28-Out-2019 às 05:57
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -123,18 +123,19 @@ CREATE TABLE `faculdade` (
   `estado_inst` varchar(19) DEFAULT NULL,
   `cep_inst` varchar(9) DEFAULT NULL,
   `email_inst` varchar(80) DEFAULT NULL,
-  `telefone_inst` varchar(15) DEFAULT NULL
+  `telefone_inst` varchar(15) DEFAULT NULL,
+  `seguidores_qnt` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `faculdade`
 --
 
-INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `endereco_inst`, `bairro_inst`, `cidade_inst`, `estado_inst`, `cep_inst`, `email_inst`, `telefone_inst`) VALUES
-('11111111111', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', 'SÃ£o Judas', 'rua judas', 'bairro se', 'sao paulo', 'sao paulo', '12345678', 'saojudas@gmail.com', '111111111111111'),
-('12345678901', 'mack', 'e807f1fcf82d132f9bb018ca6738a19f', 'Instituto Presbiteriano Mackenzie', 'Rua HigienÃ³polis, 78', 'HigienÃ³polis', 'SÃ£o Paulo', 'SÃ£o Paulo', '02554787', 'mackenzie@email.com', '11987554857215'),
-('12354678901', 'uninovebf', 'e807f1fcf82d132f9bb018ca6738a19f', 'UNINOVE Barra Funda', 'Rua Memorial, 88', 'Barra Funda', 'SÃ£o Paulo', 'SP', '05774254', 'uninove@contato.com', '(11) 934556787'),
-('12346578901', 'unicampfreshrlogin', 'e807f1fcf82d132f9bb018ca6738a19f', 'UNICAMP', 'Rua da UNICAMP, 88', 'Vila Progresso', 'Campinas', 'SP', '05874478', 'unicamp@email.com', '(11) 987665634');
+INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `endereco_inst`, `bairro_inst`, `cidade_inst`, `estado_inst`, `cep_inst`, `email_inst`, `telefone_inst`, `seguidores_qnt`) VALUES
+('11111111111', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', 'SÃ£o Judas', 'rua judas', 'bairro se', 'sao paulo', 'sao paulo', '12345678', 'saojudas@gmail.com', '111111111111111', 22),
+('12345678901', 'mack', 'e807f1fcf82d132f9bb018ca6738a19f', 'Instituto Presbiteriano Mackenzie', 'Rua HigienÃ³polis, 78', 'HigienÃ³polis', 'SÃ£o Paulo', 'SÃ£o Paulo', '02554787', 'mackenzie@email.com', '11987554857215', 4),
+('12354678901', 'uninovebf', 'e807f1fcf82d132f9bb018ca6738a19f', 'UNINOVE Barra Funda', 'Rua Memorial, 88', 'Barra Funda', 'SÃ£o Paulo', 'SP', '05774254', 'uninove@contato.com', '(11) 934556787', 1),
+('12346578901', 'unicampfreshrlogin', 'e807f1fcf82d132f9bb018ca6738a19f', 'UNICAMP', 'Rua da UNICAMP, 88', 'Vila Progresso', 'Campinas', 'SP', '05874478', 'unicamp@email.com', '(11) 987665634', 0);
 
 -- --------------------------------------------------------
 
@@ -226,6 +227,25 @@ INSERT INTO `interesses_usuario` (`cod_interesseusu`, `interesseusu1`, `interess
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `seguir`
+--
+
+CREATE TABLE `seguir` (
+  `cod_seg` int(11) NOT NULL,
+  `cod_usuario` int(11) NOT NULL,
+  `CNPJ` varchar(500) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `seguir`
+--
+
+INSERT INTO `seguir` (`cod_seg`, `cod_usuario`, `CNPJ`) VALUES
+(5, 3, '11111111111');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -302,6 +322,14 @@ ALTER TABLE `interesses_usuario`
   ADD KEY `cod_usuario` (`cod_usuario`);
 
 --
+-- Indexes for table `seguir`
+--
+ALTER TABLE `seguir`
+  ADD PRIMARY KEY (`cod_seg`),
+  ADD KEY `cod_usuario` (`cod_usuario`),
+  ADD KEY `CNPJ` (`CNPJ`);
+
+--
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
@@ -341,6 +369,11 @@ ALTER TABLE `interesses_evento`
 --
 ALTER TABLE `interesses_usuario`
   MODIFY `cod_interesseusu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `seguir`
+--
+ALTER TABLE `seguir`
+  MODIFY `cod_seg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
