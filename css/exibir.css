@@ -36,6 +36,12 @@ a{
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.avalqnt{
+		font-size: 1.5vw;
+		padding-left: 0.7vw;
+		padding-right: 0.8vw;
+	}
+
 	#eventactwit{
 		display: grid;
 		grid-template-columns: 10%;
@@ -43,11 +49,21 @@ a{
 		grid-template-areas: "banner info1";
 		position: absolute;
 		right: 1vw;
-		width: 27vw;
+		width: 33vw;
+	}
+
+	#like{
+		cursor: pointer;
+		font-size: 2.2vw;
+		padding-top: 0.2vw;
+	}
+
+	#likewit{
+		font-size: 1.4vw;
 	}
 
 	#starwit{
-		font-size: 1.7vw;
+		font-size: 1.5vw;
 	}
 
 	#confirmqnt{
@@ -60,7 +76,7 @@ a{
 		color: white;
 		font-size: 1vw;
 		font-weight: 400;
-		height: 2.5vw;
+		height: 2vw;
 		text-align: center;
 	}
 
@@ -104,28 +120,23 @@ a{
 	}
 
 	#confirmicon{
-		padding-top: 0.2vw;
 		font-size: 1.5vw;
-		padding-left: 1vw;
 	}
 
 	#star{
 		cursor: pointer;
+		padding-top: 0.2vw;
 		font-size: 2.2vw;
-	}
-
-	.interessado{
-		padding-right: 0.3vw;
+		padding-left: 2vw;
 	}
 
 	.eventact{
 		display: grid;
-		grid-template-columns: 10%;
-		grid-template-rows: 10%;
-		grid-template-areas: "banner info1";
+		grid-template-columns: 17%;
+		grid-template-areas: "like fav comp";
 		position: absolute;
 		right: 1vw;
-		width: 27vw;
+		width: 38vw;
 	}
 
 	.exit{
@@ -505,32 +516,47 @@ a{
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.interessesmall{
+		font-size: 3vw;
+	}
+
 	#eventactwit{
 		display: grid;
 		grid-template-columns: 10%;
 		grid-template-rows: 10%;
 		grid-template-areas: "banner info1";
 		position: absolute;
-		right: 1vw;
-		width: 27vw;
+		left: 20vw;
 	}
 
 	#starwit{
-		font-size: 2vw;
+		font-size: 3vw;
 	}
 
+	.confirmadowit{
+		display: none;
+	}
+
+	.confirmadosmall{
+		font-size: 3vw;
+	}
+
+	.interessadowit{
+		display:none;
+	}
 
 	#confirmqnt{
 		margin: 0 !important;
 		padding: 0;
 		background: transparent;
-		width: 38vw;
+		width: 50vw;
 		border-radius: 20vw;
-		border: 0.2vw solid white;
+		border: none;
 		color: white;
-		font-size: 2vw;
+		font-size: 3vw;
 		font-weight: 400;
-		height: 2.8vw;
+		height: 4.2vw;
+		margin-left: 20vw !important;
 		text-align: center;
 	}
 
@@ -578,13 +604,13 @@ a{
 	}
 
 	#confirmicon{
-		font-size: 2.2vw;
+		font-size: 3vw;
 		padding-left: 1vw;
 	}
 
 	#star{
 		cursor: pointer;
-		font-size: 2.2vw;
+		font-size: 4vw;
 	}
 
 	.interessado{
@@ -597,10 +623,10 @@ a{
 		grid-template-rows: 10%;
 		grid-template-areas: "banner info1";
 		position: absolute;
-		right: 2.8vw;
+		right: 7vw;
 		top: 48vw;
-		height: 2.8vw;
-		width: 47vw;
+		height: 4.6vw;
+		width: 60vw;
 		padding-left: 2vw;
 		background-color: #000000;
 		border-radius: 20vw;
