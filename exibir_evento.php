@@ -27,6 +27,7 @@ if(isset($_GET['id'])){
     array_push($evento,$row['preco_evento']);
     array_push($evento,$row['comp_qnt']);
     array_push($evento,$row['interesse_qnt']);
+    array_push($evento,$row['avaliacoes_qnt']);
   }
 }
 else{
@@ -171,22 +172,42 @@ else{
         <div class="info1">
           <?php
           if(isset($_SESSION['usuario'])){
-            $result = $conn->prepare("select * from interessado where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+            $result = $conn->prepare("select * from avaliacao where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
             $result->execute();
 
             if($result->fetchColumn() > 0){
               echo "<div class='eventact'>";
-              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-heart' id='star' style='color: red'></i>
-              </label></a>";
+              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&avaliado=true';><i class='fas fa-thumbs-up' id='like' style='color: #006de2'></i><small class='avalqnt'>{$evento[15]}</small>
+              </a>";
             }
             elseif($result->fetchColumn() == 0){
               echo "<div class='eventact'>";
+              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&avaliado=true';><i class='fas fa-thumbs-up' id='like'></i><small class='avalqnt'>{$evento[15]}</small>
+              </a>";
+            }
+          }
+          else{
+            echo "<div class='eventactwit'>";
+            echo "<label for='btnconfirm' id='confirmqnt' class='avaliado' style='color: #006de2'>
+            {$evento[15]} pessoas gostaram <i class='fas fa-thumbs-up' id='likewit' style='color: #006de2'></i>
+            </label>";
+          }
+          ?>
+          <?php
+          if(isset($_SESSION['usuario'])){
+            $result = $conn->prepare("select * from interessado where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+            $result->execute();
+
+            if($result->fetchColumn() > 0){
+              echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><i class='fas fa-heart' id='star' style='color: red'></i>
+              </a>";
+            }
+            elseif($result->fetchColumn() == 0){
               echo "<a href= 'exibir_evento.php?id={$_GET['id']}&interessado=true';><label for='btnstar' class='interessado'><i class='fas fa-heart' id='star'></i>
               </label></a>";
             }
           }
           else{
-            echo "<div class='eventactwit'>";
             echo "
             <label for='btnconfirm' id='confirmqnt' class='interessado' style='color: red'>
             {$evento[14]} pessoas interessadas <i class='fas fa-heart' id='starwit' style='color: red';></i>
@@ -294,6 +315,34 @@ if(isset($_REQUEST["interessado"]) && $_REQUEST["interessado"] == true) {
     $script = "<script language=javascript>
     location.href='exibir_evento.php?id=".$id."';
     alert('Interesse marcado!');
+    </script>";
+    echo $script;
+  }
+}
+if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
+  $result = $conn->prepare("select * from avaliacao where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+  $result->execute();
+
+  if($result->fetchColumn() > 0){
+    $rs = $conn->prepare("DELETE FROM avaliacao WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
+    $rs->execute();
+    $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt-1 WHERE cod_evento=$id");
+    $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    alert('Avaliação retirada.');
+    </script>";
+    echo $script;
+  }
+  elseif($result->fetchColumn() == 0){
+    $sql = "INSERT INTO avaliacao (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
+    $rs = $conn->prepare($sql);
+    $rs->execute();
+    $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt+1 WHERE cod_evento=$id");
+    $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    alert('Agradecemos a sua avaliação!');
     </script>";
     echo $script;
   }
