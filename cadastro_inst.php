@@ -14,8 +14,8 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
   <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Cadastro">
-  <meta name="robots" content="cadastro_inst, index, follow">
-  <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+  <meta name="robots" content="Index, follow">
+  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/eventoinfo.css">
   <link rel="stylesheet" href="css/auth.css">
@@ -68,14 +68,14 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 		if(campo.value.length == conjuntox)
 		{
 			campo.value=campo.value+separador4;
-		
+
 		}
 		if(campo.value.length == conjunto3)
 		{
 			campo.value = campo.value + separador3;
-		
+
 		}
-	  
+
 	  }
 	 if (formato == 'cep')
 	  {
@@ -94,7 +94,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 		conjunto2 = 6;
 		conjunto3 = 10;
 		conjunto4 = 15;
-		
+
 		if (campo.value.length == conjunto1)
 		{
 		  campo.value = campo.value + separador;
@@ -134,7 +134,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
 
       //fazer script de mascara do cep e cnpj e telefone
-   
+
       $erro = null;
       $valido = false;
 
@@ -219,7 +219,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
       //concertar o banco pra voltar o md5
       $senhaHash = md5($_POST["senha"]);
-      $sql="insert into faculdade (CNPJ, login_inst ,senha_inst ,nome_inst ,endereco_inst ,bairro_inst ,cidade_inst ,estado_inst ,cep_inst ,email_inst ,telefone_inst) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+      $sql="insert into faculdade (CNPJ, login_inst ,senha_inst ,nome_inst ,endereco_inst ,bairro_inst ,cidade_inst ,estado_inst ,cep_inst ,email_inst ,telefone_inst, seguidores_qnt) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
       $stmt = $conn->prepare($sql);
@@ -230,7 +230,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
       $stmt->bindParam(1, $_POST["cnpj"],PDO::PARAM_STR);
       $stmt->bindParam(2, $_POST["login"],PDO::PARAM_STR);
 
-
+      $seguidores = 0;
       $senha = md5($_POST["senha"]);
       $stmt->bindParam(3, $senha);
 
@@ -242,6 +242,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
       $stmt->bindParam(9, $_POST["cep"],PDO::PARAM_STR);
       $stmt->bindParam(10, $_POST["email"],PDO::PARAM_STR);
       $stmt->bindParam(11, $_POST["telefone"],PDO::PARAM_STR);
+      $stmt->bindParam(12, $seguidores,PDO::PARAM_STR);
 
       $stmt->execute();
 
