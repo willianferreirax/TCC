@@ -260,8 +260,8 @@ if(!isset($_SESSION['instituicao'])){
       else{
 
         $sql = "INSERT INTO evento
-        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)";
+        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ, comp_qnt, interesse_qnt, avaliacoes_qnt)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         $preco = $_POST["preco"];
@@ -286,6 +286,9 @@ if(!isset($_SESSION['instituicao'])){
         $stmt->bindValue(13,$_POST["desc"]);
         $stmt->bindValue(14,$preco);
         $stmt->bindValue(15,$_SESSION["instituicao"][3]);
+        $stmt->bindValue(16,0);
+        $stmt->bindValue(17,0);
+        $stmt->bindValue(18,0);
 
         $stmt->execute();
 
@@ -376,240 +379,240 @@ if(!isset($_SESSION['instituicao'])){
         }
       }
     }
-  ?>
-  <div class="icontainer">
-    <form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
-      <div class="form-group" id='imageup'>
-        <label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
-          <img class="imagevis" id="imagevis" border="0">
-          <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)"><div class="aviso">Para uma melhor experiência do usuário, o banner do evento deve ter <br>as medidas de <b>1280x540</b> ou a proporção <b>21:9</b> <br> <br>(Caso contrário, ele será cortado e redimensionado.)</div>
-          <script>
-          var loadFile = function(event) {
-            var imagevis = document.getElementById('imagevis');
-            imagevis.src = URL.createObjectURL(event.target.files[0]);
-          };
-          </script>
-        </div>
-      </label>
-      <?php
-      if(isset($coderro) && $coderro == 2){
-        echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
-      }
-      ?>
-      <div class="nomeev">
-        <label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
+    ?>
+    <div class="icontainer">
+      <form name='criareventoform' method="POST" action="?validar=true" enctype="multipart/form-data">
+        <div class="form-group" id='imageup'>
+          <label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
+            <img class="imagevis" id="imagevis" border="0">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo' onchange="loadFile(event)"><div class="aviso">Para uma melhor experiência do usuário, o banner do evento deve ter <br>as medidas de <b>1280x540</b> ou a proporção <b>21:9</b> <br> <br>(Caso contrário, ele será cortado e redimensionado.)</div>
+            <script>
+            var loadFile = function(event) {
+              var imagevis = document.getElementById('imagevis');
+              imagevis.src = URL.createObjectURL(event.target.files[0]);
+            };
+            </script>
+          </div>
+        </label>
         <?php
-        if(isset($coderro) && $coderro == 1){
+        if(isset($coderro) && $coderro == 2){
           echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
         }
         ?>
-        <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
-      </div>
-
-      <div class="info1">
-        <div class="infos">
-
-          <label class='labelint'>Nos conte um pouco sobre o seu evento:</label><br>
+        <div class="nomeev">
+          <label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
           <?php
-          if(isset($coderro) && $coderro == 14){
+          if(isset($coderro) && $coderro == 1){
             echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
           }
           ?>
-          <textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
-
-          <label class='labelint'>Quando o evento irá <b>começar</b>?</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 3){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          if(isset($coderro) && $coderro == 15){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='date' name='dateinic' placeholder='03103-010'>
-
-          <label class='labelint'>Quando o evento irá <b>acabar</b>?</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 4){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          if(isset($coderro) && $coderro == 5){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='date' name='datefinal' placeholder='03103-010'>
-
-          <label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
-          <?php
-          if(isset($coderro) && $coderro == 6){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          if(isset($coderro) && $coderro == 8){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='time' name='timeinic'>
-
-          <label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
-          <?php
-          if(isset($coderro) && $coderro == 7){
-            echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='time' name='timefinal'>
-
-          <label class='labelint'>Qual o <b>preço</b> do evento?</label>
-          <input class='inputcreate' type='number' name='preco' placeholder="12,00">
-
+          <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
         </div>
-        <div class="endereco">
-          <label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-          <?php
-          if(isset($coderro) && $coderro == 9){
-            echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='text' name='endereco' placeholder='Rua Dr. Almeida Lima, 1233'>
 
-          <label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 10){
-            echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='text' name='bairro' placeholder='Mooca'>
+        <div class="info1">
+          <div class="infos">
 
-          <label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 11){
-            echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
+            <label class='labelint'>Nos conte um pouco sobre o seu evento:</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 14){
+              echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
 
-          <label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 12){
-            echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <select name="estado">
-            <option value="AC">Acre</option>
-            <option value="AL">Alagoas</option>
-            <option value="AP">Amapá</option>
-            <option value="AM">Amazonas</option>
-            <option value="BA">Bahia</option>
-            <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espirito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option>
-            <option value="MG">Minas Gerais</option>
-            <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option>
-            <option value="RJ">Rio de Janeiro</option>
-            <option value="RJ">Rio Grande do Norte</option>
-            <option value="RS">Rio grande do sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option>
-            <option value="SP" selected>São Paulo</option>
-            <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option>
-          </select><br>
+            <label class='labelint'>Quando o evento irá <b>começar</b>?</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 3){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            if(isset($coderro) && $coderro == 15){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='date' name='dateinic' placeholder='03103-010'>
 
-          <label class='labelint'>Agora, digite o <b>CEP</b>:</label><br>
-          <?php
-          if(isset($coderro) && $coderro == 13){
-            echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
-          }
-          ?>
-          <input class='inputcreate' type='text' maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.criareventoform.cep'); return blokletras(event);">
+            <label class='labelint'>Quando o evento irá <b>acabar</b>?</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 4){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            if(isset($coderro) && $coderro == 5){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='date' name='datefinal' placeholder='03103-010'>
+
+            <label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
+            <?php
+            if(isset($coderro) && $coderro == 6){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            if(isset($coderro) && $coderro == 8){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='time' name='timeinic'>
+
+            <label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
+            <?php
+            if(isset($coderro) && $coderro == 7){
+              echo "<div class='quando'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='time' name='timefinal'>
+
+            <label class='labelint'>Qual o <b>preço</b> do evento?</label>
+            <input class='inputcreate' type='number' name='preco' placeholder="12,00">
+
+          </div>
+          <div class="endereco">
+            <label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
+            <?php
+            if(isset($coderro) && $coderro == 9){
+              echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='text' name='endereco' placeholder='Rua Dr. Almeida Lima, 1233'>
+
+            <label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 10){
+              echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='text' name='bairro' placeholder='Mooca'>
+
+            <label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 11){
+              echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='text' name='cidade' placeholder='São Paulo'>
+
+            <label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 12){
+              echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <select name="estado">
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espirito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RJ">Rio Grande do Norte</option>
+              <option value="RS">Rio grande do sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP" selected>São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select><br>
+
+            <label class='labelint'>Agora, digite o <b>CEP</b>:</label><br>
+            <?php
+            if(isset($coderro) && $coderro == 13){
+              echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
+            }
+            ?>
+            <input class='inputcreate' type='text' maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.criareventoform.cep'); return blokletras(event);">
+          </div>
         </div>
-      </div>
-      <center>
-        <br>
-        <br>
-        <hr>
-        <br><label class='labelintere'>Selecione quais são as <b>áreas de interesses</b> do seu evento.</label><br>
-        <div class='interesses'>
-          <input type="checkbox" id='bti1' class='chkint' value=1  name='intchk[]'>
-          <label for='bti1' class='interesse1' id='int1'>
+        <center>
+          <br>
+          <br>
+          <hr>
+          <br><label class='labelintere'>Selecione quais são as <b>áreas de interesses</b> do seu evento.</label><br>
+          <div class='interesses'>
+            <input type="checkbox" id='bti1' class='chkint' value=1  name='intchk[]'>
+            <label for='bti1' class='interesse1' id='int1'>
 
-            Informação e Tecnologia
-          </label>
-          <input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
-          <label for='bti2' class='interesse2' id='int2'>
-            Logística
-          </label>
-          <input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
-          <label for='bti3' class='interesse3' id='int3'>
-            Saúde
-          </label>
-          <input type="checkbox" id='bti4' class='chkint' value=4  name='intchk[]'>
-          <label for='bti4' class='interesse4' id='int4'>
-            Engenharia
-          </label>
-          <input type="checkbox" id='bti5' class='chkint' value=5  name='intchk[]'>
-          <label for='bti5' class='interesse5' id='int5'>
-            Administração e Negócios
-          </label>
-          <input type="checkbox" id='bti6' class='chkint' value=6  name='intchk[]'>
-          <label for='bti6' class='interesse6' id='int6'>
-            Comunicação
-          </label>
-          <input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
-          <label for='bti7' class='interesse7' id='int7'>
-            Arte e Design
-          </label>
-          <input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
-          <label for='bti8' class='interesse8' id='int8'>
-            Direito
-          </label>
-          <input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
-          <label for='bti9' class='interesse9' id='int9'>
-            Educação
-          </label>
-          <input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
-          <label for='bti10' class='interesse10' id='int10'>
-            Turismo
-          </label>
-          <input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
-          <label for='bti11' class='interesse11' id='int11'>
-            Gastronomia
-          </label>
-          <input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
-          <label for='bti12' class='interesse12' id='int12'>
-            Ciências Exatas e Biológicas
-          </label>
-          <input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
-          <label for='bti13' class='interesse13' id='int13'>
-            Ciências Sociais e Humanas
-          </label>
-          <input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
-          <label for='bti14' class='interesse14' id='int14'>
-            Música
-          </label>
-          <input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
-          <label for='bti15' class='interesse15' id='int15'>
-            <input type='text' class='outro' name='int15' placeholder="Outro">
-          </label>
-        </div>
-        <div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
-      </center>
-    </form>
+              Informação e Tecnologia
+            </label>
+            <input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
+            <label for='bti2' class='interesse2' id='int2'>
+              Logística
+            </label>
+            <input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
+            <label for='bti3' class='interesse3' id='int3'>
+              Saúde
+            </label>
+            <input type="checkbox" id='bti4' class='chkint' value=4  name='intchk[]'>
+            <label for='bti4' class='interesse4' id='int4'>
+              Engenharia
+            </label>
+            <input type="checkbox" id='bti5' class='chkint' value=5  name='intchk[]'>
+            <label for='bti5' class='interesse5' id='int5'>
+              Administração e Negócios
+            </label>
+            <input type="checkbox" id='bti6' class='chkint' value=6  name='intchk[]'>
+            <label for='bti6' class='interesse6' id='int6'>
+              Comunicação
+            </label>
+            <input type="checkbox" id='bti7' class='chkint' value=7 onclick='intlimit(6)' name='intchk[]'>
+            <label for='bti7' class='interesse7' id='int7'>
+              Arte e Design
+            </label>
+            <input type="checkbox" id='bti8' class='chkint' value=8 onclick='intlimit(7)' name='intchk[]'>
+            <label for='bti8' class='interesse8' id='int8'>
+              Direito
+            </label>
+            <input type="checkbox" id='bti9' class='chkint' value=9 onclick='intlimit(8)' name='intchk[]'>
+            <label for='bti9' class='interesse9' id='int9'>
+              Educação
+            </label>
+            <input type="checkbox" id='bti10' class='chkint' value=10 onclick='intlimit(9)' name='intchk[]'>
+            <label for='bti10' class='interesse10' id='int10'>
+              Turismo
+            </label>
+            <input type="checkbox" id='bti11' class='chkint' value=11 onclick='intlimit(10)' name='intchk[]'>
+            <label for='bti11' class='interesse11' id='int11'>
+              Gastronomia
+            </label>
+            <input type="checkbox" id='bti12' class='chkint' value=12 onclick='intlimit(11)' name='intchk[]'>
+            <label for='bti12' class='interesse12' id='int12'>
+              Ciências Exatas e Biológicas
+            </label>
+            <input type="checkbox" id='bti13' class='chkint' value=13 onclick='intlimit(12)' name='intchk[]'>
+            <label for='bti13' class='interesse13' id='int13'>
+              Ciências Sociais e Humanas
+            </label>
+            <input type="checkbox" id='bti14' class='chkint' value=14 onclick='intlimit(13)' name='intchk[]'>
+            <label for='bti14' class='interesse14' id='int14'>
+              Música
+            </label>
+            <input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
+            <label for='bti15' class='interesse15' id='int15'>
+              <input type='text' class='outro' name='int15' placeholder="Outro">
+            </label>
+          </div>
+          <div class='btnext'><a href='eventinfo.php'><button class='prox'>Criar</button></a></div>
+        </center>
+      </form>
+    </div>
   </div>
-</div>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

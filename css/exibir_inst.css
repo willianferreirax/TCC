@@ -1,0 +1,125 @@
+
+@media only screen and (min-width: 700px) and (orientation: landscape) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+
+  .seguir{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 30vh;
+  	border-radius: 20vw;
+  	border: none;
+  	color: white;
+  	font-size: 1.5vw;
+    padding: 0vw !important;
+  	font-weight: 400;
+  	height: 3vw;
+    text-align: center;
+  }
+  #followicon{
+    padding: 0vw !important;
+    margin: 0vw 0vw 0vw 1vw !important;
+    font-size: 1.5vw;
+  }
+  .seguidores{
+    font-size: 1vw;
+    font-weight: 700;
+  }
+
+  .deixardeseguir{
+    background: transparent;
+    width: 30vh;
+    border-radius: 20vw;
+    border: 0.5vh solid white;
+    color: white;
+    font-size: 1.3vw;
+    padding: 0vw !important;
+    font-weight: 400;
+    height: 3vw;
+    text-align: center;
+  }
+
+}
+@media only screen and (min-width: 700px) and (orientation: portrait) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+  .seguir{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 20vw;
+  	border-radius: 20vw;
+  	border: none;
+  	color: white;
+  	font-size: 3vw;
+    padding: 0vw !important;
+  	font-weight: 400;
+  	height: 6vw;
+    text-align: center;
+  }
+  #followicon{
+    padding: 0vw !important;
+    margin: 0vw 0vw 0vw 1vw !important;
+    font-size: 2.7vw;
+  }
+  .seguidores{
+    font-size: 2.7vw;
+    font-weight: 700;
+  }
+
+  .deixardeseguir{
+    background: transparent;
+    width: 30vw;
+    border-radius: 20vw;
+    border: 0.5vh solid white;
+    color: white;
+    font-size: 3vw;
+    padding: 0vw !important;
+    font-weight: 400;
+    height: 6vw;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 699px) {
+  .b3{
+		border-right: 0.5vh solid !important;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100% !important;
+	}
+
+  .seguir{
+  	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+  	width: 20vw;
+  	border-radius: 20vw;
+  	border: none;
+  	color: white;
+  	font-size: 3vw;
+    padding: 0vw !important;
+  	font-weight: 400;
+  	height: 6vw;
+    text-align: center;
+  }
+  #followicon{
+    padding: 0vw !important;
+    margin: 0vw 0vw 0vw 1vw !important;
+    font-size: 2.7vw;
+  }
+  .seguidores{
+    font-size: 3vw;
+    font-weight: 700;
+  }
+
+  .deixardeseguir{
+    background: transparent;
+    width: 31vw;
+    border-radius: 20vw;
+    border: 0.5vh solid white;
+    color: white;
+    font-size: 3vw;
+    padding: 0vw !important;
+    font-weight: 400;
+    height: 7vw;
+    text-align: center;
+  }
+
+}
