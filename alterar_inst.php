@@ -2,6 +2,19 @@
 <html lang="pt-br">
   <head>
     <title>Alteração de credenciais da instituição</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="description" content="Acesse o FRESHR. Uma visão de prosperidade para a sua carreira.">
+    <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Login">
+    <meta name="robots" content="login, index, follow">
+    <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="images/icon.png">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#121212">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<script type='text/javascript'>
   function mascara(formato, keypress, objeto){
     campo = eval(objeto);
@@ -24,10 +37,32 @@
         telefone.value = telefone.value + separador3;
       }
     }
+
+    //TELEFONE
+    if(formato == 'cep_inst'){
+      separador1 = '-';
+      conjunto1 = 0;
+      conjunto2 = 5;
+      if(cep_inst.value.length == conjunto1){
+        cep_inst.value = cep_inst.value;
+      }
+      if(cep_inst.value.length == conjunto2){
+        cep_inst.value = cep_inst.value + separador1;
+    }
   }
   </script>
   </head>
 <body>
+<center>
+  <header class='cabecalho'>
+    <a href="index.php" class='homea'>
+      <label for='logospace' class='logo'>
+        <h1 class='logospace'></h1>
+      </label>
+    </a>
+    <hr>
+  </header>
+  <div class='containerform'>
 <?php
 session_start();
 if(!$_SESSION['instituicao']){
@@ -38,7 +73,7 @@ $cnpj = $_SESSION['instituicao'][3];
 
 
 if (isset($_POST['senha_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -52,22 +87,20 @@ if (isset($_POST['senha_inst'])) {
 		<input type='password' name='confirmar_senha' placeholder='Confirmar senha'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-		<br>
-		<a href='painel_inst.php'>voltar</a>
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 
 	    </form>";
 	}
-	
-	
+
+
 else if (isset($_POST['nome_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -78,23 +111,23 @@ else if (isset($_POST['nome_inst'])) {
         <input type='text' name='nome_inst' placeholder='Novo nome'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
 		<br>
-		<a href='painel_inst.php'>voltar</a>
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 
 	    </form>";
 	}
-		
 
-		
+
+
 else if (isset($_POST['endereco_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -105,25 +138,24 @@ else if (isset($_POST['endereco_inst'])) {
         <input type='text' name='endereço_inst' placeholder='Novo endereço'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-<br>
-		<a href='painel_inst.php'>voltar</a>
-	    </form>";
-		
-	}
-			
-		
-	
 
-		
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
+	    </form>";
+
+	}
+
+
+
+
+
 else if (isset($_POST['bairro_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -134,23 +166,22 @@ else if (isset($_POST['bairro_inst'])) {
         <input type='text' name='bairro_inst' placeholder='Novo bairro'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-<br>
-		<a href='painel_inst.php'>voltar</a>
+
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 	}
-		
-		
 
-		
+
+
+
 else if (isset($_POST['cidade_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -161,22 +192,21 @@ else if (isset($_POST['cidade_inst'])) {
         <input type='text' name='cidade_inst' placeholder='Nova cidade'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-<br>
-		<a href='painel_inst.php'>voltar</a>
+
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 	}
-			
 
-				
+
+
 else if (isset($_POST['cep_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -184,24 +214,23 @@ else if (isset($_POST['cep_inst'])) {
 
         <label><b>CEP:</b></label>
         <br>
-        <input type='text' name='cep_inst' placeholder='Novo CEP'>
+        <input type='text' name='cep_inst' onkeypress='mascara('cep_inst') placeholder='Novo CEP'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-<br>
-		<a href='painel_inst.php'>voltar</a>
+
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 	}
-		
-	
+
+
 else if (isset($_POST['email_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -212,22 +241,21 @@ else if (isset($_POST['email_inst'])) {
         <input type='email' name='email_inst' placeholder='Novo Email'>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-<br>
-		<a href='painel_inst.php'>voltar</a>
+
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 	}
-				
 
-				
+
+
 else if (isset($_POST['telefone_inst'])) {
-	
+
 
  	echo"<form name='alterar_f' method='POST' action='?validar=true'>
 
@@ -235,18 +263,18 @@ else if (isset($_POST['telefone_inst'])) {
 
         <label><b>Telefone:</b></label>
         <br>
-        input type='text' name='telefone' maxlength='15' placeholder='(99) 99999-9999' onkeypress='mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')'> <br><small>*(com DDD)</small>
+        <input type='text' name='telefone' maxlength='15' placeholder='(99) 99999-9999' onkeypress='mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')'> <br><small>*(com DDD)</small>
         <br>
         <br>
-    
 
-	    <input class='btn btn-info' type='submit' name='alterar' value='Alterar'>
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
 
 	    <br><br>
 
 	    <input class='btn btn-danger' type='reset' value='Limpar'>
 		<br>
-		<a href='painel_inst.php'>voltar</a>
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 }
 else{
@@ -257,14 +285,14 @@ else{
 
 <?php
 if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
-	
+
 	include "connection.php";
 	$conn = conexao();
-	
+
 	//declaramos as variáveis se o post correspondente existir (isset) e alteramos o comando sql de acordo com o item que foi escolhido para ser alterado
-	
+
 	if(isset($_POST['senha_inst'])){
-			
+
 		if(strlen(utf8_decode($_POST["senha_inst"])) < 10 || strlen(utf8_decode($_POST["senha_inst"])) > 100){
 			$erro = " digite uma senha válida (use entre 10 e 100 caracteres).";
 			echo "<div class='erro'>".$erro."</div><br>";
@@ -281,9 +309,9 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
 		}
-			
+
 	}
-	
+
 	elseif(isset($_POST['nome_inst'])){
 		if (strlen(utf8_decode($_POST["nome_inst"]))<5 || strlen(utf8_decode($_POST["nome_inst"]))>255) {
 			$erro = "preencha o campo nome corretamente (5 ou mais caracteres ou menos de 255)";
@@ -296,10 +324,10 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$nome_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
-			
+
 		}
 	}
-	
+
 	elseif(isset($_POST['endereco_inst'])){
 		if(strlen(utf8_decode($_POST["endereco_inst"]))<3 || strlen(utf8_decode($_POST["endereco_inst"]))>255){
 			$erro="digite um endereço valido";
@@ -313,9 +341,9 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
 		}
-			
+
 	}
-	
+
 	elseif(isset($_POST['bairro_inst'])){
 		if(strlen(utf8_decode($_POST["bairro_inst"]))<5 || strlen(utf8_decode($_POST["bairro_inst"]))>30){
 			$erro= "digite algo valido(bairro)";
@@ -330,7 +358,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->execute();
 		}
 	}
-	
+
 	elseif(isset($_POST['cidade_inst'])){
 		if(strlen(utf8_decode($_POST["cidade_inst"]))<5 || strlen(utf8_decode($_POST["cidade_inst"]))>255){
 			$erro= "digite algo valido (cidade)";
@@ -345,7 +373,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->execute();
 		}
 	}
-	
+
 	elseif(isset($_POST['cep_inst'])){
 		if(strlen(utf8_decode($_POST["cep"]))<8 || strlen(utf8_decode($_POST["cep"]))>8){
 			$erro= "digite corretamente o CEP";
@@ -360,7 +388,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->execute();
 		}
 	}
-	
+
 	elseif(isset($_POST['email_inst'])){
 		if(!filter_var($_POST["email_inst"], FILTER_VALIDATE_EMAIL)){
 			$erro = " digite um email valido.";
@@ -384,7 +412,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			}
 		}
 	}
-	
+
 	elseif(isset($_POST['telefone_inst'])){
 		if(strlen(utf8_decode($_POST["telefone_inst"]))<14 || strlen(utf8_decode($_POST["telefone_inst"]))>15){
 			$erro= "insira um telefone valido";
@@ -414,7 +442,10 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->execute();
 		}
 	}
-		
+
 }
 
 ?>
+</div>
+</center>
+</body>
