@@ -59,22 +59,51 @@ a{
 	}
 
 	#likewit{
-		font-size: 1.4vw;
+		font-size: 1.2vw;
+		position: relative;
+		right: -1vw;
 	}
 
 	#starwit{
-		font-size: 1.5vw;
+		font-size: 1.2vw;
+		position: relative;
+		right: -1vw;
+	}
+
+	#likeqnt{
+		margin: 0 !important;
+		padding-top: 0.13vw;
+		background-color: #006de2;
+		width: 20vw;
+		border-radius: 20vw;
+		color: white;
+		font-size: 1.1vw;
+		font-weight: 400;
+		height: 2vw;
+		text-align: center;
 	}
 
 	#confirmqnt{
 		margin: 0 !important;
 		padding: 0;
-		background: transparent;
+		background-color: #006de2;
 		width: 20vw;
 		border-radius: 20vw;
-		border: 0.2vw solid white;
 		color: white;
 		font-size: 1vw;
+		font-weight: 400;
+		height: 2vw;
+		text-align: center;
+	}
+
+	#intqnt{
+		margin: 0 !important;
+		padding-top: 0.13vw;
+		background-color: #FF0000;
+		width: 20vw;
+		border-radius: 20vw;
+		color: white;
+		font-size: 1.1vw;
 		font-weight: 400;
 		height: 2vw;
 		text-align: center;

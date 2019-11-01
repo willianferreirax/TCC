@@ -168,7 +168,7 @@ else{
     </header>
     <div class='elem1'>
       <div class="infocontainer">
-        <img class="banner" src="<?php echo 'upload/'.$evento[1]?>">
+        <img class="banner" src="<?php echo 'upload/'.$evento[1]?>" draggable="false">
         <div class="info1">
           <?php
           if(isset($_SESSION['usuario'])){
@@ -188,8 +188,8 @@ else{
           }
           else{
             echo "<div class='eventactwit'>";
-            echo "<label for='btnconfirm' id='confirmqnt' class='avaliado' style='color: #006de2'>
-            {$evento[15]} pessoas gostaram <i class='fas fa-thumbs-up' id='likewit' style='color: #006de2'></i>
+            echo "<label for='btnconfirm' id='likeqnt' class='avaliado'>
+            {$evento[15]} pessoas gostaram <i class='fas fa-thumbs-up' id='likewit'></i>
             </label>";
           }
           ?>
@@ -209,8 +209,8 @@ else{
           }
           else{
             echo "
-            <label for='btnconfirm' id='confirmqnt' class='interessado' style='color: red'>
-            {$evento[14]} pessoas interessadas <i class='fas fa-heart' id='starwit' style='color: red';></i>
+            <label for='btnconfirm' id='intqnt' class='interessado'>
+            {$evento[14]} pessoas interessadas <i class='fas fa-heart' id='starwit';></i>
             </label>";
           }
           ?>
@@ -239,7 +239,8 @@ else{
           }
           else{
             echo "
-            <label for='btnconfirm' id='confirmqnt' class='confirmado' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
+            <label for='btn
+            ' id='confirmqnt' class='confirmado' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;'>
             {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
