@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
   $conn = conexao();
   $id = $_GET['id'];
 
-  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst from faculdade where CNPJ = $id";
+  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = $id";
   $res = $conn->prepare($select);
   $res->execute();
   $result=$res->fetchAll();
@@ -20,6 +20,7 @@ if(isset($_GET['id'])){
     array_push($faculdade,$row['cep_inst']);
     array_push($faculdade,$row['email_inst']);
     array_push($faculdade,$row['telefone_inst']);
+    array_push($faculdade,$row['seguidores_qnt']);
   }
 }
 else{
@@ -84,34 +85,34 @@ else{
       <label for='chec' class='backdiv'></label>
     </nav>
     <div class='dropdown'>
-			<?php
-			if(isset($_SESSION['usuario']))
-			{
-				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
-																																																																																																												($_SESSION['usuario'][4])-1))."</h1>";
-			}
-			if(isset($_SESSION['instituicao']))
-			{
-				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
-			}
-			?>
-			<br>
-			<?php
-				if(isset($_SESSION['instituicao'][0])){
-					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
-				}
-				else{
-					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
-				}
-			?>
-			<br>
-			<a href='painel_usuario.php' class='account'>Configurações</a>
-			<br>
-			<a href='painel_usuario.php' class='account'>Ajuda</a>
-			<br>
-			<br>
-			<a href='logout_script.php' class='exit'>Sair</a>
-		</div>
+      <?php
+      if(isset($_SESSION['usuario']))
+      {
+        echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
+        ($_SESSION['usuario'][4])-1))."</h1>";
+      }
+      if(isset($_SESSION['instituicao']))
+      {
+        echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+      }
+      ?>
+      <br>
+      <?php
+      if(isset($_SESSION['instituicao'][0])){
+        echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+      }
+      else{
+        echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+      }
+      ?>
+      <br>
+      <a href='painel_usuario.php' class='account'>Configurações</a>
+      <br>
+      <a href='painel_usuario.php' class='account'>Ajuda</a>
+      <br>
+      <br>
+      <a href='logout_script.php' class='exit'>Sair</a>
+    </div>
     <header class='cabecalhoindex' id='grid'>
       <div class='menudiv'>
         <div class='menubtn'>
@@ -129,49 +130,99 @@ else{
         </form>
       </div>
       <div class='userdiv'>
-				<?php
-				if(isset($_SESSION['instituicao'])){
-					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
-					</div></label>";
-					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle'></i></a>
-					</div></label>";
-				}
-				 ?>
-				<?php
-					if(isset($_SESSION['usuario'])){
-						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-						</div></label>";
-					}
-					else if(isset($_SESSION['instituicao'])){
-						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-						</div></label>";
-					}
-					else{
-						echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
-						</div>";
-					}
-					?>
-				</div>
+        <?php
+        if(isset($_SESSION['instituicao'])){
+          echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
+          </div></label>";
+          echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle'></i></a>
+          </div></label>";
+        }
+        ?>
+        <?php
+        if(isset($_SESSION['usuario'])){
+          echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+          </div></label>";
+        }
+        else if(isset($_SESSION['instituicao'])){
+          echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+          </div></label>";
+        }
+        else{
+          echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
+          </div>";
+        }
+        ?>
       </div>
-    </header>
-
-    <div class='statsdiv'>
-      <?php
-      echo "<h1 class='imageuser'>".substr($faculdade[0], 0, strlen($faculdade[0]) - (strlen($faculdade[0])-4))."</h1>";
-      ?>
-      <?php
-      echo"<div class='username'>".$faculdade[0]."</div>";
-      echo"<div class='useremail'>".$faculdade[6]."</div><br>";
-      echo"<div class='useremail'>Telefone: ".$faculdade[7]."</div>";
-      echo"<div class='useremail'>Endereço: ".$faculdade[1].", ".$faculdade[2].", ".$faculdade[3]." - ".$faculdade[4]."</div>";
-      echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
-
-      echo "<div class='title'>Eventos atuais</div>";
-      echo "<div class='title'>Eventos passados</div>";
-      ?>
     </div>
+  </header>
 
-  </center>
+  <div class='statsdiv'>
+    <?php
+    echo "<h1 class='imageuser'>".substr($faculdade[0], 0, strlen($faculdade[0]) - (strlen($faculdade[0])-4))."</h1>";
+    ?>
+    <?php
+    echo"<div class='username'>".$faculdade[0]."</div>";
+
+    if(isset($_SESSION['usuario'])){
+      $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+      $result->execute();
+
+      if($result->fetchColumn() > 0){
+        echo "<a href='exibir_inst.php?id=$id&seguir=true'><button class='deixardeseguir'>Deixar de seguir <i class='fas fa-check-double' id='followicon'></i></button><br></a>";
+      }
+      elseif($result->fetchColumn() == 0){
+        echo "<a href='exibir_inst.php?id=$id&seguir=true'><button class='seguir'>Seguir <i class='fas fa-check-double' id='followicon'></i></button><br></a>";
+      }
+
+    }
+    else{
+      echo "<small>".$faculdade[8]." pessoa(s) segue(m) essa instituição</small><br>";
+    }
+
+    echo"<br><br><div class='useremail'>".$faculdade[6]."</div><br>";
+    echo"<div class='useremail'>Telefone: ".$faculdade[7]."</div>";
+    echo"<div class='useremail'>Endereço: ".$faculdade[1].", ".$faculdade[2].", ".$faculdade[3]." - ".$faculdade[4]."</div>";
+    echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
+
+    echo "<div class='title'>Eventos atuais</div>";
+    echo "<div class='title'>Eventos passados</div>";
+    ?>
+  </div>
+
+</center>
 
 </body>
 </html>
+
+<?php
+if(isset($_REQUEST["seguir"]) && $_REQUEST["seguir"] == true) {
+  $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+  $result->execute();
+
+  if($result->fetchColumn() > 0){
+
+    $rs = $conn->prepare("DELETE FROM seguir WHERE cod_usuario={$_SESSION['usuario'][3]} AND CNPJ='$id'");
+    $rs->execute();
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt-1 WHERE CNPJ=$id");
+    $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_inst.php?id=".$id."';
+    alert('Você deixou de seguir ".$faculdade[0]."');
+    </script>";
+    echo $script;
+  }
+  elseif($result->fetchColumn() == 0){
+    $sql = "INSERT INTO seguir (cod_usuario, CNPJ) VALUES ({$_SESSION['usuario'][3]}, '$id')";
+    $rs = $conn->prepare($sql);
+    $rs->execute();
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt+1 WHERE CNPJ=$id");
+    $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_inst.php?id=".$id."';
+    alert('Você está seguindo ".$faculdade[0]."!');
+    </script>";
+    echo $script;
+  }
+
+}
+?>
