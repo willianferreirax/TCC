@@ -83,21 +83,21 @@
   			<?php
   			if(isset($_SESSION['usuario']))
   			{
-  				echo "<h1 class='userimg'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
+  				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1))."</h1>";
   			}
   			if(isset($_SESSION['instituicao']))
   			{
-  				echo "<h1 class='userimg'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
   			}
   			?>
   			<br>
   			<?php
-  				if(isset($_SESSION['instituicao'][0])){
-  					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
-  				}
-  				else{
-  					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
-  				}
+  			if(isset($_SESSION['instituicao'][0])){
+  				echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+  			}
+  			else{
+  				echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+  			}
   			?>
   			<br>
   			<a href='config.php' class='account'>Configurações</a>
