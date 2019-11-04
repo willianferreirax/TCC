@@ -11,7 +11,7 @@ if(!$_SESSION['usuario']){
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <title>Sua conta - FRESHR</title>
+  <title><?php if(isset($_SESSION['usuario'][0]) && $_SESSION['usuario'][0] != ""){echo $_SESSION['usuario'][0]." ".$_SESSION['usuario'][4];} ?> - FRESHR</title>
   <!-- Required meta tags -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
@@ -51,23 +51,38 @@ if(!$_SESSION['usuario']){
   <center>
     <input type='checkbox' id='dropcheck'>
     <input type='checkbox' id='chec'>
+
+    <header class='cabecalhoindex' id='grid'>
+      <div class='menudiv'>
+        <div class='menubtn'>
+          <label for='chec' class='labelchec'><i class="fas fa-bars fa-2x"></i></label>
+        </div>
+      </div>
+      <div class='pesquisarbtn'>
+        <form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
+        <input type='checkbox' id='searchcheck'>
+        <label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
+        <div class='search'>
+
+            <input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
+            <input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
+          </form>
+        </div>
+      </div>
+      <div class='userdiv'>
+        <label for='dropcheck' class='dropcheck'><div class='userbtn'><i class="fas fa-user-circle fa-2x"></i>
+        </div></label>
+      </div>
+    </header>
+
     <div class='icons'>
       <a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-      <i class="fas fa-map-marked fa-2x"></i><br>
-      <i class="fas fa-users fa-2x"></i><br>
+      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
+      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <i class="fas fa-question fa-2x"></i><br>
+      <a href='index.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
-    <div class='statsdiv'>
-      <i class="fas fa-user-circle fa-2x"></i><br>
-      <?php
-      echo"<div class='username'>Olá, ".$_SESSION['usuario'][0]."</div>";
-      echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
-      ?>
-      <br>
-      <br>
-      </div>
 
       <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 
@@ -109,28 +124,20 @@ if(!$_SESSION['usuario']){
   			<br>
   			<a href='logout_script.php' class='exit'>Sair</a>
   		</div>
-      <header class='cabecalhoindex' id='grid'>
-        <div class='menudiv'>
-          <div class='menubtn'>
-            <label for='chec' class='labelchec'><i class="fas fa-bars fa-2x"></i></label>
-          </div>
-        </div>
-        <div class='pesquisarbtn'>
-  				<form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
-  				<input type='checkbox' id='searchcheck'>
-  				<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
-  				<div class='search'>
 
-  						<input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
-  						<input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
-  					</form>
-  				</div>
-  			</div>
-        <div class='userdiv'>
-          <label for='dropcheck' class='dropcheck'><div class='userbtn'><i class="fas fa-user-circle fa-2x"></i>
-          </div></label>
+      <div class='statsdiv'>
+        <i class="fas fa-user-circle fa-2x"></i><br>
+        <?php
+        echo"<div class='username'>Olá, ".$_SESSION['usuario'][0]."</div>";
+        echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
+        echo "<br>";
+        echo "<div class='title'> Meus eventos favoritos </div>";
+        echo "<div class='title'> Eventos que comparecerei </div><br><br><br>"
+        ?>
+        <br>
+        <br>
         </div>
-      </header>
+
     </center>
   </body>
   </html>

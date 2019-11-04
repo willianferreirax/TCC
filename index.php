@@ -8,7 +8,7 @@
 	<meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
 	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
 	<meta name="robots" content="Index, follow">
-	<meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+	<meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -76,7 +76,7 @@
 				}
 			?>
 			<br>
-			<a href='painel_usuario.php' class='account'>Configurações</a>
+			<a href='config.php' class='account'>Configurações</a>
 			<br>
 			<a href='painel_usuario.php' class='account'>Ajuda</a>
 			<br>

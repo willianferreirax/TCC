@@ -198,10 +198,11 @@ exit();
 				<br>
 
 				<br><br>
-
-				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm("Deseja realmente excluir sua conta? Essa ação é irreversivel!")) location.href="deletar_cadastro.php";"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
-
-				<br><br>
+				';
+				?>
+				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+				<?php
+				echo '<br><br>
 
 
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
@@ -209,6 +210,7 @@ exit();
 				</form>';
 			}
 			elseif(isset($_SESSION['usuario'])){
+
 				echo'
 				<form name="config" method="POST" action="alterar_usu.php">
 
@@ -235,15 +237,16 @@ exit();
 				<input class="cadastrar" type="submit" name="senha_usu" value="Alterar">
 				<br>
 				<br>
-
-				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm("Deseja realmente excluir sua conta? Essa ação é irreversivel!")) location.href="deletar_cadastro.php";"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
-
-				<br><br>
+				';
+				?>
+				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
+				<?php
+				echo '<br><br>
 
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
 				';
 			}
-			
+
 			?>
 		</div>
 	</body>

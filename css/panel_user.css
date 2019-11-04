@@ -30,6 +30,11 @@
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.title{
+		font-size: 3vw;
+		margin: 8vw 5vw 0vw 5vw;
+	}
+
 	.account{
 		font-size: 1.3vw;
 		color: white;
@@ -70,7 +75,7 @@
 	}
 
 	.icons{
-		position: absolute;
+		position: fixed;
 		left: 0.5vh;
 		top: 10vh;
 		font-size: 2vh;
@@ -136,10 +141,10 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
 		text-align: center;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: #222224;
 		top: 9vh;
 		right: 3vh;
 		height: 50vh;
@@ -147,6 +152,7 @@
 		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
+		box-shadow: 0 0 2vw #151517;
 	}
 
 	.labelchec:hover{
@@ -154,7 +160,7 @@
 	}
 
 	.menubtn{
-		position: absolute;
+		position: fixed;
 		left: 3vh;
 		cursor: pointer;
 		z-index: 6;
@@ -189,7 +195,7 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.6);
+		background-color: #0d0e0f;
 		width: 45vh;
 		height: 100vh;
 		left: -35vh;
@@ -198,22 +204,18 @@
 		float: left;
 		text-align: left;
 		font-size: 20px;
-		position: absolute;
+		position: fixed !important;
+		top: 0;
 		z-index: 5;
 	}
 
 	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
-		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
+		background-color: #18191b !important;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 12vw;
+    margin-left: 10vh;
+		height: 100vw;
+    padding-top: 0.5vw;
 	}
 	.statsdiv i{
 		margin: 2vh;
@@ -258,7 +260,7 @@
 	.logoeheader{
 		width: 15vh;
 		height: 5vh;
-		position: absolute;
+		position: fixed;
 		left: 15vh;
 		z-index: 11;
 		top: 2.5vh;
@@ -268,13 +270,14 @@
 	}
 
 	.cabecalhoindex{
+		top: 0;
 		width: 100%;
 		height: 3vh !important;
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
-		z-index: 6;
+		position: fixed !important;
+		z-index: 10;
 	}
 
 	.pesquisarbtn{
@@ -335,6 +338,11 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.title{
+		font-size: 3vw;
+		margin: 8vw 18vw 5vw 18vw;
+	}
+
 	.account{
 		font-size: 3vh;
 		color: white;
@@ -379,7 +387,7 @@
 	}
 
 	.icons{
-		position: absolute;
+		position: fixed;
 		left: 0vh;
 		top: 10vh;
 		font-size: 1.5vh;
@@ -444,14 +452,14 @@
 		float: right;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.9);
-		font-size: 3vh;
 		top: 9vh;
 		right: 3vh;
-		height: 0;
+		height: 60vh;
 		width: 30vh;
-		padding: 7vh 3vh 1vh 3vh;
+		padding: 1vh 3vh 1vh 3vh;
 		border-radius: 5vh 0 5vh 5vh;
 		z-index: 9;
+		font-size: 2vh;
 	}
 
 	.labelchec:hover{
@@ -459,7 +467,7 @@
 	}
 
 	.menubtn{
-		position: absolute;
+		position: fixed;
 		left: 2vh;
 		cursor: pointer;
 		z-index: 6;
@@ -495,31 +503,26 @@
 	}
 
 	nav{
-		background-color: rgba(0, 0, 0, 0.8);
-		width: 30vh;
-		height: 100vh;
-		left: -23vh;
-		transition: left 0.2s;
-		-webkit-transition: left 0.2s;
-		float: left;
-		text-align: left;
-		font-size: 20px;
-		position: absolute;
-		z-index: 5;
-	}
+		background-color: #0d0e0f;
+		top: 0;
+    width: 30vh;
+    height: 100vh;
+    left: -23vh;
+    transition: left 0.2s;
+    -webkit-transition: left 0.2s;
+    float: left;
+    text-align: left;
+    font-size: 20px;
+    position: fixed;
+    z-index: 5;
+  }
 
 	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
+		background-color: #18191b !important;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 17vh;
 		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
+    margin-left: 6.8vh;
 	}
 
 	.statsdiv i{
@@ -565,7 +568,7 @@
 	.logoeheader{
 		width: 7vh;
 		height: 5vh;
-		position: absolute;
+		position: fixed;
 		left: 12%;
 		z-index: 7;
 		top: 2.5vh;
@@ -580,7 +583,8 @@
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
+		position: fixed;
+		top: 0;
 		z-index: 10;
 	}
 
@@ -644,6 +648,11 @@
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
 
+	.title{
+		font-size: 4vw;
+		margin: 8vw 0vw 5vw 0vw;
+	}
+
 	#iconenviar{
 			display: none;
 	}
@@ -693,7 +702,7 @@
 		padding-left: 8vh;
 	}
 .icons{
-		position: absolute;
+		position: fixed;
 		left: 0vh;
 		top: 10vh;
 		font-size: 1.5vh;
@@ -757,17 +766,17 @@
 
 	.dropdown{
 		display: none;
-		position: absolute !important;
+		position: fixed !important;
 		float: right;
-		text-align: center;
-		background-color: rgba(0, 0, 0, 1);
-		font-size: 3vh;
-		right: 0vh;
+		text-align: left;
+		background-color: #18191b;
+		top: 0;
+		right: 0;
 		height: 100vh;
-		width: 25vh;
-		padding: 7vh 3vh 1vh 3vh;
-		border-radius: 5vh 0 5vh 5vh;
+		width: 40vw;
+		padding: 1vh 3vh 1vh 3vh;
 		z-index: 9;
+		font-size: 6vw;
 	}
 
 	.labelchec:hover{
@@ -844,31 +853,26 @@
 	}
 
 	nav{
-		background-color: rgba(4,5,7, 0.98);
-		width: 30vh;
-		height: 100vh;
-		left: -70vh;
-		transition: left 1s ease;
-		-webkit-transition: left 1s ease;
-		float: left;
-		text-align: left;
-		font-size: 20px;
-		position: absolute;
-		z-index: 6;
+		background-color: #0d0e0f;
+		top: 0;
+    width: 30vh;
+    height: 100vh;
+    left: -70vh;
+    transition: left 0.2s;
+    -webkit-transition: left 0.2s;
+    float: left;
+    text-align: left;
+    font-size: 20px;
+    position: fixed;
+    z-index: 5;
 	}
 
 	.statsdiv{
-		text-align: center;
-		background-color: rgba(0, 0, 0, 0.6);
-		width: 100%;
+		background-color: #18191b !important;
+    border-radius: 5vw 5vw 0 0;
+    margin-top: 18vw;
+		padding-top: 3vw;
 		height: 100vh;
-		-webkit-transition: left 1s;
-		padding: 12vh 3vh 2vh 3vh;
-		float: right;
-		font-size: 20px;
-		position: absolute;
-		z-index: 4;
-		letter-spacing: 0.2vh;
 	}
 
 	.statsdiv i{
@@ -914,13 +918,13 @@
 .search i{
 		display: none;
 	}
-.searchbar{
-		width: 0;
-		height: 0;
-		font-size: 2vh;
-		background-color: transparent;
-		text-align: left;
-	}
+	.searchbar{
+			width: 0;
+			height: 0;
+			font-size: 2vh;
+			background-color: transparent;
+			text-align: left;
+		}
 
 	.background{
 		background: url(../images/indeximg.png) no-repeat;
@@ -934,12 +938,13 @@
 	}
 
 	.cabecalhoindex{
+		top: 0;
 		width: 100%;
 		height: 3vh !important;
 		padding: 2vh 0 2vh 0;
 		font-weight: bold;
 		background-color: transparent;
-		position: absolute;
+		position: fixed !important;
 		z-index: 10;
 	}
 
@@ -970,13 +975,13 @@
 		transition: right 1s;
 	}
 
-.searchbar{
-		width: 0;
-		height: 0;
-		font-size: 2vh;
-		background-color: transparent;
-		text-align: left;
-	}
+	.searchbar{
+			width: 0;
+			height: 0;
+			font-size: 2vh;
+			background-color: transparent;
+			text-align: left;
+		}
 
 	.divsearch{
 
