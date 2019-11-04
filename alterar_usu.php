@@ -1,3 +1,11 @@
+	<?php
+	session_start();
+	if(!isset($_SESSION['usuario'])){
+		header('location:index.php');
+		exit();
+	}
+	?>
+	
 	<!doctype html>
 	<html lang="pt-br">
 	  <head>
@@ -9,7 +17,7 @@
 	  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
 	  <meta name="robots" content="Index, follow">
 	  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
-	  <link rel="stylesheet" href="css/auth.css">
+	  <link rel="stylesheet" href="css/changeinfo.css">
 	  <link rel="stylesheet" href="css/style.css">
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <script src="https://kit.fontawesome.com/337796870f.js"></script>
@@ -59,87 +67,7 @@
     </header>
 	
 	<?php
-	session_start();
-	if(!isset($_SESSION['usuario'])){
-		header('location:index.php');
-		exit();
-	}
-	if (isset($_POST['nome_usu'])) {
-		
-
-		echo"<form name='alterar_u' method='POST' action='?validar=true'>
-	   
-			   <h5>Digite seu nome:</h5><br>
-	   
-			   <label><b>Nome:</b></label>
-			   <br>
-			   <input type='text' name='nome_usu' placeholder='Novo nome' onkeypress='return blockNumber(event)'>
-			   <br>
-			   <br>
-			   <input type='text' name='sobrenome' placeholder='Novo Sobrenome' onkeypress='return blockNumber(event)'>
-				<br>
-				<br>
-	   
-		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
-		   <br>
-		   <br>
-			
-	   
-		   </form>
-		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
-	}
-
-	elseif($_POST['email_usu']){
-		echo"<form name='alterar_u' method='POST' action='?validar=true'>
-	   
-			   <h5>Digite o novo email:</h5><br>
-	   
-			   <label><b>Email:</b></label>
-			   <br>
-			   <input type='email' name='email_usu' placeholder='Novo email'>
-			   <br>
-			   
-	   
-		   <br><br>
-	   
-		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
-		   <br>
-		   <br>
-			
-	   
-		   </form>
-		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
-	}
-
-	elseif($_POST['senha_usu']){
-		echo"<form name='alterar_u' method='POST' action='?validar=true'>
-	   
-			   <h5>Digite a nova senha:</h5><br>
-	   
-			   <label><b>Senha:</b></label>
-			   <br>
-			   <input type='password' name='senha_usu' placeholder='Nova senha'>
-			   <br>
-			   <label><b>Confirmar senha:</b></label>
-			   <br>
-			   <input type='password' name='confirmar' placeholder='Repita a senha'>
-			   <br>
-			<br>
-		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
-		   <br>
-		   <br>
-			
-	   
-		   </form>
-		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
-
-	}
-	else{
-	  header('Location : painel_usuario.php');
-	  exit();
-	}
-
-	if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
+		if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 		
 		include "connection.php";
 		$conn = conexao();
@@ -223,6 +151,85 @@
 
 		}
 	  }
+	?>
+	
+	<?php
+	if (isset($_POST['nome_usu'])) {
+		
+
+		echo"<form name='alterar_u' method='POST' action='?validar=true'>
+	   
+			   <h5>Digite seu nome:</h5><br>
+	   
+			   <label><b>Nome:</b></label>
+			   <br>
+			   <input type='text' name='nome_usu' placeholder='Novo nome' onkeypress='return blockNumber(event)'>
+			   <br>
+			   <label><b>Sobrenome:</b></label>
+			   <br>
+			   <input type='text' name='sobrenome' placeholder='Novo Sobrenome' onkeypress='return blockNumber(event)'>
+				<br>
+				<br>
+	   
+		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
+		   <br>
+		   <br>
+			
+	   
+		   </form>
+		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
+	}
+
+	elseif(isset($_POST['email_usu'])){
+		echo"<form name='alterar_u' method='POST' action='?validar=true'>
+	   
+			   <h5>Digite o novo email:</h5><br>
+	   
+			   <label><b>Email:</b></label>
+			   <br>
+			   <input type='email' name='email_usu' placeholder='Novo email'>
+			   <br>
+			   
+	   
+		   <br><br>
+	   
+		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
+		   <br>
+		   <br>
+			
+	   
+		   </form>
+		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
+	}
+
+	elseif(isset($_POST['senha_usu'])){
+		echo"<form name='alterar_u' method='POST' action='?validar=true'>
+	   
+			   <h5>Digite a nova senha:</h5><br>
+	   
+			   <label><b>Senha:</b></label>
+			   <br>
+			   <input type='password' name='senha_usu' placeholder='Nova senha'>
+			   <br>
+			   <label><b>Confirmar senha:</b></label>
+			   <br>
+			   <input type='password' name='confirmar' placeholder='Repita a senha'>
+			   <br>
+			<br>
+		   <button class='cadastrar' type='submit' value='Logar'> Alterar </button>
+		   <br>
+		   <br>
+			
+	   
+		   </form>
+		   <a href='painel_usuario.php'><button class='back'>Voltar</button></a>";
+
+	}
+	else{
+	  header('Location : painel_usuario.php');
+	  exit();
+	}
+
 	?>
 	</center>
 	</body>
