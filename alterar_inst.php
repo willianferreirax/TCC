@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="description" content="Acesse o FRESHR. Uma visão de prosperidade para a sua carreira.">
     <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Login">
-    <meta name="robots" content="login, index, follow">
-    <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+    <meta name="robots" content="Index, follow">
+    <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/changeinfo.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/icon.png">
     <meta name="viewport" content="width=device-width">
@@ -55,13 +55,13 @@
 <body>
 <center>
   <header class='cabecalho'>
-    <a href="index.php" class='homea'>
-      <label for='logospace' class='logo'>
-        <h1 class='logospace'></h1>
-      </label>
-    </a>
-    <hr>
-  </header>
+      <a href="index.php" class='homea'>
+        <label for='logospace' class='logo'>
+          <h1 class='logospace'></h1>
+        </label>
+      </a>
+      <hr>
+    </header>
   <div class='containerform'>
 <?php
 session_start();
@@ -93,10 +93,10 @@ if (isset($_POST['senha_inst'])) {
 
 	    <br><br>
 
-		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
-	}
+}
 
 
 else if (isset($_POST['nome_inst'])) {
@@ -117,12 +117,10 @@ else if (isset($_POST['nome_inst'])) {
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-		<br>
-		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
-	}
+}
 
 
 
@@ -272,8 +270,7 @@ else if (isset($_POST['telefone_inst'])) {
 
 	    <br><br>
 
-	    <input class='btn btn-danger' type='reset' value='Limpar'>
-		<br>
+
 		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
 	    </form>";
 }
