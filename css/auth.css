@@ -45,7 +45,20 @@
 }
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
-
+	
+	.labelint{
+		font-size: 2.5vh !important;
+	}
+	
+	.selectestado{
+		background-color: #202124;
+		border-style: none;
+		border-radius: 15vh;
+		width: 40vh;
+		height: 5vh;
+		font-size: 1.6vh;
+	}
+	
   /*Estilos das páginas de login e cadastro do usuário/instituição*/
 
   .cadastrarint{
@@ -400,7 +413,20 @@
 }
 
 @media only screen and (min-width: 700px) and (orientation: portrait)  {
-
+	
+   .labelint{
+		font-size: 2.5vh !important;
+	}
+	
+	.selectestado{
+		background-color: #202124;
+		border-style: none;
+		border-radius: 15vh;
+		width: 40vh;
+		height: 5vh;
+		font-size: 1.6vh;
+	}
+	
   /*Estilos das páginas de login e cadastro do usuário/instituição*/
 
   .cadastrarint{
@@ -757,7 +783,20 @@
 
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
-
+	
+   .labelint{
+		font-size: 5vh !important;
+	}
+	
+	.selectestado{
+		background-color: #202124;
+		border-style: none;
+		border-radius: 15vh;
+		width: 70vh;
+		height: 10vh;
+		font-size: 3vh;
+	}
+	
   .cadastrarint{
   	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
   	width: 30vh;
