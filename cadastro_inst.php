@@ -329,7 +329,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
       <label class='labelint'><b>Estado:</b></label>
       <br>
-      <select name="estado">
+      <select name="estado" class='selectestado'>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
 								<option value="AP">Amapá</option>
@@ -360,8 +360,6 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 				</select>
         <br>
 
-      <br>
-      <br>
 
       <label><b>CEP:</b></label>
       <br>
