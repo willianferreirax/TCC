@@ -1,7 +1,17 @@
+<?php
+	session_start();
+if(!$_SESSION['instituicao']){
+    header('location:login.php');
+    exit();
+}
+$cnpj = $_SESSION['instituicao'][3];
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
-    <title>Alteração de credenciais da instituição</title>
+    <title><?php echo $_SESSION['instituicao'][0];?> - FRESHR</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="description" content="Acesse o FRESHR. Uma visão de prosperidade para a sua carreira.">
@@ -54,6 +64,7 @@
   </head>
 <body>
 <center>
+
   <header class='cabecalho'>
       <a href="index.php" class='homea'>
         <label for='logospace' class='logo'>
@@ -62,15 +73,8 @@
       </a>
       <hr>
     </header>
-  <div class='containerform'>
+	
 <?php
-session_start();
-if(!$_SESSION['instituicao']){
-    header('location:login.php');
-    exit();
-}
-$cnpj = $_SESSION['instituicao'][3];
-
 
 if (isset($_POST['senha_inst'])) {
 
@@ -443,6 +447,6 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 }
 
 ?>
-</div>
 </center>
 </body>
+</html>
