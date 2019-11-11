@@ -256,7 +256,11 @@ else{
           <h1 class='preco'> Preço: <?php echo $evento[12]; ?></h1><br>
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
           <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
-
+		  <h1 class='comenttitle'>Comentários</h1><br>
+		  <form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
+		  <textarea name='comentariotxt' placeholder='aaaa'></textarea><br>
+			<button class='enviarcoment'>Comentar</button>
+		  </form>
         </div>
       </div>
     </div>
