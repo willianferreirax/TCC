@@ -286,13 +286,27 @@ else{
 			<?php
 				$i=0;
 				foreach($comments as $row){
-					echo "
-					<div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
-						Comentário por: $nome[$i] $sobrenome[$i]<br>
+					
+          if($nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
+            echo"
+            <div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
+            Comentário por: Você
+            <br>
+            $row[comentario]
+            </div>
+            ";
+          }
+          else{
+            echo"
+            <div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
+            Comentário por: $nome[$i] $sobrenome[$i]
+            <br>
 						$row[comentario]
-					</div>
-					";
-					$i++;
+            </div>
+            ";
+          }
+
+          $i++;
 				}
 			?>
 		  
