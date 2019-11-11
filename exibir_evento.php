@@ -29,6 +29,31 @@ if(isset($_GET['id'])){
     array_push($evento,$row['interesse_qnt']);
     array_push($evento,$row['avaliacoes_qnt']);
   }
+  $comments= "select * from comentario where cod_evento = ?";
+  $res = $conn->prepare($comments);
+  $res->bindParam(1, $id);
+  $res->execute();
+  $comments=$res->fetchAll();
+  
+  $nome=array();
+  $sobrenome=array();
+  foreach($comments as $row){
+	  $comentador="select nome_usuario from usuario where cod_usuario = ?";
+	  $res = $conn->prepare($comentador);
+	  $res->bindParam(1, $row['cod_usuario']);
+	  $res->execute();
+    $comments1=$res->fetchColumn();
+    
+    $comentador1="select sobrenome_usuario from usuario where cod_usuario = ?";
+	  $res = $conn->prepare($comentador1);
+	  $res->bindParam(1, $row['cod_usuario']);
+	  $res->execute();
+	  $comments2=$res->fetchColumn();
+    
+    array_push($nome,$comments1);
+	  array_push($sobrenome,$comments2);
+  }
+
 }
 else{
   header('Location:index.php');
@@ -258,6 +283,18 @@ else{
           <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
 		  <h1 class='comenttitle'>Comentários</h1><br>
 		  
+			<?php
+				$i=0;
+				foreach($comments as $row){
+					echo "
+					<div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
+						Comentário por: $nome[$i] $sobrenome[$i]<br>
+						$row[comentario]
+					</div>
+					";
+					$i++;
+				}
+			?>
 		  
 		  <?php
 		  if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
@@ -269,6 +306,9 @@ else{
 			
 		  ?>
         </div>
+		 
+		
+		 
       </div>
     </div>
   </center>
