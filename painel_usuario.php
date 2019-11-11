@@ -173,7 +173,7 @@ foreach($result1 as $row){
 				$imagem ='upload/'.$row1['banner_evento'];
 				echo "
 				<div>
-						<a href='exibir_evento.php?id= '$row1[cod_evento]'>
+						<a href='exibir_evento.php?id= $row1[cod_evento]'>
 						  <div class='searchinfo'>
 							<img class='imagemres' src='$imagem'>
 								<div class=nomeres>
@@ -212,7 +212,7 @@ foreach($result1 as $row){
 				$imagem ='upload/'.$row1['banner_evento'];
 				echo "
 				<div>
-						<a href='exibir_evento.php?id= '$row1[cod_evento]'>
+						<a href='exibir_evento.php?id= $row1[cod_evento]'>
 						  <div class='searchinfo'>
 							<img class='imagemres' src='$imagem'>
 								<div class=nomeres>
