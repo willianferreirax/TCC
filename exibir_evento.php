@@ -257,10 +257,17 @@ else{
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
           <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
 		  <h1 class='comenttitle'>Comentários</h1><br>
-		  <form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
-		  <textarea name='comentariotxt' placeholder='aaaa'></textarea><br>
-			<button class='enviarcoment'>Comentar</button>
-		  </form>
+		  
+		  
+		  <?php
+		  if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
+			  echo "<form action='?id=".$id."&comentar=true' id='formsearch' method='post' class='searchform'>
+					<textarea name='comentariotxt' placeholder='Escreva um comentário para o evento.'></textarea><br>
+					<button class='enviarcoment'>Comentar</button>
+					</form>";
+		  }
+			
+		  ?>
         </div>
       </div>
     </div>
@@ -351,6 +358,18 @@ if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
     </script>";
     echo $script;
   }
+}
+
+if(isset($_REQUEST["comentar"]) && $_REQUEST["comentar"] == true) {
+  
+    $sql = "INSERT INTO comentario (cod_usuario, cod_evento, comentario) VALUES ({$_SESSION['usuario'][3]}, $id, '{$_POST['comentariotxt']}')";
+    $rs = $conn->prepare($sql);
+    $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    alert('Comentário adicionado!');
+    </script>";
+    echo $script;
 }
 ?>
 
