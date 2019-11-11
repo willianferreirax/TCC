@@ -5,7 +5,40 @@ if(!$_SESSION['usuario']){
   header('location:login.php');
   exit();
 }
-//
+$conn = conexao();
+$comparecimento="select cod_evento from comparecimento where cod_usuario = ?";
+	$res=$conn->prepare($comparecimento);
+	$res->bindParam(1,$_SESSION['usuario'][3]);
+	$res->execute();
+	$result=$res->fetchAll();
+	$comp=array();
+foreach($result as $row){
+
+	$select='select * from evento where cod_evento = ?';
+	$res1=$conn->prepare($select);
+	$res1->bindParam(1,$row['cod_evento']);
+	$res1->execute();
+	$eventos=$res1->fetchAll();
+	array_push($comp,$eventos);
+}
+
+$interessado="select cod_evento from interessado where cod_usuario = ?";
+	$res=$conn->prepare($interessado);
+	$res->bindParam(1,$_SESSION['usuario'][3]);
+	$res->execute();
+	$result1=$res->fetchAll();
+	$interes=array();
+
+foreach($result1 as $row){
+	
+	$select='select * from evento where cod_evento=?';
+	$res1=$conn->prepare($select);
+	$res1->bindParam(1,$row['cod_evento']);
+	$res1->execute();
+	$eventos2=$res1->fetchAll();
+	array_push($interes,$eventos2);
+}
+
 
 ?>
 <!doctype html>
@@ -20,6 +53,7 @@ if(!$_SESSION['usuario']){
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_user.css">
+	<link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/337796870f.js"></script>
@@ -132,7 +166,78 @@ if(!$_SESSION['usuario']){
         echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
         echo "<br>";
         echo "<div class='title'> Meus eventos favoritos </div>";
-        echo "<div class='title'> Eventos que comparecerei </div><br><br><br>"
+		
+		if(isset($eventos2)){
+			foreach($interes as $row){
+				foreach($row as $row1){
+				$imagem ='upload/'.$row1['banner_evento'];
+				echo "
+				<div>
+						<a href='exibir_evento.php?id= '$row1[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>'$row1[nome_evento]'</h1>
+								<div class=descres>
+								<h2>$row1[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row1['preco_evento'])){
+										  echo "R$ $row1[preco_evento]";
+										}
+										else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+				}
+			}
+		}
+		
+			
+		?>
+		
+		<?php
+        echo "<div class='title'> Eventos que comparecerei </div><br><br><br>";
+		
+		if(isset($eventos)){
+			foreach($comp as $row){
+				foreach($row as $row1){
+				$imagem ='upload/'.$row1['banner_evento'];
+				echo "
+				<div>
+						<a href='exibir_evento.php?id= '$row1[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>'$row1[nome_evento]'</h1>
+								<div class=descres>
+								<h2>$row1[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row1['preco_evento'])){
+										  echo "R$ $row1[preco_evento]";
+										}
+										else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+				}
+			}
+		}
         ?>
         <br>
         <br>
