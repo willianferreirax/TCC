@@ -35,7 +35,37 @@ a{
 /*Estilos para a página index*/
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
-
+	
+		textarea{
+		background-color: #222224;
+		border-radius: 2vh;
+		padding: 1vw 1vw 0 1vw;
+		text-indent: 4vw;
+		font-size: 1.2vw !important;
+		border: none !important;
+		resize: none !important;
+		width: 100%;
+		height: 13vw;
+		margin-bottom: 3vw !important;
+	}
+	
+		.enviarcoment{
+		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+		width: 30vh;
+		margin-left: 34vw;
+		margin-bottom: 2vw;
+		border-radius: 20vh;
+		border: none;
+		color: white;
+		font-size: 3vh;
+		font-weight: 400;
+		height: 6vh;
+	}
+	
+	.comenttitle{
+		margin-left: 34vw;
+	}
+	
 	.avalqnt{
 		font-size: 1.5vw;
 		padding-left: 0.7vw;
