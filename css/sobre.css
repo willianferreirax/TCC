@@ -372,6 +372,36 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+  .lista{
+    padding-left: 2vw;
+  }
+
+  .textos{
+    background-color: black;
+    top: 9vw;
+    padding: 15vw 5vw 25vw 15vw;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+  }
+
+  .textos hr{
+    width: 100%;
+  }
+
+  .titulo{
+    font-size: 5vw;
+  }
+
+  .titulo2{
+    font-size: 4vw;
+  }
+
+  .texto{
+    font-size: 4vw;
+    opacity: 0.8;
+  }
+
   .exit{
 		color: #822828;
 		text-decoration: none !important;
@@ -404,7 +434,8 @@
 	}
 
   .criaricon{
-		font-size: 6vw;
+    top: 3vh;
+		font-size: 1.8vh;
 		right: 15vw !important;
 		position: fixed;
 	}
@@ -707,6 +738,36 @@
 }
 @media screen and (max-width: 699px) {
 
+  .lista{
+    padding-left: 2vw;
+  }
+
+  .textos{
+    background-color: black;
+    top: 9vw;
+    padding: 20vw 5vw 25vw 5vw;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+  }
+
+  .textos hr{
+    width: 100%;
+  }
+
+  .titulo{
+    font-size: 5vw;
+  }
+
+  .titulo2{
+    font-size: 5vw;
+  }
+
+  .texto{
+    font-size: 4vw;
+    opacity: 0.8;
+  }
+
   .exit{
 		color: #822828;
 		text-decoration: none !important;
@@ -739,8 +800,8 @@
 	}
 
   .criaricon{
-    margin-top: 0.5vh;
-		font-size: 6.5vw;
+    margin-top: 1vh;
+		font-size: 1.8vh;
 		right: 20vw !important;
 		position: fixed;
 	}
