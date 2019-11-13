@@ -557,11 +557,6 @@
     font-size: 2.3vh;
   }
 
-  .b4{
-    border-right: 0.5vh solid;
-    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
-  }
-
   .icons{
     position: fixed;
     left: 0vh;
@@ -919,11 +914,6 @@
 
   .bgindex{
     background-color: #202124;
-  }
-
-  .b4{
-    border-right: 0.5vh solid;
-    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
   }
 
   .b1, .b2, .b3, .b4, .b5{
