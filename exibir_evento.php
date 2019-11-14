@@ -29,29 +29,29 @@ if(isset($_GET['id'])){
     array_push($evento,$row['interesse_qnt']);
     array_push($evento,$row['avaliacoes_qnt']);
   }
-  $comments= "select * from comentario where cod_evento = ?";
+  $comments= "select * from comentario where cod_evento = ? order by cod_comentario desc";
   $res = $conn->prepare($comments);
   $res->bindParam(1, $id);
   $res->execute();
   $comments=$res->fetchAll();
-  
+
   $nome=array();
   $sobrenome=array();
   foreach($comments as $row){
-	  $comentador="select nome_usuario from usuario where cod_usuario = ?";
-	  $res = $conn->prepare($comentador);
-	  $res->bindParam(1, $row['cod_usuario']);
-	  $res->execute();
+    $comentador="select nome_usuario from usuario where cod_usuario = ?";
+    $res = $conn->prepare($comentador);
+    $res->bindParam(1, $row['cod_usuario']);
+    $res->execute();
     $comments1=$res->fetchColumn();
-    
+
     $comentador1="select sobrenome_usuario from usuario where cod_usuario = ?";
-	  $res = $conn->prepare($comentador1);
-	  $res->bindParam(1, $row['cod_usuario']);
-	  $res->execute();
-	  $comments2=$res->fetchColumn();
-    
+    $res = $conn->prepare($comentador1);
+    $res->bindParam(1, $row['cod_usuario']);
+    $res->execute();
+    $comments2=$res->fetchColumn();
+
     array_push($nome,$comments1);
-	  array_push($sobrenome,$comments2);
+    array_push($sobrenome,$comments2);
   }
 
 }
@@ -281,141 +281,153 @@ else{
           <h1 class='preco'> Preço: <?php echo $evento[12]; ?></h1><br>
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
           <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
-		  <h1 class='comenttitle'>Comentários</h1><br>
-		  
-			<?php
-				$i=0;
-				foreach($comments as $row){
-					
-          if($nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
-            echo"
-            <div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
-            Comentário por: Você
-            <br>
-            $row[comentario]
-            </div>
-            ";
-          }
-          else{
-            echo"
-            <div style='background:gray;  border-radius: 25px; padding: 10px; margin-bottom:5px;'>
-            Comentário por: $nome[$i] $sobrenome[$i]
-            <br>
-						$row[comentario]
-            </div>
-            ";
-          }
+          <h1 class='comenttitle'>Comentários</h1><br>
+          <div class='listcoment'>
+            <?php
+            $i=0;
+            foreach($comments as $row){
 
-          $i++;
-				}
-			?>
-		  
-		  <?php
-		  if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
-			  echo "<form action='?id=".$id."&comentar=true' id='formsearch' method='post' class='searchform'>
-					<textarea name='comentariotxt' placeholder='Escreva um comentário para o evento.'></textarea><br>
-					<button class='enviarcoment'>Comentar</button>
-					</form>";
-		  }
-			
-		  ?>
+              if(isset($_SESSION['usuario']) && $nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
+                echo"
+                <div class='comentbox'>
+                <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
+                ($sobrenome[$i])-1))."</h1>
+                <div class='comenttype'>
+                <h1 class='autorcoment'>Você</h1>
+                <h1 class='textcoment'>$row[comentario]</h1>
+                </div>
+                </div>
+                ";
+              }
+              else{
+                echo"
+                <div class='comentbox'>
+                <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
+                ($sobrenome[$i])-1))."</h1>
+                <div class='comenttype'>
+                <h1 class='autorcoment'>$nome[$i] $sobrenome[$i]</h1>
+                <h1 class='textcoment'>$row[comentario]</h1>
+                </div>
+                </div>
+                ";
+              }
+              $i++;
+            }
+            echo "</div><small class='aviso'>O FRESHR <b>não</b> se responsabiliza pelos comentários publicados, sendo <b>exclusiva</b> responsabilidade dos autores.</small>";
+            ?>
+
+            <?php
+            if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
+              echo "
+              <br>
+              <form action='?id=".$id."&comentar=true' id='formsearch' method='post' class='searchform'>
+              <div class='comentcreate'>
+              <h1 class='iconcreatecoment'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
+              ($_SESSION['usuario'][4])-1))."</h1>
+              <textarea name='comentariotxt' placeholder='Escreva um comentário para o evento.' maxlength=480></textarea><br>
+              </div>
+              <button class='enviarcoment'>Comentar</button>
+              </form>";
+            }
+
+            ?>
+          </div>
+
+
+
         </div>
-		 
-		
-		 
       </div>
-    </div>
-  </center>
-</body>
+    </center>
+  </body>
 
-<?php
-if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true) {
-  $result = $conn->prepare("select * from comparecimento where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
-  $result->execute();
+  <?php
+  if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true) {
+    $result = $conn->prepare("select * from comparecimento where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+    $result->execute();
 
-  if($result->fetchColumn() > 0){
-    $rs = $conn->prepare("DELETE FROM comparecimento WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt-1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Presença retirada.');
-    </script>";
-    echo $script;
+    if($result->fetchColumn() > 0){
+      $rs = $conn->prepare("DELETE FROM comparecimento WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt-1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Presença retirada.');
+      </script>";
+      echo $script;
+    }
+    elseif($result->fetchColumn() == 0){
+      $sql = "INSERT INTO comparecimento (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
+      $rs = $conn->prepare($sql);
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt+1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Presença confirmada!');
+      </script>";
+      echo $script;
+    }
   }
-  elseif($result->fetchColumn() == 0){
-    $sql = "INSERT INTO comparecimento (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
-    $rs = $conn->prepare($sql);
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt+1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Presença confirmada!');
-    </script>";
-    echo $script;
-  }
-}
-if(isset($_REQUEST["interessado"]) && $_REQUEST["interessado"] == true) {
-  $result = $conn->prepare("select * from interessado where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
-  $result->execute();
+  if(isset($_REQUEST["interessado"]) && $_REQUEST["interessado"] == true) {
+    $result = $conn->prepare("select * from interessado where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+    $result->execute();
 
-  if($result->fetchColumn() > 0){
-    $rs = $conn->prepare("DELETE FROM interessado WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt-1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Interesse desmarcado.');
-    </script>";
-    echo $script;
+    if($result->fetchColumn() > 0){
+      $rs = $conn->prepare("DELETE FROM interessado WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt-1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Interesse desmarcado.');
+      </script>";
+      echo $script;
+    }
+    elseif($result->fetchColumn() == 0){
+      $sql = "INSERT INTO interessado (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
+      $rs = $conn->prepare($sql);
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt+1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Interesse marcado!');
+      </script>";
+      echo $script;
+    }
   }
-  elseif($result->fetchColumn() == 0){
-    $sql = "INSERT INTO interessado (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
-    $rs = $conn->prepare($sql);
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt+1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Interesse marcado!');
-    </script>";
-    echo $script;
-  }
-}
-if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
-  $result = $conn->prepare("select * from avaliacao where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
-  $result->execute();
+  if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
+    $result = $conn->prepare("select * from avaliacao where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
+    $result->execute();
 
-  if($result->fetchColumn() > 0){
-    $rs = $conn->prepare("DELETE FROM avaliacao WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt-1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Avaliação retirada.');
-    </script>";
-    echo $script;
+    if($result->fetchColumn() > 0){
+      $rs = $conn->prepare("DELETE FROM avaliacao WHERE cod_usuario={$_SESSION['usuario'][3]} AND cod_evento=$id");
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt-1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Avaliação retirada.');
+      </script>";
+      echo $script;
+    }
+    elseif($result->fetchColumn() == 0){
+      $sql = "INSERT INTO avaliacao (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
+      $rs = $conn->prepare($sql);
+      $rs->execute();
+      $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt+1 WHERE cod_evento=$id");
+      $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      alert('Agradecemos a sua avaliação!');
+      </script>";
+      echo $script;
+    }
   }
-  elseif($result->fetchColumn() == 0){
-    $sql = "INSERT INTO avaliacao (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
-    $rs = $conn->prepare($sql);
-    $rs->execute();
-    $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt+1 WHERE cod_evento=$id");
-    $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Agradecemos a sua avaliação!');
-    </script>";
-    echo $script;
-  }
-}
 
-if(isset($_REQUEST["comentar"]) && $_REQUEST["comentar"] == true) {
-  
+  if(isset($_REQUEST["comentar"]) && $_REQUEST["comentar"] == true) {
+
     $sql = "INSERT INTO comentario (cod_usuario, cod_evento, comentario) VALUES ({$_SESSION['usuario'][3]}, $id, '{$_POST['comentariotxt']}')";
     $rs = $conn->prepare($sql);
     $rs->execute();
@@ -424,7 +436,7 @@ if(isset($_REQUEST["comentar"]) && $_REQUEST["comentar"] == true) {
     alert('Comentário adicionado!');
     </script>";
     echo $script;
-}
-?>
+  }
+  ?>
 
-</html>
+  </html>
