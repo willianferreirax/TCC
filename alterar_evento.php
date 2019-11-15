@@ -138,7 +138,7 @@
 					</div>
 					<div class="nomeev">
 						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
-						<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['nome_evento'];?>><center><hr></center><br>
+						<input class='inputcreate' id='createnome' type='text' name='nome' value='<?php echo $result[0]['nome_evento'];?>'><center><hr></center><br>
 					</div>
 
 					<div class="info1">
@@ -149,30 +149,30 @@
 							<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"><?php echo $result[0]['descricao_evento'];?></textarea>
 
 							<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
-							<input class='inputcreate' type='date' name='dateinic' value=<?php echo $result[0]['data_inicio'];?>>
+							<input class='inputcreate' type='date' name='dateinic' value='<?php echo $result[0]['data_inicio'];?>'>
 
 							<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
-							<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>>
+							<input class='inputcreate' type='date' name='datefinal' value='<?php echo $result[0]['data_termino'];?>'>
 
 							<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
-							<input class='inputcreate' type='time' name='timeinic' value=<?php echo $result[0]['hora_inicio'];?>>
+							<input class='inputcreate' type='time' name='timeinic' value='<?php echo $result[0]['hora_inicio'];?>'>
 
 							<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
-							<input class='inputcreate' type='time' name='timefinal' value=<?php echo $result[0]['hora_termino'];?>>
+							<input class='inputcreate' type='time' name='timefinal' value='<?php echo $result[0]['hora_termino'];?>'>
 
 							<label class='labelint'>Qual o <b>preço</b> do evento?</label>
-							<input class='inputcreate' type='number' name='preco' value=<?php echo $result[0]['preco_evento'];?>>
+							<input class='inputcreate' type='number' name='preco' value='<?php echo $result[0]['preco_evento'];?>'>
 
 						</div>
 						<div class="endereco">
 							<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-							<input class='inputcreate' type='text' name='endereco' value=<?php print_r($result[0]['endereco_evento']);?>>
+							<input class='inputcreate' type='text' name='endereco' value='<?php $endereco = $result[0]['endereco_evento']; echo $endereco;?>'>
 
 							<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='bairro' value=<?php echo $result[0]['bairro_evento'];?>>
+							<input class='inputcreate' type='text' name='bairro' value='<?php echo $result[0]['bairro_evento'];?>'>
 
 							<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='cidade' value=<?php echo $result[0]['cidade_evento'];?>>
+							<input class='inputcreate' type='text' name='cidade' value='<?php echo $result[0]['cidade_evento'];?>'>
 
 							<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
 							<select name="estado">
@@ -207,7 +207,7 @@
 							</select><br>
 
 							<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
-							<input class='inputcreate' type='text' name='cep' value=<?php echo $result[0]['cep_evento'];?>>
+							<input class='inputcreate' type='text' name='cep' value='<?php echo $result[0]['cep_evento'];?>'>
 						</div>
 					</div>
 					<center>
