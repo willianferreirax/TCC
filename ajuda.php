@@ -125,11 +125,11 @@
       <h1 class='titulo'><i class="fas fa-info"></i> <b>Conhecendo o FRESHR</b></h1>
       <br>
       <div class='lista'>
-        <h1 class="texto">O FRESHR é uma plataforma em que instituições e empresas divulgam seus eventos que contribuirão para a sua vida profissional, assim como plaestras e feiras profissionais. Saiba mais na página <a href='sobre.php'><i class="fas fa-info"></i> Sobre</a>.</h1>
+        <h1 class="texto">O FRESHR é uma plataforma em que instituições e empresas divulgam seus eventos que contribuirão para a sua vida profissional, assim como palestras e feiras profissionais. Saiba mais na página <a href='sobre.php'><i class="fas fa-info"></i> Sobre</a>.</h1>
         <br><hr><br>
         <h1 class='texto'>- O Botão <i class="fas fa-bars"></i> Menu abre a barra lateral, possibilitando ver as abas que levam às diferentes funcionalidades do FRESHR.</h1><br>
-        <h1 class='texto'>- A barrinha azul e rosa que fica ao lado do ícone na barra lateral esquerda informa em qual página você está.</h1><br>
-        <h1 class='texto'>- Ao clicar no logo no canto superior esquerdo, você será levado(a) para a página inicial. O mesmo acontece quando você clica no logo superior na página de login e cadastro.</h1>
+        <h1 class='texto'>- A barrinha azul e rosa que fica ao lado do ícone na barra lateral esquerda indica a página em que você se encontra.</h1><br>
+        <h1 class='texto'>- Ao clicar no logo no canto superior esquerdo, você será levado(a) para a página inicial. O mesmo acontece quando você clica no logo superior nas páginas de login e cadastro.</h1>
 
       </div><br><hr><br>
       <h1 class='titulo'><i class="fas fa-sign-in-alt"></i> <b>Fazendo login no FRESHR</b></h1>
@@ -158,7 +158,7 @@
       <h1 class='texto'>- Para pesquisar eventos no FRESHR, você precisa de selecionar a barra de pesquisa que se encontra na parte superior das páginas</h1><br>
       <h1 class='texto'>- Depois, escreva o nome do evento que você busca</h1><br>
       <h1 class='texto'>- Você também pode pesquisar por qualquer outra informação do evento como Preço, Descrição, a Instituição que organiza o evento, a Cidade, o Estado ou as Áreas de Interesses do evento</h1><br>
-      <h1 class='texto'>- Após escrever as informações que busca, pressione "enter" ou "return no seu teclado". Se estiver em dispositivos móveis, toque na lupa na barra de pesquisa.</h1><br>
+      <h1 class='texto'>- Após escrever as informações que busca, pressione "enter" ou "return no seu teclado". Se estiver em dispositivos móveis, toque no ícone da lupa na barra de pesquisa.</h1><br>
 
       <h1 class='titulo2'> <b>Pesquisa manual:</b></h1><br>
       <h1 class='texto'>- Em qualquer página (com exceção das páginas de Cadastro e Login), clique no mapa (<i class="fas fa-map-marked"></i>)</h1><br>
