@@ -7,36 +7,36 @@ if(!$_SESSION['usuario']){
 }
 $conn = conexao();
 $comparecimento="select cod_evento from comparecimento where cod_usuario = ?";
-	$res=$conn->prepare($comparecimento);
-	$res->bindParam(1,$_SESSION['usuario'][3]);
-	$res->execute();
-	$result=$res->fetchAll();
-	$comp=array();
+$res=$conn->prepare($comparecimento);
+$res->bindParam(1,$_SESSION['usuario'][3]);
+$res->execute();
+$result=$res->fetchAll();
+$comp=array();
 foreach($result as $row){
 
-	$select='select * from evento where cod_evento = ?';
-	$res1=$conn->prepare($select);
-	$res1->bindParam(1,$row['cod_evento']);
-	$res1->execute();
-	$eventos=$res1->fetchAll();
-	array_push($comp,$eventos);
+  $select='select * from evento where cod_evento = ?';
+  $res1=$conn->prepare($select);
+  $res1->bindParam(1,$row['cod_evento']);
+  $res1->execute();
+  $eventos=$res1->fetchAll();
+  array_push($comp,$eventos);
 }
 
 $interessado="select cod_evento from interessado where cod_usuario = ?";
-	$res=$conn->prepare($interessado);
-	$res->bindParam(1,$_SESSION['usuario'][3]);
-	$res->execute();
-	$result1=$res->fetchAll();
-	$interes=array();
+$res=$conn->prepare($interessado);
+$res->bindParam(1,$_SESSION['usuario'][3]);
+$res->execute();
+$result1=$res->fetchAll();
+$interes=array();
 
 foreach($result1 as $row){
-	
-	$select='select * from evento where cod_evento=?';
-	$res1=$conn->prepare($select);
-	$res1->bindParam(1,$row['cod_evento']);
-	$res1->execute();
-	$eventos2=$res1->fetchAll();
-	array_push($interes,$eventos2);
+
+  $select='select * from evento where cod_evento=?';
+  $res1=$conn->prepare($select);
+  $res1->bindParam(1,$row['cod_evento']);
+  $res1->execute();
+  $eventos2=$res1->fetchAll();
+  array_push($interes,$eventos2);
 }
 
 
@@ -53,7 +53,6 @@ foreach($result1 as $row){
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_user.css">
-	<link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/337796870f.js"></script>
@@ -65,14 +64,14 @@ foreach($result1 as $row){
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script type='text/javascript'>
-		var i = 0;
-		function transform(){
-				i++;
-				if(i == 2){
-					document.getElementById('formsearch').submit();
-				}
-		}
-	</script>
+  var i = 0;
+  function transform(){
+    i++;
+    if(i == 2){
+      document.getElementById('formsearch').submit();
+    }
+  }
+  </script>
 </head>
 <body class="background">
 
@@ -94,9 +93,9 @@ foreach($result1 as $row){
       </div>
       <div class='pesquisarbtn'>
         <form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
-        <input type='checkbox' id='searchcheck'>
-        <label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
-        <div class='search'>
+          <input type='checkbox' id='searchcheck'>
+          <label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
+          <div class='search'>
 
             <input type='text' placeholder='Pesquisar eventos...' class='searchbar'>
             <input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
@@ -114,135 +113,135 @@ foreach($result1 as $row){
       <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
       <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <a href='index.php'><i class="fas fa-question fa-2x"></i></a><br>
+      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
 
-      <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
+    <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 
-      <nav>
-        <div class='menulist'>
-          <a href='index.php'><div class='b1'><div>Página inicial</div></div></a>
-          <a href='listar_eventos.php'><div class='b2'><div>Eventos</div></div></a>
-          <a href='listar_inst.php'><div class='b3'><div>Instituição</div></div></a>
-          <a href='sobre.php'><div class='b4'><div>Sobre nós</div></div></a>
-          <a href='index.php'><div class='b5'><div>Ajuda</div></div></a>
-        </div>
-        <label for='chec' class='backdiv'></label>
-      </nav>
-      <div class='dropdown'>
-  			<?php
-  			if(isset($_SESSION['usuario']))
-  			{
-  				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, (strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1)))."</h1>";
-  			}
-  			if(isset($_SESSION['instituicao']))
-  			{
-  				echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
-  			}
-  			?>
-  			<br>
-  			<?php
-  				if(isset($_SESSION['instituicao'][0])){
-  					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
-  				}
-  				else{
-  					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
-  				}
-  			?>
-  			<br>
-  			<a href='config.php' class='account'>Configurações</a>
-  			<br>
-  			<a href='painel_usuario.php' class='account'>Ajuda</a>
-  			<br>
-  			<br>
-  			<a href='logout_script.php' class='exit'>Sair</a>
-  		</div>
+    <nav>
+      <div class='menulist'>
+        <a href='index.php'><div class='b1'><div>Página inicial</div></div></a>
+        <a href='listar_eventos.php'><div class='b2'><div>Eventos</div></div></a>
+        <a href='listar_inst.php'><div class='b3'><div>Instituição</div></div></a>
+        <a href='sobre.php'><div class='b4'><div>Sobre nós</div></div></a>
+        <a href='ajuda.php'><div class='b5'><div>Ajuda</div></div></a>
+      </div>
+      <label for='chec' class='backdiv'></label>
+    </nav>
+    <div class='dropdown'>
+      <?php
+      if(isset($_SESSION['usuario']))
+      {
+        echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, (strlen($_SESSION['usuario'][4]) - (strlen($_SESSION['usuario'][4])-1)))."</h1>";
+      }
+      if(isset($_SESSION['instituicao']))
+      {
+        echo "<h1 class='imageuser'>".substr($_SESSION['instituicao'][0], 0, strlen($_SESSION['instituicao'][0]) - (strlen($_SESSION['instituicao'][0])-4))."</h1>";
+      }
+      ?>
+      <br>
+      <?php
+      if(isset($_SESSION['instituicao'][0])){
+        echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+      }
+      else{
+        echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+      }
+      ?>
+      <br>
+      <a href='config.php' class='account'>Configurações</a>
+      <br>
+      <a href='painel_usuario.php' class='account'>Ajuda</a>
+      <br>
+      <br>
+      <a href='logout_script.php' class='exit'>Sair</a>
+    </div>
 
-      <div class='statsdiv'>
-        <i class="fas fa-user-circle fa-2x"></i><br>
-        <?php
-        echo"<div class='username'>Olá, ".$_SESSION['usuario'][0]."</div>";
-        echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
-        echo "<br>";
-        echo "<div class='title'> Meus eventos favoritos </div>";
-		
-		if(isset($eventos2)){
-			foreach($interes as $row){
-				foreach($row as $row1){
-				$imagem ='upload/'.$row1['banner_evento'];
-				echo "
-				<div>
-						<a href='exibir_evento.php?id= $row1[cod_evento]'>
-						  <div class='searchinfo'>
-							<img class='imagemres' src='$imagem'>
-								<div class=nomeres>
-								<h1>'$row1[nome_evento]'</h1>
-								<div class=descres>
-								<h2>$row1[descricao_evento]</h2>
-								<div class='enderes'>
-								<h2>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
-								<div class=precores>
-								<h2>";
-								if(isset($row1['preco_evento'])){
-										  echo "R$ $row1[preco_evento]";
-										}
-										else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
-										  echo "Grátis";
-										}
-										  echo"
-								</h2>
-								</div>
-						  </div>
-						</a>
-					</div>";
-				}
-			}
-		}
-		
-			
-		?>
-		
-		<?php
-        echo "<div class='title'> Eventos que comparecerei </div><br><br><br>";
-		
-		if(isset($eventos)){
-			foreach($comp as $row){
-				foreach($row as $row1){
-				$imagem ='upload/'.$row1['banner_evento'];
-				echo "
-				<div>
-						<a href='exibir_evento.php?id= $row1[cod_evento]'>
-						  <div class='searchinfo'>
-							<img class='imagemres' src='$imagem'>
-								<div class=nomeres>
-								<h1>'$row1[nome_evento]'</h1>
-								<div class=descres>
-								<h2>$row1[descricao_evento]</h2>
-								<div class='enderes'>
-								<h2>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
-								<div class=precores>
-								<h2>";
-								if(isset($row1['preco_evento'])){
-										  echo "R$ $row1[preco_evento]";
-										}
-										else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
-										  echo "Grátis";
-										}
-										  echo"
-								</h2>
-								</div>
-						  </div>
-						</a>
-					</div>";
-				}
-			}
-		}
-        ?>
-        <br>
-        <br>
-        </div>
+    <div class='statsdiv'>
+      <i class="fas fa-user-circle fa-2x"></i><br>
+      <?php
+      echo"<div class='username'>Olá, ".$_SESSION['usuario'][0]."</div>";
+      echo"<div class='useremail'>".$_SESSION['usuario'][1]."</div>";
+      echo "<br>";
+      echo "<div class='title'> Meus eventos favoritos </div>";
 
-    </center>
-  </body>
-  </html>
+      if(isset($eventos2)){
+        foreach($interes as $row){
+          foreach($row as $row1){
+            $imagem ='upload/'.$row1['banner_evento'];
+            echo "
+            <div>
+            <a href='exibir_evento.php?id= $row1[cod_evento]'>
+            <div class='searchinfo'>
+            <img class='imagemres' src='$imagem'>
+            <div class=nomeres>
+            <h1 class='nomeres'>$row1[nome_evento]</h1>
+            <div class=descres>
+            <h2 class='descres'>$row1[descricao_evento]</h2>
+            <div class='enderes'>
+            <h2 class='enderes'>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
+            <div>
+            <h2 class='precores'>";
+            if(isset($row1['preco_evento'])){
+              echo "R$ $row1[preco_evento]";
+            }
+            else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
+              echo "Grátis";
+            }
+            echo"
+            </h2>
+            </div>
+            </div>
+            </a>
+            </div>";
+          }
+        }
+      }
+
+
+      ?>
+
+      <?php
+      echo "<div class='title'> Eventos que comparecerei </div>";
+
+      if(isset($eventos)){
+        foreach($comp as $row){
+          foreach($row as $row1){
+            $imagem ='upload/'.$row1['banner_evento'];
+            echo "
+            <div>
+            <a href='exibir_evento.php?id= $row1[cod_evento]'>
+            <div class='searchinfo'>
+            <img class='imagemres' src='$imagem'>
+            <div class=nomeres>
+            <h1 class='nomeres'>$row1[nome_evento]</h1>
+            <div class=descres>
+            <h2 class='descres'>$row1[descricao_evento]</h2>
+            <div class='enderes'>
+            <h2 class='enderes'>$row1[endereco_evento] | $row1[cidade_evento], $row1[estado_evento]</div></div></div>
+            <div>
+            <h2 class='precores'>";
+            if(isset($row1['preco_evento'])){
+              echo "R$ $row1[preco_evento]";
+            }
+            else if($row1['preco_evento'] == "" || $row1['preco_evento'] == "0" || $row1['preco_evento'] == null){
+              echo "Grátis";
+            }
+            echo"
+            </h2>
+            </div>
+            </div>
+            </a>
+            </div>";
+          }
+        }
+      }
+      ?>
+      <br>
+      <br>
+    </div>
+
+  </center>
+</body>
+</html>
