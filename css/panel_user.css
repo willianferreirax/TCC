@@ -24,11 +24,67 @@
 }
 
 #enviar{
-		display: none;
+	display: none;
 }
 
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
+
+	.searchinfo{
+		display: grid;
+		grid-template-columns: 40% 53% 7%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 89vw;
+		height: 15vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+		margin: 1vw 0 0 0;
+	}
+
+	.searchinfo:hover {
+		background-color: #0f1112;
+	}
+
+	.imagemres{
+		width: 35.595vw;
+		height: 15vw;
+		text-align: left;
+		margin: 0 0 0 0;
+		border-radius: 2vw 0 0 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	}
+
+	.nomeres{
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 0.3vw 1vw 1vw 1vw;
+		font-size: 2vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	}
+
+	.descres{
+		font-size: 1.4vw;
+		white-space: normal;
+	}
+
+	.enderes{
+		padding: 1vw 0 0 0;
+		font-size: 1vw;
+		opacity: 0.7;
+	}
+
+	.precores{
+		padding: 1vw 1vw 1vw 1vw;
+		text-align: left;
+		font-size: 1.5vw;
+	}
 
 	.title{
 		font-size: 3vw;
@@ -48,17 +104,17 @@
 		margin-top: 2vw;
 		padding-top: 7vh;
 		background: url(../images/circle.png) center center/8vw no-repeat;
-    width: 26vh;
-    height: 18vh;
-    vertical-align: middle;
-    color: black;
+		width: 26vh;
+		height: 18vh;
+		vertical-align: middle;
+		color: black;
 		text-align: center;
 		font-size: 2vw;
 	}
 
 	.exit{
 		color: #822828;
-    text-decoration: none !important;
+		text-decoration: none !important;
 	}
 
 	.exit:hover{
@@ -121,8 +177,8 @@
 	}
 
 	.userbtn i{
-    font-size: 4.8vh;
-  }
+		font-size: 4.8vh;
+	}
 
 	hr{
 		background-color: #6f6f6f;
@@ -168,8 +224,8 @@
 	}
 
 	.menubtn i{
-    font-size: 4.8vh;
-  }
+		font-size: 4.8vh;
+	}
 
 	.menulist{
 		display: grid;
@@ -211,11 +267,11 @@
 
 	.statsdiv{
 		background-color: #18191b !important;
-    border-radius: 5vw 5vw 0 0;
-    margin-top: 12vw;
-    margin-left: 10vh;
+		border-radius: 5vw 5vw 0 0;
+		margin-top: 12vw;
+		margin-left: 10vh;
 		height: 100vw;
-    padding-top: 0.5vw;
+		padding-top: 0.5vw;
 	}
 	.statsdiv i{
 		margin: 2vh;
@@ -266,7 +322,7 @@
 		top: 2.5vh;
 		background: url(../images/logohorizontal.png) center center/15vh no-repeat;
 		font-size: 0 !important;
-    cursor: pointer;
+		cursor: pointer;
 	}
 
 	.cabecalhoindex{
@@ -338,6 +394,73 @@
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.searchinfo{
+		display: grid;
+		grid-template-columns: 25% 65% 10%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 86vw;
+		height: 30vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+		margin-bottom: 2vw;
+	}
+
+	.searchinfo:hover {
+		background-color: #0f1112;
+	}
+
+	.searchinfo:hover .imagemres{
+		opacity: 0.7;
+	}
+
+	.searchinfo:hover .nomeres{
+		font-size: 3.2vw;
+	}
+
+	.imagemres{
+		width: 40vw;
+		height: 30vw;
+		text-align: left;
+		margin: 0 12vw 0 0;
+		border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	}
+
+	.nomeres{
+		display: block;
+		max-width: 57vw;
+		padding-top: 1vw;
+		text-align: left;
+		font-size: 3vw;
+		margin-left: 10vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	}
+
+	.descres{
+		font-size: 2vw;
+		margin-left: 5.5vw;
+		white-space: normal;
+	}
+
+	.enderes{
+		margin-left: 2.8vw;
+		font-size: 2vw;
+		opacity: 0.7;
+	}
+
+	.precores{
+		padding-top: 2.2vw;
+		padding-left: 2vw;
+		text-align: left;
+		font-size: 2.2vw;
+	}
+
 	.title{
 		font-size: 3vw;
 		margin: 8vw 18vw 5vw 18vw;
@@ -356,10 +479,10 @@
 		margin-top: 2vw;
 		padding-top: 6vh;
 		background: url(../images/circle.png) center center/20vw no-repeat;
-    width: 26vh;
-    height: 18vh;
-    vertical-align: middle;
-    color: black;
+		width: 26vh;
+		height: 18vh;
+		vertical-align: middle;
+		color: black;
 		text-align: center;
 		font-size: 7vw;
 	}
@@ -505,24 +628,24 @@
 	nav{
 		background-color: #0d0e0f;
 		top: 0;
-    width: 30vh;
-    height: 100vh;
-    left: -23vh;
-    transition: left 0.2s;
-    -webkit-transition: left 0.2s;
-    float: left;
-    text-align: left;
-    font-size: 20px;
-    position: fixed;
-    z-index: 5;
-  }
+		width: 30vh;
+		height: 100vh;
+		left: -23vh;
+		transition: left 0.2s;
+		-webkit-transition: left 0.2s;
+		float: left;
+		text-align: left;
+		font-size: 20px;
+		position: fixed;
+		z-index: 5;
+	}
 
 	.statsdiv{
 		background-color: #18191b !important;
-    border-radius: 5vw 5vw 0 0;
-    margin-top: 17vh;
+		border-radius: 5vw 5vw 0 0;
+		margin-top: 17vh;
 		height: 100vh;
-    margin-left: 6.8vh;
+		margin-left: 6.8vh;
 	}
 
 	.statsdiv i{
@@ -574,7 +697,7 @@
 		top: 2.5vh;
 		background: url(../images/logo.png) center center/5vh no-repeat;
 		font-size: 0 !important;
-    cursor: pointer;
+		cursor: pointer;
 	}
 
 	.cabecalhoindex{
@@ -643,10 +766,76 @@
 		display: none;
 	}
 
-	}
+}
 
 /* CSS para celulares grandes*/
 @media screen and (max-width: 699px) {
+
+	.searchinfo{
+		margin-bottom: 2vw;
+		display: grid;
+		grid-template-columns: 25% 65% 10%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 98vw;
+		height: 40vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+	}
+
+	.searchinfo:hover {
+		background-color: #0f1112;
+	}
+
+	.searchinfo:hover .imagemres{
+		opacity: 0.7;
+	}
+
+	.searchinfo:hover .nomeres{
+		font-size: 3.7vw;
+	}
+
+	.imagemres{
+		width: 40vw;
+		height: 40vw;
+		text-align: left;
+		margin: 0 12vw 0 0;
+		border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	}
+
+	.nomeres{
+		margin-left: 8vw;
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 1vw 1vw 1vw 1vw;
+		font-size: 3.5vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	}
+
+	.descres{
+		font-size: 2.7vw;
+		margin-left: 5vw;
+		white-space: normal;
+	}
+
+	.enderes{
+		margin-left: 2.5vw;
+		font-size: 2.6vw;
+		opacity: 0.7;
+	}
+
+	.precores{
+		padding-top: 2vw;
+		text-align: left;
+		font-size: 3vw;
+	}
 
 	.title{
 		font-size: 4vw;
@@ -654,7 +843,7 @@
 	}
 
 	#iconenviar{
-			display: none;
+		display: none;
 	}
 
 	.account{
@@ -670,10 +859,10 @@
 		margin-top: 7vw;
 		padding-top: 6vh;
 		background: url(../images/circle.png) center center/20vw no-repeat;
-    width: 20vh;
-    height: 18vh;
-    vertical-align: middle;
-    color: black;
+		width: 20vh;
+		height: 18vh;
+		vertical-align: middle;
+		color: black;
 		text-align: center;
 		font-size: 7vw;
 	}
@@ -701,7 +890,7 @@
 		line-height: 250%;
 		padding-left: 8vh;
 	}
-.icons{
+	.icons{
 		position: fixed;
 		left: 0vh;
 		top: 10vh;
@@ -855,22 +1044,22 @@
 	nav{
 		background-color: #0d0e0f;
 		top: 0;
-    width: 30vh;
-    height: 100vh;
-    left: -70vh;
-    transition: left 0.2s;
-    -webkit-transition: left 0.2s;
-    float: left;
-    text-align: left;
-    font-size: 20px;
-    position: fixed;
-    z-index: 5;
+		width: 30vh;
+		height: 100vh;
+		left: -70vh;
+		transition: left 0.2s;
+		-webkit-transition: left 0.2s;
+		float: left;
+		text-align: left;
+		font-size: 20px;
+		position: fixed;
+		z-index: 5;
 	}
 
 	.statsdiv{
 		background-color: #18191b !important;
-    border-radius: 5vw 5vw 0 0;
-    margin-top: 18vw;
+		border-radius: 5vw 5vw 0 0;
+		margin-top: 18vw;
 		padding-top: 3vw;
 		height: 100vh;
 	}
@@ -908,23 +1097,23 @@
 		grid-template-areas: "menudiv pesquisarbtn userdiv";
 	}
 
-.search{
+	.search{
 		background-color: rgba(0, 0, 0, 0.6);
 		width: 0vw;
 		border-radius: 25vw 25vw 25vw 25vw;
 		height: 4vh;
 		transition: width 1s;
 	}
-.search i{
+	.search i{
 		display: none;
 	}
 	.searchbar{
-			width: 0;
-			height: 0;
-			font-size: 2vh;
-			background-color: transparent;
-			text-align: left;
-		}
+		width: 0;
+		height: 0;
+		font-size: 2vh;
+		background-color: transparent;
+		text-align: left;
+	}
 
 	.background{
 		background: url(../images/indeximg.png) no-repeat;
@@ -976,12 +1165,12 @@
 	}
 
 	.searchbar{
-			width: 0;
-			height: 0;
-			font-size: 2vh;
-			background-color: transparent;
-			text-align: left;
-		}
+		width: 0;
+		height: 0;
+		font-size: 2vh;
+		background-color: transparent;
+		text-align: left;
+	}
 
 	.divsearch{
 
@@ -994,11 +1183,11 @@
 		font-size: 0;
 	}
 
-.searchbar{
+	.searchbar{
 		width: 0;
 		height: 0;
 		font-size: 2vh;
 		background-color: transparent;
 		text-align: left;
 	}
-	}
+}
