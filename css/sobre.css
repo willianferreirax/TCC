@@ -183,6 +183,11 @@
     font-size: 3vh;
   }
 
+  .b4{
+		border-right: 0.5vh solid;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
+	}
+
   .icons{
     position: fixed;
     left: 0.5vh;
@@ -557,6 +562,11 @@
     font-size: 2.3vh;
   }
 
+  .b4{
+		border-right: 0.5vh solid;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
+	}
+
   .icons{
     position: fixed;
     left: 0vh;
@@ -921,6 +931,12 @@
     line-height: 250%;
     padding-left: 8vh;
   }
+
+  .b4{
+		border-right: 0.5vh solid;
+    border-image: linear-gradient(to bottom, #C40EFA, #0096C4) 1 100%;
+	}
+
   .icons{
     position: absolute;
     left: 0vh;
