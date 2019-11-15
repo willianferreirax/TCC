@@ -132,7 +132,8 @@
 			<div class="icontainer">
 				<form name='criareventoform' method="POST" action=<?php echo"?validar=true?&id_eve=$id";?> enctype="multipart/form-data">
 					<div class="form-group" id='imageup'>
-						<label for="exampleFormControlFile1" class='imagevis'><img class='bannervisu' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
+						<label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
+              <img class='imagevis' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
 					</div>
 					<div class="nomeev">
