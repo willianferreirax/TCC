@@ -70,7 +70,7 @@ else{
       <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
       <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <i class="fas fa-question fa-2x"></i><br>
+      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
     <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -80,7 +80,7 @@ else{
         <a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
         <a href='listar_inst.php'><div class='b3'>Instituição</div></a>
         <a href='sobre.php'><div class='b4'>Sobre nós</div></a>
-        <a href='index.php'><div class='b5'>Ajuda</div></a>
+        <a href='ajuda.php'><div class='b5'>Ajuda</div></a>
       </div>
       <label for='chec' class='backdiv'></label>
     </nav>
@@ -108,7 +108,7 @@ else{
       <br>
       <a href='painel_usuario.php' class='account'>Configurações</a>
       <br>
-      <a href='painel_usuario.php' class='account'>Ajuda</a>
+      <a href='ajuda.php' class='account'>Ajuda</a>
       <br>
       <br>
       <a href='logout_script.php' class='exit'>Sair</a>

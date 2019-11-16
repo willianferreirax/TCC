@@ -43,7 +43,7 @@ exit();
 			<a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
 			<a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
 			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-			<i class="fas fa-question fa-2x"></i><br>
+			<a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
 			<hr>
 		</div>
 		<a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -53,7 +53,7 @@ exit();
 				<a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
 				<a href='listar_inst.php'><div class='b3'>Instituição</div></a>
 				<a href='sobre.php'><div class='b4'>Sobre nós</div></a>
-				<a href='index.php'><div class='b5'>Ajuda</div></a>
+				<a href='ajuda.php'><div class='b5'>Ajuda</div></a>
 			</div>
 			<label for='chec' class='backdiv'></label>
 		</nav>
@@ -80,7 +80,7 @@ exit();
 			<br>
 			<a href='config.php' class='account'>Configurações</a>
 			<br>
-			<a href='painel_usuario.php' class='account'>Ajuda</a>
+			<a href='ajuda.php' class='account'>Ajuda</a>
 			<br>
 			<br>
 			<a href='logout_script.php' class='exit'>Sair</a>
@@ -127,7 +127,7 @@ exit();
 
 				<label><b>Nome:</b></label>
 				<br>
-					<input type="text" name="nome" value='.$_SESSION['instituicao'][0].' disabled>
+					<input type="text" name="nome" value="'.$_SESSION["instituicao"][0].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="nome_inst" value="Alterar">
 				<br>
@@ -135,7 +135,7 @@ exit();
 
 				<label><b>Telefone:</b></label>
 				<br>
-					<input type="text" name="telefone" value='.$_SESSION['instituicao'][9].' disabled>
+					<input type="text" name="telefone" value="'.$_SESSION["instituicao"][9].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="telefone_inst" value="Alterar">
 				<br>
@@ -143,7 +143,7 @@ exit();
 
 				<label><b>Endereço:</b></label>
 				<br>
-					<input type="text" name="endereco" value='.$_SESSION['instituicao'][4].' disabled>
+					<input type="text" name="endereco" value="'.$_SESSION["instituicao"][4].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="endereco_inst" value="Alterar">
 				<br>
@@ -151,7 +151,7 @@ exit();
 
 				<label><b>Bairro:</b></label>
 				<br>
-					<input type="text" name="bairro" value='.$_SESSION['instituicao'][5].' disabled>
+					<input type="text" name="bairro" value="'.$_SESSION["instituicao"][5].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="bairro_inst" value="Alterar">
 				<br>
@@ -159,7 +159,7 @@ exit();
 
 				<label><b>Cidade:</b></label>
 				<br>
-					<input type="text" name="cidade" value='.$_SESSION['instituicao'][6].' disabled>
+					<input type="text" name="cidade" value="'.$_SESSION["instituicao"][6].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="cidade_inst" value="Alterar">
 				<br>
@@ -167,7 +167,7 @@ exit();
 
 				<label><b>Estado:</b></label>
 				<br>
-					<input type="text" name="estado" value='.$_SESSION['instituicao'][7].' disabled>
+					<input type="text" name="estado" value="'.$_SESSION["instituicao"][7].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="estado_inst" value="Alterar">
 				<br>
@@ -175,7 +175,7 @@ exit();
 
 				<label><b>CEP:</b></label>
 				<br>
-					<input type="text" name="cep" value='.$_SESSION['instituicao'][8].' disabled>
+					<input type="text" name="cep" value="'.$_SESSION["instituicao"][8].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="cep_inst" value="Alterar">
 				<br>
@@ -183,7 +183,7 @@ exit();
 
 				<label><b>Email:</b></label>
 				<br>
-					<input type="text" name="email" value='.$_SESSION['instituicao'][1].' disabled>
+					<input type="text" name="email" value="'.$_SESSION["instituicao"][1].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="email_inst" value="Alterar">
 				<br>
@@ -196,13 +196,12 @@ exit();
 				<input class="cadastrar" type="submit" name="senha_inst" value="Alterar">
 				<br>
 				<br>
-
-				<br><br>
+				<br>
 				';
 				?>
 				<a style="color: red; text-decoration: none !important;" href="javascript: if(confirm('Deseja realmente excluir sua conta? Essa ação é irreversivel!')) location.href='deletar_cadastro.php';"><div class="excluircad"><i class="far fa-trash-alt"></i>Excluir cadastro<a></div>
 				<?php
-				echo '<br><br>
+				echo '
 
 
 				<button class="cadastraralt" href="painel_inst.php">Voltar</button>
@@ -216,7 +215,7 @@ exit();
 
 				<label><b>Nome:</b></label>
 				<br>
-					<input type="text" name="nome" value='.$_SESSION["usuario"][0].' disabled>
+					<input type="text" name="nome" value="'.$_SESSION["usuario"][0]." ".$_SESSION["usuario"][4].'" disabled>
 				<br>
 				<input class="cadastrar" type="submit" name="nome_usu" value="Alterar">
 				<br>

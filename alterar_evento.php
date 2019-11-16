@@ -12,12 +12,12 @@
         $res = $conn->prepare($select);//preparando query
         $res->execute();//executando
 		$result = $res->fetchAll();
-		
+
 		$select="select * from interesses_evento where cod_evento={$id}";
 		$res1 = $conn->prepare($select);
 		$res1->execute();
 		$selecionados= $res1->fetchAll();
-		
+
 
   }
 
@@ -55,7 +55,7 @@
       <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
       <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
 			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <i class="fas fa-question fa-2x"></i><br>
+      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
 		<nav>
@@ -64,7 +64,7 @@
 				<a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
 				<a href='listar_inst.php'><div class='b3'>Instituição</div></a>
 				<a href='sobre.php'><div class='b4'>Sobre nós</div></a>
-				<a href='index.php'><div class='b5'>Ajuda</div></a>
+				<a href='ajuda.php'><div class='b5'>Ajuda</div></a>
 			</div>
 			<label for='chec' class='backdiv'></label>
 		</nav>
@@ -96,7 +96,7 @@
 			<br>
 			<a href='config.php' class='account'>Configurações</a>
 			<br>
-			<a href='painel_usuario.php' class='account'>Ajuda</a>
+			<a href='ajuda.php' class='account'>Ajuda</a>
 			<br>
 			<br>
 			<a href='logout_script.php' class='exit'>Sair</a>
@@ -132,46 +132,47 @@
 			<div class="icontainer">
 				<form name='criareventoform' method="POST" action=<?php echo"?validar=true?&id_eve=$id";?> enctype="multipart/form-data">
 					<div class="form-group" id='imageup'>
-						<label for="exampleFormControlFile1" class='imagevis'><img class='bannervisu' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
+						<label for="exampleFormControlFile1" style="width: 100%; height: 100%; border: none;">
+              <img class='imagevis' src="upload/<?php echo $result[0]['banner_evento'];?>"><center><b>Banner</b> do Evento</center></label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1" name='arquivo'>
 					</div>
 					<div class="nomeev">
 						<label class='labelint'>Dê um <b>nome</b> ao seu evento:</label><br>
-						<input class='inputcreate' id='createnome' type='text' name='nome' value=<?php echo $result[0]['nome_evento'];?>><center><hr></center><br>
+						<input class='inputcreate' id='createnome' type='text' name='nome' value='<?php echo $result[0]['nome_evento'];?>'><center><hr></center><br>
 					</div>
 
 					<div class="info1">
 						<div class="infos">
 
 							<label class='labelint'>Nos conte um pouco sobre o seu evento:</label>
-						
+
 							<textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"><?php echo $result[0]['descricao_evento'];?></textarea>
 
 							<label class='labelint'>Quando o evento irá <b>começar</b>?</label>
-							<input class='inputcreate' type='date' name='dateinic' value=<?php echo $result[0]['data_inicio'];?>>
+							<input class='inputcreate' type='date' name='dateinic' value='<?php echo $result[0]['data_inicio'];?>'>
 
 							<label class='labelint'>Quando o evento irá <b>acabar</b>?</label>
-							<input class='inputcreate' type='date' name='datefinal' value=<?php echo $result[0]['data_termino'];?>>
+							<input class='inputcreate' type='date' name='datefinal' value='<?php echo $result[0]['data_termino'];?>'>
 
 							<label class='labelint'>Informe o horário que o evento <b>inciará</b>:</label>
-							<input class='inputcreate' type='time' name='timeinic' value=<?php echo $result[0]['hora_inicio'];?>>
+							<input class='inputcreate' type='time' name='timeinic' value='<?php echo $result[0]['hora_inicio'];?>'>
 
 							<label class='labelint'>Informe o horário que o evento <b>encerrará</b>:</label>
-							<input class='inputcreate' type='time' name='timefinal' value=<?php echo $result[0]['hora_termino'];?>>
+							<input class='inputcreate' type='time' name='timefinal' value='<?php echo $result[0]['hora_termino'];?>'>
 
 							<label class='labelint'>Qual o <b>preço</b> do evento?</label>
-							<input class='inputcreate' type='number' name='preco' value=<?php echo $result[0]['preco_evento'];?>>
+							<input class='inputcreate' type='number' name='preco' value='<?php echo $result[0]['preco_evento'];?>'>
 
 						</div>
 						<div class="endereco">
 							<label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
-							<input class='inputcreate' type='text' name='endereco' value=<?php print_r($result[0]['endereco_evento']);?>>
+							<input class='inputcreate' type='text' name='endereco' value='<?php $endereco = $result[0]['endereco_evento']; echo $endereco;?>'>
 
 							<label class='labelint'>Qual <b>bairro</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='bairro' value=<?php echo $result[0]['bairro_evento'];?>>
+							<input class='inputcreate' type='text' name='bairro' value='<?php echo $result[0]['bairro_evento'];?>'>
 
 							<label class='labelint'>Qual <b>cidade</b> o evento ocorrerá?</label>
-							<input class='inputcreate' type='text' name='cidade' value=<?php echo $result[0]['cidade_evento'];?>>
+							<input class='inputcreate' type='text' name='cidade' value='<?php echo $result[0]['cidade_evento'];?>'>
 
 							<label class='labelint'>Qual <b>estado</b> o evento ocorrerá?</label><br>
 							<select name="estado">
@@ -206,7 +207,7 @@
 							</select><br>
 
 							<label class='labelint'>Agora, digite o <b>CEP</b>:</label>
-							<input class='inputcreate' type='text' name='cep' value=<?php echo $result[0]['cep_evento'];?>>
+							<input class='inputcreate' type='text' name='cep' value='<?php echo $result[0]['cep_evento'];?>'>
 						</div>
 					</div>
 					<center>
@@ -219,7 +220,7 @@
 							Informação e Tecnologia
 						</label>
 						<input type="checkbox" id='bti2' class='chkint' value=2  name='intchk[]'>
-						<label for='bti2' class='interesse2' id='int2'>						
+						<label for='bti2' class='interesse2' id='int2'>
 							Logística
 						</label>
 						<input type="checkbox" id='bti3' class='chkint' value=3  name='intchk[]'>
@@ -292,13 +293,13 @@
 $interesses = array('Informação e Tecnologia', 'Logística', 'Saúde', 'Engenharia', 'Administração e Negócios', 'Comunicação', 'Arte e Design', 'Direito', 'Educação', 'Turismo', 'Gastronomia', 'Ciências Exatas e Biológicas', 'Ciências Sociais e Humanas', 'Música','outro');
 $outro=0;
 	for($i=1;$i<=15;$i++){
-		
+
 		for($j=0;$j<15;$j++){
 			if($selecionados[0]['interesseeve'.$i]==$interesses[$j]){
 				echo"
 				<script type='text/javascript'>
 				document.getElementsByClassName('chkint')[$j].checked = true;
-				
+
 				</script>";
 			}
 			/*
@@ -307,7 +308,7 @@ $outro=0;
 			}
 			*/
 		}
-		
+
 	}
 	/*
 	if($outro ==225){
@@ -410,7 +411,7 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 		$result->bindValue(10, $_POST["preco"]);
 		$result->execute();
 
-		if($result->fetchColumn() > 0){ //Se retornar mais de 0 como resultado,existe esse evento cadastrado 
+		if($result->fetchColumn() > 0){ //Se retornar mais de 0 como resultado,existe esse evento cadastrado
 			$script = "
 			<script type='text/javascript'>
 			alert('Esse evento já está cadastrado.');
@@ -569,5 +570,5 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
             }
         }
 	}
-	
+
 ?>
