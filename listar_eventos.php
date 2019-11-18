@@ -161,14 +161,16 @@
 
     }
     $result = $res->fetchAll();
+	
 
     ?>
 
     <body>
       <div class='elem1'>
         <?php
-
+		$codigos=array();
         foreach ($result as $row) {
+			array_push($codigos,$row['cod_evento']);
           if($row['visibilidade_evento']==1){
           $imagem ='upload/'.$row['banner_evento'];
           echo "
@@ -197,65 +199,86 @@
          }
         }
         echo"<br><br>";
-
+		$cont=0;
+		
         foreach ($result1 as $row) {
-          if($row['visibilidade_evento']==1){
-          $imagem ='upload/'.$row['banner_evento'];
-          echo "
-                    <a href='exibir_evento.php?id= $row[cod_evento]'>
-                      <div class='searchinfo'>
-                        <img class='imagemres' src='$imagem'>
-                            <div class=nomeres>
-                            <h1>$row[nome_evento]</h1>
-                            <div class=descres>
-                            <h2>$row[descricao_evento]</h2>
-                            <div class='enderes'>
-                            <h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-                            <div class=precores>
-                            <h2>";
-                            if(isset($row['preco_evento'])){
-                                      echo "R$$row[preco_evento]";
-                                    }
-                                    else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
-                                      echo "Grátis";
-                                    }
-                                      echo"
-                            </h2>
-                            </div>
-                      </div>
-                    </a>";
-         }
-        }
-
+			
+			for($i=0; $i<count($codigos); $i++){
+				if($codigos[$i] == $row['cod_evento']){
+					$cont++;
+				}
+			}
+			
+			if($cont == 0){
+				array_push($codigos,$row['cod_evento']);
+			  if($row['visibilidade_evento']==1){
+			  $imagem ='upload/'.$row['banner_evento'];
+			  echo "
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>";
+				}
+			}
+			
+		}
+		$cont=0;
         foreach ($result2 as $row) {
-          if($row['visibilidade_evento']==1){
-          $imagem ='upload/'.$row['banner_evento'];
-          echo "
-                    <a href='exibir_evento.php?id= $row[cod_evento]'>
-                      <div class='searchinfo'>
-                        <img class='imagemres' src='$imagem'>
-                            <div class=nomeres>
-                            <h1>$row[nome_evento]</h1>
-                            <div class=descres>
-                            <h2>$row[descricao_evento]</h2>
-                            <div class='enderes'>
-                            <h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-                            <div class=precores>
-                            <h2>";
-                            if(isset($row['preco_evento'])){
-                                      echo "R$$row[preco_evento]";
-                                    }
-                                    else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
-                                      echo "Grátis";
-                                    }
-                                      echo"
-                            </h2>
-                            </div>
-                      </div>
-                    </a>";
-          }
-        }
-        echo "<br>";
+			
+			for($i=0; $i<=count($codigos); $i++){
+				if($codigos[$i] == $row['cod_evento']){
+					$cont++;
+				}
+			}
+			if($cont == 0){
+					array_push($codigos,$row['cod_evento']);
+			  if($row['visibilidade_evento']==1){
+			  $imagem ='upload/'.$row['banner_evento'];
+			  echo "
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>";
+				}
+			}
+		}
+       echo "<br>";
         ?>
       </div>
       <body class="bgindex">

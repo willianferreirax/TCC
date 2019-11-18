@@ -17,7 +17,7 @@
 		$res1 = $conn->prepare($select);
 		$res1->execute();
 		$selecionados= $res1->fetchAll();
-
+		print_r($selecionados);
 
   }
 
@@ -273,11 +273,42 @@
 						</label>
 						<input type="checkbox" id='bti15' class='chkint' value=15 onclick='intlimit(14)' name='intchk[]'>
 						<label for='bti15' class='interesse15' id='int15'>
-							<input type='text' class='outro' name='int15' id='test' placeholder="Outro">
+							<input type='text' class='outro' name='int15' id='test' placeholder="<?php 
+							
+								  $varint[0] = "Informação e Tecnologia";
+								  $varint[1] = "Logística";
+								  $varint[2] = "Saúde";
+								  $varint[3] = "Engenharia";
+								  $varint[4] = "Administração e Negócios";
+								  $varint[5] = "Comunicação";
+								  $varint[6] = "Arte e Design";
+								  $varint[7] = "Direito";
+								  $varint[8] = "Educação";
+								  $varint[9] = "Turismo";
+								  $varint[10] = "Gastronomia";
+								  $varint[11] = "Ciências Exatas e Biológicas";
+								  $varint[12] = "Ciências Sociais e Humanas";
+								  $varint[13] = "Música";
+								  $contint = 0;
+								  for($j = 1; $j < 16; $j++){
+									for($i = 0; $i < 14; $i++){
+									  if((isset($selecionados[0]['interesseeve'.$j])) && ($selecionados[0]['interesseeve'.$j] != $varint[$i])){
+										$contint++;
+									  }
+									}
+									if($contint == 14){
+									  echo $selecionados[0]['interesseeve'.$j];
+									}
+									else {
+									  $contint = 0;
+									}
+								  }
+									
+							?>">
 						</label>
 					</div>
 
-					<div class='btnext'><a href='eventinfo.php'><button class='prox'>Pronto!</button></a></div>
+					<div class='btnext'><a href='eventinfo.php'><button class='prox'><?php echo $contint?></button></a></div>
 					</center>
 				</form>
 			</div>
