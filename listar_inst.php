@@ -140,7 +140,7 @@
         $conn = conexao();
 
 
-    		$select ="select CNPJ,nome_inst, endereco_inst, cidade_inst, estado_inst, telefone_inst from faculdade";
+    		$select ="select CNPJ,nome_inst, endereco_inst, cidade_inst, estado_inst, telefone_inst from faculdade order by nome_inst ASC";
             $res=$conn->prepare($select);
             $res->execute();
 
