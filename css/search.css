@@ -32,13 +32,15 @@
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
 	.exit{
-		color: #822828;
+		width: 100%;
+		height: 2vw;
+		border-radius: 2vw;
+		background-color: #822828 !important;
 		text-decoration: none !important;
-		font-size: 1.3vw;
 	}
 
 	.exit:hover{
-		color: #912d2d;
+		color: #ddd;
 	}
 
 	.account{

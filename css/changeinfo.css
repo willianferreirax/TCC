@@ -1,8 +1,20 @@
 @media only screen and (min-width: 700px) and (orientation: landscape) {
+
+	select{
+		color: #757575;
+		background-color: #222224;
+		border: none;
+		border-radius: 2vw;
+		margin-bottom: 3vw !important;
+		width: 25vw;
+		height: 5vh;
+		padding: 0 1vw 0 1vw;
+	}
+
 	label{
     font-size: 2vh!important;
   }
-  
+
 	input{
     background-color: #202124;
     margin: 1vh !important;
@@ -17,7 +29,7 @@
   input:focus{
     border-radius: 3vh 3vh 0 0 !important;
   }
-  
+
   .cadastrar{
 	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 	width: 30vh;
@@ -46,26 +58,38 @@
     width: 100vh;
     padding: 3vh 8vh 0 8vh;
   }
-  
+
   .logo{
     width: 15vh;
     height: 26vh;
     background: url(../images/logocomescrito.png) center center/15vh no-repeat;
     font-size: 0;
   }
-  
+
   hr{
     background-color: #2f2f2f;
     width: 80vh;
   }
-  
+
   form{
     width: 100%;
     background-color: inherit;
   }
-  
+
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+
+	select{
+		border: none;
+		border-radius: 10vw;
+		width: 60vw;
+		height: 6vw;
+		padding: 0 3vw 0 3vw;
+		margin-bottom: 10vw !important;
+		background-color: #222224;
+		color: #757575;
+	}
+
 	label{
     font-size: 3vw;
 	margin: 0vw;
@@ -75,7 +99,7 @@
     background-color: #6f6f6f;
     width: 80%;
   }
-	
+
 	 input{
     background-color: #202124;
     margin: 1vh !important;
@@ -90,7 +114,7 @@
   input:focus{
     border-radius: 3vh 3vh 0 0 !important;
   }
-	
+
   .cabecalho{
 	padding-top: 3vw;
     width: 100vw;
@@ -102,7 +126,7 @@
     background: url(../images/logocomescrito.png) center center/15vh no-repeat;
     font-size: 0;
   }
-  
+
   .cadastrar{
 	background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 	width: 30vw;
@@ -110,7 +134,7 @@
 	border-radius: 20vh;
 	border: none;
 	color: white;
-	font-size: 3.4vw;
+	font-size: 3vw;
 	font-weight: 400;
 	height: 9vw;
 }
@@ -128,6 +152,18 @@
 
 }
 @media screen and (max-width: 699px) {
+
+	select{
+		border: none;
+		border-radius: 10vw;
+		width: 60vw;
+		height: 7vw;
+		padding: 0 3vw 0 3vw;
+		margin-bottom: 10vw !important;
+		background-color: #222224;
+		color: #757575;
+	}
+
 	label{
     font-size: 5vw;
   }
@@ -165,7 +201,7 @@
     background-color: #2f2f2f;
     width: 80vw;
   }
-  
+
   .back{
   background: transparent;
   width: 43vw;

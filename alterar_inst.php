@@ -12,19 +12,24 @@ $cnpj = $_SESSION['instituicao'][3];
 <html lang="pt-br">
   <head>
     <title><?php echo $_SESSION['instituicao'][0];?> - FRESHR</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <meta name="description" content="Acesse o FRESHR. Uma visão de prosperidade para a sua carreira.">
-    <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Login">
-    <meta name="robots" content="Index, follow">
-    <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/changeinfo.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="images/icon.png">
-    <meta name="viewport" content="width=device-width">
-    <meta name="theme-color" content="#121212">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<!-- Required meta tags -->
+ 	 <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+ 	 <meta charset="utf-8">
+ 	 <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
+ 	 <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
+ 	 <meta name="robots" content="Index, follow">
+ 	 <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
+ 	 <link rel="stylesheet" href="css/changeinfo.css">
+ 	 <link rel="stylesheet" href="css/style.css">
+ 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 	 <script src="https://kit.fontawesome.com/337796870f.js"></script>
+ 	 <link rel="shortcut icon" href="images/icon.png">
+ 	 <meta name="viewport" content="width=device-width">
+ 	 <meta name="theme-color" content="#121212">
+ 	 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+ 	 <!-- Bootstrap CSS -->
+ 	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script type='text/javascript'>
   function mascara(formato, keypress, objeto){
     campo = eval(objeto);
@@ -60,20 +65,27 @@ $cnpj = $_SESSION['instituicao'][3];
         cep_inst.value = cep_inst.value + separador1;
     }
   }
+}
   </script>
   </head>
 <body>
 <center>
 
-  <header class='cabecalho'>
-      <a href="index.php" class='homea'>
-        <label for='logospace' class='logo'>
-          <h1 class='logospace'></h1>
-        </label>
-      </a>
-      <hr>
-    </header>
-	
+	<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<header class='cabecalho'>
+	 <a href="index.php" class='homea'>
+		 <label for='logospace' class='logo'>
+			 <h1 class='logospace'></h1>
+		 </label>
+	 </a>
+	 <hr>
+ </header>
+
 <?php
 
 if (isset($_POST['senha_inst'])) {
@@ -137,7 +149,7 @@ else if (isset($_POST['endereco_inst'])) {
 
         <label><b>Endereço:</b></label>
         <br>
-        <input type='text' name='endereço_inst' placeholder='Novo endereço'>
+        <input type='text' name='endereco_inst' placeholder='Novo endereço'>
         <br>
         <br>
 
@@ -265,7 +277,57 @@ else if (isset($_POST['telefone_inst'])) {
 
         <label><b>Telefone:</b></label>
         <br>
-        <input type='text' name='telefone' maxlength='15' placeholder='(99) 99999-9999' onkeypress='mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')'> <br><small>*(com DDD)</small>
+        <input type='text' name='telefone_inst' maxlength='15' placeholder='(99) 99999-9999' onkeypress='mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')'> <br><small>*(com DDD)</small>
+        <br>
+        <br>
+
+
+	    <input class='cadastrar' type='submit' name='alterar' value='Alterar'>
+
+	    <br><br>
+
+
+		<a href='painel_inst.php'><div class='back'>Voltar</div></a>
+	    </form>";
+}
+else if (isset($_POST['estado_inst'])) {
+
+
+ 	echo"<form name='alterar_f' method='POST' action='?validar=true'>
+
+        <h5>Insira um estado novo</h5><br>
+
+        <label><b>Estado:</b></label>
+        <br>
+				<select name='estado_inst'>
+					<option value='AC'>Acre</option>
+					<option value='AL'>Alagoas</option>
+					<option value='AP'>Amapá</option>
+					<option value='AM'>Amazonas</option>
+					<option value='BA'>Bahia</option>
+					<option value='CE'>Ceará</option>
+					<option value='DF'>Distrito Federal</option>
+					<option value='ES'>Espirito Santo</option>
+					<option value='GO'>Goiás</option>
+					<option value='MA'>Maranhão</option>
+					<option value='MT'>Mato Grosso</option>
+					<option value='MS'>Mato Grosso do Sul</option>
+					<option value='MG'>Minas Gerais</option>
+					<option value='PA'>Pará</option>
+					<option value='PB'>Paraíba</option>
+					<option value='PR'>Paraná</option>
+					<option value='PE'>Pernambuco</option>
+					<option value='PI'>Piauí</option>
+					<option value='RJ'>Rio de Janeiro</option>
+					<option value='RJ'>Rio Grande do Norte</option>
+					<option value='RS'>Rio grande do Sul</option>
+					<option value='RO'>Rondônia</option>
+					<option value='RR'>Roraima</option>
+					<option value='SC'>Santa Catarina</option>
+					<option value='SP' selected>São Paulo</option>
+					<option value='SE'>Sergipe</option>
+					<option value='TO'>Tocantins</option>
+				</select><br>
         <br>
         <br>
 
@@ -289,13 +351,12 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 
 	include "connection.php";
 	$conn = conexao();
-
 	//declaramos as variáveis se o post correspondente existir (isset) e alteramos o comando sql de acordo com o item que foi escolhido para ser alterado
 
 	if(isset($_POST['senha_inst'])){
 
 		if(strlen(utf8_decode($_POST["senha_inst"])) < 10 || strlen(utf8_decode($_POST["senha_inst"])) > 100){
-			$erro = " digite uma senha válida (use entre 10 e 100 caracteres).";
+			$erro = "Digite uma senha válida (use entre 10 e 100 caracteres).";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		elseif($_POST["senha_inst"] != $_POST["confirmar_senha"]){
@@ -309,13 +370,18 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$senha);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Senha alterada com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 
 	}
 
 	elseif(isset($_POST['nome_inst'])){
 		if (strlen(utf8_decode($_POST["nome_inst"]))<5 || strlen(utf8_decode($_POST["nome_inst"]))>255) {
-			$erro = "preencha o campo nome corretamente (5 ou mais caracteres ou menos de 255)";
+			$erro = "Preencha o campo nome corretamente (pelo menos 5 caracteres)";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -325,13 +391,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$nome_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
-
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Nome alterado com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 
-	elseif(isset($_POST['endereco_inst'])){
-		if(strlen(utf8_decode($_POST["endereco_inst"]))<3 || strlen(utf8_decode($_POST["endereco_inst"]))>255){
-			$erro="digite um endereço valido";
+	elseif(isset($_POST['endereco_inst']) && $_POST['endereco_inst']){
+		if(strlen(utf8_decode($_POST['endereco_inst']))<3 || strlen(utf8_decode($_POST['endereco_inst']))>255){
+			$erro="Digite um endereço válido.";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -341,13 +411,18 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$endereco_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Endereço alterado com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 
 	}
 
 	elseif(isset($_POST['bairro_inst'])){
-		if(strlen(utf8_decode($_POST["bairro_inst"]))<5 || strlen(utf8_decode($_POST["bairro_inst"]))>30){
-			$erro= "digite algo valido(bairro)";
+		if(strlen(utf8_decode($_POST["bairro_inst"]))<2 || strlen(utf8_decode($_POST["bairro_inst"]))>80){
+			$erro= "Digite um bairro válido.";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -357,12 +432,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$bairro_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Bairro alterado. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 
 	elseif(isset($_POST['cidade_inst'])){
 		if(strlen(utf8_decode($_POST["cidade_inst"]))<5 || strlen(utf8_decode($_POST["cidade_inst"]))>255){
-			$erro= "digite algo valido (cidade)";
+			$erro= "Digite uma cidade válida";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -372,12 +452,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$cidade_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Cidade alterada com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 
 	elseif(isset($_POST['cep_inst'])){
-		if(strlen(utf8_decode($_POST["cep"]))<8 || strlen(utf8_decode($_POST["cep"]))>8){
-			$erro= "digite corretamente o CEP";
+		if(strlen(utf8_decode($_POST["cep_inst"]))<8 || strlen(utf8_decode($_POST["cep_inst"]))>9){
+			$erro= "Digite corretamente o CEP";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -387,12 +472,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$cep_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('CEP alterado com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 
 	elseif(isset($_POST['email_inst'])){
 		if(!filter_var($_POST["email_inst"], FILTER_VALIDATE_EMAIL)){
-			$erro = " digite um email valido.";
+			$erro = "Digite um email valido.";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -410,13 +500,18 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 				$res->bindValue(1,$email_inst);
 				$res->bindValue(2,$_SESSION['instituicao'][3]);
 				$res->execute();
+				$script = "<script language=javascript>
+				location.href='logout_script.php';
+				alert('Endereço de e-mail alterado com sucesso. Faça login novamente para continuar.');
+				</script>";
+				echo $script;
 			}
 		}
 	}
 
-	elseif(isset($_POST['telefone_inst'])){
+	elseif(isset($_POST['telefone_inst']) && $_POST['telefone_inst']){
 		if(strlen(utf8_decode($_POST["telefone_inst"]))<14 || strlen(utf8_decode($_POST["telefone_inst"]))>15){
-			$erro= "insira um telefone valido";
+			$erro= "Insira um telefone válido.";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -426,12 +521,17 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$telefone_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Telefone alterado com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 
-	elseif(isset($_POST['estado_inst'])){
-		if(strlen(utf8_decode($_POST["estado"]))<1 || strlen(utf8_decode($_POST["estado"]))>2){
-			$erro="digite uma estado valido";
+	elseif(isset($_POST['estado_inst']) && $_POST['estado_inst'] != ""){
+		if(strlen(utf8_decode($_POST["estado_inst"]))< 2 || strlen(utf8_decode($_POST["estado_inst"]))>80){
+			$erro="Digite uma estado valido";
 			echo "<div class='erro'>".$erro."</div><br>";
 		}
 		else{
@@ -441,6 +541,11 @@ if(isset($_REQUEST["validar"]) && $_REQUEST["validar"] == true){
 			$res->bindValue(1,$estado_inst);
 			$res->bindValue(2,$_SESSION['instituicao'][3]);
 			$res->execute();
+			$script = "<script language=javascript>
+			location.href='logout_script.php';
+			alert('Estado alterado com sucesso. Faça login novamente para continuar.');
+			</script>";
+			echo $script;
 		}
 	}
 

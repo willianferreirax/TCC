@@ -132,7 +132,7 @@
         <a href='ajuda.php' class='account'>Ajuda</a>
         <br>
         <br>
-        <a href='logout_script.php' class='exit'>Sair</a>
+        <a href='logout_script.php'><div class='exit'>Sair</div></a>
       </div>
       <div class='elem1'>
         <?php
@@ -140,7 +140,7 @@
         $conn = conexao();
 
 
-    		$select ="select CNPJ,nome_inst, endereco_inst, cidade_inst, estado_inst, telefone_inst from faculdade";
+    		$select ="select CNPJ,nome_inst, endereco_inst, cidade_inst, estado_inst, telefone_inst from faculdade order by nome_inst ASC";
             $res=$conn->prepare($select);
             $res->execute();
 

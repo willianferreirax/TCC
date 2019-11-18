@@ -260,8 +260,8 @@ if(!isset($_SESSION['instituicao'])){
       else{
 
         $sql = "INSERT INTO evento
-        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ, comp_qnt, interesse_qnt, avaliacoes_qnt)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
+        (nome_evento, banner_evento, data_inicio, data_termino,hora_inicio, hora_termino, endereco_evento, bairro_evento, cidade_evento, estado_evento, cep_evento, visibilidade_evento, descricao_evento,preco_evento, CNPJ, comp_qnt, interesse_qnt, avaliacoes_qnt, detalhes_evento)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         $preco = $_POST["preco"];
@@ -289,6 +289,7 @@ if(!isset($_SESSION['instituicao'])){
         $stmt->bindValue(16,0);
         $stmt->bindValue(17,0);
         $stmt->bindValue(18,0);
+        $stmt->bindValue(19,$_POST["detalhe"]);
 
         $stmt->execute();
 
@@ -406,19 +407,19 @@ if(!isset($_SESSION['instituicao'])){
             echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
           }
           ?>
-          <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
+          <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019' maxlength="80"><center><hr></center><br>
         </div>
 
         <div class="info1">
           <div class="infos">
 
-            <label class='labelint'>Nos conte um pouco sobre o seu evento:</label><br>
+            <label class='labelint'>Dê uma breve descrição para atrair o público para o seu evento</label><br>
             <?php
             if(isset($coderro) && $coderro == 14){
               echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
             }
             ?>
-            <textarea draggable="false" placeholder="Venha e participe do evento mais esperado do ano!" name='desc' maxlength="149"></textarea>
+            <textarea draggable="false" placeholder="A feira tecnológica é um evento para abrir o seu conhecimento sobre a sociedade atual. Venha conhecer!" name='desc' maxlength="149"></textarea>
 
             <label class='labelint'>Quando o evento irá <b>começar</b>?</label><br>
             <?php
@@ -465,7 +466,19 @@ if(!isset($_SESSION['instituicao'])){
             <input class='inputcreate' type='number' name='preco' placeholder="12,00">
 
           </div>
+
           <div class="endereco">
+
+            <div class='detalhe'>
+              <label class='labelint'>Nesse campo você deve informar todos os detalhes possíveis do evento</label><br>
+              <?php
+              if(isset($coderro) && $coderro == 15){
+                echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
+              }
+              ?>
+              <textarea draggable="false" placeholder="A feira tecnológica ocorrerá nos dias 5, 6 e 7 de novembro. No dia 5 iniciará às 20 horas e terminará as 22 horas. Nos dias 6 e 7 inciará às 7 horas e encerrará às 22 horas. A entrada será na rua Dr. Almeida Lima. O preço é gratuito a partir das 20 horas. Para maiores informações, telefone. Junte-se ao grupo de pessoas com mentes abertas para um novo futuro!" name='detalhe' maxlength="500"></textarea>
+            </div>
+
             <label class='labelint'>Informe o <b>logradouro</b> do evento:</label>
             <?php
             if(isset($coderro) && $coderro == 9){
