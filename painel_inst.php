@@ -105,7 +105,7 @@
   			<a href='painel_usuario.php' class='account'>Ajuda</a>
   			<br>
   			<br>
-  			<a href='logout_script.php' class='exit'>Sair</a>
+  			<a href='logout_script.php'><div class='exit'>Sair</div></a>
   		</div>
       <header class='cabecalhoindex' id='grid'>
         <div class='menudiv'>

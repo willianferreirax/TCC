@@ -155,7 +155,7 @@ foreach($result1 as $row){
       <a href='ajuda.php' class='account'>Ajuda</a>
       <br>
       <br>
-      <a href='logout_script.php' class='exit'>Sair</a>
+      <a href='logout_script.php'><div class='exit'>Sair</div></a>
     </div>
 
     <div class='statsdiv'>
