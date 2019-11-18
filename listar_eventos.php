@@ -130,7 +130,7 @@
       $result1=$res1->fetchAll();
 
       foreach($result1 as $row){
-        $select2='select * from evento where cod_evento=?';
+        $select2='select * from evento where cod_evento=? order by cod_evento desc';
         $res1=$conn->prepare($select2);
         $res1->bindParam(1,$row['cod_evento']);
         $res1->execute();
@@ -146,7 +146,7 @@
       $result2=$res2->fetchAll();
 
       foreach($result2 as $row){
-        $select3="select * from evento where CNPJ = ?";
+        $select3="select * from evento where CNPJ = ? order by cod_evento desc";
         $res2=$conn->prepare($select3);
         $res2->bindParam(1,$row['CNPJ']);
         $res2->execute();
@@ -156,7 +156,7 @@
     }
     else{
 
-      $res=$conn->prepare("select * from evento");
+      $res=$conn->prepare("select * from evento order by cod_evento desc");
       $res->execute();
 
     }
