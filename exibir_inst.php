@@ -4,9 +4,11 @@ if(isset($_GET['id'])){
   include "connection.php";
   $conn = conexao();
   $id = $_GET['id'];
+  $id = trim($id);
 
-  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = $id";
+  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = '$id'";
   $res = $conn->prepare($select);
+  
   $res->execute();
   $result=$res->fetchAll();
 
@@ -26,7 +28,7 @@ if(isset($_GET['id'])){
 else{
   header('Location:index.php');
 }
-
+print_r(is_int($id));
 
 ?>
 
