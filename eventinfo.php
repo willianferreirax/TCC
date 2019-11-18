@@ -407,7 +407,7 @@ if(!isset($_SESSION['instituicao'])){
             echo "<div class='erro'>Por gentileza,".$erro."</div><br>";
           }
           ?>
-          <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019'><center><hr></center><br>
+          <input class='inputcreate' id='createnome' type='text' name='nome' placeholder='Feira Tecnológica 2019' maxlength="80"><center><hr></center><br>
         </div>
 
         <div class="info1">
