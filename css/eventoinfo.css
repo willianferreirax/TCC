@@ -36,6 +36,10 @@
 	}
 
 	.exit:hover{
+		color: #ddd;
+	}
+
+	.exit:hover{
 		color: #dddddd;
 	}
 
