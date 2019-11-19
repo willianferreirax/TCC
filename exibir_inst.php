@@ -4,11 +4,9 @@ if(isset($_GET['id'])){
   include "connection.php";
   $conn = conexao();
   $id = $_GET['id'];
-  $id = trim($id);
 
-  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = '$id'";
+  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = $id";
   $res = $conn->prepare($select);
-  
   $res->execute();
   $result=$res->fetchAll();
 
@@ -28,8 +26,24 @@ if(isset($_GET['id'])){
 else{
   header('Location:index.php');
 }
-print_r(is_int($id));
-
+//eventos da instituicao
+$select='select * from evento where CNPJ = ?';
+	$res=$conn->prepare($select);
+	$res->bindParam(1,$_SESSION['instituicao'][3]);
+	$res->execute();
+	$eventos=$res->fetchAll();
+	
+	$atuais = array();
+	$passados = array();
+	foreach($eventos as $row){
+	
+		if(strtotime($row['data_termino'])>=date('Y-m-d')){
+			array_push($atuais,$row);
+		}
+		else{
+			array_push($passados,$row);
+		}
+	}
 ?>
 
 <!doctype html>
@@ -72,7 +86,7 @@ print_r(is_int($id));
       <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
       <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
+      <i class="fas fa-question fa-2x"></i><br>
       <hr>
     </div>
     <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -82,7 +96,7 @@ print_r(is_int($id));
         <a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
         <a href='listar_inst.php'><div class='b3'>Instituição</div></a>
         <a href='sobre.php'><div class='b4'>Sobre nós</div></a>
-        <a href='ajuda.php'><div class='b5'>Ajuda</div></a>
+        <a href='index.php'><div class='b5'>Ajuda</div></a>
       </div>
       <label for='chec' class='backdiv'></label>
     </nav>
@@ -110,10 +124,10 @@ print_r(is_int($id));
       <br>
       <a href='painel_usuario.php' class='account'>Configurações</a>
       <br>
-      <a href='ajuda.php' class='account'>Ajuda</a>
+      <a href='painel_usuario.php' class='account'>Ajuda</a>
       <br>
       <br>
-      <a href='logout_script.php'><div class='exit'>Sair</div></a>
+      <a href='logout_script.php' class='exit'>Sair</a>
     </div>
     <header class='cabecalhoindex' id='grid'>
       <div class='menudiv'>
@@ -187,7 +201,74 @@ print_r(is_int($id));
     echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
 
     echo "<div class='title'>Eventos atuais</div>";
+	
+	if(isset($atuais)){
+			foreach($atuais as $row){
+				$imagem ='upload/'.$row['banner_evento'];
+				echo "
+				<div class='elem1'>
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+			}
+		}
+	
+	?>
+	
+	<?php
+	
     echo "<div class='title'>Eventos passados</div>";
+	
+	if(isset($passados)){
+			foreach($passados as $row){
+				$imagem ='upload/'.$row['banner_evento'];
+				echo "
+				<div class='elem1'>
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+			}
+		}
     ?>
   </div>
 
