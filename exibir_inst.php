@@ -31,22 +31,23 @@ else{
 //eventos da instituicao
 $select='select * from evento where CNPJ = ?';
 	$res=$conn->prepare($select);
-	$res->bindParam(1,$_SESSION['instituicao'][3]);
+	$res->bindParam(1,$id);
 	$res->execute();
 	$eventos=$res->fetchAll();
 	
 	$atuais = array();
 	$passados = array();
 	foreach($eventos as $row){
-	
-		if(strtotime($row['data_termino'])>=date('Y-m-d')){
+		
+		if(strtotime($row['data_termino'])>=strtotime(date('Y-m-d'))){
+			
 			array_push($atuais,$row);
 		}
 		else{
 			array_push($passados,$row);
 		}
 	}
-
+	
 ?>
 
 <!doctype html>
@@ -61,6 +62,7 @@ $select='select * from evento where CNPJ = ?';
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_inst.css">
+  <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/exibir_inst.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
