@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
 
   $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = '$id'";
   $res = $conn->prepare($select);
-  
+
   $res->execute();
   $result=$res->fetchAll();
 
@@ -34,20 +34,20 @@ $select='select * from evento where CNPJ = ?';
 	$res->bindParam(1,$id);
 	$res->execute();
 	$eventos=$res->fetchAll();
-	
+
 	$atuais = array();
 	$passados = array();
 	foreach($eventos as $row){
-		
+
 		if(strtotime($row['data_termino'])>=strtotime(date('Y-m-d'))){
-			
+
 			array_push($atuais,$row);
 		}
 		else{
 			array_push($passados,$row);
 		}
 	}
-	
+
 ?>
 
 <!doctype html>
@@ -62,7 +62,6 @@ $select='select * from evento where CNPJ = ?';
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_inst.css">
-  <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/exibir_inst.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -214,14 +213,14 @@ $select='select * from evento where CNPJ = ?';
 						<a href='exibir_evento.php?id= $row[cod_evento]'>
 						  <div class='searchinfo'>
 							<img class='imagemres' src='$imagem'>
-								<div class=nomeres>
-								<h1>$row[nome_evento]</h1>
-								<div class=descres>
-								<h2>$row[descricao_evento]</h2>
+								<div class='nomeres'>
+								<h1 class='nomeres'>$row[nome_evento]</h1>
+								<div class='descres'>
+								<h2 class='descres'>$row[descricao_evento]</h2>
 								<div class='enderes'>
-								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-								<div class=precores>
-								<h2>";
+								<h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class='precores'>
+								<h2 class='precores'>";
 								if(isset($row['preco_evento'])){
 										  echo "R$$row[preco_evento]";
 										}
@@ -248,14 +247,14 @@ $select='select * from evento where CNPJ = ?';
 						<a href='exibir_evento.php?id= $row[cod_evento]'>
 						  <div class='searchinfo'>
 							<img class='imagemres' src='$imagem'>
-								<div class=nomeres>
-								<h1>$row[nome_evento]</h1>
-								<div class=descres>
-								<h2>$row[descricao_evento]</h2>
+								<div class='nomeres'>
+								<h1 class='nomeres'>$row[nome_evento]</h1>
+								<div class='descres'>
+								<h2 class='descres'>$row[descricao_evento]</h2>
 								<div class='enderes'>
-								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-								<div class=precores>
-								<h2>";
+								<h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class='precores'>
+								<h2 class='precores'>";
 								if(isset($row['preco_evento'])){
 										  echo "R$$row[preco_evento]";
 										}
@@ -270,7 +269,7 @@ $select='select * from evento where CNPJ = ?';
 					</div>";
 			}
 		}
-  
+
     ?>
   </div>
 
