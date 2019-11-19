@@ -4,9 +4,11 @@ if(isset($_GET['id'])){
   include "connection.php";
   $conn = conexao();
   $id = $_GET['id'];
+  $id = trim($id);
 
-  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = $id";
+  $select= "select nome_inst,endereco_inst,bairro_inst,cidade_inst,estado_inst,cep_inst,email_inst,telefone_inst, seguidores_qnt from faculdade where CNPJ = '$id'";
   $res = $conn->prepare($select);
+  
   $res->execute();
   $result=$res->fetchAll();
 
@@ -29,21 +31,23 @@ else{
 //eventos da instituicao
 $select='select * from evento where CNPJ = ?';
 	$res=$conn->prepare($select);
-	$res->bindParam(1,$_SESSION['instituicao'][3]);
+	$res->bindParam(1,$id);
 	$res->execute();
 	$eventos=$res->fetchAll();
 	
 	$atuais = array();
 	$passados = array();
 	foreach($eventos as $row){
-	
-		if(strtotime($row['data_termino'])>=date('Y-m-d')){
+		
+		if(strtotime($row['data_termino'])>=strtotime(date('Y-m-d'))){
+			
 			array_push($atuais,$row);
 		}
 		else{
 			array_push($passados,$row);
 		}
 	}
+	
 ?>
 
 <!doctype html>
@@ -58,6 +62,7 @@ $select='select * from evento where CNPJ = ?';
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_inst.css">
+  <link rel="stylesheet" href="css/search.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/exibir_inst.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -86,7 +91,7 @@ $select='select * from evento where CNPJ = ?';
       <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
       <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
       <a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <i class="fas fa-question fa-2x"></i><br>
+      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
       <hr>
     </div>
     <a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
@@ -96,7 +101,7 @@ $select='select * from evento where CNPJ = ?';
         <a href='listar_eventos.php'><div class='b2'>Eventos</div></a>
         <a href='listar_inst.php'><div class='b3'>Instituição</div></a>
         <a href='sobre.php'><div class='b4'>Sobre nós</div></a>
-        <a href='index.php'><div class='b5'>Ajuda</div></a>
+        <a href='ajuda.php'><div class='b5'>Ajuda</div></a>
       </div>
       <label for='chec' class='backdiv'></label>
     </nav>
@@ -124,10 +129,10 @@ $select='select * from evento where CNPJ = ?';
       <br>
       <a href='painel_usuario.php' class='account'>Configurações</a>
       <br>
-      <a href='painel_usuario.php' class='account'>Ajuda</a>
+      <a href='ajuda.php' class='account'>Ajuda</a>
       <br>
       <br>
-      <a href='logout_script.php' class='exit'>Sair</a>
+      <a href='logout_script.php'><div class='exit'>Sair</div></a>
     </div>
     <header class='cabecalhoindex' id='grid'>
       <div class='menudiv'>
@@ -201,8 +206,7 @@ $select='select * from evento where CNPJ = ?';
     echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
 
     echo "<div class='title'>Eventos atuais</div>";
-	
-	if(isset($atuais)){
+    if(isset($atuais)){
 			foreach($atuais as $row){
 				$imagem ='upload/'.$row['banner_evento'];
 				echo "
@@ -232,14 +236,11 @@ $select='select * from evento where CNPJ = ?';
 					</div>";
 			}
 		}
-	
 	?>
-	
+
 	<?php
-	
     echo "<div class='title'>Eventos passados</div>";
-	
-	if(isset($passados)){
+    if(isset($passados)){
 			foreach($passados as $row){
 				$imagem ='upload/'.$row['banner_evento'];
 				echo "
@@ -269,6 +270,7 @@ $select='select * from evento where CNPJ = ?';
 					</div>";
 			}
 		}
+  
     ?>
   </div>
 
