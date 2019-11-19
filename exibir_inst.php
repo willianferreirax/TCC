@@ -28,7 +28,24 @@ if(isset($_GET['id'])){
 else{
   header('Location:index.php');
 }
-print_r(is_int($id));
+//eventos da instituicao
+$select='select * from evento where CNPJ = ?';
+	$res=$conn->prepare($select);
+	$res->bindParam(1,$_SESSION['instituicao'][3]);
+	$res->execute();
+	$eventos=$res->fetchAll();
+	
+	$atuais = array();
+	$passados = array();
+	foreach($eventos as $row){
+	
+		if(strtotime($row['data_termino'])>=date('Y-m-d')){
+			array_push($atuais,$row);
+		}
+		else{
+			array_push($passados,$row);
+		}
+	}
 
 ?>
 
@@ -187,7 +204,71 @@ print_r(is_int($id));
     echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
 
     echo "<div class='title'>Eventos atuais</div>";
+    if(isset($atuais)){
+			foreach($atuais as $row){
+				$imagem ='upload/'.$row['banner_evento'];
+				echo "
+				<div class='elem1'>
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+			}
+		}
+	?>
+
+	<?php
     echo "<div class='title'>Eventos passados</div>";
+    if(isset($passados)){
+			foreach($passados as $row){
+				$imagem ='upload/'.$row['banner_evento'];
+				echo "
+				<div class='elem1'>
+						<a href='exibir_evento.php?id= $row[cod_evento]'>
+						  <div class='searchinfo'>
+							<img class='imagemres' src='$imagem'>
+								<div class=nomeres>
+								<h1>$row[nome_evento]</h1>
+								<div class=descres>
+								<h2>$row[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+								<div class=precores>
+								<h2>";
+								if(isset($row['preco_evento'])){
+										  echo "R$$row[preco_evento]";
+										}
+										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+										  echo "Grátis";
+										}
+										  echo"
+								</h2>
+								</div>
+						  </div>
+						</a>
+					</div>";
+			}
+		}
+  
     ?>
   </div>
 
