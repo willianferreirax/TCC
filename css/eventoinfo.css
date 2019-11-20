@@ -1,5 +1,14 @@
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.precocifra{
+		font-size: 1.3vw;
+		margin-right: 1vw;
+	}
+
+	#preco{
+		width: 15vw;
+	}
+
 	.lograd{
 		color: red;
 		font-size: 1.3vw;
@@ -167,6 +176,8 @@
 		top: 40.5vw;
 		left: 15vw;
 		font-size: 1vw;
+		border: none !important;
+
 	}
 
 	.imagevis{
@@ -177,7 +188,6 @@
 		object-fit: cover;
 		height: 37.5vw;
 		width: 100%;
-		border: none;
 		border-radius: 2vw 2vw 0 0;
 		background-position: center;
 		transition: box-shadow 0.5s;
@@ -202,7 +212,7 @@
 
 	#imageup{
 		width: 100%;
-		border: none;
+		border: none !important;
 	}
 
 	.labelintere{
@@ -756,6 +766,15 @@
 }
 
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+
+	.precocifra{
+		font-size: 5vw;
+		margin-right: 2vw;
+	}
+
+	#preco{
+		width: 30vw;
+	}
 
 	.lograd{
 		color: red;
@@ -1487,6 +1506,15 @@
 	}
 }
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+
+	.precocifra{
+		font-size: 5vw;
+		margin-right: 2vw;
+	}
+
+	#preco{
+		width: 30vw;
+	}
 
 	.lograd{
 		color: red;
