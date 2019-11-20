@@ -251,7 +251,6 @@
 		text-overflow: ellipsis !important;
 		overflow: hidden;
 		font-size: 1.1vw;
-		padding: 0.1vw 0 0 0;
 		opacity: 0.8;
 	}
 
@@ -260,7 +259,6 @@
 		text-overflow: ellipsis !important;
 		overflow: hidden;
 		font-size: 1.2vw;
-		padding: 0.5vw 0 0 0;
 		opacity: 0.7;
 	}
 
@@ -274,7 +272,7 @@
 		-webkit-transition: font-size 0.2s;
 		text-overflow: ellipsis !important;
 		overflow: hidden;
-		margin-left: 20vw;
+		margin-left: 12vw;
 	}
 
 	.searchinst{
@@ -282,10 +280,10 @@
     grid-template-columns: 25% 65% 10%;
     grid-template-areas: "imagemres" "nomeinst";*/
     width: 40vw;
-    height: 20vw;
+    height: 15vw;
     border-radius: 2vw;
     background-color: #0d0e0f;
-    margin: 1vw 0 0 0;
+    margin: 0 0 2vw 0;
   }
 
   .searchinfo{
@@ -507,18 +505,18 @@
 		-webkit-transition: font-size 0.2s;
 		text-overflow: ellipsis !important;
 		overflow: hidden;
-		margin-left: 40vw;
+		margin-left: 22vw;
 	}
 
 	.searchinst{
     /*display: grid;
     grid-template-columns: 25% 65% 10%;
     grid-template-areas: "imagemres" "nomeinst";*/
-    width: 60vw;
-    height: 40vw;
+    width: 70vw;
+    height: 27vw;
     border-radius: 2vw;
     background-color: #0d0e0f;
-    margin: 1vw 0 0 0;
+    margin: 0 0 2vw 10vw;
   }
 
 	.searchinfo{
@@ -683,7 +681,7 @@
 
 	.userbtn{
 		right: 3vh;
-		position: absolute !important;
+		position: fixed !important;
 		z-index: 6;
 		top: 3vh;
 	}
@@ -920,7 +918,7 @@
 		-webkit-transition: font-size 0.2s;
 		text-overflow: ellipsis !important;
 		overflow: hidden;
-		margin-left: 40vw;
+		margin-left: 20vw;
 	}
 
 	.searchinst{
@@ -928,7 +926,7 @@
     grid-template-columns: 25% 65% 10%;
     grid-template-areas: "imagemres" "nomeinst";*/
     width: 60vw;
-    height: 40vw;
+    height: 25vw;
     border-radius: 2vw;
     background-color: #0d0e0f;
     margin: 1vw 0 0 0;
@@ -1108,7 +1106,7 @@
 
 		.userbtn{
 			right: 3vh;
-			position: absolute !important;
+			position: fixed !important;
 			z-index: 6;
 			top: 2.3vh;
 		}
@@ -1153,7 +1151,7 @@
 		}
 
 		.menubtn{
-			position: absolute;
+			position: fixed;
 			left: 2vh;
 			cursor: pointer;
 			z-index: 7;

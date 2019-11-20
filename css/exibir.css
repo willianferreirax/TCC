@@ -36,6 +36,12 @@ a{
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
+	.avisocoment{
+		margin-left: 24vw;
+		opacity: 0.5;
+		font-size: 1.8vw;
+	}
+
 	.listcoment{
 		margin-bottom: 5vw;
 	}
@@ -649,6 +655,12 @@ a{
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.avisocoment{
+		margin-left: 18vw;
+		opacity: 0.7;
+		font-size: 2.8vw;
+	}
+
 	.listcoment{
 		margin-bottom: 5vw;
 	}
@@ -1202,6 +1214,12 @@ a{
 }
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+
+	.avisocoment{
+		margin-left: 16vw;
+		opacity: 0.7;
+		font-size: 2.8vw;
+	}
 
 	.listcoment{
 		margin-bottom: 5vw;
