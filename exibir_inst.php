@@ -30,23 +30,23 @@ else{
 }
 //eventos da instituicao
 $select='select * from evento where CNPJ = ?';
-	$res=$conn->prepare($select);
-	$res->bindParam(1,$id);
-	$res->execute();
-	$eventos=$res->fetchAll();
+$res=$conn->prepare($select);
+$res->bindParam(1,$id);
+$res->execute();
+$eventos=$res->fetchAll();
 
-	$atuais = array();
-	$passados = array();
-	foreach($eventos as $row){
+$atuais = array();
+$passados = array();
+foreach($eventos as $row){
 
-		if(strtotime($row['data_termino'])>=strtotime(date('Y-m-d'))){
+  if(strtotime($row['data_termino'])>=strtotime(date('Y-m-d'))){
 
-			array_push($atuais,$row);
-		}
-		else{
-			array_push($passados,$row);
-		}
-	}
+    array_push($atuais,$row);
+  }
+  else{
+    array_push($passados,$row);
+  }
+}
 
 ?>
 
@@ -58,7 +58,7 @@ $select='select * from evento where CNPJ = ?';
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
+  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Instituições, Faculdade, Escola, Empresa">
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/panel_inst.css">
@@ -205,70 +205,77 @@ $select='select * from evento where CNPJ = ?';
     echo"<div class='useremail'>CEP: ".$faculdade[5]."</div>";
 
     echo "<div class='title'>Eventos atuais</div>";
-    if(isset($atuais)){
-			foreach($atuais as $row){
-				$imagem ='upload/'.$row['banner_evento'];
-				echo "
-				<div class='elem1'>
-						<a href='exibir_evento.php?id= $row[cod_evento]'>
-						  <div class='searchinfo'>
-							<img class='imagemres' src='$imagem'>
-								<div class='nomeres'>
-								<h1 class='nomeres'>$row[nome_evento]</h1>
-								<div class='descres'>
-								<h2 class='descres'>$row[descricao_evento]</h2>
-								<div class='enderes'>
-								<h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-								<div class='precores'>
-								<h2 class='precores'>";
-								if(isset($row['preco_evento'])){
-										  echo "R$$row[preco_evento]";
-										}
-										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
-										  echo "Grátis";
-										}
-										  echo"
-								</h2>
-								</div>
-						  </div>
-						</a>
-					</div>";
-			}
-		}
-	?>
 
-	<?php
+    if(isset($atuais) && count($atuais) != 0){
+      foreach($atuais as $row){
+        $imagem ='upload/'.$row['banner_evento'];
+        echo "
+        <div class='elem1'>
+        <a href='exibir_evento.php?id= $row[cod_evento]'>
+        <div class='searchinfo'>
+        <img class='imagemres' src='$imagem'>
+        <div class='nomeres'>
+        <h1 class='nomeres'>$row[nome_evento]</h1>
+        <div class='descres'>
+        <h2 class='descres'>$row[descricao_evento]</h2>
+        <div class='enderes'>
+        <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+        <div class='precores'>
+        <h2 class='precores'>";
+        if(isset($row['preco_evento'])){
+          echo "R$$row[preco_evento]";
+        }
+        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+          echo "Grátis";
+        }
+        echo"
+        </h2>
+        </div>
+        </div>
+        </a>
+        </div>";
+      }
+    }
+    else{
+      echo "<h1 class='avisoevent'>Não há eventos criados ainda.</h1>";
+    }
+    ?>
+
+    <?php
     echo "<div class='title'>Eventos passados</div>";
-    if(isset($passados)){
-			foreach($passados as $row){
-				$imagem ='upload/'.$row['banner_evento'];
-				echo "
-				<div class='elem1'>
-						<a href='exibir_evento.php?id= $row[cod_evento]'>
-						  <div class='searchinfo'>
-							<img class='imagemres' src='$imagem'>
-								<div class='nomeres'>
-								<h1 class='nomeres'>$row[nome_evento]</h1>
-								<div class='descres'>
-								<h2 class='descres'>$row[descricao_evento]</h2>
-								<div class='enderes'>
-								<h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
-								<div class='precores'>
-								<h2 class='precores'>";
-								if(isset($row['preco_evento'])){
-										  echo "R$$row[preco_evento]";
-										}
-										else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
-										  echo "Grátis";
-										}
-										  echo"
-								</h2>
-								</div>
-						  </div>
-						</a>
-					</div>";
-			}
-		}
+    if(isset($passados) && count($passados) != 0){
+      foreach($passados as $row){
+        $imagem ='upload/'.$row['banner_evento'];
+        echo "
+        <div class='elem1'>
+        <a href='exibir_evento.php?id= $row[cod_evento]'>
+        <div class='searchinfo'>
+        <img class='imagemres' src='$imagem'>
+        <div class='nomeres'>
+        <h1 class='nomeres'>$row[nome_evento]</h1>
+        <div class='descres'>
+        <h2 class='descres'>$row[descricao_evento]</h2>
+        <div class='enderes'>
+        <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
+        <div class='precores'>
+        <h2 class='precores'>";
+        if(isset($row['preco_evento'])){
+          echo "R$$row[preco_evento]";
+        }
+        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+          echo "Grátis";
+        }
+        echo"
+        </h2>
+        </div>
+        </div>
+        </a>
+        </div>";
+      }
+    }
+    else{
+      echo "<h1 class='avisoevent'>Essa instituição não promoveu nenhum evento.</h1>";
+    }
 
     ?>
   </div>
