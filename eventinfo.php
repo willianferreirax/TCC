@@ -459,8 +459,8 @@ if(!isset($_SESSION['instituicao'])){
             ?>
             <input class='inputcreate' type='time' name='timefinal'>
 
-            <label class='labelint'>Qual o <b>preço</b> do evento?</label>
-            <input class='inputcreate' type='tel' id='preco' name='preco' placeholder="12,00">
+            <label class='labelint'>Qual o <b>preço</b> do evento?</label><br>
+            <label for='preco' class='precocifra'>R$</label><input class='inputcreate' type='tel' id='preco' name='preco' placeholder="R$ 12,00" onkeypress="mascara('preco' , window.event.keyCode , 'document.criareventoform.preco'); return blokletras(event);">
 
           </div>
 
