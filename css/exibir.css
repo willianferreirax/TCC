@@ -37,7 +37,7 @@ a{
 @media only screen and (min-width: 700px) and (orientation: landscape) {
 
 	.avisocoment{
-		margin-left: 21vw;
+		margin-left: 24vw;
 		opacity: 0.5;
 		font-size: 1.8vw;
 	}
@@ -656,7 +656,7 @@ a{
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
 	.avisocoment{
-		margin-left: 21vw;
+		margin-left: 18vw;
 		opacity: 0.7;
 		font-size: 2.8vw;
 	}
