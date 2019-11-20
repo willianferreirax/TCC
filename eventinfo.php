@@ -13,7 +13,7 @@ if(!isset($_SESSION['instituicao'])){
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Criar evento">
+  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Criar evento, Palestra, Conhecimento, Experiência">
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/eventoinfo.css">
@@ -53,6 +53,7 @@ if(!isset($_SESSION['instituicao'])){
     }
   }
   </script>
+
 </head>
 <body class="bgindex">
   <center>
@@ -265,10 +266,6 @@ if(!isset($_SESSION['instituicao'])){
         $stmt = $conn->prepare($sql);
 
         $preco = $_POST["preco"];
-        if($preco == "0,00" || $preco == "" || $preco == " " || $preco == "0" || $preco == "0.00" || $preco == "0.0" || $preco == "0.00"){
-          $preco = "Grátis";
-        }
-
 
         //Atrelando os dados às tabelas
         $stmt->bindValue(1, $_POST["nome"]);
@@ -463,7 +460,7 @@ if(!isset($_SESSION['instituicao'])){
             <input class='inputcreate' type='time' name='timefinal'>
 
             <label class='labelint'>Qual o <b>preço</b> do evento?</label>
-            <input class='inputcreate' type='number' name='preco' placeholder="12,00">
+            <input class='inputcreate' type='tel' id='preco' name='preco' placeholder="12,00">
 
           </div>
 
@@ -545,7 +542,7 @@ if(!isset($_SESSION['instituicao'])){
               echo "<div class='lograd'>Por gentileza,".$erro."</div><br>";
             }
             ?>
-            <input class='inputcreate' type='text' maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.criareventoform.cep'); return blokletras(event);">
+            <input class='inputcreate' type='tel' maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.criareventoform.cep'); return blokletras(event);">
           </div>
         </div>
         <center>
@@ -627,5 +624,13 @@ if(!isset($_SESSION['instituicao'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
+<script src="js/jquery.mask.js"></script>
+
+<script>
+  $(document).ready(function(){
+    $('#preco').mask('000.000.000.000.000,00', {reverse: true});
+  })
+</script>
 
 </html>
