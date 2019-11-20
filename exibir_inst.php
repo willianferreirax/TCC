@@ -126,7 +126,7 @@ foreach($eventos as $row){
       }
       ?>
       <br>
-      <a href='painel_usuario.php' class='account'>Configurações</a>
+      <a href='config.php' class='account'>Configurações</a>
       <br>
       <a href='ajuda.php' class='account'>Ajuda</a>
       <br>
