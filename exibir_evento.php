@@ -28,6 +28,7 @@ if(isset($_GET['id'])){
     array_push($evento,$row['comp_qnt']);
     array_push($evento,$row['interesse_qnt']);
     array_push($evento,$row['avaliacoes_qnt']);
+    array_push($evento,$row['detalhes_evento']);
   }
   $comments= "select * from comentario where cod_evento = ? order by cod_comentario desc";
   $res = $conn->prepare($comments);
@@ -70,7 +71,7 @@ else{
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
+  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Palestras, Conhecimento, Experiência, Currículo">
   <meta name="robots" content="Index, follow">
   <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/exibir.css">
@@ -277,6 +278,7 @@ else{
 
           <h1 class="nome"> <?php echo $evento[0];?></h1><br>
           <h1 class='desceve'> <?php echo $evento[11];?></h1></br>
+          <h1 class='desceve'> <?php echo $evento[16];?></h1></br>
           <h1 class='dataeve'> Período: <?php echo $evento[2] . ", ". $evento[4] . " até " . $evento[2] . ", ".$evento[5];?></h1></br>
           <h1 class='preco'> Preço: <?php echo $evento[12]; ?></h1><br>
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
@@ -285,6 +287,7 @@ else{
           <div class='listcoment'>
             <?php
             $i=0;
+            if(isset($comments) && count($comments) != 0){
             foreach($comments as $row){
 
               if(isset($_SESSION['usuario']) && $nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
@@ -313,6 +316,10 @@ else{
               }
               $i++;
             }
+          }
+          else{
+            echo "<h1 class='avisocoment'>Ainda não há comentários nesse evento.</h1>";
+          }
             echo "</div><small class='aviso'>O FRESHR <b>não</b> se responsabiliza pelos comentários publicados, sendo <b>exclusiva</b> responsabilidade dos autores.</small>";
             ?>
 
