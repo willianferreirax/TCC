@@ -521,7 +521,7 @@
 
 	.searchinfo{
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 47% 29%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -587,8 +587,8 @@
 	}
 
   .precores{
-    padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    padding: 1vw 3vw 1vw 1vw;
+    text-align: right;
     font-size: 2.5vw;
   }
 
@@ -935,7 +935,7 @@
 	.searchinfo{
 		margin-bottom: 2vw;
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 44% 31%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 98vw;
     height: 40vw;
@@ -999,8 +999,8 @@
 	}
 
   .precores{
-    padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    padding: 1vw 5vw 1vw 1vw;
+    text-align: right;
     font-size: 3vw;
   }
 
