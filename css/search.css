@@ -288,7 +288,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 40% 53% 7%;
+    grid-template-columns: 40% 43% 10%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 89vw;
     height: 15vw;
@@ -353,7 +353,7 @@
 
   .precores{
     padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    text-align: right;
     font-size: 1.5vw;
   }
 
