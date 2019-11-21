@@ -203,17 +203,13 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
     if(isset($valido) && $valido ==true){
       $cnpj=$_POST['cnpj'];
       $email=$_POST['email'];
-      $result = $conn->prepare("select * from faculdade where CNPJ = '{$cnpj}' or email_inst = '{$email}'"); //Comando de seleção que verifica se há um cnpj igual no banco de dados
+      $login=$_POST['login'];
+
+      $result = $conn->prepare("select * from faculdade where CNPJ = '{$cnpj}' or email_inst = '{$email}' or login_inst = '{$login}'"); //Comando de seleção que verifica se há um cnpj igual no banco de dados
       $result->execute(); //Executa o comando
 
       if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um cnpj igual cadastrado
-        $script = "
-        <script type='text/javascript'>
-        alert('Email ou CNPJ já está cadastrados');
-        </script>";
-        echo $script;
-        header('Location: cadastro_inst.php'); //Direciona o usuário para a página de login
-        exit();
+        echo "<center><div class='erro'>Pode ser que o login, email ou o CNPJ já estejam cadastrados. Por favor, insira outro e tente novamente.</div></center><br>";
       }
       else{
 
@@ -281,13 +277,13 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
       <label><b>Endereço de e-mail:</b></label>
       <br>
-      <input type="text" name="email" placeholder="exemplo@exemplo.com">
+      <input type="email" name="email" placeholder="exemplo@exemplo.com">
       <br>
       <br>
 
       <label><b>Telefone:</b></label>
       <br>
-      <input type="text" name="telefone" maxlength='15' placeholder="(99) 99999-9999" onkeypress="mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')"> <br><small>*(com DDD)</small>
+      <input type="tel" name="telefone" maxlength='15' placeholder="(99) 99999-9999" onkeypress="mascara('telefone', window.event.keyCode, 'document.cadastro_uso.telefone')"> <br><small>*(com DDD)</small>
       <br>
       <br>
 
@@ -363,13 +359,13 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
 
       <label><b>CEP:</b></label>
       <br>
-     <input type="text" maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.cadastro_uso.cep'); return blokletras(event);">
+     <input type="tel" maxlength="9" size="10" name="cep" title="99999-999" onkeypress="mascara('cep' , window.event.keyCode , 'document.cadastro_uso.cep'); return blokletras(event);">
       <br>
       <br>
 
       <label><b>CNPJ:</b></label>
       <br>
-      <input type="text" name="cnpj" maxlength="18" placeholder="99.999.999.9999-99" onkeypress="mascara('cnpj' , window.event.keyCode , 'document.cadastro_uso.cnpj'); return blokletras(event);">
+      <input type="tel" name="cnpj" maxlength="18" placeholder="99.999.999.9999-99" onkeypress="mascara('cnpj' , window.event.keyCode , 'document.cadastro_uso.cnpj'); return blokletras(event);">
       <br>
       <br>
       <small class='aindan'>Já está cadastrado?<br> <a href='login.php'>Clique aqui para acessar sua conta!</a></small>
