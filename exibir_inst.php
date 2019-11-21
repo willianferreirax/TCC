@@ -222,10 +222,11 @@ foreach($eventos as $row){
         <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
         <div class='precores'>
         <h2 class='precores'>";
-        if(isset($row['preco_evento'])){
+        $precoval = $row['preco_evento'];
+        if(isset($row['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
           echo "R$$row[preco_evento]";
         }
-        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+        else{
           echo "Grátis";
         }
         echo"
@@ -259,10 +260,11 @@ foreach($eventos as $row){
         <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
         <div class='precores'>
         <h2 class='precores'>";
-        if(isset($row['preco_evento'])){
+        $precoval = $row['preco_evento'];
+        if(isset($row['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
           echo "R$$row[preco_evento]";
         }
-        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+        else{
           echo "Grátis";
         }
         echo"
