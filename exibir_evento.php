@@ -280,7 +280,14 @@ else{
           <h1 class='desceve'> <?php echo $evento[11];?></h1></br>
           <h1 class='desceve'> <?php echo $evento[16];?></h1></br>
           <h1 class='dataeve'> Período: <?php echo $evento[2] . ", ". $evento[4] . " até " . $evento[2] . ", ".$evento[5];?></h1></br>
-          <h1 class='preco'> Preço: <?php echo $evento[12]; ?></h1><br>
+          <h1 class='preco'> Preço: <?php
+          if(isset($evento[12]) && $evento[12] != "0" && $evento[12] != "0,0" && $evento[12] != "0,00"){
+            echo "RS ".$evento[12];
+          }
+          else{
+            echo "Grátis";
+          }
+          ?></h1><br>
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
           <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
           <h1 class='comenttitle'>Comentários</h1><br>
@@ -288,38 +295,38 @@ else{
             <?php
             $i=0;
             if(isset($comments) && count($comments) != 0){
-            foreach($comments as $row){
+              foreach($comments as $row){
 
-              if(isset($_SESSION['usuario']) && $nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
-                echo"
-                <div class='comentbox'>
-                <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
-                ($sobrenome[$i])-1))."</h1>
-                <div class='comenttype'>
-                <h1 class='autorcoment'>Você</h1>
-                <h1 class='textcoment'>$row[comentario]</h1>
-                </div>
-                </div>
-                ";
+                if(isset($_SESSION['usuario']) && $nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
+                  echo"
+                  <div class='comentbox'>
+                  <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
+                  ($sobrenome[$i])-1))."</h1>
+                  <div class='comenttype'>
+                  <h1 class='autorcoment'>Você</h1>
+                  <h1 class='textcoment'>$row[comentario]</h1>
+                  </div>
+                  </div>
+                  ";
+                }
+                else{
+                  echo"
+                  <div class='comentbox'>
+                  <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
+                  ($sobrenome[$i])-1))."</h1>
+                  <div class='comenttype'>
+                  <h1 class='autorcoment'>$nome[$i] $sobrenome[$i]</h1>
+                  <h1 class='textcoment'>$row[comentario]</h1>
+                  </div>
+                  </div>
+                  ";
+                }
+                $i++;
               }
-              else{
-                echo"
-                <div class='comentbox'>
-                <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
-                ($sobrenome[$i])-1))."</h1>
-                <div class='comenttype'>
-                <h1 class='autorcoment'>$nome[$i] $sobrenome[$i]</h1>
-                <h1 class='textcoment'>$row[comentario]</h1>
-                </div>
-                </div>
-                ";
-              }
-              $i++;
             }
-          }
-          else{
-            echo "<h1 class='avisocoment'>Ainda não há comentários nesse evento.</h1>";
-          }
+            else{
+              echo "<h1 class='avisocoment'>Ainda não há comentários nesse evento.</h1>";
+            }
             echo "</div><small class='aviso'>O FRESHR <b>não</b> se responsabiliza pelos comentários publicados, sendo <b>exclusiva</b> responsabilidade dos autores.</small>";
             ?>
 
