@@ -13,9 +13,9 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Cadastro">
-  <meta name="robots" content="cadastro_usuario, index, follow">
-  <meta name="author" content="Iago Pereira, Lucas Campanelli, Renato Melo, Willian Ferreira">
+  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Cadastro, Feiras, Conhecimento, Currículo">
+  <meta name="robots" content="Index, follow">
+  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/auth.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -127,13 +127,7 @@ if(isset($_SESSION['instituicao']) || isset($_SESSION['usuario'])){
         $result->execute(); //Executa o comando
 
         if($result->fetchColumn() > 0){ //Se retornar mais de 0 resultado, existe um email igual cadastrado
-          $script = "
-          <script type='text/javascript'>
-          alert('Email ou login já foram cadastrados.');
-          </script>";
-          echo $script;
-          header('Location: cadastro_usuario.php'); //Direciona o usuário para a página de login
-          exit();
+          echo "<div class='erro'>O e-mail ou login inserido já existe. Por favor, insira outro e tente novamente.</div><br>";
         }
         else{ //Se não há um email cadastrado, realiza o cadastro
           $nome1 = $_POST["nome"];
