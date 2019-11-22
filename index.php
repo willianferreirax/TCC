@@ -139,16 +139,16 @@
 				</div>
 			</div>
 		</header>
-		<div class='elem1'>
+		<div class='statsdiv'>
 			<h1 class='logoindex'>FRESHR</h1>
 			<h1 class='slogan'>Uma visão de prosperidade para a sua carreira</h1>
 			<h1 class='descricao' name='desc' id='desc'>Busque eventos, palestras e feiras profissionais ao seu alcance. <br>Qualifique-se!</h1>
-			<div class='btindex'>
+			<div class='statsdiv'>
 				<?php
 				if(isset($_SESSION['usuario']))
 				{	
 					if(isset($rescnpj) && $rescnpj){
-						echo "<h1 class='recomend'>Eventos que você pode se interessar</h1><br>";
+						echo "<h1 class='recomend'>Eventos que você pode se interessar</h1>";
 						foreach($rescnpj as $row){
 							$select= "select max(cod_evento) from evento where CNPJ = '{$row['CNPJ']}'";
 							$res = $conn->prepare($select);
@@ -160,7 +160,33 @@
 								$res->execute();
 								$result=$res->fetchAll();
 								foreach($result as $list){
-									echo $list['nome_evento'];
+									$imagem ='upload/'.$list['banner_evento'];
+									echo "
+									<div class='elem1'><center>
+									<a href='exibir_evento.php?id= $list[cod_evento]'>
+									<div class='searchinfo'>
+									<img class='imagemres' src='$imagem'>
+									<div class='nomeres'>
+									<h1 class='nomeres'>$list[nome_evento]</h1>
+									<div class='descres'>
+									<h2 class='descres'>$list[descricao_evento]</h2>
+									<div class='enderes'>
+									<h2 class='enderes'>$list[endereco_evento] | $list[cidade_evento], $list[estado_evento]</div></div></div>
+									<div class='precores'>
+									<h2 class='precores'>";
+									$precoval = $list['preco_evento'];
+									if(isset($list['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
+									  echo "R$$list[preco_evento]";
+									}
+									else{
+									  echo "Grátis";
+									}
+									echo"
+									</h2>
+									</div>
+									</div>
+									</a></center>
+									</div>";
 								}
 							}										
 						}
