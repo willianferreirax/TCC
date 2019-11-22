@@ -1,3 +1,16 @@
+<?php
+	session_start();
+	include "connection.php";
+	$conn = conexao();
+	
+	$select= "select CNPJ from seguir where cod_usuario = '{$_SESSION['usuario'][3]}'";
+	$cnpj = $conn->prepare($select);
+
+	$cnpj->execute();
+	$rescnpj=$cnpj->fetchAll();
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -55,7 +68,6 @@
 		</nav>
 		<div class='dropdown'>
 			<?php
-			session_start();
 			if(isset($_SESSION['usuario']))
 			{
 				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
@@ -134,7 +146,25 @@
 			<div class='btindex'>
 				<?php
 				if(isset($_SESSION['usuario']))
-				{
+				{	
+					if(isset($rescnpj) && $rescnpj){
+						echo "<h1 class='recomend'>Eventos que você pode se interessar</h1><br>";
+						foreach($rescnpj as $row){
+							$select= "select max(cod_evento) from evento where CNPJ = '{$row['CNPJ']}'";
+							$res = $conn->prepare($select);
+							$res->execute();
+							$ultcod=$res->fetchAll();
+							foreach($ultcod as $listar){
+								$select= "select * from evento where cod_evento = {$listar['max(cod_evento)']}";
+								$res = $conn->prepare($select);
+								$res->execute();
+								$result=$res->fetchAll();
+								foreach($result as $list){
+									echo $list['nome_evento'];
+								}
+							}										
+						}
+					}
 					echo "<center>".$_SESSION['usuario'][0]." conheça mais sobre a sua futura carreira.</center>";
 				}
 				else if(isset($_SESSION['instituicao']))
