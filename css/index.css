@@ -30,7 +30,85 @@
 /*Estilos para a página index*/
 /* CSS para os desktops, laptops e tablets*/
 @media only screen and (min-width: 700px) and (orientation: landscape) {
+	
+	.statsdiv{
+		margin-top: 10vw;
+	}
+	
+	.searchinfo{
+		display: grid;
+		grid-template-columns: 40% 39% 20%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 89vw;
+		height: 15vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+		margin-left: 5vw;
+	  }
 
+	  .searchinfo:hover {
+		background-color: #0f1112;
+	  }
+
+	  .searchinfo:hover .imagemres{
+		opacity: 0.7;
+	  }
+
+	  .searchinfo:hover .nomeres{
+		font-size: 2.4vw;
+	  }
+
+	  .imagemres{
+		width: 35.595vw;
+		height: 15vw;
+		text-align: left;
+		margin: 0 0 0 0;
+		border-radius: 2vw 0 0 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	  }
+
+	.nomeres{
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 0.4vw 1vw 0vw 0.4vw;
+		font-size: 2.5vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	}
+	
+	.descres{
+		font-size: 1.4vw;
+		padding: 0vw 0 0 0.2vw;
+		white-space: normal;
+	}
+
+	.enderes{
+		opacity: 0.7;
+		font-size: 1.2vw;
+		padding-left: 0.1vw;
+	}
+
+	.precores{
+		padding: 0.7vw 1vw 1vw 0vw;
+		text-align: right;
+		font-size: 1.7vw;
+	}
+	
+	.elem1{
+		padding-bottom: 1vw;
+		text-align: left;
+	}
+	
+	.recomend{
+		font-size: 2vw;
+	}
+	
 	.exit{
 		width: 100%;
 		height: 2vw;
@@ -57,10 +135,10 @@
 		margin-top: 2vw;
 		padding-top: 7vh;
 		background: url(../images/circle.png) center center/8vw no-repeat;
-    width: 26vh;
-    height: 18vh;
-    vertical-align: middle;
-    color: black;
+		width: 26vh;
+		height: 18vh;
+		vertical-align: middle;
+		color: black;
 		text-align: center;
 		font-size: 2vw;
 	}
@@ -343,7 +421,87 @@
 
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
+	
+	.statsdiv{
+		padding-top: 35vw;
+		margin-left: 5.5vw;
+	}
+	
+	.searchinfo{
+		display: grid;
+		grid-template-columns: 25% 45% 30%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 86vw;
+		height: 30vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+		margin-bottom: 5vw;
+	  }
 
+	  .searchinfo:hover {
+		background-color: #0f1112;
+	  }
+
+	  .searchinfo:hover .imagemres{
+		opacity: 0.7;
+	  }
+
+	  .searchinfo:hover .nomeres{
+		font-size: 3.2vw;
+	  }
+
+	  .imagemres{
+		width: 40vw;
+		height: 30vw;
+		text-align: left;
+		margin: 0 12vw 0 0;
+		border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	  }
+
+	  .nomeres{
+		margin-left: 9vw;
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 1vw 1vw 1vw 1vw;
+		font-size: 3vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	  }
+
+	  .descres{
+		font-size: 2vw;
+		padding: 0vw 0 0 5vw;
+		white-space: normal;
+	  }
+
+	  .enderes{
+		font-size: 2vw;
+		padding-left: 2.5vw;
+		opacity: 0.7;
+	  }
+
+	  .precores{
+		padding: 1vw 1vw 1vw 0vw;
+		text-align: right;
+		font-size: 2.5vw;
+	  }
+
+	  .elem1{
+		padding-bottom: 3vh !important;
+	  }
+	
+	.recomend{
+		font-size: 4vw;
+		font-weight: 700;
+	}
+	
 	.exit{
 		color: #822828;
 		text-decoration: none !important;
@@ -632,7 +790,87 @@
 }
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
+	
+	.statsdiv{
+		margin-top: 33vw;
+	}
+	
+	.searchinfo{
+		display: grid;
+		grid-template-columns: 25% 45% 30%;
+		grid-template-areas: "imagemres" "nomeres" "precores";
+		width: 86vw;
+		height: 30vw;
+		border-radius: 2vw;
+		background-color: #0d0e0f;
+		margin-left: 3vw;
+		margin-bottom: 10vw;
+	  }
 
+	  .searchinfo:hover {
+		background-color: #0f1112;
+	  }
+
+	  .searchinfo:hover .imagemres{
+		opacity: 0.7;
+	  }
+
+	  .searchinfo:hover .nomeres{
+		font-size: 3.2vw;
+	  }
+
+	  .imagemres{
+		width: 40vw;
+		height: 30vw;
+		text-align: left;
+		margin: 0 12vw 0 0;
+		border-radius: 2vw;
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		object-fit: cover;
+	  }
+
+	  .nomeres{
+		margin-left: 9vw;
+		display: block;
+		max-width: 57vw;
+		text-align: left;
+		padding: 1vw 1vw 0vw 1vw;
+		font-size: 3vw;
+		transition: font-size 0.2s;
+		-webkit-transition: font-size 0.2s;
+		white-space: nowrap;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
+	  }
+
+	  .descres{
+		font-size: 2vw;
+		padding-left: 5vw;
+		white-space: normal;
+	  }
+
+	  .enderes{
+		font-size: 2vw;
+		padding-left: 2.5vw;
+		opacity: 0.7;
+	  }
+
+	  .precores{
+		padding: 1vw 1vw 1vw 0vw;
+		text-align: right;
+		font-size: 2.5vw;
+	  }
+
+	  .elem1{
+	  }
+	
+	.recomend{
+		margin-bottom: 0 !important;
+		font-size: 3.5vw;
+		font-weight: 700;
+	}
+	
 	#iconenviar{
 		display: none;
 	}
