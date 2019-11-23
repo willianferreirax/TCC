@@ -520,7 +520,7 @@
 
 	.searchinfo{
     display: grid;
-    grid-template-columns: 25% 47% 29%;
+    grid-template-columns: 25% 60% 10%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -539,7 +539,7 @@
   }
 
 	.searchinfo:hover .nomeres{
-		font-size: 3.2vw;
+		font-size: 2.5vw;
   }
 
   .imagemres{
@@ -559,7 +559,7 @@
 		max-width: 57vw;
 		text-align: left;
 		padding: 1vw 1vw 1vw 1vw;
-		font-size: 3vw;
+		font-size: 2.7vw;
 		transition: font-size 0.2s;
 		-webkit-transition: font-size 0.2s;
 		white-space: nowrap;
@@ -575,7 +575,7 @@
 	}
 
   .descres{
-    font-size: 2vw;
+    font-size: 1.7vw;
 		padding: 0.5vw 0 0 0;
 		white-space: normal;
   }
@@ -588,7 +588,7 @@
   .precores{
     padding: 1vw 3vw 1vw 1vw;
     text-align: right;
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 
 	.exit{
@@ -934,7 +934,7 @@
 	.searchinfo{
 		margin-bottom: 2vw;
     display: grid;
-    grid-template-columns: 25% 44% 31%;
+    grid-template-columns: 25% 58% 12%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 98vw;
     height: 40vw;
@@ -987,7 +987,7 @@
 	}
 
   .descres{
-		font-size: 2.5vw;
+		font-size: 2.2vw;
 		padding: 0.5vw 0 0 0;
 		white-space: normal;
   }
@@ -995,12 +995,14 @@
 	.enderes{
 		padding: 1vw 0 0 0;
 		opacity: 0.7;
+		text-overflow: ellipsis !important;
+		overflow: hidden;
 	}
 
   .precores{
     padding: 1vw 5vw 1vw 1vw;
     text-align: right;
-    font-size: 3vw;
+    font-size: 2.5vw;
   }
 
 
