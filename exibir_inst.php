@@ -184,7 +184,7 @@ foreach($eventos as $row){
     echo"<div class='username'>".$faculdade[0]."</div>";
 
     if(isset($_SESSION['usuario'])){
-      $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+      $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = '$id'");
       $result->execute();
 
       if($result->fetchColumn() > 0){
@@ -222,10 +222,11 @@ foreach($eventos as $row){
         <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
         <div class='precores'>
         <h2 class='precores'>";
-        if(isset($row['preco_evento'])){
+        $precoval = $row['preco_evento'];
+        if(isset($row['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
           echo "R$$row[preco_evento]";
         }
-        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+        else{
           echo "Grátis";
         }
         echo"
@@ -259,10 +260,11 @@ foreach($eventos as $row){
         <h2 class='enderes'>$row[endereco_evento] | $row[cidade_evento], $row[estado_evento]</div></div></div>
         <div class='precores'>
         <h2 class='precores'>";
-        if(isset($row['preco_evento'])){
+        $precoval = $row['preco_evento'];
+        if(isset($row['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
           echo "R$$row[preco_evento]";
         }
-        else if($row['preco_evento'] == "" || $row['preco_evento'] == "0" || $row['preco_evento'] == null){
+        else{
           echo "Grátis";
         }
         echo"
@@ -287,14 +289,14 @@ foreach($eventos as $row){
 
 <?php
 if(isset($_REQUEST["seguir"]) && $_REQUEST["seguir"] == true) {
-  $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+  $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = '$id'");
   $result->execute();
 
   if($result->fetchColumn() > 0){
 
     $rs = $conn->prepare("DELETE FROM seguir WHERE cod_usuario={$_SESSION['usuario'][3]} AND CNPJ='$id'");
     $rs->execute();
-    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt-1 WHERE CNPJ=$id");
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt-1 WHERE CNPJ='$id'");
     $rs->execute();
     $script = "<script language=javascript>
     location.href='exibir_inst.php?id=".$id."';
@@ -306,7 +308,7 @@ if(isset($_REQUEST["seguir"]) && $_REQUEST["seguir"] == true) {
     $sql = "INSERT INTO seguir (cod_usuario, CNPJ) VALUES ({$_SESSION['usuario'][3]}, '$id')";
     $rs = $conn->prepare($sql);
     $rs->execute();
-    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt+1 WHERE CNPJ=$id");
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt+1 WHERE CNPJ='$id'");
     $rs->execute();
     $script = "<script language=javascript>
     location.href='exibir_inst.php?id=".$id."';

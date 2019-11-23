@@ -47,21 +47,21 @@ a{
 	}
 
 	.iconcreatecoment{
-		padding-top: 4vw;
-		background-color: white;
+		padding-top: 3.6vw;
+		background-color: #eee;
 		border-radius: 25vw;
 		width: 12vw;
-		margin-left: 1vh;
+		margin-left: 2vh;
 		height: 12vw;
 		vertical-align: middle;
 		color: black;
 		text-align: center;
-		font-size: 4vh;
+		font-size: 4vw;
 	}
 
 	.comentcreate{
 		display: grid;
-		grid-template-columns: 15% 85%;
+		grid-template-columns: 18% 82%;
 		grid-template-areas: "imagemres" "nomeres";
 		border-radius: 2vw;
 		margin: 1vw 0 0 0;
@@ -69,7 +69,8 @@ a{
 
 	.aviso{
 		font-size: 1vw;
-		margin-left: 15vw;
+		margin-left: 16vw;
+		opacity: 0.5;
 	}
 
 	.textcoment{
@@ -114,7 +115,7 @@ a{
 	}
 
 	textarea{
-		background-color: #222224;
+		background-color: #18191b;
 		border-radius: 2vw 0 2vw 0;
 		padding: 1vw 1vw 0 1vw;
 		text-indent: 4vw;
@@ -129,8 +130,9 @@ a{
 	.enviarcoment{
 		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
 		width: 15vw;
-		margin-left: 34vw;
-		margin-bottom: 2vw;
+		position: relative;
+		bottom: 2.5vw;
+		left: 36vw;
 		border-radius: 20vh;
 		border: none;
 		color: white;
@@ -140,7 +142,7 @@ a{
 	}
 
 	.comenttitle{
-		margin-left: 34vw;
+		margin-left: 35.5vw;
 		font-size: 2.5vw;
 	}
 
@@ -241,7 +243,7 @@ a{
 		font-size: 1.4vw;
 		font-weight: 400;
 		height: 4vw;
-		margin-left: 34vw;
+		margin-left: 36vw;
 
 	}
 
@@ -470,9 +472,8 @@ a{
 	}
 
 	.elem1{
-		padding-top: 8vw!important;
-		/* text-align: left; */
-		margin-left: 8.5vh;
+		padding-top: 11vh !important;
+		padding-left: 10vh;
 	}
 
 	.searchinfo:hover {

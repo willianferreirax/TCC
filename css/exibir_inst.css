@@ -13,7 +13,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 40% 53% 7%;
+    grid-template-columns: 40% 39% 20%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 89vw;
     height: 15vw;
@@ -77,8 +77,8 @@
   }
 
   .precores{
-    padding: 0.5vw 2vw 1vw 0vw;
-    text-align: left;
+    padding: 0.7vw 1vw 1vw 0vw;
+    text-align: right;
     font-size: 1.7vw;
   }
 
@@ -141,7 +141,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 45% 30%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -207,7 +207,7 @@
 
   .precores{
     padding: 1vw 1vw 1vw 0vw;
-    text-align: left;
+    text-align: right;
     font-size: 2.5vw;
   }
 
@@ -267,7 +267,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 45% 30%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -335,7 +335,7 @@
 
   .precores{
     padding: 1vw 1vw 1vw 0vw;
-    text-align: left;
+    text-align: right;
     font-size: 2.5vw;
   }
 

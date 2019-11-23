@@ -231,8 +231,7 @@
 
 	.elem1{
 		padding-top: 11vh !important;
-    padding-left: 15vh;
-    text-align: left;
+    padding-left: 10vh;
 	}
 
 	.searchinst:hover {
@@ -288,13 +287,13 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 40% 53% 7%;
+    grid-template-columns: 40% 43% 10%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 89vw;
     height: 15vw;
     border-radius: 2vw;
     background-color: #0d0e0f;
-    margin: 1vw 0 0 0;
+    margin-top: 1vw;
   }
 
 	.searchinfo:hover {
@@ -353,7 +352,7 @@
 
   .precores{
     padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    text-align: right;
     font-size: 1.5vw;
   }
 
@@ -521,7 +520,7 @@
 
 	.searchinfo{
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 47% 29%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -587,8 +586,8 @@
 	}
 
   .precores{
-    padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    padding: 1vw 3vw 1vw 1vw;
+    text-align: right;
     font-size: 2.5vw;
   }
 
@@ -935,7 +934,7 @@
 	.searchinfo{
 		margin-bottom: 2vw;
     display: grid;
-    grid-template-columns: 25% 65% 10%;
+    grid-template-columns: 25% 44% 31%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 98vw;
     height: 40vw;
@@ -999,8 +998,8 @@
 	}
 
   .precores{
-    padding: 1vw 1vw 1vw 1vw;
-    text-align: left;
+    padding: 1vw 5vw 1vw 1vw;
+    text-align: right;
     font-size: 3vw;
   }
 

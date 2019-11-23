@@ -24,6 +24,14 @@
     background-color: #18191B !important;
   }
 
+  nav{
+    background-color: #18191B;
+  }
+
+  .search{
+    background-color: #0e0d0f;
+  }
+
   #chec{
     display: none;
   }
