@@ -141,7 +141,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 25% 45% 30%;
+    grid-template-columns: 25% 60% 15%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -208,7 +208,7 @@
   .precores{
     padding: 1vw 1vw 1vw 0vw;
     text-align: right;
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 
   .elem1{
@@ -225,7 +225,7 @@
     border-radius: 20vw;
     border: none;
     color: white;
-    font-size: 3vw;
+    font-size: 2vw;
     padding: 0vw !important;
     font-weight: 400;
     height: 6vw;
@@ -234,7 +234,7 @@
   #followicon{
     padding: 0vw !important;
     margin: 0vw 0vw 0vw 1vw !important;
-    font-size: 2.7vw;
+    font-size: 2vw;
   }
   .seguidores{
     font-size: 2.7vw;
@@ -267,7 +267,7 @@
 
   .searchinfo{
     display: grid;
-    grid-template-columns: 25% 45% 30%;
+    grid-template-columns: 25% 60% 15%;
     grid-template-areas: "imagemres" "nomeres" "precores";
     width: 86vw;
     height: 30vw;
@@ -322,13 +322,13 @@
   }
 
   .descres{
-    font-size: 2vw;
+    font-size: 1.7vw;
     padding-left: 5vw;
     white-space: normal;
   }
 
   .enderes{
-    font-size: 2vw;
+    font-size: 1.7vw;
     padding-left: 2.5vw;
     opacity: 0.7;
   }
@@ -336,7 +336,7 @@
   .precores{
     padding: 1vw 1vw 1vw 0vw;
     text-align: right;
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
 
   .elem1{
