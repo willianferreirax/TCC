@@ -1,13 +1,15 @@
 <?php
-	session_start();
-	include "connection.php";
-	$conn = conexao();
-	
+session_start();
+include "connection.php";
+$conn = conexao();
+
+if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
 	$select= "select CNPJ from seguir where cod_usuario = '{$_SESSION['usuario'][3]}'";
 	$cnpj = $conn->prepare($select);
 
 	$cnpj->execute();
 	$rescnpj=$cnpj->fetchAll();
+}
 
 ?>
 
@@ -19,7 +21,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial">
+	<meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Página Inicial, Palestras, Experiência, Conhecimento, Currículo">
 	<meta name="robots" content="Index, follow">
 	<meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
 	<link rel="stylesheet" href="css/index.css">
@@ -33,29 +35,29 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
+	<script type='text/javascript' src='js/jquery-3.4.1.min.js'></script>
 	<script type='text/javascript'>
-		var i = 0;
-		function transform(){
-				i++;
-				if(i == 2){
-					document.getElementById('formsearch').submit();
-				}
+	var i = 0;
+	function transform(){
+		i++;
+		if(i == 2){
+			document.getElementById('formsearch').submit();
 		}
+	}
 	</script>
 </head>
 <body class="bgindex">
-	<center>
+		<center>
 		<input type='checkbox' id='dropcheck'>
 		<input type='checkbox' id='chec'>
 		<div class='icons'>
-      <a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
-      <a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
-      <a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
+			<a href='index.php'><i class="fas fa-home fa-2x"></i></a><br>
+			<a href='listar_eventos.php'><i class="fas fa-map-marked fa-2x"></i></a><br>
+			<a href='listar_inst.php'><i class="fas fa-users fa-2x"></i></a><br>
 			<a href='sobre.php'><i class="fas fa-info fa-2x"></i></a><br>
-      <a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
-      <hr>
-    </div>
+			<a href='ajuda.php'><i class="fas fa-question fa-2x"></i></a><br>
+			<hr>
+		</div>
 		<nav>
 			<div class='menulist'>
 				<a href='index.php'><div class='b1'>Página inicial</div></a>
@@ -71,7 +73,7 @@
 			if(isset($_SESSION['usuario']))
 			{
 				echo "<h1 class='imageuser'>".substr($_SESSION['usuario'][0], 0, strlen($_SESSION['usuario'][0]) - (strlen($_SESSION['usuario'][0])-1))."".substr($_SESSION['usuario'][4], 0, strlen($_SESSION['usuario'][4]) - (strlen
-																																																																																																												($_SESSION['usuario'][4])-1))."</h1>";
+				($_SESSION['usuario'][4])-1))."</h1>";
 			}
 			if(isset($_SESSION['instituicao']))
 			{
@@ -80,12 +82,12 @@
 			?>
 			<br>
 			<?php
-				if(isset($_SESSION['instituicao'][0])){
-					echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
-				}
-				else{
-					echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
-				}
+			if(isset($_SESSION['instituicao'][0])){
+				echo "<a href='painel_inst.php' class='account'>Minha Conta</a>";
+			}
+			else{
+				echo "<a href='painel_usuario.php' class='account'>Minha Conta</a>";
+			}
 			?>
 			<br>
 			<a href='config.php' class='account'>Configurações</a>
@@ -100,13 +102,13 @@
 				<div class='menubtn'>
 					<label for='chec' class='labelchec'><i class="fas fa-bars fa-2x"></i></i></label>
 				</div>
-					<a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
+				<a href='index.php'><h1 class='logoeheader'>FRESHR</h1></a>
 			</div>
 			<div class='pesquisarbtn'>
 				<form action="listar_eventos.php" id='formsearch' method="post" class='searchform'>
-				<input type='checkbox' id='searchcheck'>
-				<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
-				<div class='search'>
+					<input type='checkbox' id='searchcheck'>
+					<label for='searchcheck' id='iconmobile' onclick="transform()" class='searchlabel'><i class="fas fa-search"></i></label>
+					<div class='search'>
 
 						<input type='text' name='pesquisa' placeholder='Pesquisar eventos...' class='searchbar'>
 						<input type='submit' id='enviar'><label for='enviar' id ='iconenviar' class="fas fa-search fa-1x"></label>
@@ -121,95 +123,97 @@
 					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle'></i></a>
 					</div></label>";
 				}
-				 ?>
+				?>
 				<?php
-					if(isset($_SESSION['usuario'])){
-						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-						</div></label>";
-					}
-					else if(isset($_SESSION['instituicao'])){
-						echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
-						</div></label>";
-					}
-					else{
-						echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
-						</div>";
-					}
-					?>
-				</div>
-			</div>
-		</header>
-		<div class='statsdiv'>
-			<h1 class='logoindex'>FRESHR</h1>
-			<h1 class='slogan'>Uma visão de prosperidade para a sua carreira</h1>
-			<h1 class='descricao' name='desc' id='desc'>Busque eventos, palestras e feiras profissionais ao seu alcance. <br>Qualifique-se!</h1>
-			<div class='statsdiv'>
-				<?php
-				if(isset($_SESSION['usuario']))
-				{	
-					if(isset($rescnpj) && $rescnpj){
-						echo "<h1 class='recomend'>Eventos que você pode se interessar</h1>";
-						foreach($rescnpj as $row){
-							$select= "select max(cod_evento) from evento where CNPJ = '{$row['CNPJ']}'";
-							$res = $conn->prepare($select);
-							$res->execute();
-							$ultcod=$res->fetchAll();
-							foreach($ultcod as $listar){
-								$select= "select * from evento where cod_evento = {$listar['max(cod_evento)']}";
-								$res = $conn->prepare($select);
-								$res->execute();
-								$result=$res->fetchAll();
-								foreach($result as $list){
-									$imagem ='upload/'.$list['banner_evento'];
-									echo "
-									<div class='elem1'><center>
-									<a href='exibir_evento.php?id= $list[cod_evento]'>
-									<div class='searchinfo'>
-									<img class='imagemres' src='$imagem'>
-									<div class='nomeres'>
-									<h1 class='nomeres'>$list[nome_evento]</h1>
-									<div class='descres'>
-									<h2 class='descres'>$list[descricao_evento]</h2>
-									<div class='enderes'>
-									<h2 class='enderes'>$list[endereco_evento] | $list[cidade_evento], $list[estado_evento]</div></div></div>
-									<div class='precores'>
-									<h2 class='precores'>";
-									$precoval = $list['preco_evento'];
-									if(isset($list['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
-									  echo "R$$list[preco_evento]";
-									}
-									else{
-									  echo "Grátis";
-									}
-									echo"
-									</h2>
-									</div>
-									</div>
-									</a></center>
-									</div>";
-								}
-							}										
-						}
-					}
-					echo "<center>".$_SESSION['usuario'][0]." conheça mais sobre a sua futura carreira.</center>";
+				if(isset($_SESSION['usuario'])){
+					echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+					</div></label>";
 				}
-				else if(isset($_SESSION['instituicao']))
-				{
-					echo "<center>".$_SESSION['instituicao'][0].", divulgue seus eventos e alcance o público.</center>";
+				else if(isset($_SESSION['instituicao'])){
+					echo "<label for='dropcheck' class='dropcheck'><div class='userbtn'><i class='fas fa-user-circle fa-2x'></i>
+					</div></label>";
 				}
 				else{
-					echo "<a href='cad_choose.php'><button class='cadastrar'>Cadastre-se</button></a>";
-					echo "<a href='login.php'><button class='cadastraralt'>Entrar</button></a>";
+					echo "<div class='userbtn'><a href='login.php'><i class='fas fa-user-circle fa-2x'></i></a>
+					</div>";
 				}
 				?>
 			</div>
 		</div>
-	</center>
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</header>
+</center>
+<center>
+	<div class='statsdiv'>
+		<h1 class='logoindex'>FRESHR</h1>
+		<h1 class='slogan'>Uma visão de prosperidade para a sua carreira</h1>
+		<h1 class='descricao' name='desc' id='desc'>Busque eventos, palestras e feiras profissionais ao seu alcance. <br>Qualifique-se!</h1>
+			<?php
+			if(isset($_SESSION['usuario']))
+			{
+				if(isset($rescnpj) && $rescnpj){
+					echo "<h1 class='recomend'>Eventos que você pode se interessar</h1>";
+					foreach($rescnpj as $row){
+						$select= "select max(cod_evento) from evento where CNPJ = '{$row['CNPJ']}'";
+						$res = $conn->prepare($select);
+						$res->execute();
+						$ultcod=$res->fetchAll();
+						foreach($ultcod as $listar){
+							$select= "select * from evento where cod_evento = {$listar['max(cod_evento)']}";
+							$res = $conn->prepare($select);
+							$res->execute();
+							$result=$res->fetchAll();
+							foreach($result as $list){
+								$imagem ='upload/'.$list['banner_evento'];
+								echo "
+								<div class='elem1'><center>
+								<a href='exibir_evento.php?id= $list[cod_evento]'>
+								<div class='searchinfo'>
+								<img class='imagemres' src='$imagem'>
+								<div class='nomeres'>
+								<h1 class='nomeres'>$list[nome_evento]</h1>
+								<div class='descres'>
+								<h2 class='descres'>$list[descricao_evento]</h2>
+								<div class='enderes'>
+								<h2 class='enderes'>$list[endereco_evento] | $list[cidade_evento], $list[estado_evento]</div></div></div>
+								<div class='precores'>
+								<h2 class='precores'>";
+								$precoval = $list['preco_evento'];
+								if(isset($list['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
+									echo "R$$list[preco_evento]";
+								}
+								else{
+									echo "Grátis";
+								}
+								echo"
+								</h2>
+								</div>
+								</div>
+								</a></center>
+								</div>";
+							}
+						}
+					}
+				}
+				else{
+					echo "<center>".$_SESSION['usuario'][0]." conheça mais sobre a sua futura carreira.</center>";
+				}
+			}
+			else if(isset($_SESSION['instituicao']))
+			{
+				echo "<center>".$_SESSION['instituicao'][0].", divulgue seus eventos e alcance o público.</center>";
+			}
+			else{
+				echo "<a href='cad_choose.php'><button class='cadastrar'>Cadastre-se</button></a>";
+				echo "<a href='login.php'><button class='cadastraralt'>Entrar</button></a>";
+			}
+			?>
+	</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</center>
 </body>
 
 </html>
