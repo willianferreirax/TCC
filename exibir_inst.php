@@ -184,7 +184,7 @@ foreach($eventos as $row){
     echo"<div class='username'>".$faculdade[0]."</div>";
 
     if(isset($_SESSION['usuario'])){
-      $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+      $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = '$id'");
       $result->execute();
 
       if($result->fetchColumn() > 0){
@@ -289,14 +289,14 @@ foreach($eventos as $row){
 
 <?php
 if(isset($_REQUEST["seguir"]) && $_REQUEST["seguir"] == true) {
-  $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = $id");
+  $result = $conn->prepare("select * from seguir where cod_usuario = {$_SESSION['usuario'][3]} and CNPJ = '$id'");
   $result->execute();
 
   if($result->fetchColumn() > 0){
 
     $rs = $conn->prepare("DELETE FROM seguir WHERE cod_usuario={$_SESSION['usuario'][3]} AND CNPJ='$id'");
     $rs->execute();
-    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt-1 WHERE CNPJ=$id");
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt-1 WHERE CNPJ='$id'");
     $rs->execute();
     $script = "<script language=javascript>
     location.href='exibir_inst.php?id=".$id."';
@@ -308,7 +308,7 @@ if(isset($_REQUEST["seguir"]) && $_REQUEST["seguir"] == true) {
     $sql = "INSERT INTO seguir (cod_usuario, CNPJ) VALUES ({$_SESSION['usuario'][3]}, '$id')";
     $rs = $conn->prepare($sql);
     $rs->execute();
-    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt+1 WHERE CNPJ=$id");
+    $rs = $conn->prepare("UPDATE faculdade SET seguidores_qnt=seguidores_qnt+1 WHERE CNPJ='$id'");
     $rs->execute();
     $script = "<script language=javascript>
     location.href='exibir_inst.php?id=".$id."';
