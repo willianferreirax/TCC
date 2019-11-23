@@ -231,8 +231,7 @@
 
 	.elem1{
 		padding-top: 11vh !important;
-    padding-left: 15vh;
-    text-align: left;
+    padding-left: 10vh;
 	}
 
 	.searchinst:hover {
@@ -294,7 +293,7 @@
     height: 15vw;
     border-radius: 2vw;
     background-color: #0d0e0f;
-    margin: 1vw 0 0 0;
+    margin-top: 1vw;
   }
 
 	.searchinfo:hover {
