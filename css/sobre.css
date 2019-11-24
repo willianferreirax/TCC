@@ -89,7 +89,25 @@
 		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "renato" "renaton" "will" "willn";
   }
 
-  .iago, .campa, .nicc, .will, .renato{
+  .campa{
+    background: url(../images/fotolucas2.png) center center/60vh no-repeat;
+    width: 60vh;
+    height: 40vh;
+    vertical-align: middle;
+    color: red;
+
+  }
+
+  .nicc{
+    background: url(../images/nicholasfoto.png) center center/60vh no-repeat;
+    width: 60vh;
+    height: 40vh;
+    vertical-align: middle;
+    color: red;
+
+  }
+
+  .iago, .will, .renato{
     background: url(../images/circle.png) center center/30vh no-repeat;
     width: 30vh;
     height: 30vh;
@@ -462,7 +480,25 @@
 		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "will" "willn" "renato" "renaton";
   }
 
-  .iago, .campa, .nicc, .will, .renato{
+  .nicc{
+    background: url(../images/nicholasfoto.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    vertical-align: middle;
+    color: red;
+
+  }
+
+  .campa{
+    background: url(../images/fotolucas2.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    vertical-align: middle;
+    color: red;
+
+  }
+
+  .iago, .will, .renato{
     background: url(../images/circle.png) center center/17vh no-repeat;
     width: 20vh;
     height: 20vh;
@@ -824,7 +860,25 @@
 		grid-template-areas: "iago" "iagon" "campa" "campan" "nicc" "niccn" "will" "willn" "renato" "renaton";
   }
 
-  .iago, .campa, .nicc, .will, .renato{
+  .nicc{
+    background: url(../images/nicholasfoto.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    font-size: 8vw;
+    vertical-align: middle;
+    color: red;
+  }
+
+  .campa{
+    background: url(../images/fotolucas2.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    font-size: 8vw;
+    vertical-align: middle;
+    color: red;
+  }
+
+  .iago, .will, .renato{
     background: url(../images/circle.png) center center/17vh no-repeat;
     width: 20vh;
     height: 20vh;
