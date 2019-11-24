@@ -6,9 +6,9 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="description" content="Junte-se ao FRESHR. Uma visão de prosperidade para a sua carreira.">
-  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Sobre">
+  <meta name="keywords" content="FRESHR, Eventos, Buscar, Profissão, Sobre, Palestras, Experiência, Conhecimento, Currículo">
   <meta name="robots" content="Index, follow">
-  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas, Campanelli, Renato Melo, Willian Ferreira">
+  <meta name="author" content="Iago Pereira, Lucas Campanelli, Nicholas Campanelli, Renato Melo, Willian Ferreira">
   <link rel="stylesheet" href="css/sobre.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -136,9 +136,9 @@
           <center>
           <h1 class='iago'>EM BREVE</h1>
           <h1 class='iagon'>Iago Pereira</h1>
-          <h1 class='campa'>EM BREVE</h1>
+          <h1 class='campa'></h1>
           <h1 class='campan'>Lucas Campanelli</h1>
-          <h1 class='nicc'>EM BREVE</h1>
+          <h1 class='nicc'></h1>
           <h1 class='niccn'>Nicholas Campanelli</h1>
           <h1 class='renato'>EM BREVE</h1>
           <h1 class='renaton'>Renato Melo</h1>
