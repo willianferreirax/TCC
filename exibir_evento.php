@@ -196,6 +196,8 @@ else{
       <div class="infocontainer">
         <img class="banner" src="<?php echo 'upload/'.$evento[1]?>" draggable="false">
         <div class="info1">
+          <div class="topo">
+          <h1 class="nome"> <?php echo $evento[0];?></h1>
           <?php
           if(isset($_SESSION['usuario'])){
             $result = $conn->prepare("select * from avaliacao where cod_usuario = {$_SESSION['usuario'][3]} and cod_evento = $id");
@@ -247,16 +249,13 @@ else{
 
             if($result->fetchColumn() > 0){
               echo "
-              <label for='btnconfirm' id='confirmqnt' class='confirmado' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;'><a href= 'exibir_evento.php?id={$_GET['id']}&validar=true';>
-              {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;'></i>
+              <label for='btnconfirm' id='confirmqnt' class='confirmado'>
+              <a href= 'exibir_evento.php?id={$_GET['id']}&validar=true'>
+              {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon'></i>
               </label></a></div><br>";
             }
             elseif($result->fetchColumn() == 0){
-              echo "<label for='btnconfirm' id='confirmqnt' class='confirmado'>
+              echo "<label for='btnconfirm' id='confirmqnt'>
               <a href= 'exibir_evento.php?id={$_GET['id']}&validar=true';>
               {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon'></i>
               </label>
@@ -265,21 +264,18 @@ else{
           }
           else{
             echo "
-            <label for='btn
-            ' id='confirmqnt' class='confirmado' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;'>
-            {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon' style='background: -webkit-linear-gradient(#C40EFA, #0096C4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;'></i>
-            </label></div><br>";
+            <label for='btn' id='confirmqnt' class='confirmado'>
+            {$evento[13]} pessoas confirmadas <i class='fas fa-check' id='confirmicon'></i>
+            </label></div>";
           }
           ?>
-
-          <h1 class="nome"> <?php echo $evento[0];?></h1><br>
+        </div>
+        <div class="infos">
+          <div class="infos2">
           <h1 class='desceve'> <?php echo $evento[11];?></h1></br>
           <h1 class='desceve'> <?php echo $evento[16];?></h1></br>
-          <h1 class='dataeve'> Período: <?php echo $evento[2] . ", ". $evento[4] . " até " . $evento[2] . ", ".$evento[5];?></h1></br>
+        </div>
+        <div class="infos3">
           <h1 class='preco'> Preço: <?php
           if(isset($evento[12]) && $evento[12] != "0" && $evento[12] != "0,0" && $evento[12] != "0,00"){
             echo "RS ".$evento[12];
@@ -288,8 +284,12 @@ else{
             echo "Grátis";
           }
           ?></h1><br>
+          <h1 class='dataeve'> Período:<br> <?php echo $evento[2] . ", ". $evento[4] . " até<br> " . $evento[2] . ", ".$evento[5];?></h1></br>
           <h1 class='endereeve'> <?php echo $evento[6] . " - " . $evento[8] . ", " . $evento[9]; ?> </h1><br>
-          <a href="listar_eventos.php"><button class='voltar'>Voltar</button></a>
+        </div>
+        </div>
+          <br><br><a href="listar_eventos.php"><button class='voltar'>Voltar</button></a><br>
+          <hr style="width: 100%;"><br>
           <h1 class='comenttitle'>Comentários</h1><br>
           <div class='listcoment'>
             <?php
@@ -300,12 +300,13 @@ else{
                 if(isset($_SESSION['usuario']) && $nome[$i]==$_SESSION['usuario'][0] && $sobrenome[$i]==$_SESSION['usuario'][4]){
                   echo"
                   <div class='comentbox'>
-                  <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
-                  ($sobrenome[$i])-1))."</h1>
-                  <div class='comenttype'>
-                  <h1 class='autorcoment'>Você</h1>
-                  <h1 class='textcoment'>$row[comentario]</h1>
-                  </div>
+                    <h1 class='iconcoment'>".substr($nome[$i], 0, strlen($nome[$i]) - (strlen($nome[$i])-1))."".substr($sobrenome[$i], 0, strlen($sobrenome[$i]) - (strlen
+                    ($sobrenome[$i])-1))."</h1>
+                    <div class='comenttype'>
+                      <h1 class='autorcoment'>Você</h1>
+                        <h1 class='textcoment'>$row[comentario]</h1>
+                    </div>
+                    <div class='excluir'><i class='fas fa-times'></i></div>
                   </div>
                   ";
                 }
@@ -364,11 +365,6 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Presença retirada.');
-      </script>";
-      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO comparecimento (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -376,11 +372,6 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Presença confirmada!');
-      </script>";
-      echo $script;
     }
   }
   if(isset($_REQUEST["interessado"]) && $_REQUEST["interessado"] == true) {
@@ -392,11 +383,6 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Interesse desmarcado.');
-      </script>";
-      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO interessado (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -404,11 +390,6 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Interesse marcado!');
-      </script>";
-      echo $script;
     }
   }
   if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
@@ -420,11 +401,6 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Avaliação retirada.');
-      </script>";
-      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO avaliacao (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -432,24 +408,18 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
-      $script = "<script language=javascript>
-      location.href='exibir_evento.php?id=".$id."';
-      alert('Agradecemos a sua avaliação!');
-      </script>";
-      echo $script;
     }
   }
 
   if(isset($_REQUEST["comentar"]) && $_REQUEST["comentar"] == true) {
 
+    if($_POST['comentariotxt'] != ""){
+
     $sql = "INSERT INTO comentario (cod_usuario, cod_evento, comentario) VALUES ({$_SESSION['usuario'][3]}, $id, '{$_POST['comentariotxt']}')";
     $rs = $conn->prepare($sql);
     $rs->execute();
-    $script = "<script language=javascript>
-    location.href='exibir_evento.php?id=".$id."';
-    alert('Comentário adicionado!');
-    </script>";
-    echo $script;
+  }
+
   }
   ?>
 

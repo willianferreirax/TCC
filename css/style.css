@@ -18,6 +18,7 @@
   a{
     color: #02f8d1;
     text-decoration: none !important;
+    cursor: pointer;
   }
 
   body{
