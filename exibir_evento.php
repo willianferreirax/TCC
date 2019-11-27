@@ -306,7 +306,7 @@ else{
                       <h1 class='autorcoment'>Você</h1>
                         <h1 class='textcoment'>$row[comentario]</h1>
                     </div>
-                    <div class='excluir'><i class='fas fa-times'></i></div>
+                    <div class='excluir'><a href='?id=".$id."&apagar=true&idcoment=$row[cod_comentario]'><i class='fas fa-times'></i></a></div>
                   </div>
                   ";
                 }
@@ -420,6 +420,11 @@ else{
     $rs->execute();
   }
 
+  }
+
+  if(isset($_REQUEST["apagar"]) && $_REQUEST["apagar"] == true) {
+    $result = $conn->prepare("delete from comentario where cod_comentario = {$_REQUEST['idcoment']}");
+    $result->execute();
   }
   ?>
 
