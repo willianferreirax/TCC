@@ -112,13 +112,18 @@ else{
 
     else{
 
+		if(isset($_FILES['arquivo']['tmp_name']) && $_FILES['arquivo']['tmp_name']!=''){
+		  $ext = strtolower(substr($_FILES['arquivo']['name'], -4));
+		  $novo_nome = md5(time()).$ext;
+		  $dir = "upload/";
+		  move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
 
-      $ext = strtolower(substr($_FILES['arquivo']['name'], -4));
-      $novo_nome = md5(time()).$ext;
-      $dir = "upload/";
-      move_uploaded_file($_FILES['arquivo']['tmp_name'], $dir.$novo_nome);
-
-      $valido = true;
+		  $valido = true;
+		}
+		else{
+			$novo_nome = $result[0]['banner_evento'];
+			$valido = true;
+		}
     }
 
   }
