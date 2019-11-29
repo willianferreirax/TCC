@@ -48,10 +48,6 @@
 		color: #ddd;
 	}
 
-	.exit:hover{
-		color: #dddddd;
-	}
-
 	.account{
 		font-size: 1.3vw;
 		color: white;
@@ -1402,6 +1398,7 @@
 
 	.icontainer{
 		font-size: 5vw;
+		padding: 0 5vw 0 5vw;
 	}
 
 	.slogan{
@@ -1559,13 +1556,18 @@
 	}
 
 	.exit{
-		color: #822828;
+		position: absolute;
+		bottom: 5vw;
+		width: 41vw;
+		height: 8vw;
+		font-size: 5vw;
+		border-radius: 10vw;
+		background-color: #822828 !important;
 		text-decoration: none !important;
-		font-size: 4vw;
 	}
 
 	.exit:hover{
-		color: #912d2d;
+		color: #ddd;
 	}
 
 	.account{
@@ -1578,15 +1580,14 @@
 	}
 
 	.imageuser{
-		margin: 8vw 0 0 8vw;
-		padding-top: 30%;
-		background: url(../images/circle.png) center center/28vw no-repeat;
-		width: 20vh;
-		height: 23vh;
-		vertical-align: middle;
-		color: black;
+		margin-top: 7vw;
+		padding-top: 20%;
+		background: url(../images/circle.png) center center/30vw no-repeat;
+    width: 100%;
+    height: 30vw;
+    color: black;
 		text-align: center;
-		font-size: 8vw;
+		font-size: 12vw;
 	}
 
 	.outro{
@@ -1712,9 +1713,9 @@
 		border-radius: 20vh;
 		border: 0.5vh solid white;
 		color: white;
-		font-size: 3vh;
+		font-size: 5vw;
 		font-weight: 400;
-		height: 7vh;
+		height: 12vw;
 
 	}
 
@@ -1838,13 +1839,18 @@
 	.imagevis{
 		background: url(../images/imgupl.png) no-repeat;
 		background-size: cover;
-		height: 35.7vw;
-		width: 90vw;
+		height: 42vw;
+		width: 100%;
 		margin-bottom: 3vw;
 		border-radius: 10vw 10vw 0 0;
 		background-position: center;
 		font-size: 5vw;
 		text-align: center;
+	}
+
+	.imageup{
+		position: relative;
+		width: 100vw;
 	}
 
 	.aviso{
@@ -2009,19 +2015,19 @@
 	}
 
 	.dropdown{
-		display: none;
-		position: fixed !important;
-		float: right;
-		text-align: left;
-		background-color: #1a1a1c;
+    display: none;
+    position: fixed !important;
+    float: right;
+    text-align: center;
+    background-color: #0e0d0f;
+    font-size: 4vh;
 		top: 0;
-		right: 0;
-		height: 100vh;
-		width: 60vw;
-		padding: 1vh 3vh 1vh 3vh;
-		z-index: 9;
-		font-size: 10vw;
-	}
+    right: 0vh;
+    height: 100vh;
+    width: 25vh;
+    padding: 7vh 3vh 1vh 3vh;
+    z-index: 9;
+  }
 
 	.nome{
 		text-align: center;
@@ -2104,7 +2110,7 @@
 
 	nav{
 		top: 0;
-		background-color: #1a1a1c;
+		background-color: #18191b;
 		width: 30vh;
 		height: 100vh;
 		left: -70vh;
@@ -2125,8 +2131,7 @@
 	.elem1{
 		background-color: #1a1a1c !important;
 		border-radius: 10vw 10vw 0 0;
-		margin-top: 14vh;
-		padding-top: 5vw;
+		margin-top: 16vw;
 	}
 
 	.icontainer{
