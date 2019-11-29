@@ -83,7 +83,7 @@ exit();
 			<a href='ajuda.php' class='account'>Ajuda</a>
 			<br>
 			<br>
-			<a href='logout_script.php' class='exit'>Sair</a>
+			<a href='logout_script.php'><div class='exit'>Sair</div></a>
 		</div>
 		<header class='cabecalhoindex' id='grid'>
 			<div class='menudiv'>
@@ -106,7 +106,7 @@ exit();
 				if(isset($_SESSION['instituicao'])){
 					echo "<div class='creatediv'><a href='eventinfo.php'><button class='cadastrarevent'>Criar evento</button></a>
 					</div></label>";
-					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus'></i></a>
+					echo "<div class='criaricon'><a href='eventinfo.php'><i class='fas fa-plus-circle fa-2x'></i></a>
 					</div></label>";
 				}
 				?>
