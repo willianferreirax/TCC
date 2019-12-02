@@ -665,7 +665,8 @@
 	}
 
 	.criaricon{
-		font-size: 6vw;
+		top: 2.5vh;
+		font-size: 3.5vw;
 		right: 15vw !important;
 		position: fixed;
 	}
