@@ -134,15 +134,15 @@
         Conheça os criadores do projeto
         <div class='images'>
           <center>
-          <h1 class='iago'>EM BREVE</h1>
+          <h1 class='iago'></h1>
           <h1 class='iagon'>Iago Pereira</h1>
           <h1 class='campa'></h1>
           <h1 class='campan'>Lucas Campanelli</h1>
           <h1 class='nicc'></h1>
           <h1 class='niccn'>Nicholas Campanelli</h1>
-          <h1 class='renato'>EM BREVE</h1>
+          <h1 class='renato'></h1>
           <h1 class='renaton'>Renato Melo</h1>
-          <h1 class='will'>EM BREVE</h1>
+          <h1 class='will'></h1>
           <h1 class='willn'>Willian Ferreira</h1>
         </center>
         </div>
