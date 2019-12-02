@@ -107,13 +107,28 @@
 
   }
 
-  .iago, .will, .renato{
-    background: url(../images/circle.png) center center/30vh no-repeat;
-    width: 30vh;
-    height: 30vh;
+  .iago{
+    background: url(../images/fotoiago.png) center center/60vh no-repeat;
+    width: 60vh;
+    height: 40vh;
     vertical-align: middle;
     color: red;
+  }
 
+  .will{
+    background: url(../images/fotowill.png) center center/60vh no-repeat;
+    width: 60vh;
+    height: 40vh;
+    vertical-align: middle;
+    color: red;
+  }
+
+  .renato{
+    background: url(../images/fotorenato.png) center center/60vh no-repeat;
+    width: 60vh;
+    height: 40vh;
+    vertical-align: middle;
+    color: red;
   }
 
   .creators{
@@ -498,8 +513,24 @@
 
   }
 
-  .iago, .will, .renato{
-    background: url(../images/circle.png) center center/17vh no-repeat;
+  .iago{
+    background: url(../images/fotoiago.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    vertical-align: middle;
+    color: red;
+  }
+
+  .will{
+    background: url(../images/fotowill.png) center center/30vh no-repeat;
+    width: 20vh;
+    height: 20vh;
+    vertical-align: middle;
+    color: red;
+  }
+
+  .renato{
+    background: url(../images/fotorenato.png) center center/30vh no-repeat;
     width: 20vh;
     height: 20vh;
     vertical-align: middle;
@@ -878,13 +909,31 @@
     color: red;
   }
 
-  .iago, .will, .renato{
-    background: url(../images/circle.png) center center/17vh no-repeat;
-    width: 20vh;
-    height: 20vh;
-    font-size: 8vw;
-    vertical-align: middle;
-    color: red;
+   .iago{
+     background: url(../images/fotoiago.png) center center/30vh no-repeat;
+     width: 20vh;
+     height: 20vh;
+     font-size: 8vw;
+     vertical-align: middle;
+     color: red;
+   }
+
+   .will{
+     background: url(../images/fotowill.png) center center/30vh no-repeat;
+     width: 20vh;
+     height: 20vh;
+     font-size: 8vw;
+     vertical-align: middle;
+     color: red;
+   }
+
+    .renato{
+      background: url(../images/fotorenato.png) center center/30vh no-repeat;
+      width: 20vh;
+      height: 20vh;
+      font-size: 8vw;
+      vertical-align: middle;
+      color: red;
 
   }
 
