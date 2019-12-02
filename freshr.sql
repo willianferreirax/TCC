@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Nov-2019 às 06:55
+-- Generation Time: 02-Dez-2019 às 01:03
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -212,7 +212,7 @@ CREATE TABLE `faculdade` (
 
 INSERT INTO `faculdade` (`CNPJ`, `login_inst`, `senha_inst`, `nome_inst`, `endereco_inst`, `bairro_inst`, `cidade_inst`, `estado_inst`, `cep_inst`, `email_inst`, `telefone_inst`, `seguidores_qnt`) VALUES
 ('60.967.551.0001-50', 'mackenzie', 'e807f1fcf82d132f9bb018ca6738a19f', 'Instituto Presbiteriano Mackenzie SÃ£o Paulo', 'Rua da ConsolaÃ§Ã£o, 930', 'ConsolaÃ§Ã£o', 'SÃ£o Paulo', 'SP', '01302-907', 'reitoria@mackenzie.br', '(11) 2114-8000', 0),
-('62.596.408.0001-25', 'anhembimorumbimooca', 'e807f1fcf82d132f9bb018ca6738a19f', 'Universidade Anhembi Morumbi CÃ¢mpus Mooca', 'Rua Dr. Almeida Lima, 1134', 'Mooca', 'SÃ£o Paulo', 'SP', '03164-000', 'uam@email.com', '(11) 3293-1709', 0),
+('62.596.408.0001-25', 'anhembimorumbimooca', 'e807f1fcf82d132f9bb018ca6738a19f', 'Universidade Anhembi Morumbi Campus Mooca', 'Rua Dr. Almeida Lima, 1134', 'Mooca', 'SÃ£o Paulo', 'SP', '03164-000', 'uam@email.com', '(11) 3293-1709', 0),
 ('62.823.257.0211-06', 'eteczl211', 'e807f1fcf82d132f9bb018ca6738a19f', 'ETEC da Zona Leste', 'Avenida Ãguia de Haia, 2633', 'C.A.E Carvalho', 'SÃ£o Paulo', 'SP', '03694-000', 'e211acad@cps.sp.gov.br', '(11) 2045-4000', 0),
 ('43.045.772.0001-52', 'saojudas', 'e807f1fcf82d132f9bb018ca6738a19f', 'Universidade SÃ£o Judas', 'Rua Taquari, 546', 'Mooca', 'SÃ£o Paulo', 'SP', '03166-000', 'saojudas@email.com', '(11) 8343-5353', 0),
 ('05.485.845.9479-82', 'giorgioairlines', 'e807f1fcf82d132f9bb018ca6738a19f', 'Giorgio Airlines', 'Rua Tucuruvi, 77', 'Santana', 'SÃ£o Paulo', 'SP', '05484-485', 'giorgioairlines@email.com', '(11) 9847-75412', 0),
