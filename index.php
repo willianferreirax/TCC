@@ -4,6 +4,23 @@ include "connection.php";
 $conn = conexao();
 
 if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
+
+	$busca = "select * from interesses_usuario where cod_usuario = '{$_SESSION['usuario'][3]}'";
+	$resinteresse = $conn->prepare($busca);
+
+	$resinteresse->execute();
+	$interesseusu=$resinteresse->fetchAll();
+
+	$interesse = array();
+
+	foreach($interesseusu as $row){
+		array_push($interesse, $row['interesseusu1']);
+		array_push($interesse, $row['interesseusu2']);
+		array_push($interesse, $row['interesseusu3']);
+		array_push($interesse, $row['interesseusu4']);
+		array_push($interesse, $row['interesseusu5']);
+	}
+
 	$select= "select CNPJ from seguir where cod_usuario = '{$_SESSION['usuario'][3]}'";
 	$cnpj = $conn->prepare($select);
 
@@ -148,9 +165,88 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
 		<h1 class='slogan'>Uma visão de prosperidade para a sua carreira</h1>
 		<h1 class='descricao' name='desc' id='desc'>Busque eventos, palestras e feiras profissionais ao seu alcance. <br>Qualifique-se!</h1>
 			<?php
-			if(isset($_SESSION['usuario']))
-			{
-				if(isset($rescnpj) && $rescnpj){
+
+			if(isset($_SESSION['usuario'])){
+
+				if(isset($interesse[0]) || isset($interesse[1]) || isset($interesse[2]) || isset($interesse[3]) || isset($interesse[4])){
+					echo "<h1 class='recomend'>Eventos com base nos seus interesses</h1>";
+					$busca= "select * from evento";
+					$res = $conn->prepare($busca);
+					$res->execute();
+					$cod=$res->fetchAll();
+
+					foreach ($cod as $list) {
+						$busca= "select * from interesses_evento where cod_evento = {$list['cod_evento']}";
+						$event = $conn->prepare($busca);
+						$event->execute();
+						$intevent=$event->fetchAll();
+
+						$interevent = array();
+
+						foreach($intevent as $int){
+							array_push($interevent, $int['interesseeve1']);
+							array_push($interevent, $int['interesseeve2']);
+							array_push($interevent, $int['interesseeve3']);
+							array_push($interevent, $int['interesseeve4']);
+							array_push($interevent, $int['interesseeve5']);
+							array_push($interevent, $int['interesseeve6']);
+							array_push($interevent, $int['interesseeve7']);
+							array_push($interevent, $int['interesseeve8']);
+							array_push($interevent, $int['interesseeve9']);
+							array_push($interevent, $int['interesseeve10']);
+							array_push($interevent, $int['interesseeve11']);
+							array_push($interevent, $int['interesseeve12']);
+							array_push($interevent, $int['interesseeve13']);
+							array_push($interevent, $int['interesseeve14']);
+							array_push($interevent, $int['interesseeve15']);
+						}
+
+						$codigos = array();
+						$repetition = 0;
+
+						for($i = 0; $i < 15; $i++){
+							if(($interevent[$i] != null) && ($interevent[$i]==$interesse[0] || $interevent[$i]==$interesse[1] || $interevent[$i]==$interesse[2] || $interevent[$i]==$interesse[3] || $interevent[$i]==$interesse[4])){
+								for($j = 0; $j < count($codigos); $j++){
+									if($codigos[$j] == $list['cod_evento']){
+										$repetition++;
+									}
+								}
+								if($repetition == 0){
+									array_push($codigos, $list['cod_evento']);
+									$imagem ='upload/'.$list['banner_evento'];
+									echo "
+									<div class='elem1'><center>
+									<a href='exibir_evento.php?id= $list[cod_evento]'>
+									<div class='searchinfo'>
+									<img class='imagemres' src='$imagem'>
+									<div class='nomeres'>
+									<h1 class='nomeres'>$list[nome_evento]</h1>
+									<div class='descres'>
+									<h2 class='descres'>$list[descricao_evento]</h2>
+									<div class='enderes'>
+									<h2 class='enderes'>$list[endereco_evento] | $list[cidade_evento], $list[estado_evento]</div></div></div>
+									<div class='precores'>
+									<h2 class='precores'>";
+									$precoval = $list['preco_evento'];
+									if(isset($list['preco_evento']) && $precoval != "0,0" && $precoval != "0,00" && $precoval != "0"){
+										echo "R$$list[preco_evento]";
+									}
+									else{
+										echo "Grátis";
+									}
+									echo"
+									</h2>
+									</div>
+									</div>
+									</a></center>
+									</div>";
+								}
+							}
+						}
+					}
+				}
+
+				if(isset($rescnpj[0])){
 					echo "<h1 class='recomend'>Eventos que você pode se interessar</h1>";
 					foreach($rescnpj as $row){
 						$select= "select max(cod_evento) from evento where CNPJ = '{$row['CNPJ']}'";
@@ -194,14 +290,16 @@ if(isset($_SESSION['usuario']) && $_SESSION['usuario'] != ''){
 						}
 					}
 				}
-				else{
+				else if((!isset($rescnpj[0])) && ((!isset($interesse[0])) && (!isset($interesse[1])) && (!isset($interesse[2])) && (!isset($interesse[3])) && (!isset($interesse[4])))){
 					echo "<center>".$_SESSION['usuario'][0]." conheça mais sobre a sua futura carreira.</center>";
 				}
 			}
+
 			else if(isset($_SESSION['instituicao']))
 			{
 				echo "<center>".$_SESSION['instituicao'][0].", divulgue seus eventos e alcance o público.</center>";
 			}
+
 			else{
 				echo "<a href='cad_choose.php'><button class='cadastrar'>Cadastre-se</button></a>";
 				echo "<a href='login.php'><button class='cadastraralt'>Entrar</button></a>";
