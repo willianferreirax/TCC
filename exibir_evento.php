@@ -275,8 +275,8 @@ else{
           <h1 class='desceve'> <?php echo $evento[11];?></h1></br>
           <h1 class='desceve'> <?php echo $evento[16];?></h1></br>
         </div>
-        <hr><br>
         <div class="infos3">
+          <hr class='linha'><br>
           <h1 class='preco'> Preço: <?php
           if(isset($evento[12]) && $evento[12] != "0" && $evento[12] != "0,0" && $evento[12] != "0,00"){
             echo "RS ".$evento[12];
@@ -307,7 +307,7 @@ else{
                       <h1 class='autorcoment'>Você</h1>
                         <h1 class='textcoment'>$row[comentario]</h1>
                     </div>
-                    <div class='excluir'><i class='fas fa-times'></i></div>
+                    <div class='excluir'><a href='?id=".$id."&apagar=true&idcoment=$row[cod_comentario]'><i class='fas fa-times'></i></a></div>
                   </div>
                   ";
                 }
@@ -366,6 +366,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      </script>";
+      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO comparecimento (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -373,6 +377,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET comp_qnt=comp_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      </script>";
+      echo $script;
     }
   }
   if(isset($_REQUEST["interessado"]) && $_REQUEST["interessado"] == true) {
@@ -384,6 +392,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      </script>";
+      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO interessado (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -391,6 +403,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET interesse_qnt=interesse_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      </script>";
+      echo $script;
     }
   }
   if(isset($_REQUEST["avaliado"]) && $_REQUEST["avaliado"] == true) {
@@ -402,6 +418,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt-1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+      location.href='exibir_evento.php?id=".$id."';
+      </script>";
+      echo $script;
     }
     elseif($result->fetchColumn() == 0){
       $sql = "INSERT INTO avaliacao (cod_usuario, cod_evento) VALUES ({$_SESSION['usuario'][3]}, $id)";
@@ -409,6 +429,10 @@ else{
       $rs->execute();
       $rs = $conn->prepare("UPDATE evento SET avaliacoes_qnt=avaliacoes_qnt+1 WHERE cod_evento=$id");
       $rs->execute();
+      $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    </script>";
+    echo $script;
     }
   }
 
@@ -419,8 +443,21 @@ else{
     $sql = "INSERT INTO comentario (cod_usuario, cod_evento, comentario) VALUES ({$_SESSION['usuario'][3]}, $id, '{$_POST['comentariotxt']}')";
     $rs = $conn->prepare($sql);
     $rs->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    </script>";
+    echo $script;
   }
 
+  }
+
+  if(isset($_REQUEST["apagar"]) && $_REQUEST["apagar"] == true) {
+    $result = $conn->prepare("delete from comentario where cod_comentario = {$_REQUEST['idcoment']}");
+    $result->execute();
+    $script = "<script language=javascript>
+    location.href='exibir_evento.php?id=".$id."';
+    </script>";
+    echo $script;
   }
   ?>
 
