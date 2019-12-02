@@ -109,6 +109,7 @@ a{
 	.linha{
 		width: 100%;
 		text-align: center;
+		display: none;
 	}
 
 	.excluir i{
@@ -295,7 +296,7 @@ a{
 		display: grid;
 		grid-template-columns: 44.5vw 33.5vw;
 		width: 88vw;
-		height: 5vw;
+		height: 8vw;
 		margin-bottom: 2vw;
 	}
 
@@ -711,6 +712,114 @@ a{
 }
 @media only screen and (min-width: 700px) and (orientation: portrait) {
 
+	.linha{
+		width: 100%;
+		text-align: center;
+		display: none;
+	}
+
+	.excluir i{
+		z-index: 5;
+		position: relative;
+		top: 1vw;
+		left: 2vw;
+		font-size: 1.5vw;
+		opacity: 0.5;
+	}
+
+	.excluir i:hover{
+		opacity: 1;
+		cursor: pointer;
+	}
+
+	.comentbox{
+		display: grid;
+		grid-template-columns: 20% 75% 5%;
+		grid-template-rows: 100%;
+		grid-template-areas: "imagemres" "nomeres" "i";
+		border-radius: 2vw;
+		background-color: #101113;
+		margin: 1vw 0 0 0;
+	}
+
+	.eventactwit{
+		margin-top: 0.5vw;
+		display: grid;
+		grid-template-columns: 25% 25% 50%;
+		grid-template-rows: 4vw;
+		width: 42vw;
+		margin-bottom: 12vw;
+	}
+
+#likewit{
+		font-size: 3vw;
+		position: relative;
+		right: -1vw;
+	}
+#starwit{
+		font-size: 8vw;
+		position: relative;
+		right: -1vw;
+	}
+
+	#like{
+		cursor: pointer;
+		font-size: 4.5vw;
+		padding-top: 0.8vw;
+	}
+
+	#like{
+		cursor: pointer;
+		font-size: 4.5vw;
+		padding-top: 0.4vw;
+	}
+
+	#confirmqnt{
+			margin: 0 !important;
+			padding: 0!important;
+			background: transparent!important;
+			width: 48vw!important;
+			border-radius: 20vw!important;
+			border: none!important;
+			color: white!important;
+			font-size: 2.8vw!important;
+			font-weight: 400!important;
+			height: 5vw !important;
+			margin-left: 25vw !important;
+			text-align: center!important;
+		}
+
+	#confirmicon{
+			font-size: 2.5vw !important;
+		}
+
+#star{
+		cursor: pointer!important;
+		font-size: 4.5vw!important;
+		margin-left: 15vw!important;
+		padding-top: 0.8vw!important;
+	}
+
+.eventact{
+		display: grid;
+		grid-template-columns: 15%;
+		grid-template-rows: 10%;
+		grid-template-areas: "banner info1";
+		position: absolute;
+		right: 7vw;
+		top: 48vw;
+		height: 6vw;
+		width: 75vw;
+		padding-left: 2vw;
+		background-color: #000000;
+		border-radius: 20vw;
+	}
+
+.avalqnt{
+		font-size: 3vw;
+		padding-left: 0.5vw;
+	}
+
 	.avisocoment{
 		margin-left: 18vw;
 		opacity: 0.7;
@@ -823,21 +932,12 @@ a{
 		font-size: 3vw;
 	}
 
-	#eventactwit{
-		display: grid;
-		grid-template-columns: 10%;
-		grid-template-rows: 10%;
-		grid-template-areas: "banner info1";
-		position: absolute;
-		left: 20vw;
-	}
-
 	#starwit{
 		font-size: 3vw;
 	}
 
 	.confirmado{
-		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4);
+		color: linear-gradient(to bottom right, #C40EFA, #0096C4) !important;
 	}
 
 	.confirmadowit{
@@ -850,21 +950,6 @@ a{
 
 	.interessadowit{
 		display:none;
-	}
-
-	#confirmqnt{
-		margin: 0 !important;
-		padding: 0;
-		background: transparent;
-		width: 50vw;
-		border-radius: 20vw;
-		border: none;
-		color: white;
-		font-size: 2.7vw;
-		font-weight: 400;
-		height: 4.2vw;
-		margin-left: 10vw !important;
-		text-align: center;
 	}
 
 	.preco{
@@ -910,34 +995,8 @@ a{
 		display: none;
 	}
 
-	#confirmicon{
-		font-size: 3vw;
-		padding-left: 1vw;
-	}
-
-	#star{
-		cursor: pointer;
-		font-size: 4vw;
-	}
-
 	.interessado{
 		padding-right: 0.3vw;
-	}
-
-	.eventact{
-		display: grid;
-		grid-template-columns: 10%;
-		grid-template-rows: 10%;
-		grid-template-areas: "banner info1";
-		position: absolute;
-		right: 7vw;
-		top: 48vw;
-		height: 4.6vw;
-		width: 60vw;
-		padding-left: 2vw;
-		background-color: #000000;
-		border-radius: 20vw;
-		text-align: center;
 	}
 
 	.exit{
@@ -1276,6 +1335,30 @@ a{
 /* CSS para celulares grandes*/
 @media only screen and (max-width: 699px) and (orientation: portrait) {
 
+	.eventactwit{
+		margin-top: 0.5vw;
+		display: grid;
+		grid-template-columns: 30% 30% 50%;
+		grid-template-rows: 4vw;
+		width: 42vw;
+	}
+#likewit{
+		font-size: 6vw;
+		position: relative;
+		right: -1vw;
+	}
+#starwit{
+		font-size: 6vw;
+		position: relative;
+		right: -1vw;
+	}
+
+	#like{
+		cursor: pointer;
+		font-size: 4.5vw;
+		padding-top: 0.8vw;
+	}
+
 	.avisocoment{
 		margin-left: 16vw;
 		opacity: 0.7;
@@ -1344,12 +1427,33 @@ a{
 		font-size: 2.8vw;
 	}
 
+	.linha{
+		width: 100%;
+		text-align: center;
+		display: none;
+	}
+
+	.excluir i{
+		z-index: 5;
+		position: relative;
+		top: 1vw;
+		left: 2vw;
+		font-size: 1.5vw;
+		opacity: 0.5;
+	}
+
+	.excluir i:hover{
+		opacity: 1;
+		cursor: pointer;
+	}
+
 	.comentbox{
 		display: grid;
-		grid-template-columns: 20% 80%;
-		grid-template-areas: "imagemres" "nomeres";
+		grid-template-columns: 20% 75% 5%;
+		grid-template-rows: 100%;
+		grid-template-areas: "imagemres" "nomeres" "i";
 		border-radius: 2vw;
-		background-color: #121212;
+		background-color: #101113;
 		margin: 1vw 0 0 0;
 	}
 
@@ -1388,17 +1492,19 @@ a{
 		font-size: 3vw;
 	}
 
-	#eventactwit{
+	.eventactwit{
 		display: grid;
-		grid-template-columns: 10%;
 		grid-template-rows: 10%;
-		grid-template-areas: "banner info1";
-		position: absolute;
-		left: 20vw;
+		grid-template-areas: "banner" "info1" "confirm";
+		margin-bottom: 20vw;
 	}
 
 	#starwit{
-		font-size: 3vw;
+		font-size: 5vw;
+	}
+
+	.confirmado{
+		background-image: linear-gradient(to bottom right, #C40EFA, #0096C4) !important;
 	}
 
 	.confirmadowit{
@@ -1417,14 +1523,14 @@ a{
 		margin: 0 !important;
 		padding: 0;
 		background: transparent;
-		width: 50vw;
+		width: 48vw;
 		border-radius: 20vw;
 		border: none;
 		color: white;
-		font-size: 3vw;
+		font-size: 2.8vw;
 		font-weight: 400;
-		height: 4.2vw;
-		margin-left: 10vw !important;
+		height: 5vw;
+		margin-left: 25vw !important;
 		text-align: center;
 	}
 
@@ -1472,32 +1578,37 @@ a{
 	}
 
 	#confirmicon{
-		font-size: 3vw;
-		padding-left: 1vw;
+		font-size: 2.5vw;
 	}
 
 	#star{
 		cursor: pointer;
-		font-size: 4vw;
+		font-size: 4.5vw;
+		padding-left: 10vw;
+		padding-top: 0.8vw;
 	}
 
 	.interessado{
-		padding-right: 0.3vw;
 	}
 
 	.eventact{
 		display: grid;
-		grid-template-columns: 10%;
+		grid-template-columns: 13%;
 		grid-template-rows: 10%;
 		grid-template-areas: "banner info1";
 		position: absolute;
 		right: 7vw;
 		top: 48vw;
-		height: 4.6vw;
-		width: 60vw;
+		height: 6vw;
+		width: 75vw;
 		padding-left: 2vw;
 		background-color: #000000;
 		border-radius: 20vw;
+	}
+
+	.avalqnt{
+		font-size: 3vw;
+		padding-left: 0.5vw;
 	}
 
 	#iconenviar{
