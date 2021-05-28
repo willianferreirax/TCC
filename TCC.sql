@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-create database freshr;
+create database tcc;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,7 +19,7 @@ create database freshr;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `freshr`
+-- Database: `tcc`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +28,7 @@ create database freshr;
 -- Estrutura da tabela `avaliacao`
 --
 
-use freshr;
+use tcc;
 CREATE TABLE `avaliacao` (
   `cod_media` int(11) NOT NULL,
   `cod_usuario` int(11) NOT NULL,

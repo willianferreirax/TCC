@@ -1,6 +1,6 @@
 <?php
 	function conexao(){
-	$banco = "freshr";
+	$banco = "tcc";
 	$host = "localhost";
 	$usuario = "root";
 	$senha= "";

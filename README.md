@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+<img src= "./images/logohorizontal.png">
+<br><br>
 
-You can use the [editor on GitHub](https://github.com/willianferreirax/TCC/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+# Sobre
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**FRESHR** foi um projeto apresentado como trabalho de conclusão de curso (Técnico em informática) em 2019 na ETEC da Zona Leste, pelo grupo consistido de: 
+- Willian Ferreira dos Santos
+- Lucas Campanelli
+- Iago Pereira
+- Renato de melo
 
-### Markdown
+Participação especial de Nicholas Campanelli
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# O que é o FRESHR
 
-```markdown
-Syntax highlighted code block
+**FRESHR** é uma plataforma agregadora de eventos universitários e workshops, criado com o intuito de permitir que jovens estudantes encontrem eventos para aprimorar suas habilidades ou ter uma visão de seu futuro curso de graduação.
 
-# Header 1
-## Header 2
-### Header 3
+# Imagens
 
-- Bulleted
-- List
+<img src = "./images/tcc2 (2).png"><br><br>
+<img src = "./images/tcc4 (2).jpg"><br><br>
+<img src = "./images/tcc5 (2).jpg"><br><br>
+<img src = "./images/tcc6 (2).jpg"><br><br>
+<img src = "./images/tcc8 (2).jpg"><br><br>
 
-1. Numbered
-2. List
+# Como instalar
 
-**Bold** and _Italic_ and `Code` text
+Tenha o software XAMPP ou WAMPP instalado na máquina.
 
-[Link](url) and ![Image](src)
-```
+Faça download do projeto e coloque-o em sua pasta htdocs, 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Faça import do banco de dados com nome de "TCC.sql" em seu SGBD.
 
-### Jekyll Themes
+Quaisquer mudanças na conexão com o banco de dados podem ser feitas no arquivo "connection.php"
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/willianferreirax/TCC/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Acesse o projeto a partir de http://localhost/TCC
